@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Dot</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > F <a href="nav2_4_6.html" target="nav2" class="lettered1">Functions</a> >  <font face="courier"><font color="blue">Dot</font></font>
+</b>
+<br/> 
+
+<a href="content_174.html" target="contents">prev</a>
+ 
+<a href="content_176.html" target="contents">next</a>
+<br/>
+
+
+<p>
+<font size="+1">
+<b>
+Function Dot
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> Dot(<font face="courier"><font color="#006699">base</font></font>,<wbr><font face="courier"><font color="#006699">n</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>,<wbr><font face="courier"><font color="#006699">v</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_163.html" class="name1" target="contents">View</a></font>)</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> Dot[<font face="courier"><a href="content_230.html" class="preop1" target="contents">%</a></font><font face="courier"><font color="#006699">L</font></font>](<font face="courier"><font color="#006699">base</font></font>,<wbr><font face="courier"><font color="#006699">n</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>,<wbr><font face="courier"><font color="#006699">v</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_163.html" class="name1" target="contents">View</a></font>)</font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><a href="content_230.html" class="preop1" target="contents">%</a></font><font face="courier"><font color="#006699">L</font></font></font>
+</td>
+<td>
+name parameters
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">base</font></font></font>
+</td>
+<td>
+value to be qualified
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">n</font></font></font>
+</td>
+<td>
+component name
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">v</font></font></font>
+</td>
+<td>
+(optional) type or view to use
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+First the type or view, <font face="courier"><font face="courier"><font color="#006699">v1</font></font></font>, to use must be determined.
+<ul>
+<li>
+If the <font face="courier"><font face="courier"><font color="#006699">v</font></font></font> parameter is present,then let <font face="courier"><font face="courier"><font color="#006699">v1</font></font></font> be <font face="courier"><font face="courier"><font color="#006699">v</font></font></font>.
+</li>
+<li>
+Otherwise, if <font face="courier"><font face="courier"><font color="#006699">base</font></font><font face="courier"><a href="content_250.html" class="inop1" target="contents">?</a></font><font face="courier"><a href="content_163.html" class="name1" target="contents">View</a></font></font>,then let <font face="courier"><font face="courier"><font color="#006699">v1</font></font></font> be <font face="courier"><font face="courier"><font color="#006699">base</font></font></font>.
+</li>
+<li>
+Otherwise,let <font face="courier"><font face="courier"><font color="#006699">v1</font></font></font> be <font face="courier"><font face="courier"><a href="content_199.html" class="name1" target="contents">Type</a></font>[<font face="courier"><font color="#006699">base</font></font>]</font>.
+</li>
+</ul>
+There are two major cases.
+<ul>
+<li>
+<b>
+View. 
+</b>
+If <font face="courier"><font face="courier"><font color="#006699">base</font></font><font face="courier"><a href="content_250.html" class="inop1" target="contents">?</a></font><font face="courier"><a href="content_163.html" class="name1" target="contents">View</a></font></font> then
+<ul>
+<li>
+If there is a visible item with name <font face="courier"><font face="courier"><font color="#006699">n</font></font>[<font face="courier"><font color="#006699">L</font></font>]</font> within the top level of the <font face="courier"><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font>
+or <font face="courier"><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font></font> tag for <font face="courier"><font face="courier"><font color="#006699">v1</font></font></font>, then that itemis the result.
+</li>
+<li>
+Otherwise the result is
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">base</font></font>.<font color="FF00FF">sys:Dot</font>[<font face="courier"><font color="#006699">n</font></font>,<font face="courier"><font color="#006699">L</font></font>]#<font face="courier"><font color="#006699">v1</font></font></font>
+<br/>
+
+</li>
+</ul>
+</li>
+<li>
+<b>
+Object. 
+</b>
+Otherwise,
+<ul>
+<li>
+If there is a visible item with name <font face="courier"><font face="courier"><font color="#006699">n</font></font>[<font face="courier"><font color="#006699">L</font></font>]</font> within the top level of the <font face="courier"><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+tag for <font face="courier"><font face="courier"><font color="#006699">v1</font></font></font>, then that itemis the result (with <font face="courier"><font face="courier"><font color="#006699">self</font></font></font> set to <font face="courier"><font face="courier"><font color="#006699">base</font></font></font>).
+</li>
+<li>
+Otherwise the result is
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">base</font></font>.<font color="FF00FF">sys:Dot</font>[<font face="courier"><font color="#006699">n</font></font>,<font face="courier"><font color="#006699">L</font></font>]#<font face="courier"><font color="#006699">v1</font></font></font>
+<br/>
+
+</li>
+</ul>
+</li>
+</ul>
+<p>
+<font size="+1">
+<b>
+Examples
+</b>
+</font>
+</p>
+<p>
+<p>
+Suppose <font face="courier"><font face="courier"><font color="#006699">T</font></font></font> is a type, <font face="courier"><font face="courier"><font color="#006699">V</font></font></font> is a view of that type, and <font face="courier"><font face="courier"><font color="#006699">X</font></font></font> isan object with that type.
+<table border="2">
+<tr>
+<td> <font face="courier"><font face="courier"><font color="#006699">T</font></font>.<font color="FF00FF">m1</font>(<font face="courier"><font color="#006699">a</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font>)</font> </td>
+<td> <font face="courier"><font face="courier"><a href="content_175.html" class="name1" target="contents">Dot</a></font>(<font face="courier"><font color="#006699">T</font></font>,<wbr><font color="green">"m1"</font>)(<font face="courier"><font color="#006699">a</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font>)</font> </td>
+<td>invokes a type method of <font face="courier"><font face="courier"><font color="#006699">T</font></font></font> </td>
+</tr>
+<tr>
+<td> <font face="courier"><font face="courier"><font color="#006699">X</font></font>.<font color="FF00FF">m2</font>(<font face="courier"><font color="#006699">a</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font>)</font> </td>
+<td> <font face="courier"><font face="courier"><a href="content_175.html" class="name1" target="contents">Dot</a></font>(<font face="courier"><font color="#006699">X</font></font>,<wbr><font color="green">"m2"</font>)(<font face="courier"><font color="#006699">a</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font>)</font> </td>
+<td>invokes a self method of <font face="courier"><font face="courier"><font color="#006699">T</font></font></font> (with <font face="courier"><font face="courier"><a href="content_227.html" class="preop1" target="contents">~</a></font><font face="courier"><font color="#006699">self</font></font> <font face="courier"><a href="content_234.html" class="inop1" target="contents">==</a></font> <font face="courier"><font color="#006699">base</font></font></font>)</td>
+</tr>
+<tr>
+<td> <font face="courier"><font face="courier"><font color="#006699">V</font></font>.<font color="FF00FF">m3</font>(<font face="courier"><font color="#006699">a</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font>)</font> </td>
+<td> <font face="courier"><font face="courier"><a href="content_175.html" class="name1" target="contents">Dot</a></font>(<font face="courier"><font color="#006699">V</font></font>,<wbr><font color="green">"m3"</font>)(<font face="courier"><font color="#006699">a</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font>)</font> </td>
+<td>invokes a view method of <font face="courier"><font face="courier"><font color="#006699">V</font></font></font> </td>
+</tr>
+<tr>
+<td> <font face="courier"><font face="courier"><font color="#006699">X</font></font>.<font color="FF00FF">m4</font>#<font face="courier"><font color="#006699">V</font></font>(<font face="courier"><font color="#006699">a</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font>)</font> </td>
+<td> <font face="courier"><font face="courier"><a href="content_175.html" class="name1" target="contents">Dot</a></font>(<font face="courier"><font color="#006699">X</font></font>,<wbr><font color="green">"m4"</font>,<wbr><font face="courier"><font color="#006699">V</font></font>)(<font face="courier"><font color="#006699">a</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font>)</font> </td>
+<td>invokes a self method of <font face="courier"><font face="courier"><font color="#006699">V</font></font></font> (with <font face="courier"><font face="courier"><a href="content_227.html" class="preop1" target="contents">~</a></font><font face="courier"><font color="#006699">self</font></font> <font face="courier"><a href="content_234.html" class="inop1" target="contents">==</a></font> <font face="courier"><font color="#006699">base</font></font></font>)</td>
+</tr>
+</table>
+</p>
+<p>
+<p>
+Suppose <font face="courier"><font face="courier"><font color="#006699">X</font></font></font> has type <font face="courier"><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font></font> for the tag <font face="courier"><font color="#FF9C00">&lt;foo</font> <font color="0AAAA">a</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font color="green">"3"</font><font color="#FF9C00">&gt;</font><font color="#FF9C00">&lt;b</font> <font color="0AAAA">c</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font color="green">"x"</font><font color="#FF9C00">/&gt;</font><font color="#FF9C00">&lt;/foo&gt;</font></font>, then
+<table border="2">
+<tr>
+<td> <font face="courier"><font face="courier"><font color="#006699">X</font></font>.<font color="FF00FF">tag</font></font> </td>
+<td>the element tag (<font face="courier"><font color="green">"foo"</font></font>)</td>
+</tr>
+<tr>
+<td> <font face="courier"><font face="courier"><font color="#006699">X</font></font>.<font color="FF00FF">a</font>#<font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font></font> </td>
+<td>a record component (<font face="courier"><font color="green">"3"</font></font>)</td>
+</tr>
+<tr>
+<td> <font face="courier"><font face="courier"><font color="#006699">X</font></font>.<font color="FF00FF">b</font>#<font face="courier"><a href="content_156.html" class="name1" target="contents">bodyrec</a></font></font> </td>
+<td>a body record component (<font face="courier"><font color="#FF9C00">&lt;b</font> <font color="0AAAA">c</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font color="green">"x"</font><font color="#FF9C00">/&gt;</font></font>)</td>
+</tr>
+</table>
+</p>
+To write a type method to handle <font face="courier"><font face="courier"><font color="#006699">T</font></font>.<font color="FF00FF">xx</font></font> andself method to handle <font face="courier"><font face="courier"><font color="#006699">X</font></font>.<font color="FF00FF">yy</font></font> 
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font> <font face="courier"><font color="#006699">T</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <font face="courier"><font color="#006699">x</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> 99;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">sys:Dot</font></font>[<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_318.html" class="name1" target="contents">enum</a></font>[<font color="green">"xx"</font>]],<font face="courier"><font color="#006699">visible</font></font><font color="brown"> {</font>&nbsp;<font face="courier"><font color="#006699">x</font></font> <font face="courier"><a href="content_244.html" class="inop1" target="contents">+</a></font> <font face="courier"><font color="#006699">x</font></font>&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <font face="courier"><font color="#006699">y</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> 50;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">sys:Dot</font></font>[<font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_318.html" class="name1" target="contents">enum</a></font>[<font color="green">"yy"</font>]],<font face="courier"><font color="#006699">visible</font></font><font color="brown"> {</font>&nbsp;<font face="courier"><font color="#006699">y</font></font> <font face="courier"><a href="content_245.html" class="inop1" target="contents">-</a></font> 1&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font></font>
+<br/>
+
+</p>
+</p>
+</body>
+</html>

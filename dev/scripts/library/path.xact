@@ -1,0 +1,9 @@
+@x:use library:iterator;
+
+@x:func pathToFile(path),visible {
+   options.scriptDir#rec;
+   @x:for part := Separate[path,":"] {
+	options.fileSep#rec;
+	part;
+   }
+}

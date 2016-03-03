@@ -1,0 +1,126 @@
+@x:use library:unparser;
+@x:use data;
+
+@x:func outSpace(s),visible {
+   @x:if s == "line" | s == "lines" {
+      <br/>eol;
+   } @x:orif s == "space" {
+      " ";
+   }
+}
+
+@x:func outInlineSpace(s),visible {
+   @x:if s == "line" | s == "lines" {
+	eol;
+   } @x:orif s == "space" {
+      " ";
+   }
+}
+
+@x:func HEncode(s),visible {
+   @x:for ch:=Chars[s] {
+      @x:if ch == "<"(1) {
+         amp;
+         "lt;"
+      } @x:orif ch == ">"(1) {
+         amp;
+         "gt;"
+      } @x:orif ch == eol(1) {
+//         <br/> 
+//	 eol;
+      } @x:else {
+         string(code=ch);
+      }
+   }
+}
+
+@x:func sectionText(name,style,tag),visible {
+   @x:const s := Dot(styles,style,bodyrec);
+   @x:var tag1 := null;
+   @x:var tag2 := tag;
+   @x:if s.font#rec != null {
+      tag1 := xdom:element("font",kind="xml",attr=rec(face=s.font#rec),spaceBefore="empty",spaceAfter="empty",
+      spaceBeforeBody="erase",spaceAfterBody="erase");
+   }
+   @x:if tag == null & s.def#rec != null { 
+      tag2 := xdom:element("font",kind="xml",attr=rec(color=s.def#rec),spaceBeforeBody="erase",spaceAfterBody="erase");
+   }
+   @x:tag tag1 {
+      @x:if tag2 != null { 
+         tag2.spaceBefore := "empty"; 
+	 tag2.spaceAfter := "empty";
+      }
+      @x:if s.left#rec != null { 
+         HEncode(s.left#rec)
+      }@x:tag tag2 {
+         HEncode(name);
+      }@x:if s.right#rec != null{
+         HEncode(s.right#rec)
+      }
+   }
+}
+
+@x:func renderRef1(style,ref,def,name) {
+   @x:const s := Dot(styles,style,bodyrec);
+   @x:if s == null { Error("Bad style: "++style) }
+   @x:var t1 := null;
+   @x:if s.before#rec != null {HEncode(s.before#rec)}
+   @x:if ref & def != null {
+      t1 :=xdom:element("a",attr=rec(href="content_"++pageGet(def)++".html",class=style++"1",target="contents"),kind="xml",
+      spaceBeforeBody="erase",spaceAfterBody="erase");
+   } @x:else {
+      @x:var c := s.def#rec;
+      @x:if ref {
+          @x:if def == null & s.undef#rec != null { c := s.undef#rec }
+      }
+      @x:if c != null {
+         t1 := xdom:element("font",attr=rec(color=c),spaceBeforeBody="erase",spaceAfterBody="erase");
+      }
+   }
+   sectionText(name,style,t1);
+}
+
+@x:func renderRef(e,style~string,name~string,ref~boolean,font~boolean,space~boolean),visible {
+   @x:const s := Dot(styles,style,bodyrec);
+   @x:if s == null { s := xdom:element(style) }
+   @x:const def := null;
+   @x:if ref { 
+      def := lookup(style++":"++name);
+   }
+   @x:var f := s.font#rec;
+   @x:if ! font { f := null }
+   @x:var t := null;
+   @x:if f != null { 
+      t := xdom:element("font",kind="xml",spaceBefore="empty",spaceAfter="empty",spaceBeforeBody="erase",spaceAfterBody="erase");
+      @x:if f != null { t.face#rec := f }
+   }
+   @x:if space { outInlineSpace(e.spaceBefore)}
+   @x:tag t {
+      renderRef1(style,ref,def,name);      
+   }
+   @x:if space {outInlineSpace(e.spaceAfter)}
+}
+
+@x:func codeCallBack(kind,s),visible {
+   renderRef(xdom:element("foo"),kind,s,true,false,false);
+}
+
+@x:func outCode(s),visible {
+   @x:const t := Parse(s,name=s);
+   Unparse(t,partial="body",html=true,callBack=codeCallBack); 
+}
+
+@x:func outCodeLink(s,name,link),visible {
+   @x:func codeCallBack1(kind,s) {
+      @x:if s == name {
+         @x:var t := null;
+	 @x:if link { t := xdom:element("a",attr=rec(href="#"++name,class="underline1"),kind="xml",
+	 spaceBeforeBody="erase",spaceAfterBody="erase",spaceAfter="empty",spaceBefore="empty") }
+	 @x:tag t {name}
+      } @x:else {
+         codeCallBack(kind,s);
+      }
+   }
+   @x:const t := Parse(s,name=s);
+   Unparse(t,partial="body",html=true,callBack=codeCallBack1); 
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Types</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;2 <a href="nav1_2.html" target="nav1" class="numbered1">User Manual</a> > 2.5 <a href="nav2_2_5.html" target="nav2" class="numbered1">Types and Views</a> > 2.5.1 <font color="blue">Types</font>
+</b>
+<br/> 
+
+<a href="content_37.html" target="contents">prev</a>
+ 
+<a href="content_39.html" target="contents">next</a>
+<br/>
+
+
+<p>
+ <b>@x:Act</b> types are declared by a <font face="courier"><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font> commandfollowed by a <font face="courier"><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font> command.The body of the <font face="courier"><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font> command containsthe declaration of variables and functions associated with the type(in Java these would be declared as <font face="courier" color="green">static</font>).The <font face="courier"><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font> command contains the declaration ofvariables and and functions associated with objects of the type.For name binding purposes the <font face="courier"><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font> tag is logicallynested within the <font face="courier"><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font> tag and can refer to names declared there.
+</p>
+<p>
+An object of a type is created with a constructor.A constructor consists of a type followed by a set of parametersenclosed in <font face="courier" color="green">()</font> (note that unlike Java no <font face="courier" color="green">new</font> keyword is needed).This causes an instance of the <font face="courier"><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font> scope tobe created and all commands within it executed.If the special function with name <font face="courier"><font face="courier"><font color="#006699">sys:Init</font></font></font> is declared withinthe <font face="courier"><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font> command, it is then called passing it theparameters specified in the constructor.This instance lives until the object is garbage collected.
+</p>
+<p>
+Variables and functions within the <font face="courier"><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font> commandthat have option <font face="courier" color="green">visible</font> can be referenced bydot qualification of the type.
+</p>
+<p>
+Variables and functions within the <font face="courier"><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font> commandthat have option <font face="courier" color="green">visible</font> can be referenced bydot qualification of an object with the type.Within the <font face="courier"><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font> command the name <font face="courier"><font face="courier"><font color="#006699">self</font></font></font> is automatically declared and has the object as its value(<font face="courier"><font face="courier"><font color="#006699">self</font></font></font> in <b>@x:Act</b> works just like <font face="courier" color="green">this</font> in Java).
+</p>
+</body>
+</html>

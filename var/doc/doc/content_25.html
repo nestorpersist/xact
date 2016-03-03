@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Basic Execution</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;2 <a href="nav1_2.html" target="nav1" class="numbered1">User Manual</a> > 2.3 <a href="nav2_2_3.html" target="nav2" class="numbered1">Execution</a> > 2.3.1 <font color="blue">Basic Execution</font>
+</b>
+<br/> 
+
+<a href="content_24.html" target="contents">prev</a>
+ 
+<a href="content_26.html" target="contents">next</a>
+<br/>
+
+
+<p>
+ <b>@x:Act</b> uses a stack-based execution model (for each thread of execution).This means when a scope is entered, space for items declared within the scope is allocatedand when a scope is exited, space for those items is freed.
+</p>
+<p>
+When a scope is entered items are initialized to a special uninitialized value.Attempting to use an uninitialized value results in an execution error.
+</p>
+<p>
+Execution of major <b>@x:Act</b> formsyields a value. There are two major <b>@x:Act</b> forms:commands (<font face="courier"><font face="courier">&lt;<a href="content_102.html" class="nt1" target="contents">simple cmd</a>&gt;</font></font> and <font face="courier"><font face="courier">&lt;<a href="content_78.html" class="nt1" target="contents">compound cmd</a>&gt;</font></font>) and expressions (<font face="courier"><font face="courier">&lt;<a href="content_85.html" class="nt1" target="contents">exp</a>&gt;</font></font>).
+</p>
+<p>
+Execution of commands depends upon the namespace specified in the tag of the command.The <b>@x:Act</b> default is that the <font face="courier" color="green">x:</font> namespace is used for <b>@x:Act</b> commands.Commands with other namespaces (or with no namespace) have render execution semantics.
+</p>
+</body>
+</html>

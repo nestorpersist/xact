@@ -1,0 +1,15 @@
+@x:const t1 := options.startTime#rec;
+@x:const t2 := date.gmt();
+@x:use library:unparser;
+@x:use library:html;
+
+@x:const fname := pathToFile("library:unparser")++".xact";
+@x:const txt := fname.read#file();
+@x:const t := Parse(txt);
+@x:const txt1 := Unparse(t);
+
+
+@x:const t3 := date.gmt();
+
+"Startup: ";(t2 -#date t1) /#float 1000; " seconds";eol;
+"Exec: ";(t3 -#date t2) /#float 1000; " seconds";eol;

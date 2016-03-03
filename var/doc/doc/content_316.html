@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>JavaProp</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > L <a href="nav2_4_12.html" target="nav2" class="lettered1">Examples</a> > L.14 <font face="courier"><font color="blue">JavaProp</font></font>
+</b>
+<br/> 
+
+<a href="content_315.html" target="contents">prev</a>
+ 
+<a href="content_317.html" target="contents">next</a>
+<br/>
+
+
+<p>
+This example shows how to call Java toprint out the list of Java properties.Note how the script can produce eithercommand line or web page results automatically.
+</p>
+<br/>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">System</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">Java</font></font>.<font color="FF00FF">java</font>.<font color="FF00FF">lang</font>.<font color="FF00FF">System</font>;<br/>
+<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">p</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">props</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">System</font></font>.<font color="FF00FF">getProperties</font>();<br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <font face="courier"><font color="#006699">e</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">props</font></font>.<font color="FF00FF">propertyNames</font>();<br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_131.html" class="tag1" target="contents">x:while</a></font> <font face="courier"><font color="#006699">e</font></font>.<font color="FF00FF">hasMoreElements</font>()<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">key</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">e</font></font>.<font color="FF00FF">nextElement</font>().<font color="FF00FF">toString</font>();<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">key</font></font>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">"="</font>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">props</font></font>.<font color="FF00FF">getProperty</font>(<font face="courier"><font color="#006699">key</font></font>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+<font color="brown">}</font><br/>
+<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">pHTML</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;head</font><font color="#FF9C00">&gt;</font><font color="#FF9C00">&lt;title</font><font color="#FF9C00">&gt;</font>Props<font color="#FF9C00">&lt;/title&gt;</font><font color="#FF9C00">&lt;/head&gt;</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;body</font> <font color="0AAAA">bgcolor</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font color="green">"white"</font><font color="#FF9C00">&gt;</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;h1</font><font color="#FF9C00">&gt;</font>Props<font color="#FF9C00">&lt;/h1&gt;</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;ul</font><font color="#FF9C00">&gt;</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;</font><font face="courier">@<a href="content_110.html" class="tag1" target="contents">x:block</a></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">props</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">System</font></font>.<font color="FF00FF">getProperties</font>();<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <font face="courier"><font color="#006699">e</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">props</font></font>.<font color="FF00FF">propertyNames</font>();<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_131.html" class="tag1" target="contents">x:while</a></font> <font face="courier"><font color="#006699">e</font></font>.<font color="FF00FF">hasMoreElements</font>()<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">key</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">e</font></font>.<font color="FF00FF">nextElement</font>().<font color="FF00FF">toString</font>();<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;li</font><font color="#FF9C00">&gt;</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;font</font> <font color="0AAAA">face</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font color="green">"courier"</font><font color="#FF9C00">&gt;</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;</font><font face="courier">@<a href="content_110.html" class="tag1" target="contents">x:block</a></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">key</font></font>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">"="</font>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">props</font></font>.<font color="FF00FF">getProperty</font>(<font face="courier"><font color="#006699">key</font></font>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="brown">}</font><font color="#FF9C00">/&gt;</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;/font&gt;</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;/li&gt;</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="brown">}</font><font color="#FF9C00">/&gt;</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;/ul&gt;</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;/body&gt;</font><br/>
+<font color="brown">}</font><br/>
+<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">JavaProp</font></font>,<font face="courier"><font color="#006699">visible</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_120.html" class="tag1" target="contents">x:if</a></font> <font face="courier"><a href="content_222.html" class="name1" target="contents">options</a></font>.<font color="FF00FF">mime</font>#<font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font> <font face="courier"><a href="content_235.html" class="inop1" target="contents">!=</a></font> <font color="green">""</font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">pHTML</font></font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font>&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_114.html" class="tag1" target="contents">x:else</a></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">p</font></font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+<font color="brown">}</font></font>
+</body>
+</html>

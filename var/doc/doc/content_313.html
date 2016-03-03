@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>graph</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > L <a href="nav2_4_12.html" target="nav2" class="lettered1">Examples</a> > L.11 <font face="courier"><font color="blue">graph</font></font>
+</b>
+<br/> 
+
+<a href="content_312.html" target="contents">prev</a>
+ 
+<a href="content_314.html" target="contents">next</a>
+<br/>
+
+
+<p>
+This example shows how <font face="courier"><font face="courier"><font color="#006699">XDOM</font></font></font> nodes can be usedto build a directed graph and how to write a graphto an external form and then read it back in.
+</p>
+<br/>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_128.html" class="tag1" target="contents">x:use</a></font> <font face="courier"><font color="#006699">library:unparser</font></font>;<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_128.html" class="tag1" target="contents">x:use</a></font> <font face="courier"><font color="#006699">library:graph</font></font>;<br/>
+<br/>
+<font color="00CD00">// Create a graph</font><br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">n1</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font>(<font color="green">"n1"</font>,<wbr><font color="0AAAA">attr</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font>(<font color="0AAAA">a</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font>2));<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">n2</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font>(<font color="green">"n2"</font>,<wbr><font color="0AAAA">attr</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font>(<font color="0AAAA">b</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font>5));<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">n3</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font>(<font color="green">"n3"</font>,<wbr><font color="0AAAA">attr</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font>(<font color="0AAAA">c</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font>));<br/>
+<font face="courier"><font color="#006699">n1</font></font>.<font color="FF00FF">insert</font>#<font face="courier"><a href="content_155.html" class="name1" target="contents">body</a></font>(<font face="courier"><font color="#006699">n2</font></font>);<br/>
+<font face="courier"><font color="#006699">n1</font></font>.<font color="FF00FF">insert</font>#<font face="courier"><a href="content_155.html" class="name1" target="contents">body</a></font>(<font face="courier"><font color="#006699">n2</font></font>);<br/>
+<font face="courier"><font color="#006699">n1</font></font>.<font color="FF00FF">insert</font>#<font face="courier"><a href="content_155.html" class="name1" target="contents">body</a></font>(<font face="courier"><font color="#006699">n3</font></font>);<br/>
+<font face="courier"><font color="#006699">n3</font></font>.<font color="FF00FF">insert</font>#<font face="courier"><a href="content_155.html" class="name1" target="contents">body</a></font>(<font face="courier"><font color="#006699">n1</font></font>);<br/>
+<br/>
+<font color="00CD00">// Print it out</font><br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">txt</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_372.html" class="name1" target="contents">Unparse</a></font>(<font face="courier"><font color="#006699">n1</font></font>,<wbr><font color="0AAAA">graph</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font>);<br/>
+<font face="courier"><font color="#006699">txt</font></font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<br/>
+<font color="00CD00">// Parse it</font><br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <font face="courier"><font color="#006699">tree</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_192.html" class="name1" target="contents">Parse</a></font>(<font face="courier"><font color="#006699">txt</font></font>)(1)#<font face="courier"><a href="content_155.html" class="name1" target="contents">body</a></font>;<br/>
+<font color="green">"shared="</font>;&nbsp;<font face="courier"><font color="#006699">tree</font></font>(1)#<font face="courier"><a href="content_155.html" class="name1" target="contents">body</a></font> <font face="courier"><a href="content_234.html" class="inop1" target="contents">==</a></font> <font face="courier"><font color="#006699">tree</font></font>(2)#<font face="courier"><a href="content_155.html" class="name1" target="contents">body</a></font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font color="green">"cycle="</font>;&nbsp;<font face="courier"><font color="#006699">tree</font></font>(3)#<font face="courier"><a href="content_155.html" class="name1" target="contents">body</a></font>(1)#<font face="courier"><a href="content_155.html" class="name1" target="contents">body</a></font> <font face="courier"><a href="content_234.html" class="inop1" target="contents">==</a></font> <font face="courier"><font color="#006699">tree</font></font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<br/>
+<font color="00CD00">// Relink it</font><br/>
+<font face="courier"><font color="#006699">tree</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_326.html" class="name1" target="contents">graphExpand</a></font>(<font face="courier"><font color="#006699">tree</font></font>);<br/>
+<font color="green">"shared="</font>;&nbsp;<font face="courier"><font color="#006699">tree</font></font>(1)#<font face="courier"><a href="content_155.html" class="name1" target="contents">body</a></font> <font face="courier"><a href="content_234.html" class="inop1" target="contents">==</a></font> <font face="courier"><font color="#006699">tree</font></font>(2)#<font face="courier"><a href="content_155.html" class="name1" target="contents">body</a></font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font color="green">"cycle="</font>;&nbsp;<font face="courier"><font color="#006699">tree</font></font>(3)#<font face="courier"><a href="content_155.html" class="name1" target="contents">body</a></font>(1)#<font face="courier"><a href="content_155.html" class="name1" target="contents">body</a></font> <font face="courier"><a href="content_234.html" class="inop1" target="contents">==</a></font> <font face="courier"><font color="#006699">tree</font></font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font></font>
+</body>
+</html>

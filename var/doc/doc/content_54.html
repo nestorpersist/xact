@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Multiple Threads</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;2 <a href="nav1_2.html" target="nav1" class="numbered1">User Manual</a> > 2.9 <a href="nav2_2_9.html" target="nav2" class="numbered1">Multithreading</a> > 2.9.1 <font color="blue">Multiple Threads</font>
+</b>
+<br/> 
+
+<a href="content_53.html" target="contents">prev</a>
+ 
+<a href="content_55.html" target="contents">next</a>
+<br/>
+
+
+<p>
+ <b>@x:Act</b> supports multithreading.The implementation uses Java threads.A "cactus-stack" model is used where each threadforks off a new branch of the <b>@x:Act</b> execution stack.
+</p>
+<p>
+Threads are created using the <font face="courier"><font face="courier">@<a href="content_118.html" class="tag1" target="contents">x:fork</a></font></font> command.One or more <font face="courier"><font face="courier">@<a href="content_126.html" class="tag1" target="contents">x:thread</a></font></font> commands can appear directlywithin the body of the <font face="courier"><font face="courier">@<a href="content_118.html" class="tag1" target="contents">x:fork</a></font></font> command.Execution of a <font face="courier"><font face="courier">@<a href="content_126.html" class="tag1" target="contents">x:thread</a></font></font> command starts a new threadthat executes the body of that command.Meanwhile execution of the body of the <font face="courier"><font face="courier">@<a href="content_118.html" class="tag1" target="contents">x:fork</a></font></font> command continues.
+</p>
+<p>
+When the execution of the body of the <font face="courier"><font face="courier">@<a href="content_118.html" class="tag1" target="contents">x:fork</a></font></font> commandis complete, it waits until execution of all the threads created within itare complete.
+</p>
+<p>
+Special threads are also sometimes created by the <font face="courier"><font face="courier"><a href="content_192.html" class="name1" target="contents">Parse</a></font></font>, <font face="courier"><font face="courier"><a href="content_185.html" class="name1" target="contents">Lines</a></font></font>, and <font face="courier"><font face="courier"><a href="content_171.html" class="name1" target="contents">Chars</a></font></font> functions.
+</p>
+</body>
+</html>

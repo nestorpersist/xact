@@ -1,0 +1,37 @@
+@x:type List[render1,render2],visible {
+   @x:func renderItem(e) {
+      @x:tag xdom:element("li",kind="xml") {
+         @x:if e.name#rec != null {
+	    @x:tag xdom:element("b",kind="xml") {
+	        e.name#rec;". "
+	    }
+	 }
+         @x:for c:=e.all#body {
+	    render2(c);
+	 }
+      }
+   }
+
+   @x:func renderUnordered(e) {
+      @x:tag xdom:element("ul",kind="xml") {
+	 @x:for c:=e.all#body {
+	    render2(c);
+	 }
+      }
+   }
+
+   @x:func r1(e),visible {
+       @x:for c:=e.all#body {
+	   render1(c)
+       }
+   }
+   
+   @x:func r2(e),visible {
+      @x:if e.tag == "list:unordered" {
+	renderUnordered(e);
+      } @x:orif e.tag == "list:item" {
+         renderItem(e);
+      }
+   }
+}
+@x:self;

@@ -1,0 +1,27 @@
+@x:use library:unparser;
+
+@x:func poHTML {
+   <head><title>Props</title></head>
+   <body bgcolor="white">
+      <h1>Props</h1>
+      <ul>
+      <@x:block {
+         Unparse(options,html=true);<br/><br/>
+         Unparse(passed,html=true);
+      }/>
+      </ul>
+   </body>
+}
+
+@x:func po {
+   Unparse(options);eol;eol;
+   Unparse(passed); eol;
+}
+
+@x:func ShowOptions,visible {
+   @x:if options.mime#rec != "" {
+      poHTML;
+   } @x:else {
+      po;
+   }
+}

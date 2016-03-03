@@ -1,0 +1,13 @@
+@x:use library:unparser;
+@x:use library:html;
+@x:use library:enum;
+
+@x:func test,visible {
+   <body bgcolor="white">
+    <h1>Test</h1>
+    <@x:block{
+       Unparse(passed,html=true); <br/> eol;
+       Unparse(options,html=true); eol;
+   }/>
+   </body> eol;
+}

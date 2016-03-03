@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>name</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > A <a href="nav2_4_1.html" target="nav2" class="lettered1">Syntax</a> >  <font face="courier">&lt;<font color="green">name</font>&gt;</font>
+</b>
+<br/> 
+
+<a href="content_93.html" target="contents">prev</a>
+ 
+<a href="content_95.html" target="contents">next</a>
+<br/>
+
+<font size="+1"><b>Syntax</b></font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">name</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font> {<font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">'<font color="brown">[</font>'</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? {<font face="courier">&lt;<a href="content_86.html" class="nt1" target="contents">exps</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>?}? <font face="courier">'<font color="brown">]</font>'</font>}?
+</td>
+</tr>
+</table>
+
+</font>
+<p>
+<font size="+1">
+<b>
+Description
+</b>
+</font>
+</p>
+<p>
+This is the most general form of name.A name can be simply an <font face="courier"><font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font></font>.Names of functions, types and views can also include a list ofexpressions whose values are part of the name.For types (and views), these expression lists are usedfor parametrized types (and views).
+</p>
+<p>
+<font size="+1">
+<b>
+Semantics
+</b>
+</font>
+</p>
+<p>
+<p>
+Every occurrence of a name is either defines the name or is a use of the name.For every use there must be a corresponding definition.
+</p>
+<p>
+Two names are the same if they have the same <font face="courier"><font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font></font>s andneither has an expression list of both have an expression list.Two names with expression lists are the same if both have thesame <font face="courier"><font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font></font>, the number of expressionsis the same, and each corresponding expression has the same value.
+</p>
+</p>
+<p>
+<font size="+1">
+<b>
+Examples
+</b>
+</font>
+</p>
+<p>
+The following example defines name <font face="courier"><font face="courier"><font color="#006699">i</font></font></font> and uses name <font face="courier"><font face="courier"><font color="#006699">j</font></font></font>.
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <font face="courier"><font color="#006699">i</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">j</font></font> <font face="courier"><a href="content_244.html" class="inop1" target="contents">+</a></font> 1</font>
+<br/>
+The following is an example of the definition of a parametrized type.
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font> <font face="courier"><font color="#006699">stack</font></font>[<font face="courier"><font color="#006699">elem</font></font>]</font>
+<br/>
+Here the name <font face="courier"><font face="courier"><font color="#006699">elem</font></font></font> is defined and the nameswith <font face="courier"><font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font></font>  <font face="courier"><font face="courier"><font color="#006699">stack</font></font></font> and 1 expression are defined.
+</p>
+</body>
+</html>

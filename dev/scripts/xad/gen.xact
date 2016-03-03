@@ -1,0 +1,230 @@
+@x:use library:unparser;
+@x:use data;
+@x:use page;
+
+@x:func sort(e,pass) {
+  @x:const size := e.size#body;
+  @x:var comp := string.sys:Greater;
+  @x:if e.sort#rec == "fold" { comp := fold.sys:Greater }
+  @x:var first := true;
+  @x:var firstPage := 1;
+  @x:for i := 1..size {
+     @x:if first {
+        first := false;
+	firstPage := e(i)#body.page#rec;
+     }
+     @x:for j := 1..(size-1) {
+	@x:const c1 := e(j)#body;
+	@x:const c2 := e(j+1)#body;
+	@x:if comp(c1.name#rec,c2.name#rec) {
+	   e(j)#body := c2;
+	   e(j+1)#body := c1;
+	}
+     }
+  }
+  @x:if pass == 1 {
+     @x:for c:=e.all#body {
+        pageSet(c.page#rec,firstPage);
+        firstPage := firstPage + 1;
+     }
+  }
+}
+
+@x:var debugData := stream();
+
+@x:func debug(msg) {
+    debugData.send(msg++eol);
+}
+
+@x:type iread1;
+@x:self {
+    @x:var level;
+    @x:var page;
+    @x:var blocked := 0;
+
+    @x:func sys:Init(),visible {
+        level := 0;
+	page := 0;
+
+    }
+    @x:func start(),visible {
+    }
+    @x:func end(),visible {
+       lastPage := page;
+    }
+    @x:func startElement(e,hasAttrs),visible {
+        @x:if e.tag == "syn:combined" { blocked := blocked + 1 }
+	@x:if e.space == "section" & blocked == 0 {
+	   level := level + 1;
+	   @x:if level >= contentLevel {
+	      page := page + 1;
+	   }
+	}
+    }
+
+    @x:func startBody(e,hasBody),visible {
+       @x:if e.space == "section" & blocked == 0 {
+          @x:if level >= contentLevel {
+	     e.page#rec := page;
+	  }
+       }
+    }
+    @x:func endElement(e),visible {
+        @x:if e.space == "section" & blocked == 0 {
+	   @x:if level == nav2Level {
+	      @x:if e.sort#rec != null {
+		 sort(e,1);
+	      }
+	   } @x:orif level >= contentLevel {
+	       content1(e);
+	       @x:while e.size#body > 0 {
+	          e.delete#body(1);
+	       }
+	   }
+	   level := level - 1
+	} 
+	@x:if e.tag == "syn:combined" { blocked := blocked - 1 }
+    }
+    @x:func endAttr(e,at),visible {
+       at
+    }
+    @x:func endChild(e,c),visible {
+        @x:if c?xdom:element & c.tag == "include" {
+	   @x:const sname := "src:"++c.name#rec;
+	   @x:const fname := path(sname++".xact");
+	   @x:func txt { fname.read#file() }
+	   @x:const t := Parse(txt,handler=ir1,scriptName=sname)(1)#body;
+	   e.insert#body(t);
+	   t
+	} @x:else {
+	   c
+	}
+    }
+}
+
+@x:type iread2;
+@x:self {
+    @x:var level;
+    @x:var page;
+    @x:var blocked := 0;
+    @x:func sys:Init(),visible {
+        level := 0;
+	page := 0;
+    }
+    @x:func start(),visible {
+    }
+    @x:func end(),visible {
+    }
+    @x:func startElement(e,hasAttrs),visible {
+        @x:if e.tag == "syn:combined" { blocked := blocked + 1 }
+        @x:if e.space == "section" & blocked == 0 {
+	   level := level + 1;
+	   st.push(e);
+	   e.section#rec := 0;
+	   @x:if level > 1 {
+	      st.get(level-1).section#rec := st.get(level-1).section#rec + 1;
+	   }
+	   @x:if level >= contentLevel {
+	      page := page + 1;
+	   }
+        }
+    }
+    @x:func startBody(e,hasBody),visible {
+       @x:if e.space == "section" & blocked == 0 {
+	  st.get(level).section#rec := 0;
+          @x:if level >= contentLevel {
+	     e.page#rec := page;
+	  }
+       }
+    }
+    @x:func endElement(e),visible {
+        @x:if e.space == "section" & blocked == 0 {
+	   @x:if level == nav1Level {
+	       genNav1(e);
+//	       out(frameFile,genFrame(e));
+	       out1(frameFname,"html",genFrame(e));
+	   } @x:orif level == nav2Level {
+	       @x:if e.sort#rec != null {
+		  sort(e,2);
+	       }
+	       // output nav2 file & delete children
+//	       @x:var fname := nav2File;
+	       @x:var fname := nav2Fname;
+	       @x:for i:=2..nav1Levels+1 {
+	          fname := fname ++"_"++st.get(i-1).section#rec;
+
+	       }
+//	       out(fname,genNav2(e));
+	       out1(fname,"html",genNav2(e));
+	       // remove body
+	   } @x:orif level >= contentLevel {
+//	       out(contentFile++"_"++pageGet(e.page#rec),genContent2(e,st.get(1).section#rec));
+	       out1(contentFname++"_"++pageGet(e.page#rec),"html",genContent2(e,st.get(1).section#rec));
+	       @x:while e.size#body > 0 {
+	          e.delete#body(1);
+	       }
+	   }
+	   st.pop();
+	   level := level - 1;
+	}
+	@x:if e.tag == "syn:combined" { blocked := blocked - 1 }
+    }
+    @x:func endAttr(e,at),visible {
+	at
+    }
+    @x:func endChild(e,c),visible {
+        @x:if c?xdom:element & c.tag == "include" {
+	   debug("Include: "++c.name#rec);
+	   @x:const sname := "src:"++c.name#rec;
+	   @x:const fname := path(sname++".xact");
+	   @x:func txt { fname.read#file() }
+	   @x:const t := Parse(txt,handler=ir2,scriptName=sname)(1)#body;
+	   t
+	} @x:else {
+	   c
+	}
+    }
+}
+
+@x:const ir1 := iread1();
+@x:const ir2 := iread2();
+
+@x:func gen(fname),visible {
+   inFname := fname;
+   @x:const srcSname := "src:"++fname;
+   @x:const srcFname := path(srcSname ++ ".xact");
+
+   "Styles"; eol;
+   @x:const sfname := path(styleFile);
+   styles := Parse(sfname.read#file(),fileName=sfname)(1)#body;
+   out1(stylesheetFname,"css",genStyles());
+//   path(stylesheetFile).write#file(genStyles());
+
+   "Pass1"; eol;
+   @x:func txt { srcFname.read#file() }
+   @x:var t;
+   @x:fork {
+       @x:thread parse {
+	  t := Parse(txt,handler=ir1,scriptName="xad:"++srcSname);
+	  debugData.close();
+	   "Thread1"; eol;
+       }
+       debugData.receive();
+   }
+   //"lastPage="; lastPage; eol;
+
+
+   "Pass2"; eol;
+   debugData := stream();
+   @x:fork {
+       @x:thread parse {
+	  t := Parse(txt,handler=ir2,scriptName="xad:"++srcSname);
+	  debugData.close();
+	   "Thread2"; eol;
+       }
+       debugData.receive();
+   }
+   "Done"; eol;
+//   Unparse(symbols); eol;
+//   Unparse(pages); eol;
+}

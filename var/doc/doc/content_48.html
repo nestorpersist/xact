@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Stream Source</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;2 <a href="nav1_2.html" target="nav1" class="numbered1">User Manual</a> > 2.7 <a href="nav2_2_7.html" target="nav2" class="numbered1">Incremental Execution</a> > 2.7.3 <font color="blue">Stream Source</font>
+</b>
+<br/> 
+
+<a href="content_47.html" target="contents">prev</a>
+ 
+<a href="content_49.html" target="contents">next</a>
+<br/>
+
+
+<p>
+The following are all stream sources.
+</p>
+<ul>
+<li>
+The result of the <font face="courier"><font face="courier"><a href="content_159.html" class="name1" target="contents">file</a></font></font>  <font face="courier" color="green">read</font> function.
+</li>
+<li>
+The result of <font face="courier"><font face="courier"><a href="content_140.html" class="name1" target="contents">stream</a></font></font>  <font face="courier" color="green">receive</font> function.
+</li>
+<li>
+The result of the <font face="courier"><font face="courier"><a href="content_243.html" class="inop1" target="contents">++</a></font></font> infix operation.
+</li>
+<li>
+The result of joins (see <a href="content_29.html" class="numbered1" target="contents">Join Rules</a>).For example the result of
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_110.html" class="tag1" target="contents">x:block</a></font><font color="brown"> {</font><font face="courier"><font color="#006699">e1</font></font>;<font face="courier"><font color="#006699">e2</font></font><font color="brown">}</font></font>
+<br/>
+will be a source that firstdoes <font face="courier"><font face="courier"><font color="#006699">e1</font></font></font> then does <font face="courier"><font face="courier"><font color="#006699">e2</font></font></font>.If <font face="courier"><font face="courier"><font color="#006699">e1</font></font></font> is a source then it is also recursively streamed.Same of <font face="courier"><font face="courier"><font color="#006699">e2</font></font></font>.Joins from commands such as <font face="courier"><font face="courier">@<a href="content_120.html" class="tag1" target="contents">x:if</a></font></font> and <font face="courier"><font face="courier">@<a href="content_131.html" class="tag1" target="contents">x:while</a></font></font> arealso streamed.
+</li>
+</ul>
+</body>
+</html>

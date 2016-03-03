@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Views</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;2 <a href="nav1_2.html" target="nav1" class="numbered1">User Manual</a> > 2.5 <a href="nav2_2_5.html" target="nav2" class="numbered1">Types and Views</a> > 2.5.2 <font color="blue">Views</font>
+</b>
+<br/> 
+
+<a href="content_38.html" target="contents">prev</a>
+ 
+<a href="content_40.html" target="contents">next</a>
+<br/>
+
+
+<p>
+Declaring a view is similar to declaring a type exceptthe <font face="courier"><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font></font> command is used instead of the <font face="courier"><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font> command.
+</p>
+<p>
+The <font face="courier"><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font></font> command should contain a special <font face="courier"><font face="courier"><font color="#006699">sys:Is</font></font></font> function that takesan object and returns <font face="courier"><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font> if that object is within the view.
+</p>
+<p>
+The <font face="courier"><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font> command for a view normally contains only functions not variablessince the view itself in not instantiated to create an object.Instead an existing object is used which is referenced with <font face="courier"><font face="courier"><font color="#006699">self</font></font></font>.
+</p>
+<p>
+Views can have constructors. The special <font face="courier"><font face="courier"><font color="#006699">sys:Make</font></font></font> function is called which must returnan object that is within the view.
+</p>
+<p>
+Functions within the <font face="courier"><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font> command of a view that have option <font face="courier" color="green">visible</font> can be referenced by dot qualification of an object that is within the view where thename of the view is included following the <font face="courier" color="green">#</font> in <font face="courier"><font face="courier">&lt;<a href="content_97.html" class="nt1" target="contents">qualified</a>&gt;</font></font>.Various other forms of sugared function calls also include the view following a <font face="courier" color="green">#</font>.For example the the <font face="courier" color="green">==#fold</font> infix operator can be used to invokethe equality function for view <font face="courier"><font face="courier"><a href="content_160.html" class="name1" target="contents">fold</a></font></font>.
+</p>
+</body>
+</html>

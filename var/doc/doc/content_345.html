@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>NestF</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_5.html" target="nav1" class="top1">Libraries</a> >  <font face="courier"><a href="nav2_5_5.html" target="nav2" class="library1">library:iterator</a></font> >  <font face="courier"><font color="blue">NestF</font></font>
+</b>
+<br/> 
+
+<a href="content_344.html" target="contents">prev</a>
+ 
+<a href="content_346.html" target="contents">next</a>
+<br/>
+
+
+<p>
+This iterator is similar to the <font face="courier"><font face="courier"><a href="content_344.html" class="name1" target="contents">Nest</a></font></font> iteratorexcept the second name paramter is a function that takesthe value of the first iterator as a parameter andreturns the second iterator.
+</p>
+<p>
+<font size="+1">
+<b>
+Function NestF[ ]
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> NestF[<font face="courier"><font color="#006699">iter1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_133.html" class="name1" target="contents">func</a></font>,<font face="courier"><font color="#006699">iter2f</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_133.html" class="name1" target="contents">func</a></font>](<font face="courier"><font color="#006699">act</font></font>)</font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">iter1</font></font></font>
+</td>
+<td>
+first iterator function.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">iter2f</font></font></font>
+</td>
+<td>
+a function that takes a single parameter and returns an iterator.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">act</font></font></font>
+</td>
+<td>
+the iterator body function.It takes a two parameters, the first for <font face="courier"><font face="courier"><font color="#006699">iter1</font></font></font> andthe second for the result of calling <font face="courier"><font face="courier"><font color="#006699">iter2f</font></font></font>.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+This is an iterator function that iteratesover <font face="courier"><font face="courier"><font color="#006699">iter1</font></font></font> and for each <font face="courier"><font face="courier"><font color="#006699">iter1</font></font></font> valueiterates over all <font face="courier"><font face="courier"><font color="#006699">iter2f</font></font></font> values.
+<p>
+<font size="+1">
+<b>
+Examples
+</b>
+</font>
+</p>
+<p>
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">rng</font></font>[<font face="courier"><font color="#006699">high</font></font>](<font face="courier"><font color="#006699">low</font></font>)<font color="brown"> {</font>&nbsp;<font face="courier"><font color="#006699">low</font></font><font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font><font face="courier"><font color="#006699">high</font></font>&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font> [<font face="courier"><font color="#006699">i</font></font>,<font face="courier"><font color="#006699">j</font></font>] <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_345.html" class="name1" target="contents">NestF</a></font>[1<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font>3,<font face="courier"><font color="#006699">rng</font></font>[3]]<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">i</font></font>;&nbsp;<font color="green">":"</font>;&nbsp;<font face="courier"><font color="#006699">j</font></font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font></font>
+<br/>
+
+</p>
+</body>
+</html>

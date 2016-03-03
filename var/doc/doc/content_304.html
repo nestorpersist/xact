@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>date</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > L <a href="nav2_4_12.html" target="nav2" class="lettered1">Examples</a> > L.2 <font face="courier"><font color="blue">date</font></font>
+</b>
+<br/> 
+
+<a href="content_303.html" target="contents">prev</a>
+ 
+<a href="content_305.html" target="contents">next</a>
+<br/>
+
+
+<p>
+This example show some ways to use the <font face="courier"><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font></font> view.
+</p>
+<br/>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">isLeap</font></font>(<font face="courier"><font color="#006699">year</font></font>)<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">year</font></font>.<font color="FF00FF">add</font>#<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>(<font color="0AAAA">year</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font>1,<wbr><font color="0AAAA">day</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font>-1).<font color="FF00FF">dayOfYear</font>#<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font> <font face="courier"><a href="content_235.html" class="inop1" target="contents">!=</a></font> 365<br/>
+<font color="brown">}</font><br/>
+<br/>
+<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>(<font color="green">"2002"</font>);<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>(<font color="green">"2002 GMT"</font>);<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>(<font color="green">"2002/3/9"</font>);<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>(<font color="green">"2002/6/1"</font>);<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>(<font color="green">"2001/10/28 1:2"</font>);<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>(<font color="green">"2001/10/28 1:2 EST"</font>);<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>(<font color="green">"2001/10/28 1:2 EDT"</font>);<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>(<font color="green">"2001/10/28 3:2"</font>);<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>(<font color="green">"2002/2/29"</font>);<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;&nbsp;<font color="00CD00">// will fail</font><br/>
+<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>.<font color="FF00FF">now</font>();&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>.<font color="FF00FF">gmt</font>();&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <font face="courier"><font color="#006699">d</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>.<font color="FF00FF">now</font>();<br/>
+<font face="courier"><font color="#006699">d</font></font>;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>(<font face="courier"><font color="#006699">d</font></font>);&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>(<font face="courier"><font color="#006699">d</font></font>,<wbr><font color="0AAAA">timeZone</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font color="green">"GMT"</font>);&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><font color="#006699">d</font></font>.<font color="FF00FF">year</font>#<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><font color="#006699">d</font></font>.<font color="FF00FF">month</font>#<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><font color="#006699">d</font></font>.<font color="FF00FF">day</font>#<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><font color="#006699">d</font></font>.<font color="FF00FF">dayOfWeek</font>#<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><font color="#006699">d</font></font>.<font color="FF00FF">dayOfYear</font>#<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><font color="#006699">d</font></font>.<font color="FF00FF">timeZone</font>#<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><font color="#006699">d</font></font>.<font color="FF00FF">longTimeZone</font>#<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><font color="#006699">d</font></font>.<font color="FF00FF">dst</font>#<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>(<font color="green">"2002/1/1"</font>) <font face="courier"><a href="content_245.html" class="inop1" target="contents">-</a></font>#<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font> <font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>(<font color="green">"2002/1/1 GMT"</font>);&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>(<font color="green">"2002/6/1"</font>) <font face="courier"><a href="content_245.html" class="inop1" target="contents">-</a></font>#<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font> <font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>(<font color="green">"2002/6/1 GMT"</font>);&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<br/>
+<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>(<font color="0AAAA">month</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font>3,<wbr><font color="0AAAA">year</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font>2001,<wbr><font color="0AAAA">day</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font>40);&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<br/>
+2002.<font color="FF00FF">add</font>#<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>(<font color="0AAAA">year</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font>3,<wbr><font color="0AAAA">month</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font>1,<wbr><font color="0AAAA">minute</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font>10,<wbr><font color="0AAAA">second</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font>-5);<br/>
+<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">t1</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>.<font color="FF00FF">gmt</font>();<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font> <font face="courier"><font color="#006699">year</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> 1880<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font>1910<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_120.html" class="tag1" target="contents">x:if</a></font> <font face="courier"><font color="#006699">isLeap</font></font>(<font face="courier"><font color="#006699">year</font></font>)<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">"leap="</font>;&nbsp;<font face="courier"><font color="#006699">year</font></font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+<font color="brown">}</font><br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">t2</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>.<font color="FF00FF">gmt</font>();<br/>
+<br/>
+(<font face="courier"><font color="#006699">t2</font></font> <font face="courier"><a href="content_245.html" class="inop1" target="contents">-</a></font>#<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font> <font face="courier"><font color="#006699">t1</font></font>) <font face="courier"><a href="content_247.html" class="inop1" target="contents">/</a></font>#<font face="courier"><a href="content_132.html" class="name1" target="contents">float</a></font> 1000;&nbsp;<font color="green">" seconds"</font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><font color="#006699">t2</font></font> <font face="courier"><a href="content_245.html" class="inop1" target="contents">-</a></font>#<font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font> <font color="green">"1970/1/1 GMT"</font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font></font>
+</body>
+</html>

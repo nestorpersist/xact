@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Name Binding Rules</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;2 <a href="nav1_2.html" target="nav1" class="numbered1">User Manual</a> > 2.2 <a href="nav2_2_2.html" target="nav2" class="numbered1">Names and Scopes</a> > 2.2.1 <font color="blue">Name Binding Rules</font>
+</b>
+<br/> 
+
+<a href="content_19.html" target="contents">prev</a>
+ 
+<a href="content_21.html" target="contents">next</a>
+<br/>
+
+
+<p>
+ <b>@x:Act</b> binds names statically.
+</p>
+<p>
+Every occurrence of a name within a <font face="courier"><font face="courier">&lt;<a href="content_100.html" class="nt1" target="contents">script</a>&gt;</font></font> will eitherbe definition of that name of a use of that name.Every name used must be defined. Every name use is bound to its correspondingdefinition.
+</p>
+<p>
+Every <font face="courier"><font face="courier">&lt;<a href="content_100.html" class="nt1" target="contents">script</a>&gt;</font></font> consists of a set of hierarchically nested scopes.Every name use and definition occurs within a single specific scope.The same name may not be defined twice within a single scope.Every name use is bound to the definition of that name in thesmallest enclosing scope.Thus a definition of a name in a scope "hides" any definitions of thatname in enclosing scopes.
+</p>
+<p>
+Usually the definition of a name will occur before all usesof that name, but this is not required. Forward references wherea name use occurs before its definition are permitted.This makes it easy to write mutually recursive definitions.
+</p>
+<p>
+</p>
+</body>
+</html>

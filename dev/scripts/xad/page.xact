@@ -1,0 +1,562 @@
+@x:use library:unparser;
+@x:use library:html;
+@x:use library:escape;
+@x:use data;
+@x:use util;
+
+@x:use table;
+@x:use list;
+@x:use desc;
+@x:use syn;
+
+@x:func xml() {
+   @x:exp '<?xml version="1.0" encoding="UTF-8"?>'
+}
+
+@x:func Separate[s,p](body) {
+    @x:var first:=1;
+    @x:var matched:=0;
+    @x:var i:=1;
+    @x:var psize:=p.size;
+    @x:for c:=Chars[s] {
+       @x:if psize != 0 & c == p(matched+1) {
+          matched:=matched+1;
+       } @x:else {
+          matched:=0;
+       }
+       @x:if matched == psize {
+           body(s(first..i-psize));
+           first:=i+1;
+           matched := 0;
+       }
+       i:=i+1;
+    }
+    @x:if psize != 0 {
+        body(s(first..s.size));
+    }
+}
+
+@x:func Combine[iter,p](body) {
+    @x:var sep:="";
+    @x:for x:=iter {
+        sep;
+        body(x);
+        sep:= p;
+    }
+}
+
+/*******************************************************************************
+**
+**   File Handling
+**
+*******************************************************************************/
+@x:func path(name),visible {
+    // path to script dir
+    options.scriptDir#rec;
+
+    // script path minus the script
+    @x:const scriptPath := options.script#rec ++ ":" ++ name;
+    @x:var prev := "";
+    @x:for x:=Separate[options.script#rec,":"] {
+       @x:if prev != "" {
+          options.fileSep#rec;
+          prev;
+       }
+       prev := x;
+    }
+
+    // name as file path
+    options.fileSep#rec;
+    @x:for x:= Combine[Separate[name,":"],options.fileSep#rec] { x }
+}
+@x:func apath(name),visible {
+    // path to script dir
+    options.scriptDir#rec;
+
+    // name as file path
+    options.fileSep#rec;
+    @x:for x:= Combine[Separate[name,":"],options.fileSep#rec] { x }
+}
+
+//@x:func out(fname,data),visible {
+//    (path(fname)++".html").write#file(data);
+//}
+
+@x:func out1(fname,ext,data),visible {
+    (options.docOut#rec++options.fileSep#rec++inFname++options.fileSep#rec++fname++"."++ext).write#file
+    (asciiXML(data),charSet="UTF-8");
+}
+
+/*******************************************************************************
+**
+**   Styles
+**
+*******************************************************************************/
+@x:func genStyles(),visible {
+   <style type="text/css">
+      <@x:for s:=styles.all#body {
+         @x:const name := s.tag;
+         @x:if s.def#rec != null {
+            "a.";name;"1:active{color:";s.def#rec;
+            @x:if s.underline#rec == false {
+               ";text-decoration:none"
+            }
+            "}";eol;
+            "a.";name;"1:link{color:";s.def#rec;
+            @x:if s.underline#rec == false {
+               ";text-decoration:none"
+            }
+            "}";eol;
+         }
+         @x:if s.used#rec == null {s.used#rec:=s.def#rec }
+         @x:if s.used#rec != null {
+            "a.";name;"1:visited{color:";s.used#rec;
+            @x:if s.underline#rec == false {
+               ";text-decoration:none"
+            }
+            "}";eol;
+         }
+         @x:if s.hover#rec != null {
+            "a.";name;"1:hover{color:";s.hover#rec;
+            @x:if s.underline#rec == false {
+               ";text-decoration:none"
+            }
+            "}";eol;
+         }
+      }/>
+   </style>
+}
+
+@x:func genFrame(e),visible {
+@x:exp xml();
+<html>
+   <head>
+      <title>
+         <@x:exp e.name#rec/>
+      </title>
+   </head>
+   <frameset cols="20%,80%">
+      <frameset rows="50%,50%">
+         <frame name="nav1" src="nav1.html"/>
+         <frame name="nav2"/>
+      </frameset>
+      <frame name="contents" src="content_1.html"/>
+      <noframes>
+         <head>
+            <title>No Frames</title>
+         </head>
+         <body bgcolor="white">
+            <h1>HTML Frames Required</h1>
+            Your browser does not support frames,
+            so this document can not be displayed.
+         </body>
+      </noframes>
+   </frameset>   
+</html>
+}
+
+@x:func page[title](body) {
+   @x:exp xml();
+   <link rel="StyleSheet" href="style.css" type="text/css"/>
+   <html>
+      <head>
+         <title>&title;</title>
+      </head>
+      <body bgcolor="white">
+         <@x:exp body(title)/>
+      </body>
+   </html>
+}
+
+/*******************************************************************************
+**
+**   Section Numbering and Paths
+**
+*******************************************************************************/
+
+@x:func sectionNum(last) {
+   @x:var prev := false;
+   @x:const lastKind := st.get(last).base;
+   @x:const lastForm := Dot(styles,lastKind,bodyrec).number#rec;
+   @x:if lastForm != null {
+      @x:for i:=2..last {
+         @x:const num := st.get(i-1).section#rec;
+         @x:const kind := st.get(i).base;
+         @x:const form := Dot(styles,kind,bodyrec).number#rec;
+         @x:if form == null {
+         } @x:else {
+            @x:if prev {
+               ".";
+            } @x:else {
+               prev := true;
+            } 
+            @x:if form == "a" | form == "A" {
+               string(code=form(1)+num-1);
+            } @x:else {
+	       string(num);
+            }
+         }
+      }
+   }
+}
+
+@x:func navItem(n,name,style,link) {
+   @x:var url := "";
+   @x:var target := "";
+   @x:if n <= nav1Levels + 1 {
+      @x:if n <= nav1Levels {
+         url := "nav1";
+      } @x:else {
+         url := "nav2";
+      }
+      target := url;
+      @x:for m:=2..n {
+         url := url ++ "_" ++ st.get(m-1).section#rec;
+      }
+   } @x:else {
+      url := "content_" ++ st.get(n).page#rec;
+      target := "contents";
+   }
+   url := url ++ ".html";
+   @x:if name != "+" & name != "-" {
+      sectionNum(n);
+      " ";
+   }
+   @x:const e := st.get(n);
+   @x:var tag := null;
+   @x:if link {
+      tag := xdom:element("a",attr=rec(href=url,target=target,class=e.base++"1"),kind="xml",spaceBeforeBody="erase",spaceAfterBody="erase");
+   }
+   sectionText(name,style,tag);
+}
+
+@x:func navPath(){
+   @x:var first := 2;
+   @x:for n:=first..st.size {
+      @x:if n != first { " > " }
+      navItem(n,st.get(n).name#rec,st.get(n).base,n != st.size);
+   }
+}
+
+/*******************************************************************************
+**
+**   Nav1
+**
+*******************************************************************************/
+
+@x:func nav1Gen1(e,depth,limit) {
+    @x:for i := 1..e.size#body {
+       @x:const section := e.section#rec;
+       @x:const c:=e(i)#body;
+       st.push(c);
+       e.section#rec := i;
+       @x:for j:= 1..(depth-1) {
+         nbsp;nbsp;nbsp;
+       }
+       @x:if nav1Levels > depth { 
+           @x:if depth >= limit | section != i {
+              navItem(st.size,"+","folder",true);
+              @x:tag xdom:element("b") {
+                 " ";
+                 sectionNum(st.size-1);
+                 " ";
+//                 navItem(st.size,c.name#rec,c.base,false);
+                 navItem(st.size,c.name#rec,"top",false);
+              }
+              <br/> eol;
+           } @x:else {
+              navItem(st.size-1,"-","folder",true);
+              @x:tag xdom:element("b") {
+                 " ";
+                 sectionNum(st.size-1);
+                 " ";
+//                 navItem(st.size,c.name#rec,c.base,false);
+                 navItem(st.size,c.name#rec,"top",false);
+              }
+              <br/> eol;
+              nav1Gen1(c,depth+1,limit);
+           }
+        } @x:else {
+           @x:var url:="nav2";
+           @x:tag xdom:element("b") {
+              navItem(st.size,c.name#rec,c.base,true);
+           }
+           <br/> eol;
+        }
+        st.pop();
+        e.section#rec := section;
+    }
+}
+
+@x:func nav1Gen(e,depth) {
+   @x:for title:=page[e.name#rec] {
+       @x:tag xdom:element("b",kind="xml") {
+          title
+       }
+       <br/> eol;
+       nav1Gen1(e,1,depth);
+   }
+}
+
+@x:func nav1Out(fname,e,depth) {
+//   out(nav1File++fname,nav1Gen(e,depth));
+   out1(nav1Fname++fname,"html",nav1Gen(e,depth));
+}
+
+@x:func nav1Walk(e,fname,e1,depth) {
+   nav1Out(fname,e,depth);
+   @x:if nav1Levels > depth {
+      @x:const size := e1.size#body;
+      @x:for i:=1..size {
+         e1.section#rec := i;
+         nav1Walk(e,fname++"_"++i,e1(i)#body,depth+1);
+      }
+   }
+}
+
+@x:func genNav1(e),visible {
+   nav1Walk(e,"",e,1);
+}
+
+/*******************************************************************************
+**
+**   Nav2
+**
+*******************************************************************************/
+@x:func genNav2(e),visible {
+   @x:for title:=page[e.name#rec] {
+       @x:tag xdom:element("b",kind="xml") {
+          navPath();
+       }
+       <br/> eol;
+       @x:var i := 1;
+       @x:for c:=e.all#body {
+          st.push(c);
+          e.section#rec := i;
+          @x:tag xdom:element("b") {
+             sectionNum(st.size);
+          }
+          " ";
+          renderRef(c,c.base,c.name#rec,true,true,false);
+          <br/> eol;
+          st.pop();
+          i := i + 1;
+       }
+   }
+}
+
+/*******************************************************************************
+**
+**   Contents
+**
+*******************************************************************************/
+
+@x:func render2(e) {
+   @x:if e?xdom:element {
+      @x:if e.space == "syn" {
+         syn.r2(e);
+      } @x:orif e.space == "table" {
+         table.r2(e);
+      } @x:orif e.space == "list" {
+         list.r2(e);
+      } @x:orif e.space == "desc" {
+         desc.r2(e);
+      } @x:orif e.tag == "title" {
+	  <hr/> eol;
+          @h1 align = "center" {
+	  eol;
+	  @x:for c:=e.all#body {
+	     render2(c);
+	  }
+	  } eol;
+	  @h2 align="center" { "Generated "; date.gmt() } eol;
+	  @h3 align="center" { "Copyright 2006-2008, John R. Nestor" } eol;
+	  <hr/> eol;
+      } @x:orif e.tag == "code" {
+         outSpace(e.spaceBefore);
+         Unparse(e,partial="body",html=true,callBack=codeCallBack,indent=3); 
+         outSpace(e.spaceAfter);
+      } @x:orif e.tag == "ecode" {
+//         @x:tag xdom:element("a",attr=rec(href="http://localhost:8080/xact/xs?xad:run("++e.name#rec++")"),kind="xml") {
+//            "Run It"
+//         }
+         <br/>
+         @x:const fname := apath("example:"++e.name#rec++".xact");
+         @x:func txt { fname.read#file() }
+         @x:const test := Parse(txt,fileName=fname);
+         Unparse(test,partial="body",html=true,callBack=codeCallBack);
+      } @x:orif e.tag == "lcode" {
+//         @x:tag xdom:element("a",attr=rec(href="http://localhost:8080/xact/xs?xad:run(library:"++e.name#rec++")"),kind="xml") {
+//            "Run It"
+//         }
+         <br/>
+         @x:const fname := apath("library:"++e.name#rec++".xact");
+         @x:func txt { fname.read#file() }
+         @x:const test := Parse(txt,fileName=fname);
+         Unparse(test,partial="body",html=true,callBack=codeCallBack);
+      } @x:orif e.tag == "icode" {
+         @x:if e.spaceBefore != "empty" { " " }
+         @x:for c := e.all#body {
+	    Unparse(c,html=true,callBack=codeCallBack);
+         }
+        @x:if e.spaceAfter != "empty" { " " }
+      } @x:orif e.tag == "verb" {
+         @x:if e.spaceBefore != "empty" { " " }
+	 @x:tag xdom:element("font",attr=rec(face="courier",color="green"),kind="xml",spaceBefore="empty",
+		spaceAfter="empty",spaceBeforeBody="empty",spaceAfterBody="empty") {
+               @x:for c:=e.all#body {
+	          @x:if c?xdom:string {
+		    quoteXML(c.val);
+		  } @x:else {
+		     render2(c);
+		  }
+               }
+         }
+         @x:if e.spaceAfter != "empty" { " " }
+      } @x:orif e.tag == "a" {
+          @x:const ref := e.ref#rec;
+          @x:if e.spaceBefore != "empty" { " " }
+	  @x:tag xdom:element("a",attr=rec(href=ref,target="_top")) {ref}
+          @x:if e.spaceAfter != "empty" { " " }
+      } @x:orif e.tag == "part" {
+         @x:tag xdom:element("p",kind="xml") {
+            @x:tag xdom:element("font",attr=rec(size="+1"),kind="xml") {
+	       @x:tag xdom:element("b",kind="xml") {
+                  e.name#rec
+               }
+            }
+         }
+         @x:tag xdom:element("p",kind="xml") {
+            @x:for c:=e.all#body {
+               render2(c);
+            }
+         }
+      } @x:orif e.tag == "p" {
+         @x:tag xdom:element("p",kind="xml") {
+            @x:for c:=e.all#body {
+               render2(c);
+            }
+         }
+      } @x:orif e.space == "ref" {
+         renderRef(e,e.base,e.name#rec,true,true,true);
+      } @x:else {
+         @x:for c:=e.all#body {
+            render2(c);
+         }
+      }
+   } @x:orif e?xdom:string {
+      HEncode(e.val);
+   } @x:orif e?xdom:call {
+	// Cat
+	@x:for c := e.all {
+	   render2(c);
+	}
+   } @x:orif e?xdom:name {
+      @x:if e.val ==#fold "lt" {
+         amp; "lt;";
+      } @x:orif e.val ==#fold "gt" {
+         amp; "gt;";
+      } @x:orif e.val == "xact" {
+          @x:if e.spaceBefore != "empty" { " " }
+          @x:tag xdom:element("b",kind="xml",spaceBefore="empty",spaceAfter="empty",spaceBeforeBody="empty",spaceAfterBody="empty"){"@x:Act"}
+          @x:if e.spaceAfter != "empty" { " " }
+      } @x:else {
+         amp; "amp;";
+      }
+   }
+}
+
+@x:func render1(e) {
+   @x:if e?xdom:element {
+      @x:if e.space == "section" {
+      } @x:orif e.space == "table" {
+         table.r1(e);
+      } @x:orif e.space == "list" {
+         list.r1(e);
+      } @x:orif e.space == "desc" {
+         desc.r1(e);
+      } @x:orif e.space == "syn" {
+         syn.r1(e);   
+      } @x:else {
+          @x:for c:=e.all#body {
+              render1(c);
+          }
+      }
+   }
+}
+
+@x:func content1(e),visible {
+   @x:if e.space == "section" {
+      define(e.base++":"++e.name#rec,e.page#rec);
+      @x:for c:=e.all#body {
+         render1(c);
+      }
+   }
+}
+
+@x:func genContent2(e,nav2Page),visible {
+   @x:for title:=page[e.name#rec] {
+      @x:tag xdom:element("b",kind="xml") {
+         @x:tag xdom:element("a",attr=rec(href="index.html",target="_top"),kind="xml",spaceBeforeBody="erase",spaceAfterBody="erase") {
+	    "Home"
+         }
+         nbsp;nbsp;     
+         navPath();
+      }
+      <br/> eol;
+      @x:const new := pageGet(e.page#rec);
+      @x:if new != 1 {
+         @x:tag xdom:element("a",attr=rec(href="content_"++(new-1)++".html",target="contents"),kind="xml",spaceBeforeBody="erase",spaceAfterBody="erase"){
+            "prev"
+         }
+      } @x:else {
+         "prev"
+      }
+      " ";
+      @x:if new != lastPage {
+         @x:tag xdom:element("a",attr=rec(href="content_"++(new+1)++".html",target="contents"),kind="xml",spaceBeforeBody="erase",spaceAfterBody="erase"){
+            "next"
+         }
+      } @x:else {
+         "next"
+      }
+      <br/>
+      eol;
+      @x:var found := false;
+      @x:for c:=e.all#body {
+         @x:if c?xdom:element & c.space == "section" {
+            found := true;
+         } @x:else {
+            render2(c);
+         }
+      }
+      @x:if found {
+         @x:tag xdom:element("table",attr=rec(border="0"),kind="xml") {
+            @x:var i := 1;
+            @x:for c:=e.all#body {
+               @x:if c?xdom:element & c.space == "section" {
+                  c.space := "ref";
+                  c.spaceBefore := "empty";
+                  c.spaceAfter := "empty";
+                  @x:tag xdom:element("tr",kind="xml") {
+                     @x:tag xdom:element("td",kind="xml") {
+                        @x:tag xdom:element("font",attr=rec(face="courier")) { nbsp;nbsp;nbsp;"=> " }
+                        @x:tag xdom:element("b",kind="xml") {
+                           sectionNum(st.size);".";string(i);
+                        }
+                        " ";
+                        render2(c);
+                        i := i + 1;
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+
+@x:var table := Table[render1,render2];
+@x:var list := List[render1,render2];
+@x:const desc := Desc[render1,render2];
+@x:const syn := Syn[render1,render2,renderRef];

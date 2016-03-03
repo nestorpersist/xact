@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>x:tag</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > C <a href="nav2_4_3.html" target="nav2" class="lettered1">Tags</a> >  <font face="courier">@<font color="brown">x:tag</font></font>
+</b>
+<br/> 
+
+<a href="content_124.html" target="contents">prev</a>
+ 
+<a href="content_126.html" target="contents">next</a>
+<br/>
+
+
+<p>
+<font size="+1">
+<b>
+Description
+</b>
+</font>
+</p>
+<p>
+This command returns a rendering of a specified <font face="courier"><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font></font> tree node.
+</p>
+<p>
+<font size="+1">
+<b>
+Command Syntax
+</b>
+</font>
+</p>
+<p>
+<font face="courier">'<font color="brown">@x:tag</font>'</font> <font face="courier">&lt;<a href="content_85.html" class="nt1" target="contents">exp</a>&gt;</font>
+<p>
+No options are permitted.
+</p>
+</p>
+<p>
+<font size="+1">
+<b>
+Execution Semantics
+</b>
+</font>
+</p>
+<p>
+The attribute expression is evaluated and must yielda <font face="courier"><font face="courier"><a href="content_363.html" class="name1" target="contents">TypeOr</a></font>[<font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font>,<font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font>]</font> valueand the body is executed and must yield a <font face="courier"><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>.If the attribute value is <font face="courier"><font face="courier"><a href="content_221.html" class="name1" target="contents">null</a></font></font> then the resultof the <font face="courier"><font face="courier">@<a href="content_125.html" class="tag1" target="contents">x:tag</a></font></font> command is the value of its body.Otherwise, the result of executing a <font face="courier"><font face="courier">@<a href="content_125.html" class="tag1" target="contents">x:tag</a></font></font> command will be a <font face="courier"><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font> that is a rendering of the attribute element.Any body of the element is ignored, and the result of the tag command bodywill be the body of the resulting string rendering.
+</p>
+<p>
+<font size="+1">
+<b>
+Examples
+</b>
+</font>
+</p>
+<p>
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_125.html" class="tag1" target="contents">x:tag</a></font> <font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font>(<font color="green">"a"</font>,<wbr><font color="0AAAA">attr</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font>(<font color="0AAAA">href</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font color="green">"http://www.cnn.com"</font>),<wbr><font color="0AAAA">kind</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font color="green">"xml"</font>)<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">"News"</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font></font>
+<br/>
+
+</p>
+</body>
+</html>

@@ -1,0 +1,25 @@
+@x:use library:unparser;
+@x:use library:graph;
+
+// Create a graph
+@x:const n1 := xdom:element("n1",attr=rec(a=2));
+@x:const n2 := xdom:element("n2",attr=rec(b=5));
+@x:const n3 := xdom:element("n3",attr=rec(c=true));
+n1.insert#body(n2);
+n1.insert#body(n2);
+n1.insert#body(n3);
+n3.insert#body(n1);
+
+// Print it out
+@x:const txt := Unparse(n1,graph=true);
+txt; eol;
+
+// Parse it
+@x:var tree := Parse(txt)(1)#body;
+"shared="; tree(1)#body == tree(2)#body; eol;
+"cycle="; tree(3)#body(1)#body == tree; eol;
+
+// Relink it
+tree := graphExpand(tree);
+"shared="; tree(1)#body == tree(2)#body; eol;
+"cycle="; tree(3)#body(1)#body == tree; eol;

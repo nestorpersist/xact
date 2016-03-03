@@ -1,0 +1,33 @@
+<section:numbered name="top">
+   <section:numbered name="books">
+      <section:numbered name="ref">
+	 <section:numbered name="a"/>
+	 <section:numbered name="b">
+	    This is b.
+	    <section:numbered name="b1">
+	       This is b1.
+	    </section:numbered>
+	    <section:numbered name="b2">
+	       This is b2.
+	       <section:numbered name="b21"/>
+	       <section:numbered name="b22"/>
+	    </section:numbered>
+	 </section:numbered>
+	 
+      </section:numbered>
+      <section:numbered name="tutorial">
+	 <section:gloss name="c"/>
+	 <section:gloss name="d"/>
+      </section:numbered>
+   </section:numbered>
+   <section:numbered name="tables">
+      <section:numbered name="syntax">
+	 <section:gloss name="syn1"/>
+	 <section:gloss name="syn2"/>
+      </section:numbered>
+      <section:numbered name="semantics">
+	 <section:gloss name="sem1"/>
+	 <section:gloss name="sem2"/>
+      </section:numbered>
+   </section:numbered>
+</section:numbered>

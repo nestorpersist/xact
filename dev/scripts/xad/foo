@@ -1,0 +1,31 @@
+
+@x:func cdr[iter](body) {
+   @x:var first := true;
+   @x:for i:= iter {
+      @x:if first {	
+         first := false;
+      } @x:else {
+         body(i);
+      }
+   }
+}
+@x:func splitFirst[iter](body) {
+   @x:for i:=iter {
+     body(vals[i],cdr[iter]);
+      @x:break;
+   }
+}
+
+@x:func splitLast[iter](body) {
+}
+
+
+
+@x:for car,cdr:=splitFirst[1..10] {
+	for i:=cdr {
+	   ~ i == 1;
+	}
+	for i,j:=parallel[cdr,2..10] {
+	   ~ i == j
+	}
+}

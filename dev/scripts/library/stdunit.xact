@@ -1,0 +1,84 @@
+@x:use unit,visible;
+
+@x:const StdUnit := Units["meter","kilogram","second",
+			  "ampere","kelvin","candela",
+			  "mole","radian","steradian",
+			  "bit","dollar"](),visible;
+
+// Basic Types
+
+@x:const meter := StdUnit.baseUnit("meter"),visible;
+@x:const gram := StdUnit.baseUnit("kilogram")/1000,visible;
+@x:const second := StdUnit.baseUnit("second"),visible;
+@x:const ampere := StdUnit.baseUnit("ampere"),visible;
+@x:const kelvin := StdUnit.baseUnit("kelvin"),visible;
+@x:const candela := StdUnit.baseUnit("candela"),visible;
+@x:const mole := StdUnit.baseUnit("mole"),visible;
+@x:const radian := StdUnit.baseUnit("radian"),visible;
+@x:const steradian := StdUnit.baseUnit("steradian"),visible;
+@x:const bit := StdUnit.baseUnit("bit"),visible;
+@x:const dollar := StdUnit.baseUnit("dollar"),visible;
+
+// Length
+
+@x:const mile := kilo[meter](1.609344),visible;
+@x:const inch := centi[meter](2.54),visible;
+@x:const foot := inch(12),visible;
+@x:const yard := foot(3),visible;
+
+// Area
+
+@x:const acre := square[foot](43560),visible;
+
+// Volume 
+
+@x:const liter := cubic[deci[meter]],visible;
+@x:const quart := cubic[inch](57.75),visible;
+@x:const gallon := quart(4),visible;
+@x:const pint := quart(0.5),visible;
+@x:const cup := pint(0.5),visible;
+@x:const tablespoon := cup(1.0/16.0),visible;
+@x:const teaspoon := tablespoon(1.0/3.0),visible;
+
+// Mass
+
+@x:const ounce := gram(28.3495),visible;
+@x:const pound := ounce(16),visible;
+@x:const ton := pound(2000),visible;
+
+// Time
+
+@x:const minute := second(60),visible;
+@x:const hour := minute(60),visible;
+@x:const day := hour(24),visible;
+@x:const week := day(7),visible;
+
+// Angle
+
+@x:const angle:second := micro[radian](4.84814),visible;
+@x:const angle:minute := angle:second(60),visible;
+@x:const degree := angle:minute(60),visible;
+
+// Info
+
+@x:const byte := bit(8),visible;
+
+// Currency
+
+@x:const cent := dollar(0.01),visible;
+
+// Derived
+
+@x:const newton := kilo[gram] * per[meter,square[second]],visible;
+@x:const hertz := 1 / second,visible;
+@x:const pascal := per[newton,square[meter]],visible;
+@x:const joule := newton * meter,visible;
+@x:const watt := per[joule,second],visible;
+@x:const volt := watt / ampere,visible;
+@x:const ohm := volt / ampere,visible;
+@x:const siemens := 1 / ohm,visible;
+@x:const henry := per[volt*second,ampere],visible;
+@x:const coloumb := ampere * second,visible;
+@x:const farad := per[coloumb,volt],visible;
+@x:const weber := volt * second,visible;
+@x:const tesla := per[weber,square[meter]],visible;

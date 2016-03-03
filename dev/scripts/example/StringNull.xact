@@ -1,0 +1,21 @@
+@x:view StringNull {
+   @x:func sys:Is(v),visible {
+      v ? string | v == null
+   }
+} @x:self {
+   @x:func display()~string,visible {
+      @x:if self == null {
+         "***";
+      } @x:else {
+         self
+      }
+   }
+}
+~ "abc" ? string;
+~ ! null ? string; 
+~ ! "abc" ? void; 
+~ null ? void; 
+~ "abc" ? StringNull;
+~ null ? StringNull; 
+null.display#StringNull(); eol;
+"abc".display#StringNull(); eol;

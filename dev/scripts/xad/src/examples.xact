@@ -1,0 +1,128 @@
+<section:lettered name="Examples">
+   <section:example name="err">
+      <p>
+	 This example shows how assertions can
+	 be placed on a function and used
+	 to print out specific error messages.
+      </p>
+      <ecode name="err"/>
+   </section:example>   
+   <section:example name="date">
+      <p>
+	 This example show some ways to use the <@icode{date}/> view.
+      </p>
+      <ecode name="date"/>
+   </section:example>   
+   <section:example name="string">
+      <p>
+	 This example shows some ways to use the <@icode{string}/> type.
+      </p>
+      <ecode name="string"/>
+   </section:example>   
+   <section:example name="file">
+      <p>
+	 This example shows some ways to use the <@icode{file}/> view.
+      </p>
+      <ecode name="file"/>
+   </section:example>   
+   <section:example name="java">
+      <p>
+	 This example shows how to use the &xact; <ref:numbered name="Java Integration"/>
+	 features.
+      </p>
+      <ecode name="java"/>
+   </section:example>   
+   <section:example name="iterators">
+      <p>
+	 This example shows a number of ways to use <ref:numbered name="Iterators"/>.
+	 Note the use of <@icode{thread}/>s and <@icode{queue}/>s in
+	 the <@icode{Combine}/> example.
+	 Note the <@icode{Walk}/> example that
+	 shows iteration over an <@icode{xdom}/> tree.
+      </p>
+      <ecode name="iterators"/>
+   </section:example>   
+   <section:example name="IncrParse">
+      <p>
+	 This example shows the use of <ref:numbered name="Incremental Parse"/>.
+	 Note how a <@icode{stream}/> is used to pass
+	 data from the event handlers to the main thread.
+      </p>
+      <ecode name="IncrParse"/>
+   </section:example>   
+   <section:example name="queue">
+      <p>
+	 This example shows how to use <@icode{lock}/>s to
+	 implement <@icode{queue1}/> will has the same
+	 behaviour as the built-in <@icode{queue}/> type.
+      </p>
+      <ecode name="queue"/>
+   </section:example>   
+   <section:example name="curry">
+      <p>
+	 This example shows how extended <ref:nt name="name"/>s can be used
+	 to "Curry" a function call.
+	 This more commonly seen in languages
+	 that use a heap-based execution model.
+	 Although &xact; is stack-based, it can offer
+	 some of that power.
+      </p>
+      <ecode name="curry"/>
+   </section:example>   
+   <section:example name="utest">
+      <p>
+	 This example show some ways to use the <@icode{Units}/>
+	 type.
+      </p>
+      <ecode name="utest"/>
+   </section:example>   
+   <section:example name="graph">
+      <p>
+	 This example shows how <@icode{XDOM}/> nodes can be used
+	 to build a directed graph and how to write a graph
+	 to an external form and then read it back in.
+      </p>
+      <ecode name="graph"/>
+   </section:example>   
+   <section:example name="DocLang">
+      <p>
+	 This example shows a small
+	 sample <ref:numbered name="Language Definition"/>.
+	 See the <ref:example name="DocTest"/>
+	 example to see how to use it.
+      </p>
+      <ecode name="DocLang"/>
+   </section:example>   
+   <section:example name="DocTest">
+      <p>
+	 This example shows how to use the <ref:example name="DocLang"/>
+	 sample language.
+	 First we show how to parse, bind and execute a script
+	 for that language (this is script <@verb{"example:RunDocTest.xact"}/>).
+      </p>
+      <ecode name="RunDocTest"/>
+      <p>
+	 Next we show the sample script to be executed
+	 (this is <@verb{"example:DocTest.xact"}/>).
+      </p>
+      <ecode name="DocTest"/>
+   </section:example>   
+   <section:example name="JavaProp">
+      <p>
+	 This example shows how to call Java to
+	 print out the list of Java properties.
+	 Note how the script can produce either
+	 command line or web page results automatically.
+      </p>
+      <ecode name="JavaProp"/>
+   </section:example>   
+   <section:example name="ShowOptions">
+      <p>
+	 This example will print out
+	 &xact; options and passed values.
+	 Note how the script can produce either
+	 command line or web page results automatically.
+      </p>
+      <ecode name="ShowOptions"/>
+   </section:example>   
+</section:lettered>

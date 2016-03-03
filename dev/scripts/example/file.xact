@@ -1,0 +1,21 @@
+@x:const sep := options.fileSep#rec;
+@x:const dname := options.scriptDir#rec;
+@x:const fname := options.currentDir#rec ++ sep ++ "test.txt";
+
+"Files in "; dname; eol;
+@x:for f:=dname.files#file { 
+   "   ";
+   @x:if (dname ++ "\" ++ f).isDirectory#file() { "@" }
+   f; 
+   eol 
+}
+eol;eol;
+
+"exists="; fname.exists#file(); eol;
+
+"created="; fname.create#file(); eol;
+"exists="; fname.exists#file(); eol;
+fname.append#file("xxx&eol;");
+fname.append#file("yyy&eol;");
+fname.read#file(); eol;
+fname.delete#file();

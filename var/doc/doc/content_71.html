@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Servlet</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;3 <a href="nav1_3.html" target="nav1" class="numbered1">System Manual</a> > 3.2 <a href="nav2_3_2.html" target="nav2" class="numbered1">Running</a> > 3.2.8 <font color="blue">Servlet</font>
+</b>
+<br/> 
+
+<a href="content_70.html" target="contents">prev</a>
+ 
+<a href="content_72.html" target="contents">next</a>
+<br/>
+
+
+<p>
+Running as a CGI has the disadvantage that the Java JVM mustbe started every time a script is run.A faster alternative is to run the <b>@x:Act</b> interpreter asa servlet under a web server such as Apache Tomcat.
+</p>
+<p>
+To run under Tomcat, you should copy two files intothe Tomcat <font face="courier" color="green">webapps</font> directory tree.
+</p>
+<ul>
+<li>
+On Windows, copy <b>@x:Act</b> file <font face="courier" color="green">...\xact\dev\win\web.xml</font> intoTomcat file <font face="courier" color="green">...\webapps\xact\WEB-INF\web.xml</font>.Next, you should edit this file to fix up file paths and optionally changeinterpreter options.Now, copy <b>@x:Act</b> file <font face="courier" color="green">...\xact\var\xact.jar</font> intoTomcat file <font face="courier" color="green">...\webapps\xact\WEB-INF\lib\xact.jar</font>.
+</li>
+<li>
+On Macintosh, copy <b>@x:Act</b> file <font face="courier" color="green">.../xact/dev/mac/web.xml</font> intoTomcat file <font face="courier" color="green">.../webapps/xact/WEB-INF/web.xml</font>.Next, you should edit this file to fix up file paths and optionally changeinterpreter options.Now, copy <b>@x:Act</b> file <font face="courier" color="green">.../xact/var/xact.jar</font> intoTomcat file <font face="courier" color="green">.../webapps/xact/WEB-INF/lib/xact.jar</font>.
+</li>
+</ul>
+<p>
+Finally you should (re)start Tomcat.
+</p>
+<p>
+A typical URL for testing the servlet interface is given here.
+</p>
+<p>
+ <font face="courier" color="green">127.0.0.1:8080/xact/xs?main</font> 
+</p>
+</body>
+</html>

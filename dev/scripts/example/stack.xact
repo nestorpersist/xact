@@ -1,0 +1,30 @@
+@x:type stack[elem];
+@x:self {
+   @x:const data~array := array();
+   @x:func isEmpty { data.size == 0 }
+   @x:func push(b~elem)~void,visible {
+      data.insert(b);
+   }
+   @x:func pop()~elem,~! isEmpty,visible {
+      data(data.size);
+      data.delete(data.size);
+   }	
+   @x:func size~int,visible {
+      data.size;
+   }
+   @x:func get(i~int)~elem,~1 <= i & i <= size,visible {
+      data(i);
+   }
+}
+
+@x:const s~stack[boolean] := stack[boolean]();
+s.push(true);
+s.push(false);
+"Start Dump"; eol;
+@x:for i := 1..s.size {
+    "   "; i; "=>"; s.get(i); eol;
+}
+"End Dump"; eol;
+s.pop(); eol;
+s.pop(); eol;
+

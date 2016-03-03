@@ -1,0 +1,46 @@
+@x:func isLeap(year) {
+    year.add#date(year=1,day=-1).dayOfYear#date != 365
+}
+
+date("2002");eol;
+date("2002 GMT");eol;
+date("2002/3/9");eol;
+date("2002/6/1");eol;
+date("2001/10/28 1:2");eol;
+date("2001/10/28 1:2 EST");eol;
+date("2001/10/28 1:2 EDT");eol;
+date("2001/10/28 3:2");eol;
+date("2002/2/29");eol;   // will fail
+date.now(); eol;
+date.gmt(); eol;
+
+@x:var d:=date.now();
+d;eol;
+date(d); eol;
+date(d,timeZone="GMT"); eol;
+d.year#date; eol;
+d.month#date; eol;
+d.day#date; eol;
+d.dayOfWeek#date; eol;
+d.dayOfYear#date; eol;
+d.timeZone#date; eol;
+d.longTimeZone#date; eol;
+d.dst#date; eol;
+date("2002/1/1") -#date date("2002/1/1 GMT"); eol;
+date("2002/6/1") -#date date("2002/6/1 GMT"); eol;
+
+date(month=3,year=2001,day=40); eol;
+
+2002.add#date(year=3,month=1,minute=10,second=-5);
+eol;
+
+@x:const t1:=date.gmt();
+@x:for year:=1880..1910 {
+    @x:if isLeap(year) {
+	"leap="; year; eol;
+    }
+}
+@x:const t2:=date.gmt();
+
+(t2 -#date t1) /#float 1000 ; " seconds"; eol;
+(t2 -#date "1970/1/1 GMT"); eol;

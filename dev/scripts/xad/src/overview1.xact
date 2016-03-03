@@ -1,0 +1,179 @@
+<section:numbered name="Overview">
+   <section:numbered name="Title">
+      <title>
+         @x:Act Language Documentation
+      </title>
+   </section:numbered>
+   <section:numbered name="@x:Act">
+      <p>
+      &xact; (pronounced "exact")
+      is a powerful scripting language with strong support for <ref:gloss name="XML"/> and <ref:gloss name="Java"/>.
+      </p>
+      <p>
+      This documentation is divided into several major sections.
+      <list:unordered>
+      <list:item name="Introduction">
+      Continue in this section for a short introduction to &xact;.
+      </list:item>
+      <list:item name="User Manual">
+      This section provides a detailed discussion of all the major &xact; features.
+      </list:item>
+      <list:item name="System Manual">
+      This section describes how to install, configure, and run &xact;
+      </list:item>
+      <list:item name="Reference">
+      This section contains a detailed reference of all &xact; features.
+      </list:item>
+      <list:item name="Libraries">
+      This section describes the included &xact; library scripts that that provide a number
+      of useful features.
+      </list:item>
+      </list:unordered>
+      </p>
+      <p>
+      &xact; examples are a great way to learn &xact; and better understand how to use it more advanced features.
+      Running examples (particularly by single stepping them via the debugger) can be helpful.
+      &xact; example code can be found in the following places.
+      <list:unordered>
+      <list:item name="Introduction Examples">
+      These simple example are included in the Introduction.
+      </list:item>
+      <list:item name="Reference Examples">
+      A collection of more advanced examples are included in the Reference section.
+      </list:item>
+      <list:item name="Libraries">
+      Source code of the libraries provides yet another set of examples.
+      </list:item>
+      </list:unordered>
+      </p>
+      <p>
+      See the <ref:numbered name="Support"/> section for support information.
+      </p>
+   </section:numbered>
+   <section:numbered name="Uses">
+   &xact; can be used in several ways.
+   <list:unordered>
+      <list:item name="Stand-alone">
+	 &xact; is an excellent choice for writing stand-alone
+	 applications.  It is particularly handy for writing string and XML utilities.
+      </list:item>
+      <list:item name="Web server">
+	 &xact; can be used to quickly build advanced web sites.
+	 &xact; scripts can be run using either <ref:gloss name="CGI"/> or Java <ref:gloss name="servlet"/>
+	 connectors. Strong support is provided for <ref:gloss name="XHTML"/> and <ref:gloss name="HTTP"/>.
+	 &xact; scripts are a great replacement for <ref:gloss name="JSP"/> being
+	 both more powerful and easier to use.
+      </list:item>
+      <list:item name="Custom Languages">
+	 &xact; can be used to quickly design and implement special-purpose
+	 languages. Multiple custom languages can be easily combined
+	 within a single application.
+      </list:item>
+   </list:unordered>
+   </section:numbered>
+
+   <section:numbered name="Major Features">
+   The major features of &xact; are listed here.
+   <list:unordered>
+      <list:item name="Interpreted">
+	 The &xact; interpreter is written in Java.
+	 &xact; scripts can reference Java classes and
+	 call Java methods and Java programs can invoke
+	 &xact; scripts.
+	 &xact; inherits much of the Java run-time support
+	 including garbage collection, multithreading,
+	 and exception handling.
+      </list:item>
+      <list:item name="Dual Syntax">
+	 &xact; supports two complementary cleanly
+	 integrated syntaxes: one of which is pure XML
+	 (which includes XHTML) and the other
+	 is more like that of Java.
+	 Both forms support full Unicode characters sets.
+      </list:item>
+      <list:item name="Static name scopes">
+	 Names are defined statically (prior to the start of
+	 execution) within a set of nested scopes.
+	 Each name use binds to the definition of the same name
+	 in the smallest enclosing scope.
+	 A "separate compilation" mechanism can be used to assemble
+	 an application from multiple scripts.
+	 Visibility controls support abstraction
+	 and data hiding.
+      </list:item>
+      <list:item name="Dynamically typed">
+	 In general, the type of the result of an expression
+	 can only be known after the expression has been executed.
+	 A variable can hold a value of any type.
+	 For prefix and infix operations the operator is typed
+	 not the operands.
+	 The types of expression results and variables
+	 can be restricted by explicit type assertions.
+	 &xact; views are similar to types.
+	 Although a value will have exactly one type,
+	 it can be associated with multiple views.
+      </list:item>
+      <list:item name="Rich built-in types">
+	 &xact; has two major built-in data types:
+	 strings and <ref:gloss name="xdom"/>'s (&xact; Document Object Model).
+	 Strings represent a sequence of Unicode characters
+	 and may not be modified.
+	 Strings are also used for boolean, integer, float, and date
+	 values.
+	 Xdom's can be used to represent XML data, &xact; scripts,
+	 arrays, records, lists, trees, and directed graphs.
+	 Every xdom (even those with cycles) has an ASCII external form.
+	 Parsers and unparsers (pretty printers) are provided
+	 to convert between internal xdom and external ASCII
+	 string forms.
+	 Xdom data structures can also be used from
+	 Java programs.
+      </list:item>
+      <list:item name="User-defined abstractions">
+	 A full set of user definable abstractions are provided
+	 including modules, functions, types, views, iterators,
+	 and virtual variables (via lhs/rhs function pairs).
+	 Variable length parameter lists and keyword (named)
+	 parameters are available.
+	 All language operations are user definable.
+	 Abstractions support parameterized types
+	 and generic/polymorphic functions.
+	 &xact; does not provide class inheritance.
+	 Views provide a safer cleaner alternative.
+      </list:item>
+      <list:item name="Stack-based execution">
+	 Unlike languages such as Lisp,
+	 &xact; stack frames are not retained when they are exited.
+	 &xact; does however have an extended name
+	 feature that can be used for currying and
+	 other techniques usually provided by retention.
+	 For multiple threads a "cactus stack" model is used.
+      </list:item>
+      <list:item name="Support for large data sets">
+	 &xact; provides incremental parsing and implicit
+	 streams that allow large data structures
+	 to be processed without all being in main memory
+	 at the same time.
+      </list:item>
+      <list:item name="Multithreading">
+	 &xact; provides multithreading, locks/monitors (like those of Java),
+	 and queues (that can be used for CSP style programming).
+      </list:item>
+      <list:item name="Extensible">
+	 <b>Extensible.</b>
+	 &xact; can be easily extended by defining new languages
+	 (collections of tags, operators, and abstractions).
+	 New functionality can be provided by escaping into Java
+	 (or even C via JNI).
+	 Multiple languages can be combined in single script to
+	 combine functionality or to provide a
+	 specification of multiple execution times/places (preprocess, server,
+	 client).
+      </list:item>
+      <list:item name="Interactive debugger (under development)">
+          The &xact; interpreter includes an interactive debugger that supports breakpoints, stepping through code, and
+          examining values. Although useful, it is still quite rough; so use it at your own risk.
+      </list:item>
+   </list:unordered>
+   </section:numbered>
+</section:numbered>

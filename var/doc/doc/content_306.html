@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>file</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > L <a href="nav2_4_12.html" target="nav2" class="lettered1">Examples</a> > L.4 <font face="courier"><font color="blue">file</font></font>
+</b>
+<br/> 
+
+<a href="content_305.html" target="contents">prev</a>
+ 
+<a href="content_307.html" target="contents">next</a>
+<br/>
+
+
+<p>
+This example shows some ways to use the <font face="courier"><font face="courier"><a href="content_159.html" class="name1" target="contents">file</a></font></font> view.
+</p>
+<br/>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">sep</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_222.html" class="name1" target="contents">options</a></font>.<font color="FF00FF">fileSep</font>#<font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font>;<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">dname</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_222.html" class="name1" target="contents">options</a></font>.<font color="FF00FF">scriptDir</font>#<font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font>;<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">fname</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_222.html" class="name1" target="contents">options</a></font>.<font color="FF00FF">currentDir</font>#<font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font> <font face="courier"><a href="content_243.html" class="inop1" target="contents">++</a></font> <font face="courier"><font color="#006699">sep</font></font> <font face="courier"><a href="content_243.html" class="inop1" target="contents">++</a></font> <font color="green">"test.txt"</font>;<br/>
+<br/>
+<font color="green">"Files in "</font>;&nbsp;<font face="courier"><font color="#006699">dname</font></font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font> <font face="courier"><font color="#006699">f</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">dname</font></font>.<font color="FF00FF">files</font>#<font face="courier"><a href="content_159.html" class="name1" target="contents">file</a></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="green">"   "</font>;<br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_120.html" class="tag1" target="contents">x:if</a></font> (<font face="courier"><font color="#006699">dname</font></font> <font face="courier"><a href="content_243.html" class="inop1" target="contents">++</a></font> <font color="green">"\"</font> <font face="courier"><a href="content_243.html" class="inop1" target="contents">++</a></font> <font face="courier"><font color="#006699">f</font></font>).<font color="FF00FF">isDirectory</font>#<font face="courier"><a href="content_159.html" class="name1" target="contents">file</a></font>()<font color="brown"> {</font>&nbsp;<font color="green">"@"</font>&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">f</font></font>;<br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font><br/>
+<font color="brown">}</font><br/>
+<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<br/>
+<font color="green">"exists="</font>;&nbsp;<font face="courier"><font color="#006699">fname</font></font>.<font color="FF00FF">exists</font>#<font face="courier"><a href="content_159.html" class="name1" target="contents">file</a></font>();&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<br/>
+<font color="green">"created="</font>;&nbsp;<font face="courier"><font color="#006699">fname</font></font>.<font color="FF00FF">create</font>#<font face="courier"><a href="content_159.html" class="name1" target="contents">file</a></font>();&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font color="green">"exists="</font>;&nbsp;<font face="courier"><font color="#006699">fname</font></font>.<font color="FF00FF">exists</font>#<font face="courier"><a href="content_159.html" class="name1" target="contents">file</a></font>();&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><font color="#006699">fname</font></font>.<font color="FF00FF">append</font>#<font face="courier"><a href="content_159.html" class="name1" target="contents">file</a></font>(<font color="green">"xxx&amp;<font color="blue">eol</font>;"</font>);<br/>
+<font face="courier"><font color="#006699">fname</font></font>.<font color="FF00FF">append</font>#<font face="courier"><a href="content_159.html" class="name1" target="contents">file</a></font>(<font color="green">"yyy&amp;<font color="blue">eol</font>;"</font>);<br/>
+<font face="courier"><font color="#006699">fname</font></font>.<font color="FF00FF">read</font>#<font face="courier"><a href="content_159.html" class="name1" target="contents">file</a></font>();&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><font color="#006699">fname</font></font>.<font color="FF00FF">delete</font>#<font face="courier"><a href="content_159.html" class="name1" target="contents">file</a></font>()</font>
+</body>
+</html>

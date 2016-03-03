@@ -1,0 +1,126 @@
+@x:use library:unparser;
+@x:use library:html;
+
+@x:func ival(val1,size) {
+   @x:const val := string(val1);
+   @x:for i := (val.size+1)..size { "0" }
+   val;
+}
+
+@x:func empty(v) {
+   @x:if v == null {
+      nbsp
+   }
+   @x:else {
+      v
+   }
+}
+
+@x:func dumpErrors(t,index) {
+   @x:const size := t.size#body;
+   @x:for i:=index+1..size {
+      @x:const err := t(i)#body;
+      @x:if err.id#rec == options.id#rec {
+	 @x:if err.tag =="end" {
+	    @x:break;
+	 }
+	 @x:orif err.tag == "error" {
+	    @x:if err.firstLine#rec != "" {
+	       @x:const script := err.script#rec;
+	       @x:const file := err.script#rec;
+	       @x:const desc := err.desc#rec;
+	       @x:if script != null {
+	          script
+	       } @x:orif file != null {
+	          "file=";file;
+	       } @x:orif desc != null {
+	           "desc=";desc;
+	       }
+	       " <";
+	       err.firstLine#rec; ",";
+	       err.firstChar#rec; "> ";
+            }
+	    err.kind#rec; ":";
+	    err.message#rec;
+	    eol;
+	 }
+      }
+   }
+}
+
+@x:func dumpErrorsHTML(t,index) {
+   @table border=3 {
+      @tr {
+         @td { @b{ "Time" }}
+         @td { @b{ "Script" }}
+         @td { @b{ "Line" }}
+         @td { @b{ "Char" }}
+         @td { @b{ "Kind" }}
+         @td { @b{ "Message" }}
+      }
+      @x:const size := t.size#body;
+      @x:for i:=index+1..size {
+	 @x:const err := t(i)#body;
+	 @x:if err.id#rec == options.id#rec {
+	    @x:if err.tag =="end" {
+	       @x:break;
+	    }
+	    @x:orif err.tag == "error" {
+	       @tr {
+	          @td { err.time#rec }
+	          @td { empty(err.script#rec) }
+	          @td { empty(err.firstLine#rec) }
+	          @td { empty(err.firstChar#rec) }
+		  @td { err.kind#rec }
+		  @td { @font face="courier" { err.message#rec } }
+	       }
+	    }
+	 }
+      }
+   }
+}
+
+@x:func doErrors(t,html) {
+   @x:const size := t.size#body;
+   @x:for i:=1..size {
+      @x:const j := size + 1 - i;
+      @x:const err := t(j)#body;
+      @x:if err.tag == "start" & err.id#rec == options.id#rec {
+	 @x:if html {
+	    dumpErrorsHTML(t,j);
+	 } 
+	 @x:else {
+	    dumpErrors(t,j);
+	 }
+	 @x:break;
+      }
+   }
+}
+
+@x:func error(oldtxt),visible {
+   @x:const html := options.mime#rec != "";
+   @x:const d := date.now();
+   @x:const fname := options.logDir#rec ++ options.fileSep#rec ++ ival(d.year#date,4) ++ "." ++ ival(d.month#date,2) ++
+   "." ++ ival(d.day#date,2) ++ ".log";
+   @x:const txt := fname.read#file();
+   @x:const t := Parse(txt);
+   @x:if html {
+      <head>
+	 <title>
+	    Errors Have Occurred
+	 </title>
+      </head>
+      <body bgcolor="white">
+	 <h1><font color="red">Errors Have Occurred</font></h1>
+	 START&oldtxt;END
+	 <@x:block {
+	    doErrors(t,html);
+	 }/>
+      </body>
+   }
+   @x:else {
+      oldtxt; eol;eol;
+      "ERRORS HAVE OCCURED"; eol; eol;
+      doErrors(t,html);
+   }
+}

@@ -1,0 +1,182 @@
+@x:const mark := xdom:element("mark");
+
+@x:func Vals[%L],visible { L.all }
+
+@x:func Seq[iter1,iter2](act),visible {
+   @x:var break := false;
+   @x:for i:=iter1 { 
+      act(i);
+      @x:if doBreak { break := true }
+   }
+   @x:if ! break {
+      @x:for i:=iter2 { act(i) }
+   }
+}
+
+@x:func Nest[iter1,iter2](act),visible {
+   @x:var break := false;
+   @x:for i1:=iter1 {
+      @x:for i2:= iter2 {
+         act(i1,i2);
+	 @x:if doBreak { break := true }
+      }
+      @x:if break { @x:break }
+   }
+}
+
+@x:func NestF[iter1,iter2](act),visible {
+   @x:var break := false;
+   @x:for i1:=iter1 {
+      @x:for i2:= iter2(i1) {
+         act(i1,i2);
+	 @x:if doBreak { break := true }
+      }
+      @x:if break { @x:break }
+   }
+}
+
+@x:func Filter[iter,func](act),visible {
+   @x:for i:=iter {
+      @x:if func(i) {
+         act(i)
+      }
+   }
+}
+
+@x:func FilterVal[iter,func,val](act),visible {
+   @x:for i:=iter {
+      @x:if func(i,val) {
+         act(i)
+      }
+   }
+}
+
+@x:func Filter2[iter,func](act),visible {
+   @x:for [i1,i2]:=iter {
+      @x:if func(i1,i2) {
+         act(i1,i2)
+      }
+   }
+}
+
+@x:func Parallel[iter1,iter2](act),visible {
+   @x:fork { 
+      @x:var q1:=queue(1);
+      @x:var q2:=queue(1);
+      @x:var done := false;
+      @x:thread t1 {
+	 @x:for i1 := iter1 { 
+            q1.send(i1);
+	    @x:if done { @x:break }
+	 }
+	 q1.send(mark)
+      } 
+      @x:thread t2 {
+	 @x:for i2 := iter2 { 
+	    q2.send(i2);
+	    @x:if done { @x:break }
+	 }
+	 q2.send(mark)
+      }
+      @x:var v1:=q1.receive();
+      @x:var v2:=q2.receive();
+      @x:while v1 != mark | v2 != mark {
+         @x:if v2 == mark {
+	    v1 := q1.receive();
+	 } @x:orif v1 == mark {
+	    v2 := q2.receive();
+	 } @x:else {
+	    @x:if ! done {
+	       @x:for i:= 1..1 {
+		  act(v1,v2); 
+		  @x:if doBreak { done := true }
+	       }
+	    }
+	    v1 := q1.receive();
+	    v2 := q2.receive();
+	 }
+      }
+   }
+}
+
+@x:func First[iter](act),visible {
+   @x:for i:=iter {
+      act(i);
+      @x:break;
+   }
+}
+
+@x:func ExceptFirst[iter](act),visible {
+   @x:var first := true;
+   @x:for i:=iter {
+      @x:if first {
+         first := false;
+      } @x:else {
+         act(i);
+      }
+   }
+}
+
+@x:func Last[iter](act),visible {
+   @x:var last := mark;
+   @x:for i:=iter {
+      last := i;
+   }
+   @x:if last != mark {
+      act(last);
+   }
+}
+
+@x:func ExceptLast[iter](act),visible {
+   @x:var prev := mark;
+   @x:for i:=iter {
+      @x:if prev != mark {
+         act(prev)
+      }
+      prev := i;
+   }
+}
+
+@x:func Slice[val,iter](act),visible {
+   @x:for i:=iter {
+      act(val(i))
+   }
+}
+
+@x:func Accumulate[iter,start,join](act),visible {
+   @x:var result := start;
+   @x:for i:=iter { result := join(result,act(i)) }
+   result
+}
+
+@x:func Separate[s,p](act),visible {
+    @x:var first:=1;
+    @x:var matched:=0;
+    @x:var i:=1;
+    @x:var psize:=p.size;
+    @x:for c:=Chars[s] {
+	@x:if psize !=#int 0 & c ==#int p(matched+1) {
+	    matched:=matched+1;
+	} @x:else {
+            matched:=0;
+	}
+	@x:if matched ==#int psize {
+	    act(s(first..i-psize));
+            first:=i+1;
+	    matched := 0;
+	}
+	i:=i+1;
+    }
+    @x:if psize !=#int 0 {
+	act(s(first..s.size));
+    }
+}
+
+@x:func Combine[iter,p],visible {
+   @x:var sep:="";
+   @x:for x:=iter {
+      sep;
+      x;
+      sep:= p;
+   }
+}

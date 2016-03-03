@@ -1,0 +1,1526 @@
+<section:numbered name="User Manual">
+   <section:numbered name="Syntax">
+      <section:numbered name="Specification">
+	 <p>
+	    &xact; has a single grammar that describes
+	    both lexical and context-free syntax.
+	    The grammar is specified using an extended <ref:table name="BNF"/>.
+	 </p>
+	 <p>
+	    The complete grammar can be found in <ref:table name="Combined Syntax"/>.
+	    The grammar can also be browsed starting with
+	    the <ref:nt name="script"/> root non-terminal.
+	 </p>
+	 <p>
+	    The grammar is ambiguous for <ref:nt name="exp"/>s
+	    with <ref:nt name="prefix op"/>s and <ref:nt name="infix op"/>s.
+	    This is resolved with a <ref:table name="Precedence"/> table.
+	 </p>
+	 <p>
+	    Each &xact; script will be a single <ref:nt name="script"/> contained
+	    in a file with extension <@verb{".xact"}/>.
+	 </p>
+      </section:numbered>
+      <section:numbered name="Two Forms">
+	 <p>
+	    &xact; has two alternative syntax forms:
+	    one form is XML and the other form is more Java-like.
+	    In many scripts a combination of both forms is used.
+	 </p>
+	 <p>
+	    The XML form supports most XML features.
+	    The one feature not supported is DTDs.
+	    A useful generalization is that a <ref:nt name="script"/> can
+	    consist of a sequence of XML tags (unlike XML
+	    where only a single top level tag is permitted).
+	 </p>
+      </section:numbered>
+      <section:numbered name="Parse Trees">
+	 <p>
+	    The result of parsing an &xact; <ref:nt name="script"/> is
+	    represented by an <ref:name name="xdom"/> (&xact; Document Model) parse tree.
+	 </p>
+	 <p>
+
+	    A <ref:nt name="script"/> can be converted to an <ref:name name="xdom"/> using the built-in <ref:name name="Parse"/> function.
+	    An <ref:name name="xdom"/> can be converted to a <ref:nt name="script"/> using the library <ref:name name="Unparse"/> function.
+	    Combining the <ref:name name="Parse"/> and <ref:name name="Unparse"/> functions
+	    yields a pretty printer.
+	    The pretty printer preserves code and comments but reformats an &xact; <ref:nt name="script"/> by
+	    changing white space (sequences of space and end-of-line characters).
+	    The <ref:name name="Unparse"/> function also provides an option to produce a
+	    color marked-up XHTML version of the script.
+	 </p>
+	 <p>
+	    Having a simple <ref:name name="xdom"/> representation of all &xact; <ref:nt name="script"/>s
+	    makes it easy to develop &xact; program generation, analysis, and transformation tools.
+	 </p>
+	 <p>
+	    To make it simple to process <ref:name name="xdom"/> trees, there are only 7 types of tree nodes.
+	    The &xact; syntax however contains lots more than 7 forms.
+	    These additional forms are considered to be "syntactic sugar" and are mapped to
+	    on of the 7 <ref:name name="xdom"/> types.
+	    Each <ref:name name="xdom"/> node contains a kind field that specifies which alternate syntax form
+	    it was parsed from.
+	    The <ref:name name="Unparse"/> function uses the kind field to restore the original
+	    richer syntax forms.
+	    In the xdom tree the two major forms of syntax use the same nodes but have different kinds.
+	    So conversion between forms involves simply walking the xdom tree and changing kinds.
+	 </p>
+	 <p>
+	    The 7 types of <ref:name name="xdom"/> tree nodes are listed here together with some of the syntax forms
+	    that are mapped to these kinds of node.
+	    <list:unordered>
+	       <list:item> <ref:name name="xdom:element"/>: <ref:nt name="simple cmd"/>, <ref:nt name="compound cmd"/>, <ref:nt name="element"/>,
+		  <ref:nt name="xml"/> comments, comments (<ref:nt name="compound cmd"/>), the ?xml <ref:nt name="element"/>
+	       </list:item>
+	       <list:item> <ref:name name="xdom:name"/>: <ref:nt name="name"/>, <ref:nt name="escape"/>
+	       </list:item>
+	       <list:item> <ref:name name="xdom:string"/>: <ref:nt name="string"/>, <ref:nt name="xml"/> text
+	       </list:item>
+	       <list:item> <ref:name name="xdom:int"/>: <ref:nt name="int"/>
+	       </list:item>
+	       <list:item> <ref:name name="xdom:float"/>: <ref:nt name="float"/>
+	       </list:item>
+	       <list:item> <ref:name name="xdom:call"/>: call/subscript/dot qualification (<ref:nt name="qualified"/>), operator <ref:nt name="exp"/>
+	       </list:item>
+	       <list:item> <ref:name name="xdom:value"/>: Allows an arbitrary &xact; value to be store in an <ref:name name="xdom"/> tree.
+		  Support in <ref:name name="Parse"/> and <ref:name name="Unparse"/> is limited for this kind of node.
+	       </list:item>
+	    </list:unordered>
+	 </p>
+      </section:numbered>
+      <section:numbered name="Character Set">
+	 <p>
+	    Internally &xact; is implemented using Java strings that hold 16-bit characters.
+	    When external data consisting of a sequence of bytes is read it must
+	    be converted to 16-bit characters.
+	    When 16-bit characters are written they must be converted to bytes.
+	    There are two forms of conversion.
+	    First, <@icode{"byte"}/> maps external bytes to/from the lower order byte
+	    of 16-bit characters. Second, any Java <@icode{CharSet}/> can be specified to control the
+	    mapping. Some of the most common character mapping are listed here.
+	 </p>
+	 <table:table>
+	    <table:titlerow>
+	       <table:item>Name</table:item>
+	       <table:item>Description</table:item>
+	    </table:titlerow>
+	    <table:row>
+	       <table:item><@icode{"byte"}/></table:item>
+	       <table:item>External bytes are mapped to the low order byte of characters.
+	       On input the high-order byte is set to 0. On output the high-order byte is ignored.
+	       This is the character set mapping to use for binary data.</table:item>
+	    </table:row>
+	    <table:row>
+	       <table:item><@icode{"US-ASCII"}/></table:item>
+	       <table:item>Seven-bit ASCII, a.k.a. ISO646-US, a.k.a. the Basic Latin block of the Unicode character set
+	       </table:item>
+	    </table:row>
+	    <table:row>
+	       <table:item><@icode{"ISO-8859-1"}/></table:item>
+	       <table:item>ISO Latin Alphabet No. 1, a.k.a. ISO-LATIN-1
+	       </table:item>
+	    </table:row>
+	    <table:row>
+	       <table:item><@icode{"UTF-8"}/></table:item>
+	       <table:item>Eight-bit UCS Transformation Format
+	       </table:item>
+	    </table:row>
+	    <table:row>
+	       <table:item><@icode{"UTF-16BE"}/></table:item>
+	       <table:item>Sixteen-bit UCS Transformation Format, big-endian byte order
+	       </table:item>
+	    </table:row>
+	    <table:row>
+	       <table:item><@icode{"UTF-16LE"}/></table:item>
+	       <table:item>Sixteen-bit UCS Transformation Format, little-endian byte order
+	       </table:item>
+	    </table:row>
+	    <table:row>
+	       <table:item><@icode{"UTF-16"}/></table:item>
+	       <table:item>Sixteen-bit UCS Transformation Format, byte order identified by an optional byte-order mark.   
+	       </table:item>
+	    </table:row>
+	 </table:table>
+	 <list:unordered>
+	    <list:item>
+	    &xact; <ref:nt name="script"/>s use <@icode{"UTF-8"}/>.
+	    </list:item>
+	    <list:item>
+	    The default for program output is <@icode{"ISO-8859-1"}/>
+	    This can be set with the <ref:option name="charSet"/> option.
+	    </list:item>
+	    <list:item>
+	       The default for <@icode{file}/> IO 
+	       is <@icode{"ISO-8859-1"}/>.
+	    </list:item>
+	 </list:unordered>
+      </section:numbered>
+   </section:numbered>
+   <section:numbered name="Names and Scopes">
+      <section:numbered name="Name Binding Rules">
+	 <p>
+	    &xact; binds names statically.
+	 </p>
+	 <p>
+	    Every occurrence of a name within a <ref:nt name="script"/> will either
+	    be definition of that name of a use of that name.
+	    Every name used must be defined. Every name use is bound to its corresponding
+	    definition. 
+	 </p>
+	 <p>
+	    Every <ref:nt name="script"/> consists of a set of hierarchically nested scopes.
+	    Every name use and definition occurs within a single specific scope.
+	    The same name may not be defined twice within a single scope.
+	    Every name use is bound to the definition of that name in the
+	    smallest enclosing scope.
+	    Thus a definition of a name in a scope "hides" any definitions of that
+	    name in enclosing scopes.
+	 </p>
+	 <p>
+	    Usually the definition of a name will occur before all uses
+	    of that name, but this is not required. Forward references where
+	    a name use occurs before its definition are permitted.
+	    This makes it easy to write mutually recursive definitions.
+	 </p>
+	 <p>
+	 </p>
+      </section:numbered>
+      <section:numbered name="Names">
+	 <p>
+	    A <ref:nt name="name"/> can be either an <ref:nt name="id"/> or
+	    can be an <ref:nt name="id"/> followed by a list of expressions
+	    enclosed in <@verb{"[]"}/> brackets.
+	    For name binding purposes a name without brackets is considered
+	    to be a different name than a name with brackets. Two
+	    names with the same id and bracketed expression lists
+	    are considered to be the same name for name binding purposes
+	    even if the number of expressions and their values are
+	    different.
+	 </p>
+	 <p>
+	    The are two forms of <ref:nt name="id"/>.
+	    A <ref:nt name="basic id"/> is a Java-like identifier.
+	    An <ref:nt name="extended id"/> is an XML-like identifier
+	    and permits more characters than the <ref:nt name="basic id"/>
+	 </p>
+	 <p>
+	    &xact; has no reserved words, so all <ref:nt name="id"/>s are
+	    permitted.
+	    There are however many predefined names.
+	    Predefined names can be redefined.
+	 </p>
+	 <p>
+	    For the <@verb{"x:"}/> namespace, names are defined in several places.
+	    <list:unordered>
+	       <list:item>
+		  The <ref:tag name="x:var"/> command define a variable name in the enclosing scope.
+	       </list:item>
+	       <list:item>
+		  The <ref:tag name="x:const"/> command defines a constant name in the enclosing scope.
+	       </list:item>
+	       <list:item>
+		  The <ref:tag name="x:func"/> command defines a function name in the enclosing scope
+		  and name and regular parameter names within the function scope.
+	       </list:item>
+	       <list:item>
+		  The <ref:tag name="x:type"/> command defines a type name in the enclosing scope
+		  and name parameter names within the type scope.
+	       </list:item>
+	       <list:item>
+		  The <ref:tag name="x:view"/> command defines a view name in the enclosing scope
+		  and name parameter names within the view scope.
+	       </list:item>
+	       <list:item>
+		  The <ref:tag name="x:for"/> command defines iteration names
+		  within the for scope.
+	       </list:item>
+	       <list:item>
+		  The <ref:tag name="x:thread"/> command define a thread name in the enclosing scope.
+	       </list:item>
+	       <list:item>
+		  The name <ref:name name="self"/> is automatically defined within
+		  the <ref:tag name="x:self"/> command.
+	       </list:item>
+	       <list:item>
+		  The <ref:tag name="x:module"/> command defines exported names in the enclosing scope.
+	       </list:item>
+	       <list:item>
+		  The <ref:tag name="x:use"/> command defines imported names in the enclosing scope.
+	       </list:item>
+	    </list:unordered>
+	 </p>
+	 <p>
+	    A <ref:nt name="name"/> within an <ref:nt name="exp"/> that is not a definition
+	    of that name is a use of that name.
+	    Each extended id form of <ref:nt name="escape"/> is also a use of that extended id name.
+	 </p>
+      </section:numbered>
+      <section:numbered name="Scopes">
+	 <p>
+	    Every command (<ref:nt name="simple cmd"/> and <ref:nt name="compound cmd"/>)
+	    is a scope. Since commands can be nested, scopes can be nested.
+	 </p>
+	 <p>
+	    Each <ref:nt name="script"/> is also a scope and encloses all other scopes
+	    within the script.
+	 </p>
+	 <p>
+	    There is a single special built-in scope that encloses all script scopes.
+	    Build-in names are defined in the built-in scope.
+	 </p>
+      </section:numbered>
+      <section:numbered name="Modules">
+	 <p>
+	    The <ref:tag name="x:module"/> command provides a way to limit visibility to names.
+	    Select names that are defined in the module scope are also made visible within the
+	    scope that encloses the module command.
+	 </p>
+	 <p>
+	    There are two ways of selecting which names will be made visible.
+	    The first way is to add a <@verb{"visible"}/> option to the declaration
+	    of names within the module that are to be visible outside the module.
+	    The second way is to provide a visible or hidden list of names in the module header.
+	    A visible list includes all names to be made visible. If a hidden list is used,
+	    then all inside names that are not listed are made visible outside.
+	 </p>
+	 <p>
+	    A visible list also provides a renaming capability. A name inside the module
+	    can be made visible outside the module with a different name.
+	 </p>
+	 <p>
+	    A <ref:tag name="x:module"/> can be combined with a <ref:tag name="x:type"/> to
+	    create an abstract data type.
+	 </p>
+      </section:numbered>
+      <section:numbered name="Use">
+	 <p>
+	    The <ref:tag name="x:use"/> command names another <ref:nt name="script"/>.
+	    Top-names names in the other script are made visible in the
+	    scope that encloses the use command.
+	 </p>
+	 <p>
+	    The <ref:tag name="x:use"/> command thus provides a way to break a large script into
+	    multiple pieces and to create reusable libraries.
+	 </p>
+	 <p>
+	    As with the <ref:tag name="x:module"/> command,
+	    the <ref:tag name="x:use"/> tag can optionally contain
+	    a visible or hidden list.
+	    The visible list may also specify renaming.
+	 </p>
+	 <p>
+	    No script may use itself directly or indirectly.
+	    In other words, there may not be use cycles of scripts.
+	 </p>
+	 <p>
+	    A <ref:tag name="x:module"/> can be used with <ref:tag name="x:use"/> commands
+	    to control visibility across different scripts, with the module specifying exports
+	    and the use specifying imports.
+	 </p>
+      </section:numbered>
+   </section:numbered>
+
+   <section:numbered name="Execution">
+      <section:numbered name="Basic Execution">
+	 <p>
+	    &xact; uses a stack-based execution model (for each thread of execution).
+	    This means when a scope is entered, space for items declared within the scope is allocated
+	    and when a scope is exited, space for those items is freed.
+	 </p>
+	 <p>
+	    When a scope is entered items are initialized to a special uninitialized value.
+	    Attempting to use an uninitialized value results in an execution error.
+	 </p>
+	 <p>
+	    Execution of major &xact; forms
+	    yields a value. There are two major &xact; forms:
+	    commands (<ref:nt name="simple cmd"/> and <ref:nt name="compound cmd"/>) and expressions (<ref:nt name="exp"/>).
+	 </p>
+	 <p>
+	    Execution of commands depends upon the namespace specified in the tag of the command.
+	    The &xact; default is that the <@verb{"x:"}/> namespace is used for &xact; commands.
+	    Commands with other namespaces (or with no namespace) have render execution semantics. 
+	 </p>
+      </section:numbered>
+      <section:numbered name="XACT Commands">
+	 <p>
+	    &xact; commands by default have tags with namespace <@verb{"x:"}/>.
+	 </p>
+	 <p>
+	    There are 22 &xact; command tags.
+	    For example, the command with tag <ref:tag name="x:var"/> is used to declare variables
+	    and the command with tag <ref:tag name="x:while"/> is a while loop.
+	    An &xact; command can have zero or more expressions following the tag and optionally a body.
+	 </p>
+	 <p>
+	    The specific tag determines which expressions are required and optional and how they are
+	    to be treated. The specific tag also determines if a body is prohibited, optional, or required.
+	    For example, the <ref:tag name="x:while"/> command has a test expression following the tag
+	    and a body that is executed while the test expression execution returns true.
+	 </p>
+	 <p>
+	    In some cases multiple commands work together.
+	    For example to code an if-then-else, a <ref:tag name="x:if"/> command
+	    is immediately followed by an <ref:tag name="x:else"/> command.
+	 </p>
+	 <p>
+	    For some &xact; commands some of the expressions following the tag serve as
+	    options. For example, the <ref:tag name="x:func"/> command can have
+	    <@verb {"visible"}/> and <@verb{"lhs"}/> options.
+	    Option names are not considered to be name uses and are not bound
+	    to a corresponding definition.
+	 </p>
+      </section:numbered>
+      <section:numbered name="Rendered Commands">
+	 <p>
+	    By default, commands whose tags have no namespace or a namespace other than <@verb{"x:"}/> have
+	    render semantics by default.
+	 </p>
+	 <p>
+	    The result of executing a command with render semantics is a <ref:name name="string"/> whose value
+	    is the string representation of the command.
+	 </p>
+	 <p>
+	    For example, consider a <ref:nt name="script"/> containing only XML (with no tags having a <@verb{"x:"}/> namespace).
+	    The result of executing that script is similar to the effect of calling <ref:name name="Unparse"/> on
+	    the <ref:name name="xdom"/> of the script.
+	    The main difference is that the pretty printing of spaces will be different.
+	    While <ref:name name="Unparse"/> indents nested elements, render semantics does no indentation for nested elements.
+	 </p>
+	 <p>
+	    Render semantics, however, is more than just an unparser. No only can &xact; (<@verb{"x:"}/>) commands contain
+	    rendered commands, but rendered commands can contain name uses and &xact; commands that parameterize the
+	    rendered result.
+	 </p>
+	 <p>
+	    The is flexibility in the generation of space characters in the result of rendered commands.
+	    If precise control of spacing is needed, an alternative is the use &xact; <ref:tag name="x:tag"/> command
+	    that renders an specified <ref:name name="xdom"/> tree.
+	 </p>
+      </section:numbered>
+      <section:numbered name="Space">
+	 <p>
+	    The is flexibility in the handling of blank space in &xact; scripts.
+	    This simplifies the content of <@icode{xdom}/> parse trees and
+	    provides the flexibility needed for pretty printing using the <@icode{Unparse}/> function.
+	    There are five kinds of spaces.
+	 </p>
+	 <list:unordered>
+	    <list:item>
+	       <@icode{"empty"}/>. No space is present.
+	    </list:item>
+	    <list:item>
+	       <@icode{"space"}/>. One or more space or tab characters are present.
+	    </list:item>
+	    <list:item>
+	       <@icode{"line"}/>.
+	       A single end-of-line character is present.
+	       There may also be zero or more space or tab characters.
+	    </list:item>
+	    <list:item>
+	       <@icode{"lines"}/>.
+	       There are at least two end-of-line characters present.
+	       There may also be zero or more space or tab characters.
+	    </list:item>
+	    <list:item>
+	       <@icode{"erase"}/>. The special space value "cancels" out
+	       any other adjacent character and displays as <@icode{"empty"}/>
+	    </list:item>
+	 </list:unordered>
+	 <p>
+	    In the <@icode{xdom}/> tree, spaces are recorded in two places.
+	    First every node has a <@icode{spaceBefore}/> and <@icode{spaceAfter}/>
+	    value. Second, <@icode{xdom:element}/> nodes also have
+	    a <@icode{spaceBeforeBody}/> and <@icode{spaceAfterBody}/> value.
+	 </p>
+	 <p>
+	    When parsing spaces are recorded in the <@icode{xdom}/> nodes
+	    both before and after the space.
+	    For example,
+	 </p>
+	 <@code{
+	    <a/>
+	    <b/>
+	 }/>
+	 <p>
+	    Here <@icode{a.spaceAfter}/> and <@icode{b.spaceAfter}/> are
+	    both set to <@icode{"line"}/>.
+	    The <@icode{Unparse}/> function combines adjacent spaces
+	    and uses their "maximum".
+	    For example combining <@icode{"space"}/> and <@icode{"lines"}/>
+	    yields <@icode{"lines"}/>.
+	    Combining <@icode{"line"}/> and <@icode{"line"}/>
+	    yields <@icode{"line"}/>.
+	    Combining <@icode{"lines"}/> and <@icode{"erase"}/>
+	    yields <@icode{"erase"}/>.
+	    When rendering, adjacent spaces are also combined using
+	    some "magic" interpreter logic that tracks space codes
+	    at the beginning and end of strings to be rendered.
+	 </p>
+	 <p>
+	    The is flexibility in the generation of space characters in the result of rendered commands.
+	    If precise control of spacing is needed, an alternative is the use &xact; <ref:tag name="x:tag"/> command
+	    that renders an specified <ref:name name="xdom"/> tree.
+	 </p>
+      </section:numbered>
+      <section:numbered name="Join Rules">
+	 <p>
+	    In &xact;, it is necessary to define the value that results
+	    from a sequence of expressions or commands. The rules for this are called join rules.
+	 </p>
+	 <list:unordered>
+	    <list:item>
+	       When a sequence of expression is empty then the result is the value <ref:name name="null"/>.
+	    </list:item>
+	    <list:item>
+	       When a sequence of expressions has exactly one expression then the value is the value of that expression.
+	    </list:item>
+	    <list:item>
+	       When an sequence of expressions has two expressions, and both have type <ref:name name="string"/>,
+	       the result is the concatenation of those strings (see <ref:inop name="++"/>).
+	    </list:item>
+	    <list:item>
+	       When a sequence of expressions has two expressions and one expression has value <ref:name name="null"/>,
+	       then the result is the value of the other expression.
+	    </list:item>
+	    <list:item>
+	       When a sequence of expressions has three of more expressions, then the first two expressions are
+	       joined producing a sequence that is one element shorter.
+	       That resulting shorter sequence is then joined.
+	    </list:item>
+	 </list:unordered>
+	 <p>
+	    Join rules are also used for <ref:tag name="x:while"/> and <ref:tag name="x:for"/> loops.
+	    Here the result will be the join of all the body executions.
+	 </p>
+      </section:numbered>
+      <section:numbered name="Types and Views">
+	 <p>
+	    &xact; is dynamically typed.
+	    Every value has a type, but multiple executions of a single expression
+	    may yield values with different types.
+	 </p>
+	 <p>
+	    The <ref:name name="Type"/> function returns the type of a value.
+	    The <ref:inop name="?"/> infix operator tests if a value has a specified type.
+	    The <ref:inop name="~"/> infix operator asserts that a value has a
+	    specified type.
+	   The <ref:inop name="~"/> infix operator can also be used
+	   on <ref:tag name="x:var"/> declarations, <ref:tag name="x:const"/> declarations,
+	   and <ref:tag name="x:func"/> declarations formal parameter and result specifications.
+	 </p>
+	 <p>
+	    A prefix form of the <ref:preop name="~"/> operator is also available.
+	    It asserts that the following expression has value <ref:name name="true"/>.
+	 </p>
+	 <p>
+	    &xact; has a number of predefined types.
+	    The <ref:tag name="x:type"/> command is used to define new types.
+	 </p>
+	 <p>
+	    A type controls the set of values of an object of the type.
+	    It also controls the set of operations that can be applied to the type
+	    and to objects of the type.
+	 </p>
+	 <p>
+	    A view is similar to a type, except it is specified as part of
+	    operations on values.
+	    For example, the <ref:name name="string"/> <ref:inop name="=="/> infix operator compares
+	    two strings for equal characters. The view operation <@verb{"==#fold"}/> infix operator compares
+	    two strings after case-folding.
+	 </p>
+	 <p>
+	    &xact; has a number of predefined views.
+	    The <ref:tag name="x:view"/> command is used to define new views.
+	 </p>
+	 <p>
+	    Views can be used for subsetting. For example, the <ref:name name="boolean"/> view
+	    is a view of strings that allows only two values <@icode{"true"}/> and <@icode{"false"}/>.
+	 </p>
+	 <p>
+	    Views can also be used for supersetting.
+	    For example, the view <@icode{TypeOr[int,string]}/> contains
+	    both type <ref:name name="int"/> and type <ref:name name="string"/> values.
+	 </p>
+	 <p>
+	    &xact; does not support type inheritance.
+	    Views can be used in many places where inheritance
+	    is used in other languages.
+	 </p>
+      </section:numbered>
+      <section:numbered name="Simple Types">
+	 There are a number of simple built-in types.
+	 <list:unordered>
+	    <list:item>
+	       The type of <ref:name name="null"/> is <ref:name name="void"/>.
+	       The <ref:name name="null"/> value is used for expressions with "no" result.
+	    </list:item>
+	    <list:item>
+	       &xact; strings are based on Java strings and use the same Unicode 2-byte character set.
+	       String values have type <ref:name name="string"/>.
+	       Views of string
+	       include <ref:name name="fold"/>, <ref:name name="boolean"/>, <ref:name name="date"/>, <ref:name name="file"/>, and <ref:name name="enum"/>.
+	       There are <ref:nt name="string"/> literals.
+	       Literal strings also appear as <ref:nt name="xml"/> text.
+	       Tree nodes with type <ref:name name="xdom:string"/> hold string values.
+	    </list:item>
+	    <list:item>
+	       &xact; integers are based on Java longs and have a 64 bit signed representation.
+	       Integer values have type <ref:name name="int"/>.
+	       There are <ref:nt name="int"/> literals.
+	       Tree nodes with type <ref:name name="xdom:int"/> hold integer values.
+	    </list:item>
+	    <list:item>
+	       &xact; floats are based on Java doubles and have a 64 bit representation.
+	       Float values have type <ref:name name="float"/>.
+	       There are <ref:nt name="float"/> literals.
+	       Tree nodes with type <ref:name name="xdom:float"/> hold float values.
+	    </list:item>
+	 </list:unordered>
+      </section:numbered>
+      <section:numbered name="Composite Types">
+	 <p>
+	    The major &xact; composite data structure is <ref:name name="xdom"/> trees.
+	    In addition to trees it can be used to represent directed graphs,
+	    records and arrays.
+	    The first element of an array will have index <@icode{1}/> (unlike Java where the first
+	    element has index <@icode{0}/>).
+	    Arrays have a flexible size so elements can be inserted and deleted.
+	    Records are also flexible with the ability to add and delete named elements.
+	 </p>
+	 <p>
+	    At least within main memory, xdom trees are really more general than just
+	    trees and can have sharing and cycles enabling xdoms to represent arbitrary directed graphs.
+	    The <ref:name name="Unparse"/> function in the simple case replicates for sharing and goes into
+	    an infinite loop when cycles are present.
+	    This is a special option to <ref:name name="Unparse"/> that can preserve sharing and cycles.
+	 </p>
+	 <p>
+	    The most complex of the <ref:name name="xdom"/> types is <ref:name name="xdom:element"/> that
+	    represents xml elements and &xact; commands.
+	    An element has properties (such as its tag), attributes and a body.
+	    A set of additional views are present for working with these various kinds of information.
+	 </p>
+	 <list:unordered>
+	    <list:item>
+	       Dot qualification on type <ref:name name="xdom:element"/> is used to get and set properties.
+	    </list:item>
+	    <list:item>
+	       Array subscripting on view <ref:name name="attr"/> is used to get and set the ith attribute.
+	    </list:item>
+	    <list:item>
+	       Array subscripting on view <ref:name name="body"/> is used to get the ith body
+	       subcomponent.
+	    </list:item>
+	    <list:item>
+	       Dot qualification on view <ref:name name="rec"/> is used to get and set named attributes.
+	    </list:item>
+	    <list:item>
+	       Array subscripting on view <ref:name name="array"/> is used to get and set positional attributes.
+	    </list:item>
+	    <list:item>
+	       Dot qualification on view <ref:name name="bodyrec"/> is used to get body elements with the specified tag.
+	    </list:item>
+	 </list:unordered>
+	 <p>
+	    There are also several views that can be used to construct <ref:name name="xdom:element"/> values.
+	 </p>
+	 <list:unordered>
+	    <list:item>
+	       The <ref:name name="rec"/> view can be used to construct an element with a named set of attributes.
+	    </list:item>
+	    <list:item>
+	       The <ref:name name="array"/> view can be used to construct an element with a specified set of
+	       positional attributes.
+	    </list:item>
+	    <list:item>
+	       The <ref:name name="list"/> view can be used to construct an element with a list of specified
+	       body elements.
+	    </list:item>
+	 </list:unordered>
+	 <p>
+	    The <ref:name name="xdom:element"/> constructor normally takes a <ref:name name="rec"/> of
+	    attribute values and a <ref:name name="list"/> of body elements to build a new element
+	    with both attributes and body elements.
+	 </p>
+      </section:numbered>
+   </section:numbered>
+   <section:numbered name="Functions">
+      <section:numbered name="Basic Functions">
+	 <p>
+	    Unlike Java, where functions exist only as methods of classes, &xact; functions
+	    are full first-class abstractions.
+	    Functions are declared with the <ref:tag name="x:func"/> command.
+	    Function values can be assigned to variables and passed
+	    as parameters.
+	 </p>
+	 <p>
+	    Function parameters are passed by assigning the actual parameter value to the formal
+	    parameter object.
+	    Formal parameters are constant, so no assignment can be made to a formal
+	    parameter within the body of a function.
+	 </p>
+	 <p>
+	    Since &xact; is dynamically typed, a function parameter can be passed a value
+	    of any type. This makes &xact; functions naturally polymorphic.
+	 </p>
+	 <p>
+	    Unlike Java, in &xact; there is no return command.
+	    The result of a function is the value that results
+	    from executing its body.
+	 </p>
+	 <p>
+	    Since &xact; uses a stack-based execution model,
+	    a function value is no longer valid after the scope instance in which
+	    its declaration was executed has exited.
+	    Attempting to call a function at this time results in an
+	    execution error.
+	 </p>
+      </section:numbered>
+      <section:numbered name="Keyword and Variable Parameters">
+	 <p>
+	    In Java, there can be multiple different versions of a single
+	    function which differ in the number and/or types of parameters.
+	    In &xact; there can be only a single version of a function,
+	    but that single version can be set up to handle a
+	    wide range of parameters.
+	    This mechanism also supports optional keyword parameters
+	    and variable length parameter lists.
+	 </p>
+	 <p>
+	    To write a function that has flexible parameter handling	    
+	    the function will have a single formal parameter prefixed with the <ref:preop name="%"/>
+	    prefix operator.
+	 </p>
+	 <p>
+	    When calling a function that has a single <ref:preop name="%"/> formal parameter,
+	    the actual parameters are each evaluated and then combined into a single <ref:name name="xdom:element"/> object.
+	    The attributes of this object then contain the actual parameter values.
+	    Within the function body the <ref:name name="rec"/> view can be used to get named parameters
+	    and the <ref:name name="array"/> view can be used to get positional parameters.
+	 </p>
+	 <p>
+	    There is also a special <ref:preop name="%"/> form for actual parameters.
+	    If a function call contains a single actual parameter with is the <ref:preop name="%"/> prefix
+	    operator applied to a <ref:name name="xdom:element"/> value then the actual parameter list
+	    is created by expanding the attributes of that xdom element.
+	 </p>
+      </section:numbered>
+      <section:numbered name="Function Name Parameters">
+	 <p>
+	    Functions can have two parameter lists: a <ref:nt name="name"/> parameter list (enclosed in <@verb{"[]"}/>) and
+	    a regular parameter list (enclosed in <@verb{"()"}/>).
+	    The name parameter list is used in a number of different ways.
+	 </p>
+	 <list:unordered>
+	    <list:item>
+	       It can be used as a generic parameter list.
+	       For example a sort function could take a name parameter that is the type
+	       of elements to be sorted and regular parameter that is an array of
+	       elements of that type.
+	       (Note that since &xact; has dynamic typing, this extra type parameter is not
+	       really required since the element type could be found just by looking at the regular
+	       parameter. Even so, there are cases where making the type an explicit parameter
+	       helps to write clearer code.)
+	    </list:item>
+	    <list:item>
+	       Another kind of generic parameter list can be seen in the
+	       <@icode{Units}/> type.
+	    </list:item>
+	    <list:item>
+	       Since &xact; has a stack-based execution model, there are no function closures
+	       that exists after the scope instance where the function declaration was executed
+	       has exited.
+	       Since name parameters tightly bound as part of the function name, they can
+	       serve as kind of closure mechanism (see <ref:example name="curry"/>).
+	    </list:item>
+	    <list:item>
+	       <ref:numbered name="Iterators"/> use the regular parameter list to pass
+	       in the loop body function, so other parameters to the iterator must
+	       be passed as name parameters.
+	    </list:item>
+	 </list:unordered>
+      </section:numbered>
+      <section:numbered name="LHS and RHS">
+	 <p>
+	    In Java classes it is common to have pairs of functions that are
+	    used as getters and setters for some property of instances of the class.
+	    &xact; has a mechanism that allows these functions to share a single
+	    name and to use the same invocation syntax.
+	 </p>
+	 <p>
+	    When a function call appears
+	    on the left-hand side of an assignment, then the <@verb{"lhs"}/> version of that
+	    function is called passing the value of the right-hand side of the assignment as an extra parameter.
+	    In other cases the <@verb{"rhs"}/> version of the function is called.
+	    The <ref:tag name="x:func"/> command allows options <@verb{"lhs"}/> and <@verb{"rhs"}/>.
+	 </p>
+	 <p>
+	    The full richness of function call syntax also applies to lhs/rhs function pairs.
+	    This allows lhs dot qualification to be defined.
+	    If the rhs function has no parameters and no <@verb{"()"}/> formal parameter
+	    list then a "virtual" variable is defined that can be referenced
+	    from both lhs and rhs contexts.
+	 </p>
+      </section:numbered>
+      <section:numbered name="Iterators">
+	 <p>
+	    In Java iterators are handled with iterator classes.
+	    &xact; instead uses iterator functions declared with a <ref:tag name="x:func"/> command
+	    that includes an <@verb{"iterator"}/> option.
+	    Iterators are invoked by a <ref:tag name="x:for"/> command.
+	 </p>
+	 <p>
+	    When <ref:tag name="x:for"/> command is executed, a new
+	    body function object is created and passed as the single formal
+	    parameter to the iterator function
+	    The body function has formal parameters that correspond to the iteration variables
+	    specified in the <ref:tag name="x:for"/> command and has a body that is the same as
+	    the body of the <ref:tag name="x:for"/> command.
+	    The <ref:example name="iterators"/> example shows a number of examples of iterators.
+	 </p>
+	 <p>
+	    There are a number of predefined iterators as well as libraries of iterators.
+	 </p>
+	 <p>
+	    The &xact; iterator functions can be recursive. For example, its easy to
+	    write an iterator that walks a tree (something that would be difficult using Java iterators).
+	 </p>
+	 <p>
+	    Iterators can have arbitrary name parameters.
+	    It is easy to compose iterators by having an iterator that takes
+	    other iterators as name parameters.
+	 </p>
+	 <p>
+	    In Java it is easy to iterate over two data structures in parallel, looking at the first
+	    elements of each together, then the second elements, and so forth.
+	    The &xact; <ref:name name="Parallel"/> iterator provides this feature.
+	    Internally it uses two threads, one for each of the two underlying iterators.
+	 </p>
+      </section:numbered>
+   </section:numbered>
+   <section:numbered name="Types and Views">
+      <section:numbered name="Types">
+	 <p>
+	    &xact; types are declared by a <ref:tag name="x:type"/> command
+	    followed by a <ref:tag name="x:self"/> command.
+	    The body of the <ref:tag name="x:type"/> command contains
+	    the declaration of variables and functions associated with the type
+	    (in Java these would be declared as <@verb{"static"}/>).
+	    The <ref:tag name="x:self"/> command contains the declaration of
+	    variables and and functions associated with objects of the type.
+	    For name binding purposes the <ref:tag name="x:self"/> tag is logically
+	    nested within the <ref:tag name="x:type"/> tag and can refer to names declared there.
+	 </p>
+	 <p>
+	    An object of a type is created with a constructor.
+	    A constructor consists of a type followed by a set of parameters
+	    enclosed in <@verb{"()"}/> (note that unlike Java no <@verb{"new"}/> keyword is needed).
+	    This causes an instance of the <ref:tag name="x:self"/> scope to
+	    be created and all commands within it executed.
+	    If the special function with name <@icode{sys:Init}/> is declared within
+	    the <@ref:tag name="x:self"/> command, it is then called passing it the
+	    parameters specified in the constructor.
+	    This instance lives until the object is garbage collected.
+	 </p>
+	 <p>
+	    Variables and functions within the <ref:tag name="x:type"/> command
+	    that have option <@verb{"visible"}/> can be referenced by
+	    dot qualification of the type.
+	 </p>
+	 <p>
+	    Variables and functions within the <ref:tag name="x:self"/> command
+	    that have option <@verb{"visible"}/> can be referenced by
+	    dot qualification of an object with the type.
+	    Within the <@ref:tag name="x:self"/> command the name <@icode{self}/>
+	    is automatically declared and has the object as its value
+	    (<@icode{self}/> in &xact; works just like <@verb{"this"}/> in Java).
+	 </p>
+      </section:numbered>
+      <section:numbered name="Views">
+	 <p>
+	    Declaring a view is similar to declaring a type except
+	    the <ref:tag name="x:view"/> command is used instead of the <ref:tag name="x:type"/> command.
+	 </p>
+	 <p>
+	    The <ref:tag name="x:view"/> command should contain a special <@icode{sys:Is}/> function that takes
+	    an object and returns <@icode{true}/> if that object is within the view.
+	 </p>
+	 <p>
+	    The <ref:tag name="x:self"/> command for a view normally contains only functions not variables
+	    since the view itself in not instantiated to create an object.
+	    Instead an existing object is used which is referenced with <@icode{self}/>.
+	 </p>
+	 <p>
+	    Views can have constructors. The special <@icode{sys:Make}/> function is called which must return
+	    an object that is within the view.
+	 </p>
+	 <p>
+	    Functions within the <ref:tag name="x:self"/> command of a view that have option <@verb{"visible"}/>
+	    can be referenced by dot qualification of an object that is within the view where the
+	    name of the view is included following the <@verb{"#"}/> in <ref:nt name="qualified"/>.
+	    Various other forms of sugared function calls also include the view following a <@verb{"#"}/>.
+	    For example the the <@verb{"==#fold"}/> infix operator can be used to invoke
+	    the equality function for view <ref:name name="fold"/>.
+	 </p>
+      </section:numbered>
+      <section:numbered name="Type Name Parameters">
+	 <p>
+	    Types and views can be parameterized with name parameters.
+	 </p>
+	 <p>
+	    In the simple case, parameters can be the type of subelements
+	    such as can be seen in the <ref:example name="stack"/> example.
+	 </p>
+	 <p>
+	    Parameter values are not restricted to types.
+	    A more complex parameterization can be seen in the <ref:example name="unit"/> example.
+	 </p>
+      </section:numbered>
+      <section:numbered name="Special Operations">
+	 <p>
+	    A number of special operations can be defined on types and views.
+	    Most of these operations have names that start with <@verb{"sys:"}/>.
+	    Earlier sections discusses <@icode{sys:Init}/> (for type constructors),
+	    <@icode{sys:Make}/> (for view constructors) and <@icode{sys:In}/> for
+	    view membership testing.
+	 </p>
+	 <p>
+	    It is possible to define the meaning of many prefix and infix operations
+	    for each type and view. The operator syntax is desuggared to calls
+	    on type or view functions.
+	    For example, the expression <@icode{-x}/> is first changed to <@icode{Minus(x)}/>
+	    which calls <@icode{Type[x].sys:Minus(x)}/>.
+	    This same approach also works for infix operations when both operands have the same
+	    type.
+	 </p>
+	 <p>
+	    To support infix operations with operands of different types, an additional special function
+	    is used. For example when adding an <ref:name name="int"/> value to a <ref:name name="float"/> value
+	    then the <@icode{float.sys:Add}/> function is used. Here <@icode{float}/> is said to
+	    cover <@icode{int}/>. This is specified by providing a function <@icode{float.sys:Cover(t)}/> that
+	    returns <ref:name name="true"/> when <@icode{t}/> has value <@icode{int}/>.
+	 </p>
+	 <p>
+	    Subscripting can also be defined.
+	    The expression <@icode{x(3)}/> results in a call to <@icode{Type[x].sys:Subscript(3)}/>.
+	 </p>
+	 <p>
+	    Dot qualification can also be defined.
+	    The expression <@icode{x.foo}/> is first changed to <@icode{Dot(x,"foo")}/> which
+	    calls <@icode{x.sys:Dot["foo"]}/>. The <@icode{sys:Dot}/> function can appear inside
+	    the <ref:tag name="x:type"/>, <ref:tag name="x:view"/>, and <ref:tag name="x:self"/> commands.
+	    Since dot qualification is also used to select variables and functions, in the example here,
+	    there must not be any visible type or variable with name <@icode{foo}/>.
+	    
+	 </p>
+	 <p>
+	    Finally it is useful to define a <@icode{toString}/> function within the body of 
+	    the <ref:tag name="x:self"/> command to provide a string form of a value.
+	 </p>
+	 <p>
+	 </p>
+      </section:numbered>
+   </section:numbered>
+   <section:numbered name="XML">
+      <section:numbered name="Parsing XML">
+	 <p>
+	    &xact; has a rich set of facilities for parsing (<ref:name name="Parse"/>),
+	    processing (<ref:name name="xdom"/>), and unparsing (<ref:name name="Unparse"/>) XML.
+	 </p>
+	 <p>
+	    Since &xact; allows multiple XML elements at the top level, such XML files can be easily be used
+	    for log files. The &xact; interpreter logs use this approach.
+	 </p>
+	 <p>
+	    XML reserves several special character including <verb>&amp;</verb>, <verb>&lt;</verb>, and <verb>&gt;</verb>.
+	    The <ref:name name="quoteXML"/> function takes a string and quotes these special characters.
+	    When &xact; is producing XHTML output for display in a web browser,
+	    this quoting allows arbitrary strings to displayed. This is particularly useful when
+	    outputting debugging output.
+	 </p>
+      </section:numbered>
+      <section:numbered name="Rendering XML">
+	 <p>
+	    A common use of &xact; is as an engine to produce web pages for
+	    viewing via a web browser.
+	    The &xact; interpreter can be run as a CGI under an HTTP server (such as Apache)
+	    or as a servlet under a servlet engine (such as Tomcat).
+	 </p>
+	 <p>
+	    In &xact; by default, execution of XML (including XHTML) results in
+	    a string of that XML (this assumes there are no tags with namespace <@verb{"x:"}/>).
+	    This is because &xact; syntax is a superset of XML syntax and because the
+	    default execution semantics for commands (XML elements) (other than those with
+	    namespace <@verb{"x:"}/>) is to render that command.
+	 </p>
+	 <p>
+	    The XML can be made more dynamic by making parts of it derive from the values
+	    of &xact; variables.
+	    The XML can also be made conditional or repeated by adding <@verb{"x:"}/> commands.
+	    The <ref:tag name="x:tag"/> specifies an <ref:name name="xdom:element"/> tree node
+	    and renders that node. This provides a powerful way to dynamically generate
+	    elements to be rendered.
+	 </p>
+	 <p>
+	    Named XML entities receive special treatment in &xact;.
+	    In particular each named entity is assumed to be a reference to a string
+	    constant or variable with that name. Rendering replaces the entity with
+	    the string value of the referenced name.
+	    Many common entity names are predefined in &xact;
+	    including <ref:name name="amp"/> (ampersand), <ref:name name="lt"/> (less
+	    than), <ref:name name="gt"/> (greater
+	    than), <ref:name name="nbsp"/> (non-breaking
+	    space), <ref:name name="apos"/> (single
+	    quote apostrophe), <ref:name name="quot"/> (double
+	    quote), <ref:name name="tab"/> (tab),
+	    and <ref:name name="eol"/> (end of line, the single LF character).
+	    It is easy to define new constants or libraries of constants for additional
+	    entity values.
+	 </p>
+	 <p>
+	    When &xact; is used for generating XHTML pages, there are two interpreter options
+	    of special interest.
+	    The <ref:option name="mime"/> option when non-null specifies the content of a HTTP mime line
+	    that should be output before the XHTML output of the current script.
+	    A common value for the option would be <@verb{'mime="text/html"'}/>.
+            The <ref:option name="charSet"/> option specifies the output character set
+            (with default Latin-1 <@verb{"ISO-8859-1"}/>).
+	 </p>
+      </section:numbered>
+      <section:numbered name="XACT URLs">
+	 <p>
+	    When building a web site, a way is needed to provide links from
+	    a page generated by one script to another script.
+	    &xact; provides a rich set of facilities for this.
+	 </p>
+	 <p>
+	    &xact; scripts are stored in a scripts directory tree.
+	    The <ref:option name="scriptDir"/> option gives the path to this directory.
+	    &xact; scripts can be placed in this directory or in subdirectories.
+	    Scripts are named with a script path. For a script <@verb{"foo.xact"}/>
+	    directly in the script directory, the script path is just <@verb{"foo"}/>.
+	    For a script <@verb{"bar.xact"}/> in the <@verb{"xxx"}/> subdirectory
+	    the script path is <@verb{"xxx:bar"}/>.
+	 </p>
+	 <p>
+	    The <ref:name name="ABS"/> view is used to specify absolute script
+	    paths. For example <@icode{ABS.xxx:bar}/> refers to the <@verb{"bar.xact"}/>
+	    script in the <@verb{"xxx"}/> subdirectory.
+	 </p>
+	 <p>
+	    The <ref:name name="REL"/> view is used to specify relative script paths.
+	    For example <@icode{REL.zap}/> refers to the script <@verb{"zap.xact"}/> in
+	    the same directory as the invoking script.
+	 </p>
+	 <p>
+	    The <ref:name name="A"/> function generates an html <@verb{"a"}/> element.
+	    For example <@icode{@x:tag A[REL.foo](){ "to foo script" }}/>.
+	    The <@verb{"foo.xact"}/> script must have a visible function with name <@icode{foo}/>.
+	 </p>
+	 <p>
+	    Parameters of type <ref:name name="string"/> can be passed from one script to another.
+	    For example <@icode{@x:tag A[REL.foo1]("test",false){ "foo1 with parameters" }}/>.
+	    The <@verb{"foo1.xact"}/> script must have a visible function with name <@icode{foo1}/>
+	    that takes two <ref:name name="string"/> parameters.
+	 </p>
+	 <p>
+	    HTML form tags can be produced by calling function <ref:name name="FORM"/> instead
+	    of <ref:name name="A"/>.
+	    Form values are available in the target script via the special predefined <ref:name name="passed"/>
+	    value.
+	 </p>
+	 <p>
+	    The <ref:name name="A"/> and <ref:name name="FORM"/>
+	    internally use the <ref:name name="URLUnparseQuery"/> function
+	    to produce the URL.
+	    There is also a build-in <ref:name name="URLParseQuery"/> that performs
+	    the inverse operation.
+	 </p>
+      </section:numbered>
+      <section:numbered name="Graphs">
+         <p>
+	    The <@icode{xdom}/> data structure is usually used to represent tree,
+	    but it can also be used to represent directed graphs. Graphs can include sharing
+	    (where there is more than one path to a single node) and cycles (where a node
+	    is its own descendent).
+	 </p>
+	 <p>
+	    Graphs in main memory present no special problems; but, when converted to an
+	    external form special actions are needed.
+	    First when converting from internal form to external form using
+	    the <@icode{Unparse}/> function the <@icode{graph=true}/> option
+	    must be used. If this option is not used the unparser will not terminate.
+	    Note that when this option is used mark1 bits in graph nodes are used
+	    to detect sharing and cycles and the unparser is not thread safe.
+	 </p>
+	 <p>
+	    When there is more than one path to a node that node is labeled by adding
+	    on output an attribute of the form <@icode{graph:def="L1"}/>. The second and later paths
+	    on output will contains a special reference node with an attribute of the form
+	    <@icode{graph:ref="L1"}/>. By making these changes the output will be a tree
+            (that represents the graph).
+	 </p>
+	 <p>
+	    When a graph external form is parsed using the <@icode{Parse}/> function the result
+	    will be a the tree with the special <@icode{graph}/> attributes.
+	    These attributes can be removed and sharing and cycles restored by calling
+	    the <@icode{graphExpand}/> function.
+	 </p>
+	 <p>
+	    The <ref:example name="graph"/> example shows how this all works.
+	 </p>
+      </section:numbered>
+   </section:numbered>
+   <section:numbered name="Incremental Execution">
+      <section:numbered name="Incremental Parse">
+	 <p>
+	    &xact; provides a number of incremental execution features that allow
+	    processing of data that is too large to all fit in main memory at the same time.
+	    Incremental parsing in one of these features.
+	 </p>
+	 <p>
+	    There are two major kinds of XML parsers, those that build an entire DOM tree into main
+	    memory and those that don't build a tree but instead generate events (SAX).
+	    The &xact; <ref:name name="Parse"/> function not only provides both these modes
+	    but also provides a way to mix the two techniques.
+	 </p>
+	 <p>
+	    In the simple case the <ref:name name="Parse"/> function just builds
+	    an <ref:name name="xdom"/> tree.
+	 </p>
+	 <p>
+	    For incremental processing, the <ref:name name="Parse"/> is passed
+	    an instance of a user-defined type that contains <ref:tag name="x:self"/> functions
+	    that serve as event handlers.
+	    The <@verb{"endAttr"}/> function is called after each attribute tree is constructed
+	    and is passed that tree.
+	    The <@verb{"endChild"}/> function is called after each child of a command is constructed
+	    and is passed that tree.
+	    In each case the function can then decide whether to keep, discard, or replace that tree.
+	    By discarding subtrees as they are processed, parsing becomes incremental.
+	 </p>
+	 <p>
+	    See the <ref:example name="IncrParse"/> example.
+	 </p>
+      </section:numbered>
+      <section:numbered name="Streaming">
+	 <p>
+	    Streaming is a special &xact; optimization that provides incremental execution.
+	 </p>
+	 <p>
+	    For example consider a call to <ref:name name="file"/> <@verb{"read"}/> function whose result
+	    is passed to <ref:name name="file"/> <@verb{"write"}/> function.
+	    This would look like <@icode{outname.write#file(inname.read#file())}/>.
+	    The entire contents of the file is returned by <@verb{"read"}/> and then passed to <@verb{"write"}/>.
+	    This can be a problem for really large files.
+	    Streaming causes the reads and writes to be automatically broken into a number of smaller chunks, so
+	    main memory use is bounded by chunk size not overall file size.
+	 </p>
+	 <p>
+	    The <@verb{"read"}/> operation is said to be a source
+	    and the <@verb{"write"}/> operation is said to be sink.
+	    A list of sources and sinks is given in later subsections.
+	 </p>
+	 <p>
+	    The streaming optimization is under control of the <ref:option name="optimize"/> &xact;
+	    interpreter option.
+	 </p>
+	 <p>
+	    Assignment of a source to a variable or constant or passing it as an actual parameter
+	    prevents streaming (since the named target can be referenced in more than one place).
+	    However, if the result of a function body is a source then the result of calling the function
+	    is also a source.
+	 </p>
+	 <p>
+	    Streaming can impact debugging since previously streamed chunks are not visible.
+	    It is often useful to turn off <ref:option name="optimize"/> when debugging.
+	    On the other hand, when debugging and looking at execution output, streaming causes
+	    that output to appear sooner.
+	 </p>
+      </section:numbered>
+      <section:numbered name="Stream Source">
+	 <p>
+	    The following are all stream sources.
+	 </p>
+	 <list:unordered>
+	    <list:item>
+	       The result of the <ref:name name="file"/> <@verb{"read"}/> function.
+	    </list:item>
+	    <list:item>
+	       The result of <ref:name name="stream"/> <@verb{"receive"}/> function.
+	    </list:item>
+	    <list:item>
+	       The result of the <ref:inop name="++"/> infix operation.
+	    </list:item>
+	    <list:item>
+	       The result of joins (see <ref:numbered name="Join Rules"/>).
+	       For example the result of
+	       <@code{@x:block{e1;e2}}/>
+	       will be a source that first
+	       does <@icode{e1}/> then does <@icode{e2}/>.
+	       If <@icode{e1}/> is a source then it is also recursively streamed.
+	       Same of <@icode{e2}/>.
+	       Joins from commands such as <@ref:tag name="x:if"/> and <@ref:tag name="x:while"/> are
+	       also streamed.
+	    </list:item>
+	 </list:unordered>
+      </section:numbered>
+      <section:numbered name="Stream Sink">
+	 <p>
+	    The following are all stream sinks.
+	 </p>
+	 <list:unordered>
+	    <list:item>
+	       The <ref:name name="file"/> <@verb{"write"}/> function. 
+	    </list:item>
+	    <list:item>
+	       The <ref:name name="stream"/> <@verb{"send"}/> function.
+	    </list:item>
+	    <list:item>
+	       The <ref:name name="Parse"/> function.
+	    </list:item>
+	    <list:item>
+	       The top level execution of an &xact; <ref:nt name="script"/> is a sink if the
+	       <ref:option name="streamTop"/> option is true.
+	    </list:item>
+	    <list:item>
+	       The <ref:name name="Chars"/> and <ref:name name="Lines"/> iterator functions.
+	    </list:item>
+	 </list:unordered>
+      </section:numbered>
+   </section:numbered>
+   <section:numbered name="Java Integration">
+      <section:numbered name="Reflection">
+	 <p>
+	    The &xact; interpreter is written in Java.
+	 </p>
+	 <p>
+	    &xact; uses Java reflection to permit &xact; scripts
+	    to call Java code.
+	 </p>
+	 <p>
+	    Java is statically typed, while &xact; is dynamically typed.
+	    To handle this each &xact; call to Java is mapped
+	    to the corresponding Java code each time the call is executed.
+	    So a single call may map to different Java code each time executed
+	    based on the type of the actual parameters.
+	 </p>
+	 <p>
+	    Java classes and objects are also legal &xact; values.
+	    Mappings are defined between Java primitive types and
+	    built-in &xact; types (see <ref:numbered name="Type Mapping"/>).
+	 </p>
+      </section:numbered>
+      <section:numbered name="Class References">
+	 <p>
+	    The special predefined name <ref:name name="Java"/> provides
+	    a way to reference Java classes for &xact; scripts.
+	    In particular dot qualifying <ref:name name="Java"/> with the
+	    the fully qualified name of a Java class produces a reference to that
+	    class. 
+	 </p>
+	 <p>
+	    For example, <@icode{Java.java.io.File}/> refers to the Java <@verb{"File"}/> class
+	    in package <@verb{"java.io"}/>.
+	 </p>
+      </section:numbered>
+      <section:numbered name="Calling Java">
+	 <p>
+	    A Java object can be created by calling a constructor for a Java class.
+	    Unlike Java, no <@verb{"new"}/> keyword is needed.
+	    For example <@icode{@x:const jfile := Java.java.io.File(fname)}/> creates a
+	    new <@verb{"File"}/> object;
+	 </p>
+	 <p>
+	    Object methods can be called in the usual way.
+	    For example, <@icode{jfile.delete()}/>.
+	 </p>
+	 <p>
+	    The <ref:example name="java"/> and <ref:example name="JavaProp"/>
+	    examples show examples of calling Java code.
+	 </p>
+      </section:numbered>
+      <section:numbered name="Type Mapping">
+	 <table:table>
+	    <table:titlerow>
+	       <table:item>XACT Type/View</table:item>
+	       <table:item>Java Class</table:item>
+	    </table:titlerow>
+	    <table:row>
+	       <table:item><@icode{null}/> (value)</table:item>
+	       <table:item><@verb{"null"}/> (value)</table:item>
+	    </table:row>
+	    <table:row>
+	       <table:item><@icode{boolean}/></table:item>
+	       <table:item><@verb{"Boolean"}/></table:item>
+	    </table:row>
+	    <table:row>
+	       <table:item><@icode{string}/></table:item>
+	       <table:item><@verb{"String"}/></table:item>
+	    </table:row>
+	    <table:row>
+	       <table:item><@icode{int}/></table:item>
+	       <table:item><@verb{"Integer"}/> or <@verb{"Long"}/></table:item>
+	    </table:row>
+	    <table:row>
+	       <table:item><@icode{float}/></table:item>
+	       <table:item><@verb{"Double"}/></table:item>
+	    </table:row>
+	    <table:row>
+	       <table:item>java object</table:item>
+	       <table:item><@verb{"Object"}/></table:item>
+	    </table:row>
+	 </table:table>
+      </section:numbered>
+   </section:numbered>
+   <section:numbered name="Multithreading">
+      <section:numbered name="Multiple Threads">
+	 <p>
+	    &xact; supports multithreading.
+	    The implementation uses Java threads.
+	    A "cactus-stack" model is used where each thread
+	    forks off a new branch of the &xact; execution stack.
+	 </p>
+	 <p>
+	    Threads are created using the <ref:tag name="x:fork"/> command.
+	    One or more <ref:tag name="x:thread"/> commands can appear directly
+	    within the body of the <ref:tag name="x:fork"/> command.
+            Execution of a <ref:tag name="x:thread"/> command starts a new thread
+	    that executes the body of that command.
+	    Meanwhile execution of the body of the <ref:tag name="x:fork"/> command continues.
+	 </p>
+	 <p>
+	    When the execution of the body of the <ref:tag name="x:fork"/> command
+	    is complete, it waits until execution of all the threads created within it
+	    are complete.
+	 </p>
+	 <p>
+	    Special threads are also sometimes created by the
+	    <@icode{Parse}/>, <@icode{Lines}/>, and <@icode{Chars}/> functions.
+	 </p>
+      </section:numbered>
+      <section:numbered name="High-Level Synchronization">
+	 <p>
+	   The <ref:name name="queue"/> and <ref:name name="stream"/> types provides the main high-level
+	   ways to synchronize multiple threads.
+	 </p>
+	 <p>
+	    For a <ref:name name="queue"/> object, one thread
+	    makes multiple calls to the <@icode{send}/> function and
+	    another thread makes multiple calls to the <@icode{receive}/> function.
+	    Each call sends or receives a single value.
+	 </p>
+	 <p>
+	    For a <ref:name name="stream"/> object one thread makes multiple calls
+	    to the <@icode{send}/> function followed by a single call to the <@icode{close}/>
+	    function and another thread makes a single call to the <@icode{receive}/> function.
+	    Each send call sends a string and the receive call retrieves the single
+	    concatenated result of all the sends.
+	 </p>
+      </section:numbered>
+      <section:numbered name="Low-Level Synchronization">
+	 <p>
+	    The <ref:name name="lock"/> type provides low-level thread synchronization
+	    and is based on Java monitors.
+	 </p>
+	 <p>
+	    The <ref:tag name="x:exclude"/> command specifies a <ref:name name="lock"/> object
+	    and provides mutual exclusion based on that object.
+	    This is implemented as a Java <@verb{"synchronized"}/> block.
+	 </p>
+	 <p>
+	    The <ref:name name="lock"/> methods <@icode{wait}/>, <@icode{notify}/>,
+	    and <@icode{notifyAll}/> are implemented using the corresponding
+	    Java <@verb{"Object"}/> methods.
+	 </p>
+	 <p>
+	    The <@icode{wait}/> function can take one parameter (a time in milliseconds)
+	    or two parameters (a time in milliseconds and a time in nanoseconds) and
+	    will time-out after that interval is passed.
+	    If no parameters are specified, it will wait forever for a notify.
+	 </p>
+	 <p>
+	    The <ref:example name="queue"/> example shows how <ref:name name="lock"/>s
+	    can be used to implement the <@icode{queue1}/> type which is equivalent
+	    to the build-in <ref:name name="queue"/> type.
+	 </p>
+      </section:numbered>
+   </section:numbered>
+   <section:numbered name="New Languages">
+      <section:numbered name="Namespaces">
+	 <p>
+	    &xact; provides the ability to define new languages and to write scripts
+	    that contain a mix of those languages. The namespace part of the tag
+	    of each command specifies which language to use.
+	 </p>
+	 <p>
+	    By default &xact; has two languages.
+	    All commands with the <@verb{"x:"}/> namespace are
+	    handled by the primary &xact; language interpreter.
+	    All other commands are handled by the rendering interpreter.
+	 </p>
+	 <p>
+	    New languages are defined in special types that tell how
+	    that language is to be interpreted.
+	 </p>
+	 <p>
+	    The <ref:tag name="x:lang"/> command can be used to activate
+	    a language definition by specifying the language definition to use.
+	    All following commands within the same scope will be interpreted by
+	    that new language.
+	 </p>
+	 <p>
+	    A language can take over the processing of all commands,
+	    but more frequently is set up so that multiple languages can be intermixed.
+	 </p>
+      </section:numbered>
+      <section:numbered name="Passes">
+	 <p>
+	    &xact; interpretation consists of four passes.
+	    The &xact; interpreter calls these four passes in order.
+	 </p>
+	 <list:unordered>
+	    <list:item>
+	       The first pass is parsing.
+	       Parsing can be explicitly invoked by calling the <ref:name name="Parse"/>.
+	       Parsing is the same for all languages.
+	       These is no way to extend &xact; syntax.
+	    </list:item>
+	    <list:item>
+	       The second pass is processing scopes and name definitions.
+	       It also handles <ref:tag name="x:use"/> commands and
+	       handles <@verb{"visible"}/> and <@verb{"hidden"}/> options.
+	    </list:item>
+	       The third pass is processing name uses.
+	       The second and third passes can be invoked explicitly by calling
+	       the <ref:name name="Bind"/> function.
+	       Since name binding is language specific, a language object can be passed to <ref:name name="Bind"/>.
+	    <list:item>
+	       The fourth pass is execution.
+	       Execution can be explicitly invoked by calling the <ref:name name="Exec"/> function.
+	       Since execution is language specific, a language object can be passed to <ref:name name="Exec"/>.
+	    </list:item>
+	 </list:unordered>
+      </section:numbered>
+      <section:numbered name="Language Definition">
+	 <p>
+	    A new language is defined by writing a new <ref:tag name="x:type"/> that
+	    defines the language.
+	    This language type includes a <@icode{Walk}/> function
+	    that can perform the bind1, bind2, and exec passes.
+	    The pass to be performed is a parameter to <@icode{Walk}/>.
+	    The language type can optionally include self data
+	    that defines language specific interpretation state.
+	 </p>
+	 <p>
+	    Before a language type can be used, a language object
+	    of that type must be created. The constructor
+	    for many language types take a single parameter
+	    that is the underlying language object.
+	    When such a language object encounters element with a tag that
+	    it does not know how to process that element is passed
+	    on to the underlying language object.
+	 </p>
+	 <p>
+	    There are three standard language types:
+	    <@icode{langtype:xact}/> defines &xact; commands
+	    (those starting with a <@verb{"x:"}/>),
+	    <@icode{langtype:render}/> handles command rendering,
+	    and <@icode{langtype:error}/> produces an error on every command.
+	 </p>
+	 <p>
+	    The default language object for the &xact; interpreter
+	    is <@icode{langtype:xact(langtype:render())}/>.
+	    The language type can be changed using
+	    the <ref:tag name="x:lang"/> command.
+	    The current language object is given by
+	    <@icode{lang:current}/>.
+	 </p>
+	 <p>
+	    Definitions that are useful in writing and using language types can
+	    be found in the <@verb{"library:lang"}/> library.
+	 </p>
+	 <p>
+	    If a language is being used in different threads,
+	    each will have its own language object.
+	    When a new thread is created the <@icode{sys:Copy}/> of
+	    the language object of the parent thread is called
+	    to create a language object copy for the child thread.
+	 </p>
+	 <p>
+	    Every language type will have the following form.
+	    Note that <@verb{"[]"}/> type parameters can optionally
+	    also be present on language types.
+	    For a real example see the <ref:example name="DocLang"/> example.
+	 </p>
+	 <desc:type name="myLangType">
+	    <desc:func name="sys:Init" self="true">
+	       <desc:param name="under" type="thread">
+		  the underlying language object.
+		  This parameter may be omitted on language types
+		  with no underlying language object such as
+		  <@icode{langtype:render}/> and
+		  <@icode{langtype:error}/>.
+	       </desc:param>
+	       <desc:result type="void">
+		  Initializes the language object.
+	       </desc:result>
+	    </desc:func>
+	    <desc:func name="sys:Copy" self="true">
+	       <desc:result type="myLangType">
+		  Returns a copy of the language object for use in another thread.
+	       </desc:result>
+	    </desc:func>
+	    <desc:func name="Walk" self="true">
+	       <desc:param name="pass" type='enum["bind1","bind2","exec"]'>
+		  the pass being performed.
+	       </desc:param>
+	       <desc:param name="space" type="string">
+		  the name space of the command to be processed.
+		  This is usually the same as <@icode{elem.space}/>,
+		  but may be different during renaming.
+	       </desc:param>
+	       <desc:param name="base" type="string">
+		  the name base of the command to be processed.
+		  This is usually the same as <@icode{elem.base}/>,
+		  but may be different during renaming.
+	       </desc:param>
+	       <desc:param name="elem" type="xdom">
+		  the tree node command to be processed.
+		  Note that the tag of this node is ignored;
+		  <@icode{space}/> and <@icode{base}/> parameters
+		  are used instead.
+	       </desc:param>
+	       <desc:param name="lang">
+		  The language object to be used for child elements.
+		  This permits two or more languages to be freely mixed.
+		  For example consider language object <@icode{l1(l2())}/>
+		  where <@icode{l1}/> handles <@verb{"a:"}/> tags
+		  and <@icode{l2}/> handles <@verb{"b:"}/> tags.
+		  When processing a <@verb{"b:"}/> element
+		  <@icode{l1}/> will pass the element on to the
+		  underlying <@icode{l2}/>
+		  where the value of <@icode{lang}/>
+		  will be <@icode{l1(l2())}/>. This permits
+		  both <@verb{"a:"}/> and <@verb{"b:"}/> elements
+		  to appear as children as a <@verb{"b:"}/> element.
+	       </desc:param>
+	       <desc:param name="info" type="rec">
+		  Useful interpreter information
+		  that is passed in.
+		  In the bind1 pass, <@icode{info.scope#rec}/> will
+		  be the enclosing scope with type <@icode{xdom:element}/>.
+	       </desc:param>
+	       <desc:result>
+		  The result will be the pass result.
+		  For bind1 and bind2 this will be <@icode{null}/>.
+		  For exec this will be the result of execution.
+	       </desc:result>
+	    </desc:func>
+	 </desc:type>
+      </section:numbered>
+   </section:numbered>
+</section:numbered>

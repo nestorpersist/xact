@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>HasDot</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > F <a href="nav2_4_6.html" target="nav2" class="lettered1">Functions</a> >  <font face="courier"><font color="blue">HasDot</font></font>
+</b>
+<br/> 
+
+<a href="content_181.html" target="contents">prev</a>
+ 
+<a href="content_183.html" target="contents">next</a>
+<br/>
+
+
+<p>
+<font size="+1">
+<b>
+Description
+</b>
+</font>
+</p>
+<p>
+The <font face="courier"><font face="courier"><a href="content_182.html" class="name1" target="contents">HasDot</a></font></font> function serves as a testable precondition,for the <font face="courier"><font face="courier"><a href="content_175.html" class="name1" target="contents">Dot</a></font></font> function.
+</p>
+<p>
+<font size="+1">
+<b>
+Function HasDot
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> HasDot(<font face="courier"><font color="#006699">base</font></font>,<wbr><font face="courier"><font color="#006699">n</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>,<wbr><font face="courier"><font color="#006699">v</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_163.html" class="name1" target="contents">View</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> HasDot[<font face="courier"><a href="content_230.html" class="preop1" target="contents">%</a></font><font face="courier"><font color="#006699">L</font></font>](<font face="courier"><font color="#006699">base</font></font>,<wbr><font face="courier"><font color="#006699">n</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>,<wbr><font face="courier"><font color="#006699">v</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_163.html" class="name1" target="contents">View</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><a href="content_230.html" class="preop1" target="contents">%</a></font><font face="courier"><font color="#006699">L</font></font></font>
+</td>
+<td>
+name parameters
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">base</font></font></font>
+</td>
+<td>
+value to be qualified
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">n</font></font></font>
+</td>
+<td>
+component name
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">v</font></font></font>
+</td>
+<td>
+(optional) type or view to use
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+If a similar call to <font face="courier"><font face="courier"><a href="content_175.html" class="name1" target="contents">Dot</a></font></font> would succeed thenthe result of <font face="courier"><font face="courier"><a href="content_182.html" class="name1" target="contents">HasDot</a></font></font> should be
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font>
+<br/>
+else the result should be
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font></font>
+<br/>
+
+<p>
+<font size="+1">
+<b>
+Examples
+</b>
+</font>
+</p>
+<p>
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<font color="red">type</font></font> <font face="courier"><font color="#006699">T</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <font face="courier"><font color="#006699">v</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font>(<font color="0AAAA">b</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font>3,<wbr><font color="0AAAA">a</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font>7);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">sys:HasDot</font></font>[<font face="courier"><font color="#006699">name</font></font>],<font face="courier"><font color="#006699">visible</font></font><font color="brown"> {</font>&nbsp;<font face="courier"><font color="#006699">name</font></font><font face="courier"><a href="content_250.html" class="inop1" target="contents">?</a></font><font face="courier"><a href="content_318.html" class="name1" target="contents">enum</a></font>[<font color="green">"a"</font>,<font color="green">"b"</font>]&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">sys:Dot</font></font>[<font face="courier"><font color="#006699">name</font></font>],<font face="courier"><font color="#006699">visible</font></font><font color="brown"> {</font>&nbsp;<font face="courier"><a href="content_175.html" class="name1" target="contents">Dot</a></font>(<font face="courier"><font color="#006699">v</font></font>,<wbr><font face="courier"><font color="#006699">name</font></font>,<wbr><font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font>)&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_227.html" class="preop1" target="contents">~</a></font><font face="courier"><a href="content_182.html" class="name1" target="contents">HasDot</a></font>(<font face="courier"><font color="#006699">T</font></font>,<wbr><font color="green">"a"</font>);<br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_227.html" class="preop1" target="contents">~</a></font><font face="courier"><a href="content_182.html" class="name1" target="contents">HasDot</a></font>(<font face="courier"><font color="#006699">T</font></font>,<wbr><font color="green">"b"</font>);<br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_227.html" class="preop1" target="contents">~</a></font><font face="courier"><a href="content_229.html" class="preop1" target="contents">!</a></font> <font face="courier"><a href="content_182.html" class="name1" target="contents">HasDot</a></font>(<font face="courier"><font color="#006699">T</font></font>,<wbr><font color="green">"c"</font>);&nbsp;<font color="00CD00">// no c component</font><br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_227.html" class="preop1" target="contents">~</a></font><font face="courier"><a href="content_182.html" class="name1" target="contents">HasDot</a></font>[](<font face="courier"><font color="#006699">T</font></font>,<wbr><font color="green">"sys:Dot"</font>);&nbsp;<font color="00CD00">// no matching of extensions occurs</font><br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_227.html" class="preop1" target="contents">~</a></font><font face="courier"><a href="content_229.html" class="preop1" target="contents">!</a></font> <font face="courier"><a href="content_182.html" class="name1" target="contents">HasDot</a></font>(<font face="courier"><font color="#006699">T</font></font>,<wbr><font color="green">"sys:Dot"</font>);&nbsp;<font color="00CD00">// no def of sys:Dot without an extension</font><br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_227.html" class="preop1" target="contents">~</a></font><font face="courier"><a href="content_229.html" class="preop1" target="contents">!</a></font> <font face="courier"><a href="content_182.html" class="name1" target="contents">HasDot</a></font>(<font face="courier"><font color="#006699">T</font></font>,<wbr><font face="courier"><font color="#006699">v</font></font>);&nbsp;<font color="00CD00">// v is not visible</font></font>
+<br/>
+
+</p>
+</body>
+</html>

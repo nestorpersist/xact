@@ -1,0 +1,13 @@
+@x:view TypeOr[%L],visible {
+   @x:func sys:Is(v),visible {
+      @x:var result := false;
+      @x:for t := L.all {
+         @x:if v?t {
+	    result := true;
+	    @x:break;
+	 }
+      }
+      result;
+   }
+}
+@x:self {}

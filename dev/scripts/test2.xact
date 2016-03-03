@@ -1,0 +1,29 @@
+@x:const fname := "temp.txt";
+
+@x:func val {
+   "ab"; eol;
+   nbsp;
+   amp;
+   lt;
+   gt;
+   "&#247;";
+   "cd";
+}
+
+@x:const txt := val;
+fname.write#file(txt,charSet="UTF-8");
+/*
+@x:const txt1 := fname.read#file(charSet="byte");
+"TXT"; eol;
+@x:for ch := Chars[txt] {
+   ch; eol;
+}
+eol;
+"TXT1"; eol;
+@x:for ch := Chars[txt1] {
+   ch; eol;
+}
+"STRING"; eol;
+*/
+txt;
+

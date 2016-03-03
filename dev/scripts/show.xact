@@ -1,0 +1,14 @@
+@x:use library:unparser;
+
+@x:func show(script),visible {
+   <head><title>&script;.xact</title></head>
+   <body bgcolor="white">
+      <h1>&script;</h1>
+      <@x:block{
+         @x:var fname := options.scriptDir#rec ++ "\demo\" ++ script;
+	 @x:var txt := fname.read#file();
+	 @x:var t := Parse(txt);
+	 Unparse(t,html=true,partial="body");
+      }/>
+   </body>
+}

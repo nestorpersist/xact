@@ -1,0 +1,12 @@
+@x:use library:path;
+@x:use DocLang;
+
+@x:const fname := pathToFile("example:doctest")++".xact";
+
+@x:func RunDocTest,visible {
+   @x:const txt := fname.read#file();
+   @x:const t := Parse(txt)(1)#body;
+   @x:const lang:doc := langtype:doc(lang:current);
+   Bind(t,language=lang:doc);
+   Exec(t,language=lang:doc);
+}

@@ -1,0 +1,332 @@
+@x:use util;
+
+@x:type Desc[render1,render2],visible {
+   @x:func params(e,ext) {
+      @x:var sep := "";
+      @x:for c:=e.all#body {
+         @x:if c.tag == "desc:param" | c.tag == "desc:varparam" | c.tag == "desc:nparam" {
+	     @x:if ext == (c.kind#rec == "ext") {
+		 sep;
+		 sep := ",";
+		 @x:if c.tag == "desc:varparam" { "%" }
+		 c.name#rec;
+		 @x:if c.tag == "desc:nparam"  {
+		     "=";
+		     c.name#rec;
+		     "1";
+		 }
+		 @x:if c.type#rec != null {
+		     "~";
+		     c.type#rec;
+		 }
+		 @x:if c.default#rec != null {
+		     ":=";
+		     c.default#rec;
+		 }
+	     }
+         }
+      }
+   }
+
+   @x:func fcode(e,ext) {
+      "@x:func ";
+      e.name#rec;
+      @x:if ext {
+	  "[";
+	  params(e,true);
+	  "]";
+      }
+      @x:if e.param#rec == null {
+         "(";
+         params(e,false);
+         ")";
+      }
+      @x:for c:=e.all#body {
+	  @x:if c.tag == "desc:result" & c.type#rec != null {
+	      "~";
+	      c.type#rec;
+	  }
+      }
+   }
+
+   @x:func vccode(e) {
+      @x:if e.tag == "desc:const" {
+         "@x:const ";
+      } @x:else {
+         "@x:var ";
+      }
+      e.name#rec;
+      @x:if e.type#rec != null {
+         "~";
+	 e.type#rec;
+      }
+      @x:if e.default#rec != null {
+         ":=";
+	 e.default#rec;
+      }
+   }
+
+   @x:func tvcode(e) {
+      @x:if e.tag == "desc:type" {
+         "@x:type ";
+      } @x:else {
+         "@x:view ";
+      }
+      e.name#rec;
+      @x:if e.ext#rec == "true" {
+	  "[";
+	  params(e,true);
+	  "]";
+      }
+   }
+
+   @x:func outParam(e) {
+       @x:tag xdom:element("tr",kind="xml") {
+	   @x:tag xdom:element("td",kind="xml") {
+	       @x:if e.tag == "desc:varparam" {
+		   outCode("%"++e.name#rec);
+	       } @x:orif e.tag == "desc:nparam" {
+		   outCode(e.name#rec ++ "=" ++ e.name#rec ++ "1");
+	       } @x:else {
+		   outCode(e.name#rec);
+	       }
+	   }
+	   @x:tag xdom:element("td",kind="xml") {
+	       @x:if e.optional#rec == "true" {
+	         "(optional) ";
+	       }
+	       @x:for c:=e.all#body {
+		   render2(c);
+	       }
+	   }
+       }
+   }
+
+   @x:func outFunc(e,parent) {
+       @x:tag xdom:element("p",kind="xml") {
+	   @x:tag xdom:element("font",attr=rec(size="+1"),kind="xml") {
+	       @x:tag xdom:element("b",kind="xml") {
+	           @x:if e.kind#rec == "lhs/rhs" {
+			"LHS/RHS ";
+		   }
+		   @x:if e.self#rec == true {
+		       "Self ";
+		   } @x:orif parent != null {
+		       @x:if parent.base == "type" { "Type " } @x:else { "View " }
+		   }
+		   "Function ";
+		   e.name#rec;
+		   @x:if e.ext#rec == "true" { "[ ]" }
+	       }
+	   }
+       }
+      @x:tag xdom:element("table",attr=rec(border="0"),kind="xml") {
+	  @x:if e.ext#rec != "true" {
+	      @x:tag xdom:element("tr",kind="xml") {
+		  @x:tag xdom:element("td",kind="xml") {
+		      outCodeLink(fcode(e,false),e.name#rec,false);
+		  }
+	      }
+	  }
+	  @x:if e.ext#rec == "true" | e.ext#rec == "optional" {
+	      @x:tag xdom:element("tr",kind="xml") {
+		  @x:tag xdom:element("td",kind="xml") {
+		      outCodeLink(fcode(e,true),e.name#rec,false);
+		  }
+	      }
+	  }
+         @x:tag xdom:element("tr",kind="xml") {
+	    @x:tag xdom:element("td",kind="xml") {
+	       @x:tag xdom:element("table",attr=rec(border="2"),kind="xml") {
+	          @x:for c := e.all#body {
+		     @x:if c.tag == "desc:param" | c.tag == "desc:nparam" | c.tag == "desc:varparam" {
+			 outParam(c);
+		     }
+		  }
+	       }
+	    }
+	 }
+      }
+      @x:tag xdom:element("p",kind="xml") {
+	  @x:tag xdom:element("font",attr=rec(size="+1"),kind="xml") {
+	      "Semantics"
+	  }
+      }
+      @x:for c:=e.all#body {
+	  @x:if c.tag == "desc:result" {
+	      @x:for c1:=c.all#body {
+		  render2(c1);
+	      }
+	  }
+      }
+   }
+
+   @x:func outVC(e,parent) {
+       @x:tag xdom:element("p",kind="xml") {
+	   @x:tag xdom:element("font",attr=rec(size="+1"),kind="xml") {
+	       @x:tag xdom:element("b",kind="xml") {
+		   @x:if e.self#rec == true {
+		       "Self ";
+		   } @x:orif parent != null {
+		       @x:if parent.base == "type" { "Type " } @x:else { "View " }
+		   }
+		   @x:if e.tag == "desc:var" {
+		      "Var ";
+		   } @x:else {
+		      "Const ";
+		   }
+		   e.name#rec;
+	       }
+	   }
+       }
+      @x:tag xdom:element("table",attr=rec(border="0"),kind="xml") {
+         @x:tag xdom:element("tr",kind="xml") {
+	    @x:tag xdom:element("td",kind="xml") {
+	       outCodeLink(vccode(e),e.name#rec,false);
+	    }
+	  }
+      }
+      @x:tag xdom:element("p",kind="xml") {
+	  @x:tag xdom:element("font",attr=rec(size="+1"),kind="xml") {
+	      "Semantics"
+	  }
+      }
+      @x:for c:=e.all#body {
+         render2(c);
+      }
+   }
+
+   @x:func r1(e),visible {
+       @x:for c:=e.all#body {
+	   render1(c)
+       }
+   }
+
+   @x:func adecl(e) {
+       "@x:";
+       e.base;
+       " ";
+       e.name#rec;
+       @x:if e.ext#rec == "true" {
+	  "[";
+	  params(e,true);
+	  "]";
+       }
+   }
+   
+   @x:func abstract(e) {
+       @x:const kind := e.base;
+       @x:tag xdom:element("p",kind="xml") {
+	   @x:tag xdom:element("font",attr=rec(size="+1"),kind="xml") {
+	       @x:tag xdom:element("b",kind="xml") {
+		   @x:if e.base == "type" { "Type" } @x:else { "View" }
+		   " ";
+		   e.name#rec;
+		   @x:if e.ext#rec == "true" { "[ ]" }
+	       }
+	   }
+       }
+       @x:tag xdom:element("p",kind="xml") {
+	   outCodeLink(adecl(e),e.name#rec,false);
+       }
+       @x:if e.ext#rec == "true" {
+	  @x:tag xdom:element("table",attr=rec(border="2"),kind="xml") {
+	     @x:for c := e.all#body {
+		@x:if c.tag == "desc:param" | c.tag == "desc:nparam" | c.tag == "desc:varparam" {
+		    outParam(c);
+		}
+	     }
+	  }
+	  <br/>
+       }
+       @x:tag xdom:element("table",attr=rec(border="3"),kind="xml") {
+	   @x:for c:=e.all#body {
+	       @x:if c.tag == "desc:func" {
+	          @x:tag xdom:element("tr",kind="xml") {
+		     @x:tag xdom:element("td",kind="xml",attr=rec(valign="top")) {
+		        @x:if c.self#rec == true {
+			   outCode("@x:self");
+			} @x:else {
+			   outCode("@x:"++e.base);
+			}
+	             }
+		     @x:tag xdom:element("td",kind="xml") {
+		        @x:tag xdom:element("font",attr=rec(face="courier"),kind="xml") {
+			   @x:var sep := "";
+			   @x:if c.ext#rec != "true" {
+			      outCodeLink(fcode(c,false),c.name#rec,true);
+			      sep := "<br/>";
+			   }
+			   @x:if c.ext#rec == "true" | c.ext#rec == "optional" {
+			      sep;
+			      outCodeLink(fcode(c,true),c.name#rec,true);
+			   }
+			}
+		     }
+		  }
+	       } @x:orif c.tag == "desc:var" | c.tag == "desc:const" {
+	          @x:tag xdom:element("tr",kind="xml") {
+		     @x:tag xdom:element("td",kind="xml") {
+		        @x:if c.self#rec == true {
+			   outCode("@x:self");
+			} @x:else {
+			   outCode("@x:"++e.base);
+			}
+	             }
+		     @x:tag xdom:element("td",kind="xml") {
+		        @x:tag xdom:element("font",attr=rec(face="courier"),kind="xml") {
+			   outCodeLink(vccode(c),c.name#rec,true);
+			}
+		     }
+		  } 
+	      } @x:orif c.tag == "desc:type" | c.tag == "desc:view" {
+	          @x:tag xdom:element("tr",kind="xml") {
+		     @x:tag xdom:element("td",kind="xml") {
+		        @x:if c.self#rec == true {
+			   outCode("@x:self");
+			} @x:else {
+			   outCode("@x:"++e.base);
+			}
+	             }
+		     @x:tag xdom:element("td",kind="xml") {
+		        @x:tag xdom:element("font",attr=rec(face="courier"),kind="xml") {
+			   outCodeLink(tvcode(c),c.name#rec,true);
+			}
+		     }
+		  } 
+	      }
+	   }
+       }
+       @x:for c:=e.all#body {
+	   @x:tag xdom:element("hr",kind="xml");
+	   @x:if c.tag == "desc:func" {
+	       @x:tag xdom:element("a",attr=rec(name=c.name#rec),kind="xml",spaceBeforeBody="erase",spaceAfterBody="erase");
+	       outFunc(c,e);
+	    } @x:orif c.tag == "desc:var" | c.tag == "desc:const" {
+	       @x:tag xdom:element("a",attr=rec(name=c.name#rec),kind="xml",spaceBeforeBody="erase",spaceAfterBody="erase");
+	       outVC(c,e);
+	    } @x:orif c.tag == "desc:type" | c.tag == "desc:view" {
+	       @x:tag xdom:element("a",attr=rec(name=c.name#rec),kind="xml",spaceBeforeBody="erase",spaceAfterBody="erase");
+	       r2(c);
+	   } @x:else {
+	       r2(c);
+	   }
+       }
+       @x:tag xdom:element("hr",kind="xml");
+   }
+
+   @x:func r2(e),visible {
+      @x:if e.tag == "desc:func" {
+         outFunc(e,null);
+      } @x:orif e.tag == "desc:const" | e.tag == "desc:var" {
+         outVC(e,null);
+      } @x:orif e.tag == "desc:param" {
+      } @x:orif e.tag == "desc:nparam" {
+      } @x:orif e.tag == "desc:varparam" {
+      } @x:orif e.tag == "desc:result" {
+      } @x:orif e.tag == "desc:type"  | e.tag == "desc:view" {
+         abstract(e);
+      }
+   }
+}
+@x:self;

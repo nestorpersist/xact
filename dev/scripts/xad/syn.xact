@@ -1,0 +1,144 @@
+@x:type Syn[render1,render2,renderRef], visible {
+
+   @x:func renderSynSeq(e) {
+      @x:if e.size#body ==#int 1 {
+	 renderSynProd(e(1)#body);
+      } @x:else {
+	 @x:var first := true;
+	 @x:for c:=e.all#body {
+	    @x:if first { first:= false; } @x:else { " " }
+	    renderGroup(c);
+	 }
+      }
+   }
+
+   @x:func renderGroup(e) {
+      @x:if e?xdom:element & (e.tag == "syn:or" | e.tag == "syn:minus" | e.tag == "syn:seq") {
+	 "{";
+	 renderSynProd(e);
+	 "}";
+      } @x:else {
+	 renderSynProd(e);
+      }
+   }
+
+   @x:func renderSynProd(e) {
+      @x:if e.space == "ref" {
+	 @x:if e.base == "preop" | e.base == "inop" { "'" }
+	 renderRef(e,e.base,e.name#rec,true,false,false);
+	 @x:if e.base == "preop" | e.base == "inop" { "'" }
+      } @x:orif e.tag == "syn:break" {
+	 <br/> eol
+      } @x:orif e.tag== "syn:seq" {
+	 @x:exp renderSynSeq(e);
+      } @x:orif e.tag == "syn:star" {
+	 "{";
+	 @x:var first := true;
+	 @x:for c:=e.all#body {
+	    @x:if first { first:= false; } @x:else { " " }
+	    renderSynProd(c);
+	 }
+	 "}*"
+      } @x:orif e.tag == "syn:plus" {
+	 "{";
+	 @x:var first := true;
+	 @x:for c:=e.all#body {
+	    @x:if first { first:= false; } @x:else { " " }
+	    renderSynProd(c);
+	 }
+	 "}+"
+      } @x:orif e.tag == "syn:or" {
+	 @x:var first := true;
+	 @x:for c:=e.all#body {
+	    @x:if first { first:= false; } @x:else { " | " }
+	    renderGroup(c);
+	 }
+      } @x:orif e.tag == "syn:minus" {
+	 @x:var first := true;
+	 @x:for c:=e.all#body {
+	    @x:if first { first:= false; } @x:else { " - " }
+	    renderGroup(c);
+	 }
+      } @x:orif e.tag == "syn:range" {
+	 @x:var first := true;
+	 @x:for c:=e.all#body {
+	    @x:if first { first:= false; } @x:else { ".." }
+	    renderSynProd(c);
+	 }
+      } @x:orif e.base == "opt" {
+	 @x:if e.size#body ==#int 1 & e(1)#body?xdom:element & e(1)#body.tag == "ref:nt1" {
+	    renderSynProd(e(1)#body);
+	    "?";
+	 } @x:else {
+	    "{";
+	    @x:var first := true;
+	    @x:for c:=e.all#body {
+	       @x:if first { first:= false; } @x:else { " " }
+	       renderSynProd(c);
+	    }
+	    "}?"
+	 }
+      }
+   }
+
+   @x:func renderSynProds(prods,combined,hdr) {
+      @x:var first := true;
+      @x:var ref := null;
+      @x:if hdr {<font size="+1"><b>Syntax</b></font>}
+      @x:tag xdom:element("font",attr=rec(face="courier"),kind="xml",spaceBeforeBody="erase",spaceAfterBody="erase") {
+	 @x:for c:=prods.all#body {
+	     @x:if first {
+	        first := false;
+		ref := c;
+	     } @x:orif c?xdom:element & c.space == "syn" {
+		<table border="0" cellspacing="0" cellpadding="0" width="100%">
+		   <tr>
+		      <td valign="top" width="1%" nowrap="true">
+			 <@x:exp renderRef(ref,ref.base,ref.name#rec,combined,false,false)++" ::="/>
+		      </td>
+		      <td>
+			 <@x:exp renderSynSeq(c)/>
+		      </td>
+		   </tr>
+		 </table>
+		 eol;
+	   } @x:orif ! combined {
+	      render2(c);
+	   }
+	 }
+      }
+   }
+   @x:func renderCombined(e) {
+      @x:for c:=e.all#body {
+         @x:if c?xdom:element {
+	    @x:if c.tag == "syn:prods" {
+	       renderSynProds(c,true,false);
+	    } @x:else {
+	       renderCombined(c);
+	    }
+	 }
+      }
+   }
+
+   @x:func r1(e),visible {
+      @x:if e.base == "combined" {
+      } @x:else {
+         @x:for c:=e.all#body{
+	    render1(c);
+	 }
+      }
+   }
+
+   @x:func r2(e),visible {
+      @x:if e.tag == "syn:prods" {
+         renderSynProds(e,false,true);
+      } @x:orif e.tag == "syn:cmdprods" {
+         renderSynProds(e,false,false);
+      } @x:orif e.tag == "syn:combined" {
+         renderCombined(e);
+      } @x:orif e.tag == "syn:cmd" {
+         renderSynSeq(e);
+      }
+   }
+}
+@x:self;

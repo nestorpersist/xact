@@ -1,0 +1,78 @@
+@x:use library:html;
+@x:func demo,visible {
+   <head>
+      <title>
+	 @X:ACT Scripting System
+      </title>
+   </head>
+   <body bgcolor="white">
+      <h1>@X:ACT Scripting System</h1>
+      <ul>
+	 <li>
+	    <@x:tag A[REL[myPath].show]("fact.xact"){"fact"}/>
+	 </li>
+	 <li>
+	    <@x:tag A[REL[myPath].show]("enum.xact"){"enum"}/>
+	 </li>
+	 <li>
+	    <@x:tag A[REL[myPath].show]("err.xact"){"err"}/>
+	 </li>
+	 <li>
+	    <@x:tag A[REL[myPath].show]("date.xact"){"date"}/>
+	 </li>
+	 <li>
+	    <@x:tag A[REL[myPath].show]("string.xact"){"string"}/>
+	 </li>
+	 <li>
+	    <@x:tag A[REL[myPath].show]("tags.xact"){"tags"}/>
+	 </li>
+	 <li>
+	    <@x:tag A[REL[myPath].show]("view.xact"){"view"}/>
+	 </li>
+	 <li>
+	    <@x:tag A[REL[myPath].show]("file.xact"){"file"}/>
+	 </li>
+	 <li>
+	    <@x:tag A[REL[myPath].show]("java.xact"){"java"}/>
+	 </li>
+	 <li>
+	    <@x:tag A[REL[myPath].show]("iter.xact"){"iterators"}/>
+	 </li>
+	 <li>
+	    <@x:tag A[REL[myPath].show]("parse.xact"){"incremental parse"}/>
+	 </li>
+	 <li>
+	    <@x:tag A[REL[myPath].show]("queue.xact"){"queue"}/>
+	 </li>
+	 <li>
+	    <@x:tag A[REL[myPath].show]("curry.xact"){"curry"}/>
+	 </li>
+	 <li>
+	    <@x:tag A[REL[myPath].show]("stack.xact"){"stack"}/>
+	 </li>
+	 <li>
+	    <@x:tag A[REL[myPath].show]("unit.xact"){"unit"}/>
+	 </li>
+	 <li>
+	    <@x:tag A[REL[myPath].show]("graph.xact"){"graph"}/>
+	 </li>
+	 <li>
+	    <@x:tag A[REL[myPath].show]("doctest.xml"){"custom language"}/>
+	    &nbsp;
+	    <@x:tag A[REL[myPath].show]("doc.xact"){"language def"}/>
+	    &nbsp;
+	    <@x:tag A[REL[myPath].demo:rundoc](){"run"}/>
+	 </li>
+	 <li>
+	    <@x:tag A[REL[myPath].demo:printprops](){"print Java properties"}/>
+	    &nbsp;
+	    <@x:tag A[REL[myPath].show]("printprops.xact"){"show"}/>
+	 </li>
+	 <li>
+	    <@x:tag A[REL[myPath].demo:printoptions](){"print XACT options"}/>
+	    &nbsp;
+	    <@x:tag A[REL[myPath].show]("printoptions.xact"){"show"}/>
+	 </li>
+      </ul>
+   </body>
+}

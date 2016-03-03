@@ -1,0 +1,190 @@
+@x:type Units[%dim],visible {
+
+   @x:func makeu0() {
+      @x:var result := rec();
+      @x:for i := dim.all {
+	 Dot(result,i,rec) := 0;
+      }
+      result
+   }
+
+   @x:const u0 := makeu0();
+
+   @x:func uadd(d1,d2) {
+      @x:var result := rec();
+      @x:for i := dim.all {
+	 Dot(result,i,rec) := Dot(d1,i,rec) + Dot(d2,i,rec);
+      }
+      result
+   }
+
+   @x:func usub(d1,d2) {
+      @x:var result := rec();
+      @x:for i := dim.all {
+	 Dot(result,i,rec) := Dot(d1,i,rec) - Dot(d2,i,rec);
+      }
+      result
+   }
+
+   @x:type Unit[%DIM],visible {
+
+      @x:func map(a) {
+	 @x:if a?int { Unit[%u0](float(a)) }
+	 @x:orif a?float{ Unit[%u0](a) }
+	 @x:else { a }
+      }
+
+      @x:func unmap(a) {
+	 @x:if Type[a] == Unit[%u0] { a.val }
+	 @x:else { a }
+      }
+
+      @x:func sys:Cover(t),visible {
+	 // ?? t < unit
+	 t == int | t == float
+      }
+
+      @x:func teq(a,b) {
+	 @x:if Type[a] == Type[b] { true } @x:else { "Mismatched unit types" }
+      }
+
+      @x:func add(a,b) {
+	Type[a](a.val + b.val)
+      }
+
+      @x:func sub(a,b) {
+	Type[a](a.val - b.val)
+      }
+
+      @x:func minus(a) {
+	Type[a](- a.val)
+      }
+
+      @x:func mult(a,b) {
+	Unit[% uadd(a.DIM,b.DIM)]
+	(a.val * b.val)
+      }
+
+      @x:func div(a,b) {
+	Unit[% usub(a.DIM,b.DIM)]
+	 (a.val / b.val)
+      }
+
+      @x:func eq(a,b) {
+	a.val == b.val
+      }
+
+      @x:func less(a,b) {
+	a.val < b.val
+      }
+
+      @x:func sys:Add(a,b),~teq(a,b),visible {
+	 unmap(add(map(a),map(b)))
+      }
+      @x:func sys:Sub(a,b),~teq(a,b),visible {
+	 unmap(sub(map(a),map(b)))
+      }
+      @x:func sys:Minus(a),visible {
+	 unmap(minus(map(a)))
+      }
+      @x:func sys:Mult(a,b),visible {
+	 unmap(mult(map(a),map(b)))
+      }
+      @x:func sys:Div(a,b),visible {
+	 unmap(div(map(a),map(b)))
+      }
+      @x:func sys:Eq(a,b),~teq(a,b),visible {
+	 eq(map(a),map(b))
+      }
+      @x:func sys:Ne(a,b),~teq(a,b),visible {
+	 ! eq(map(a),map(b))
+      }
+      @x:func sys:Less(a,b),~teq(a,b),visible {
+	 less(map(a),map(b))
+      }
+      @x:func sys:LessEq(a,b),~teq(a,b),visible {
+	 ! less(map(b),map(a))
+      }
+      @x:func sys:Greater(a,b),~teq(a,b),visible {
+	 less(map(b),map(a))
+      }
+      @x:func sys:GreaterEq(a,b),~teq(a,b),visible {
+	 ! less(map(a),map(b))
+      }
+   }
+   @x:self {
+      @x:var val~float := 0.0;
+      @x:func sys:Subscript(i),visible {
+	 i*self
+      }
+      @x:func sys:Init(n),visible { 
+	 val := float(n); 
+      }
+      @x:func in[v],visible {
+	 @x:const vm := map(v);
+	 ~ Type[self] == Type[vm];
+	 self / vm
+      }
+      @x:func toString(),visible {
+	 @x:var haveNeg := false;
+	 @x:var sep := " ";
+	 val;
+	 @x:for i := dim.all {
+	    @x:const cnt := Dot(DIM,i,rec);
+	    @x:if cnt > 0 {
+	       sep;i;
+	       @x:if cnt != 1 {"^";cnt; }
+	       sep:= "*";
+	    } @x:orif cnt < 0 {
+	       haveNeg := true;
+	    }
+	 }
+	 @x:if haveNeg {
+	    sep := "/";
+	    @x:for i := dim.all {
+	       @x:const cnt := Dot(DIM,i,rec);
+	       @x:if cnt < 0 {
+		  sep;i;
+		  @x:if cnt != -1 { "^";-cnt; }
+		  sep:= "*";
+	       }
+	    }
+	 }
+      }
+   }
+
+   @x:func baseUnit(name),visible {
+       @x:var result := makeu0();
+       Dot(result,name,rec) := 1;
+       Unit[%result](1);
+   }
+
+} @x:self {
+}
+
+@x:func per[x,y],visible { x / y }
+@x:func exp[x,y],visible { @x:if y == 0 { 1 } @x:else {x * exp[x,y-1]} }
+@x:func square[x],visible { exp[x,2] }
+@x:func cubic[x],visible { exp[x,3] }
+
+@x:func deka[x],visible { 10 * x }
+@x:func hecto[x],visible { 100 * x }
+@x:func kilo[x],visible { 1000 * x }
+@x:func mega[x],visible { 1000 * kilo[x] }
+@x:func giga[x],visible { 1000 * mega[x] }
+@x:func tera[x],visible { 1000 * giga[x] }
+@x:func peta[x],visible { 1000 * tera[x] }
+@x:func exa[x],visible { 1000 * peta[x] }
+@x:func zetta[x],visible { 1000 * exa[x] }
+@x:func yotta[x],visible { 1000 * zetta[x] }
+
+@x:func deci[x],visible { 0.1 * x }
+@x:func centi[x],visible { 0.01 * x }
+@x:func milli[x],visible { 0.001 * x }
+@x:func micro[x],visible { 0.001 * milli[x] }
+@x:func nano[x],visible { 0.001 * micro[x] }
+@x:func pico[x],visible { 0.001 * nano[x] }
+@x:func femto[x],visible { 0.001 * pico[x] }
+@x:func atto[x],visible { 0.001 * femto[x] }
+@x:func zepto[x],visible { 0.001 * atto[x] }
+@x:func yocto[x],visible { 0.001 * zepto[x] }

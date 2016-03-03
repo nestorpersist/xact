@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Walk</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_5.html" target="nav1" class="top1">Libraries</a> >  <font face="courier"><a href="nav2_5_12.html" target="nav2" class="library1">library:walk</a></font> >  <font face="courier"><font color="blue">Walk</font></font>
+</b>
+<br/> 
+
+<a href="content_373.html" target="contents">prev</a>
+ 
+<a href="content_375.html" target="contents">next</a>
+<br/>
+
+
+<p>
+<font size="+1">
+<b>
+Function Vals[ ]
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> Vals[<font face="courier"><font color="#006699">t</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font>](<font face="courier"><font color="#006699">act</font></font>)</font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">t</font></font></font>
+</td>
+<td>
+an xdom tree.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">act</font></font></font>
+</td>
+<td>
+the iterator body function.It takes a two parameters, the first of type <font face="courier"><font face="courier"><a href="content_318.html" class="name1" target="contents">enum</a></font>[<font color="green">"before"</font>,<font color="green">"between"</font>,<font color="green">"after"</font>]</font> andthe second of type <font face="courier"><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font></font>.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+This is an iterator function walks the tree in standard order.For every node in the tree the body function <font face="courier"><font face="courier"><font color="#006699">act</font></font></font> is calledtwice, once when a node is firstvisited (<font face="courier"><font color="green">"before"</font></font>) andonce when the node is about to be left(<font face="courier"><font color="green">"after"</font></font>).It is called anadditional time (<font face="courier"><font color="green">"between"</font></font>) for <font face="courier"><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font></font> (afterthe attributes but before the body)and  for <font face="courier"><font face="courier"><a href="content_146.html" class="name1" target="contents">xdom:call</a></font></font> (after the function but before the parameters).
+</body>
+</html>

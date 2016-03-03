@@ -1,0 +1,132 @@
+@x:use library:unparser;
+@x:use library:iterator;
+@x:use library:walk;
+
+@x:const a := array(1,3,96,"abc");
+@x:for i:= a.all {
+   i; eol;
+}
+eol;
+
+@x:for i:= Chars["abc"] {
+   i; eol;
+}
+eol;
+
+@x:for i:=Vals[1,3,96,"abc"] {
+   i; eol;
+}
+eol;
+
+@x:func isString(v) { v ? string }
+@x:for i:= Filter[Vals[1,"xy",3,"abc"],isString] {
+   i; eol;
+}
+eol;
+
+@x:func find(seq) {
+   @x:for i:= First[Filter[seq,isString]] {
+      "Found: "; i
+   } @x:else {
+      "Not found"
+   }
+   eol;
+}
+find(Vals[1,"xy",3,"abc"]);
+find(Vals[1,2,3,4]);
+
+
+@x:for i:=Seq[1..3,10..12] {
+   i; eol;
+}
+eol;
+
+@x:for [i,j]:=Nest[1..3,10..12] {
+   i; ":"; j; eol;
+} 
+eol;
+
+@x:for [i,j]:=Parallel[1..3,10..12] {
+   i; ":"; j; eol;
+} 
+eol;
+
+Combine[Separate["a/b/c","/"],"\"];
+eol;
+
+@x:for i:=Accumulate[1..5,1,Mult] { i } eol;
+
+@x:var t:=xdom:element("test",kind="xml");
+@x:func append[t](a,b){ t.insert#body(b) }
+@x:for i:=Accumulate[1..3,null,append[t]]{ xdom:element("x" ++ i) }
+Unparse(t); eol;
+
+@x:for v:=Slice["abc",Vals[1,3,1]] { v; " " }
+eol;
+
+@x:func merge[iter1,iter2,cmp](act) {
+   @x:fork { 
+      @x:var end:=xdom:element("end");
+      @x:var q1:=queue(1);
+      @x:var q2:=queue(1);
+      @x:thread merge1 {
+	 @x:for i1 := iter1 { q1.send(i1) }
+	 q1.send(end)
+      } 
+      @x:thread merge2 {
+	 @x:for i2 := iter2 { q2.send(i2) }
+	 q2.send(end)
+      }
+      @x:var v1:=q1.receive();
+      @x:var v2:=q2.receive();
+      @x:while v1 != end | v2 != end {
+         @x:if v2 == end {
+	    act(v1); 
+	    v1 := q1.receive();
+	 } @x:orif v1 == end {
+	    act(v2); 
+	    v2 := q2.receive();
+	 } @x:orif cmp(v1,v2) {
+	    act(v1); 
+	    v1 := q1.receive();
+	 } @x:else {
+	    act(v2);
+	    v2 := q2.receive();
+	 }
+      }
+   }
+}  
+
+Combine[merge[Vals[1,3,5,99],
+	        Vals[2,4,6,7,200,202],
+		int.sys:Less],"+"];
+eol;
+
+@x:const t0 := Parse('f(3,"abc")');
+@x:func indent(cnt) {
+   @x:for i:= 1..cnt { " "}
+}
+@x:var nest := 0;
+@x:for [where,t1] := Walk[t0] {
+   @x:if where == "before" {
+      indent(nest);
+      @x:if t1?xdom:element {
+	  "ELEMENT:"; t1.tag; eol;
+      } @x:orif t1?xdom:call {
+          "CALL"; eol;
+      } @x:else {
+	  Unparse(t1); eol;
+      }
+      nest := nest + 1;
+   } @x:orif where == "after" {
+      nest := nest - 1;
+   } @x:else {
+       indent(nest); 
+       @x:if (t1?xdom:call) { 
+          "(" 
+       } @x:orif (t1?xdom:element) { 
+          "{" 
+       }
+       eol;
+   }
+}

@@ -1,0 +1,58 @@
+@x:func walk:attrs(t),visible {
+   @x:func body(a) { walk:exp(a) }
+   t.all#attr(body);
+}
+
+@x:func walk:elem(t,lang),visible {
+   walk:attrs(t);
+   walk:body(t,lang);
+}
+
+@x:func outSpace(sp), visible {
+   @x:if sp == "lines" {
+      eol; eol;
+   } @x:orif sp == "line" {
+      eol;	
+   } @x:orif sp == "space" {
+      " "
+   }
+}
+
+@x:type langtype:redirect[name1,langt1],visible;
+@x:self {
+   @x:var under;
+   @x:var lang1;
+   @x:func sys:Init(under),visible {
+      self.under := under;
+      lang1 := langt1(under);
+   }
+   @x:func sys:Copy(),visible {
+      Type[self](under.sys:Copy());
+   }
+   @x:func Walk(pass,space,base,elem,lang,info),visible {
+      @x:if space == name1 {
+	walk:other(lang1,space,base,elem,lang);
+      } @x:else {
+         walk:other(under,space,base,elem,lang)
+      }
+   }
+}
+
+@x:type langtype:rename[old,new],visible;
+@x:self {
+  @x:var under;
+  @x:func sys:Init(under),visible {
+     self.under := under;
+  }
+  @x:func sys:Copy(),visible {
+    Type[self](under.sys:Copy());
+  }
+  @x:func Walk(pass,space,base,elem,lang,info),visible {
+     @x:if space == old {
+        walk:other(under,new,base,elem,lang)
+     }
+     @x:else {
+        walk:other(under,space,base,elem,lang)
+     }
+  }
+}

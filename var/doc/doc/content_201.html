@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>URLUnparseQuery</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > F <a href="nav2_4_6.html" target="nav2" class="lettered1">Functions</a> >  <font face="courier"><font color="blue">URLUnparseQuery</font></font>
+</b>
+<br/> 
+
+<a href="content_200.html" target="contents">prev</a>
+ 
+<a href="content_202.html" target="contents">next</a>
+<br/>
+
+
+<p>
+<font size="+1">
+<b>
+Description
+</b>
+</font>
+</p>
+<p>
+This function is use to encode information that isto be passed from one script to another via a URL.It is called by the library <font face="courier"><font face="courier"><a href="content_329.html" class="name1" target="contents">A</a></font></font> and <font face="courier"><font face="courier"><a href="content_331.html" class="name1" target="contents">FORM</a></font></font> functions.
+</p>
+<p>
+<font size="+1">
+<b>
+Function XMLUnparseQuery
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> XMLUnparseQuery(<font face="courier"><font color="#006699">tree</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_146.html" class="name1" target="contents">xdom:call</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">tree</font></font></font>
+</td>
+<td>
+The information to be passed.The call should have name <font face="courier"><font face="courier"><font color="#006699">query</font></font></font> andone or more parameters.The first parameter is typically another <font face="courier"><font face="courier"><a href="content_146.html" class="name1" target="contents">xdom:call</a></font></font> thatgives the script to be called and its parameters (both positional and named).Parameters value must be strings.The remaining parameters are trees for expressions of theform <font face="courier"><font color="0AAAA">name</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">val</font></font></font> where <font face="courier"><font face="courier"><font color="#006699">val</font></font></font> is a string.The called scripts can access these values via <font face="courier"><font face="courier"><a href="content_223.html" class="name1" target="contents">passed</a></font></font>.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The encoded version of <font face="courier"><font face="courier"><font color="#006699">tree</font></font></font>.
+</body>
+</html>

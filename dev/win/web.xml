@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ XACT Servlet
+-->
+
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+    <display-name>XACT Servlet</display-name>
+    <description>
+      XACT Servlet.
+    </description>
+
+    <servlet>
+       <servlet-name>xs</servlet-name>
+       <servlet-class>com.persist.xact.xs</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+       <servlet-name>xs</servlet-name>
+       <url-pattern>/xs</url-pattern>
+    </servlet-mapping>
+
+    <env-entry>
+      <env-entry-name>options</env-entry-name>
+      <env-entry-value>inter=xs&amp;debugError=false&amp;streamTop=true&amp;htmlEscape&amp;mime=text/html&amp;funcOnly&amp;scriptDir=c:/xact/dev/scripts&amp;logDir=c:/xact/var/weblogs</env-entry-value>
+      <env-entry-type>java.lang.String</env-entry-type>
+    </env-entry>
+
+</web-app>

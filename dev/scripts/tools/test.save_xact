@@ -1,0 +1,6 @@
+@x:module {
+@x:func foo(a) {
+a + a
+}
+foo(a)
+}

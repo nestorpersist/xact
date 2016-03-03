@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Composite Types</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;2 <a href="nav1_2.html" target="nav1" class="numbered1">User Manual</a> > 2.3 <a href="nav2_2_3.html" target="nav2" class="numbered1">Execution</a> > 2.3.8 <font color="blue">Composite Types</font>
+</b>
+<br/> 
+
+<a href="content_31.html" target="contents">prev</a>
+ 
+<a href="content_33.html" target="contents">next</a>
+<br/>
+
+
+<p>
+The major <b>@x:Act</b> composite data structure is <font face="courier"><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font></font> trees.In addition to trees it can be used to represent directed graphs,records and arrays.The first element of an array will have index <font face="courier">1</font> (unlike Java where the firstelement has index <font face="courier">0</font>).Arrays have a flexible size so elements can be inserted and deleted.Records are also flexible with the ability to add and delete named elements.
+</p>
+<p>
+At least within main memory, xdom trees are really more general than justtrees and can have sharing and cycles enabling xdoms to represent arbitrary directed graphs.The <font face="courier"><font face="courier"><a href="content_372.html" class="name1" target="contents">Unparse</a></font></font> function in the simple case replicates for sharing and goes intoan infinite loop when cycles are present.This is a special option to <font face="courier"><font face="courier"><a href="content_372.html" class="name1" target="contents">Unparse</a></font></font> that can preserve sharing and cycles.
+</p>
+<p>
+The most complex of the <font face="courier"><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font></font> types is <font face="courier"><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font></font> thatrepresents xml elements and <b>@x:Act</b> commands.An element has properties (such as its tag), attributes and a body.A set of additional views are present for working with these various kinds of information.
+</p>
+<ul>
+<li>
+Dot qualification on type <font face="courier"><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font></font> is used to get and set properties.
+</li>
+<li>
+Array subscripting on view <font face="courier"><font face="courier"><a href="content_154.html" class="name1" target="contents">attr</a></font></font> is used to get and set the ith attribute.
+</li>
+<li>
+Array subscripting on view <font face="courier"><font face="courier"><a href="content_155.html" class="name1" target="contents">body</a></font></font> is used to get the ith bodysubcomponent.
+</li>
+<li>
+Dot qualification on view <font face="courier"><font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font></font> is used to get and set named attributes.
+</li>
+<li>
+Array subscripting on view <font face="courier"><font face="courier"><a href="content_153.html" class="name1" target="contents">array</a></font></font> is used to get and set positional attributes.
+</li>
+<li>
+Dot qualification on view <font face="courier"><font face="courier"><a href="content_156.html" class="name1" target="contents">bodyrec</a></font></font> is used to get body elements with the specified tag.
+</li>
+</ul>
+<p>
+There are also several views that can be used to construct <font face="courier"><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font></font> values.
+</p>
+<ul>
+<li>
+The <font face="courier"><font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font></font> view can be used to construct an element with a named set of attributes.
+</li>
+<li>
+The <font face="courier"><font face="courier"><a href="content_153.html" class="name1" target="contents">array</a></font></font> view can be used to construct an element with a specified set ofpositional attributes.
+</li>
+<li>
+The <font face="courier"><font face="courier"><a href="content_161.html" class="name1" target="contents">list</a></font></font> view can be used to construct an element with a list of specifiedbody elements.
+</li>
+</ul>
+<p>
+The <font face="courier"><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font></font> constructor normally takes a <font face="courier"><font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font></font> ofattribute values and a <font face="courier"><font face="courier"><a href="content_161.html" class="name1" target="contents">list</a></font></font> of body elements to build a new elementwith both attributes and body elements.
+</p>
+</body>
+</html>

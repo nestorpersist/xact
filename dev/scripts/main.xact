@@ -1,0 +1,13 @@
+@x:use library:html;
+
+@x:func main,visible {
+   <html>
+   <head>
+      <title>Main Page</title>
+   </head>
+   <body bgcolor="white">
+   <h2>Main Page</h2>
+   <@x:tag A[REL.test]() { "test" }/>
+   </body>
+   </html>
+}

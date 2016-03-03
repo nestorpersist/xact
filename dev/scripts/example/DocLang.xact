@@ -1,0 +1,63 @@
+@x:use library:lang;
+
+@x:type langtype:doc,visible;
+@x:self {
+   @x:var style := rec();
+   @x:var number := 0;
+   @x:var under;
+
+   @x:func sys:Init(under),visible {
+      self.under := under;
+   }
+
+   @x:func sys:Copy(),visible {
+      langtype:doc(under.sys:Copy());
+   }
+
+   @x:func bind1(base,elem,lang,info) {
+      @x:if base=="let" { walk:define(elem(1)#attr(1),info.scope#rec) }
+      walk:body(elem,lang)
+   }
+
+   @x:func bind2(base,elem,lang,info) {
+      walk:attrs(elem);
+      walk:body(elem,lang)
+   }
+
+   @x:func exec(base,elem,lang,info) {
+      Warn("exec");
+      @x:if base == "document" {
+         <body bgcolor="white">
+	 <@x:exp walk:body(elem,lang)/>
+         </body>
+      } @x:orif base == "let" {
+	walk:assign(elem(1)#attr(1),walk:exp(elem(1)#attr(2)))
+      } @x:orif base == "style" {
+         Dot(style,elem(1)#attr(2).val,rec) := elem;
+      } @x:orif base == "section" {
+         number := number + 1;
+	 <h2> Section &number;: <@x:exp elem.title#rec/> </h2>
+	 eol;
+	 walk:body(elem,lang)
+      } @x:orif base == "val" {
+         outSpace(elem.spaceBefore);
+         walk:exp(elem(1)#attr);
+	 outSpace(elem.spaceAfter);
+      } @x:else {
+         @x:const s := Dot(style,base,rec);
+	 s.before#rec;
+	 outSpace(elem.spaceBeforeBody);
+	 walk:body(elem,lang);
+	 outSpace(elem.spaceAfterBody);
+	 s.after#rec
+      }
+   }      
+
+   @x:func Walk(pass,space,base,elem,lang,info),visible {
+      @x:if space == "doc" {
+         Dot(self,pass)(base,elem,lang,info);
+      } @x:else {
+         walk:other(under,space,base,elem,lang);
+      }
+   }
+}

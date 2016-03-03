@@ -1,0 +1,48 @@
+@x:use library:iterator;
+
+@x:func fold1(s) {
+    @x:const diff := "a"(1)-"A"(1);
+    @x:for ch:=Chars[s] {
+	@x:if "A"(1) <= ch & ch <= "Z"(1) { string(code=ch+diff) }
+	@x:else { string(code=ch) }
+    }
+}
+
+@x:const fname := "c:\java\xact\script\test.xml";
+@x:var s:="aBc"++"DEFGh" ++ eol ++ "xyz";
+
+s(3); " "; 
+s(3..3); " ";
+s(2..6);
+eol;
+
+@x:for line:=Lines[s] {
+    "++ ";line; eol;
+}
+
+@x:for ch:=Chars["abcDEF"] {
+    string(code=ch);
+    "=&ch; "
+}
+eol;
+
+@x:const s1:="DEF";
+@x:const s2:="abc";
+s2 < s1;
+s2 <#fold s1;
+eol;
+
+fold(s);
+eol;
+fold1(s);
+eol;
+
+Combine[Separate[fname,"\"],"/"];
+eol;
+
+Combine[Separate[fname,""],"."];
+eol;
+
+@x:for x:=Separate[fname,"script"] {
+    x; " ";
+}

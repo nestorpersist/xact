@@ -1,0 +1,21 @@
+@x:func fact(n) {
+   @x:if n == 0 {
+      1
+   } @x:else {
+      n * fact(n - 1)
+   }
+}
+<head>
+   <title>
+      Factorial Example
+   </title>
+</head>
+<body bgcolor="white">
+   <h2>Factorial Example</h2>
+   <ul>
+      <@x:for i :=1..10 {
+          @x:const j := fact(i);
+          <li>fact(&i;)=&j;</li>
+      }/>
+   </ul>
+</body>

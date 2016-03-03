@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Join Rules</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;2 <a href="nav1_2.html" target="nav1" class="numbered1">User Manual</a> > 2.3 <a href="nav2_2_3.html" target="nav2" class="numbered1">Execution</a> > 2.3.5 <font color="blue">Join Rules</font>
+</b>
+<br/> 
+
+<a href="content_28.html" target="contents">prev</a>
+ 
+<a href="content_30.html" target="contents">next</a>
+<br/>
+
+
+<p>
+In <b>@x:Act</b>, it is necessary to define the value that resultsfrom a sequence of expressions or commands. The rules for this are called join rules.
+</p>
+<ul>
+<li>
+When a sequence of expression is empty then the result is the value <font face="courier"><font face="courier"><a href="content_221.html" class="name1" target="contents">null</a></font></font>.
+</li>
+<li>
+When a sequence of expressions has exactly one expression then the value is the value of that expression.
+</li>
+<li>
+When an sequence of expressions has two expressions, and both have type <font face="courier"><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>,the result is the concatenation of those strings (see <font face="courier"><font face="courier"><a href="content_243.html" class="inop1" target="contents">++</a></font></font>).
+</li>
+<li>
+When a sequence of expressions has two expressions and one expression has value <font face="courier"><font face="courier"><a href="content_221.html" class="name1" target="contents">null</a></font></font>,then the result is the value of the other expression.
+</li>
+<li>
+When a sequence of expressions has three of more expressions, then the first two expressions arejoined producing a sequence that is one element shorter.That resulting shorter sequence is then joined.
+</li>
+</ul>
+<p>
+Join rules are also used for <font face="courier"><font face="courier">@<a href="content_131.html" class="tag1" target="contents">x:while</a></font></font> and <font face="courier"><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font></font> loops.Here the result will be the join of all the body executions.
+</p>
+</body>
+</html>

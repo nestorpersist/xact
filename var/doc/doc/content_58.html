@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Passes</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;2 <a href="nav1_2.html" target="nav1" class="numbered1">User Manual</a> > 2.10 <a href="nav2_2_10.html" target="nav2" class="numbered1">New Languages</a> > 2.10.2 <font color="blue">Passes</font>
+</b>
+<br/> 
+
+<a href="content_57.html" target="contents">prev</a>
+ 
+<a href="content_59.html" target="contents">next</a>
+<br/>
+
+
+<p>
+ <b>@x:Act</b> interpretation consists of four passes.The <b>@x:Act</b> interpreter calls these four passes in order.
+</p>
+<ul>
+<li>
+The first pass is parsing.Parsing can be explicitly invoked by calling the <font face="courier"><font face="courier"><a href="content_192.html" class="name1" target="contents">Parse</a></font></font>.Parsing is the same for all languages.These is no way to extend <b>@x:Act</b> syntax.
+</li>
+<li>
+The second pass is processing scopes and name definitions.It also handles <font face="courier"><font face="courier">@<a href="content_128.html" class="tag1" target="contents">x:use</a></font></font> commands andhandles <font face="courier" color="green">visible</font> and <font face="courier" color="green">hidden</font> options.
+</li>
+The third pass is processing name uses.The second and third passes can be invoked explicitly by callingthe <font face="courier"><font face="courier"><a href="content_169.html" class="name1" target="contents">Bind</a></font></font> function.Since name binding is language specific, a language object can be passed to <font face="courier"><font face="courier"><a href="content_169.html" class="name1" target="contents">Bind</a></font></font>.
+<li>
+The fourth pass is execution.Execution can be explicitly invoked by calling the <font face="courier"><font face="courier"><a href="content_179.html" class="name1" target="contents">Exec</a></font></font> function.Since execution is language specific, a language object can be passed to <font face="courier"><font face="courier"><a href="content_179.html" class="name1" target="contents">Exec</a></font></font>.
+</li>
+</ul>
+</body>
+</html>

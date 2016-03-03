@@ -1,0 +1,807 @@
+@x:const topPrec := 0; 
+@x:const bottomPrec := 14;
+
+@x:const DOTINFO := rec(op=".",prec=14);
+@x:const PTAB := rec(
+   Assert=rec(op="~",prec=1,prefix=true,addSpace=false),
+   Equal=rec(op="=",prec=2,addSpace=false),
+   Assign=rec(op=":=",prec=3),
+   Or=rec(op="|",prec=4),
+   Xor=rec(op="^",prec=5),
+   And=rec(op=amp,prec=6),
+   Eq=rec(op="==",prec=7),
+   Ne=rec(op="!=",prec=7),
+   Less=rec(op="<",prec=8),
+   LessEq=rec(op="<=",prec=8),
+   Greater=rec(op=">",prec=8),
+   GreaterEq=rec(op=">=",prec=8),
+   Range=rec(op="..",prec=9,addSpace=false),
+   Add=rec(op="+",prec=10),
+   Sub=rec(op="-",prec=10),
+   Mult=rec(op="*",prec=11),
+   Div=rec(op="/",prec=11),
+   Rem=rec(op="/+",prec=11),
+   Cat=rec(op="++",prec=12),
+   Minus=rec(op="-",prec=13,prefix=true),
+   Not=rec(op="!",prec=13,prefix=true),
+   Percent=rec(op="%",prec=13,prefix=true,addSpace=false),
+   XDOMValue=rec(op="**",prec=13,prefix=true,addSpace=false),
+   Tilde=rec(op="~",prec=14,addSpace=false),
+   Question=rec(op="?",prec=14,addSpace=false),
+   Dot=DOTINFO
+);
+
+@x:const CMDCOLOR := "brown";
+@x:const XCMDCOLOR := "#FF9C00";
+@x:const STRINGCOLOR := "green";
+@x:const NAMECOLOR := "blue";
+@x:const COMMENTCOLOR := "00CD00";
+@x:const ANAMECOLOR := "0AAAA";
+@x:const DOTCOLOR := "FF00FF";
+
+
+@x:func addSpace(s1,s2) {
+   @x:if s1 == "cancel" { "empty" }
+   @x:orif s2 == "cancel" { "empty" }
+   @x:orif s1 == "lines" { "lines" }
+   @x:orif s2 == "lines" { "lines" }
+   @x:orif s1 == "line" { "line" }
+   @x:orif s2 == "line" { "line" }
+   @x:orif s1 == "space" { "space" }
+   @x:orif s2 == "space" { "space" }
+   @x:else { "empty" }
+}
+
+@x:func needsDollar(s) {
+   @x:var result := false;	
+   @x:var last := 0;
+   @x:for ch:= Chars[s] {
+      @x:if ch == "."(1) | ch == "-"(1) {
+	 result := true;
+	 @x:break;
+      }
+      last := ch;
+   }
+   @x:if last == ":"(1) { result := true }
+   result
+}
+
+@x:func addDollar(name) {
+   @x:if needsDollar(name) { "$"; name; "$" }
+   @x:else { name }
+}
+
+@x:func encodeString(s,q,escapeTag,includeBr) {
+    @x:for ch:=Chars[s] {
+	@x:if (ch == quot(1) & q == ch) { amp; "quot;"	}
+	@x:orif (ch == apos(1) & q == ch) { amp; "apos;" }
+	@x:orif (ch == amp(1)) { amp; "amp;" }
+	@x:orif (escapeTag & ch == lt(1)) { amp; "lt;" }
+	@x:orif (escapeTag & ch == gt(1)) { amp; "gt;" }
+	@x:orif (ch == nbsp(1)) {
+	   amp;
+	   @x:if escapeTag { "amp;" }
+	   "nbsp;"
+	} @x:orif (ch == 13) {
+	} @x:orif (ch == eol(1)) {
+	   @x:if includeBr { "<br>" } eol;
+	} @x:orif (ch < 32 | ch >= 127) { 
+	   amp;  
+	   @x:if escapeTag { "amp;" }
+	   "#"; ch; ";" 
+	} @x:else { string(code=ch) }
+    }
+}
+
+@x:type unparser;
+@x:self {
+
+   @x:var incr := 3;
+   @x:var sugar := true;
+   @x:var graph := false;
+   @x:var html := false;
+   @x:var partial := "";
+   @x:var callBack := null;
+
+
+   // GRAPH Markers
+   //   mark1 and mark2 are assumed to be false before and after Unparse
+   //
+   //   mark1     -- node has been visited at least once (reversed in pass2)
+   //   mark2     -- element has been visited at least once in elem context (cleared in pass2)
+   //   label     -- in pass1 "*" needs a label (shared or used in non-element context)
+   //   label     -- in pass2 "Ln" is actual label
+   //   topLabels -- elements in topLabels have only been seen in non-element context
+
+   @x:var done := false;
+   @x:var labelIdx := 0;
+   @x:var topLabels := null;
+   @x:var cmdFont := null;
+   @x:var xcmdFont := null;
+   @x:var stringFont := null;
+   @x:var nameFont := null;
+   @x:var aNameFont := null;
+   @x:var commentFont := null;
+   @x:var dotFont := null;
+
+   @x:var LEFT := lt;
+   @x:var RIGHT := gt;
+   @x:var EOL := eol;
+   @x:var ESC := amp;
+
+   @x:func sys:Init(incr,sugar,graph,html,partial,callBack),visible {
+      self.incr := incr;
+      self.sugar := sugar;
+      self.graph := graph;
+      self.html := html;
+      self.partial := partial;
+      self.callBack := callBack;
+      @x:if html {
+	 cmdFont := xdom:element("font",attr=rec(color=CMDCOLOR),spaceBeforeBody="erase",spaceAfterBody="erase");
+	 xcmdFont := xdom:element("font",attr=rec(color=XCMDCOLOR),spaceBeforeBody="erase",spaceAfterBody="erase");
+	 stringFont := xdom:element("font",attr=rec(color=STRINGCOLOR),spaceBeforeBody="erase",spaceAfterBody="erase");
+	 nameFont := xdom:element("font",attr=rec(color=NAMECOLOR),spaceBeforeBody="erase",spaceAfterBody="erase");
+	 aNameFont := xdom:element("font",attr=rec(color=ANAMECOLOR),spaceBeforeBody="erase",spaceAfterBody="erase");
+	 commentFont := xdom:element("font",attr=rec(color=COMMENTCOLOR),spaceBeforeBody="erase",spaceAfterBody="erase");
+	 dotFont := xdom:element("font",attr=rec(color=DOTCOLOR),spaceBeforeBody="erase",spaceAfterBody="erase");
+	 LEFT := amp ++ "lt;";
+	 RIGHT := amp ++ "gt;";
+	 ESC := amp ++ "amp;";
+	 EOL := "<br/>" ++ eol;
+      }
+      @x:if graph { topLabels := xdom:element("labels") }
+   }
+
+   @x:func doIndent(indent),visible {
+      @x:for i:=1..indent {
+	 @x:if html { amp; "nbsp;" }
+	 @x:else { " " }
+      }
+   }
+
+   @x:func indentS(indent,s) {
+      @x:const sep1:=EOL++doIndent(indent);
+      @x:var sep := "";
+      @x:for s1:=Lines[s] {
+	 sep; s1;
+	 sep := sep1;
+      }
+   }
+
+   @x:func doSpace(indent,space) {
+      @x:if html {
+	 @x:if space == "space" { amp; "nbsp;" }
+	 @x:orif space == "line" { EOL; doIndent(indent) }
+	 @x:orif space == "lines" { EOL; EOL; doIndent(indent) }
+      } @x:else {
+	 @x:if space == "space" { " " }
+	 @x:orif space == "line" { EOL; doIndent(indent) }
+	 @x:orif space == "lines" { EOL; EOL; doIndent(indent) }
+      }
+   }
+
+   @x:func hasLabel(t) {
+      @x:if t.label == "" {
+	 t.label := "*";
+      }
+   }
+
+   @x:func assignLabel(t) {
+      @x:if t.label == "*" {
+	 labelIdx := labelIdx + 1;
+	 t.label := "L"++labelIdx;
+      }
+   }
+
+   @x:func topLabel(t) {
+      topLabels.insert#body(t);
+   }
+
+   @x:func graphTop(indent,spaceBefore1),visible {
+      @x:var spaceBefore := spaceBefore1;
+      @x:for t:=topLabels.all#body {
+	 @x:if spaceBefore == "empty" | spaceBefore == "space" {
+	    EOL;
+	 }
+	 doIndent(indent);
+	 unparse(t,indent,false,false,empty);
+	 spaceBefore := t.spaceAfter;
+      }
+   }
+
+   @x:func graph1(t~xdom,allowElement),visible {
+      @x:if ! t.mark1 { t.label := "" }
+      @x:else { hasLabel(t) }
+      @x:if t?xdom:element {
+	 @x:if allowElement { t.mark2 := true }
+	 @x:else { hasLabel(t) }
+	 @x:if ! t.mark1 {
+	    t.mark1 := true;
+	    @x:for i := 1..t.size#attr { graph1(t(i)#attr,false) }
+	    @x:for i := 1..t.size#body { graph1(t(i)#body,true) }
+	 }
+      } @x:else {
+	 @x:if ! t.mark1 {
+	    t.mark1 := true;
+	    @x:if t?xdom:call {
+	       graph1(t.func,false);
+	       @x:for i := 1..t.size { graph1(t(i),false) }
+	    } @x:orif t?xdom:name {
+	       @x:for i := 1..t.size { graph1(t(i),false) }
+	    } @x:orif t?xdom:value & t.val?xdom {
+	       graph1(t.val,false);
+	    }
+	 }
+      }
+   }
+
+   @x:func checkIterator(t) { 
+      @x:var result := t;
+      @x:if t.kind == "iterator" & t.tag == "x:block" &
+      t.size#attr == 0 & t.size#body == 2 {
+	 @x:var b1 := t(1)#body;
+	 @x:var b2 := t(2)#body;
+	 @x:if b1?xdom:element & b2?xdom:call {
+	    @x:if b1.tag == "x:func" & b2.size == 1 {
+	       @x:var fc:=b1(1)#attr;
+	       @x:if fc?xdom:call {
+		  @x:const etree1 := xdom:element("x:for");
+		  etree1.spaceBefore := t.spaceBefore;	
+		  etree1.spaceAfter := t.spaceAfter;
+		  etree1.spaceBeforeBody := t.spaceBeforeBody;
+		  etree1.spaceAfterBody := t.spaceAfterBody;
+		  @x:var asize := fc.size;
+		  @x:for i:=1..asize-1 {
+		     etree1.insert(fc(i)#attr);
+		  }
+		  @x:if asize > 0 {
+		     @x:var xn1 := xdom:name("Assign",kind="op");
+		     @x:var xc1 := xdom:call(xn1);
+		     xc1.insert(fc(asize));
+		     xc1.insert(b2.func);
+		     etree1.insert#attr(xc1);
+		  } @x:else {
+		     etree1.insert#attr(b2.func);
+		  }
+		  @x:for b:=b1.all#body {
+		     etree1.insert#body(b)
+		  }
+		  result := etree1;
+	       }
+	    }
+	 }
+      }
+      result;
+   }
+
+   @x:func isCompound(t) {
+      @x:const size := t.size#body;
+      @x:if size > 1 { true }
+      @x:orif size == 1 & t(1)#body?xdom:element { true }
+      @x:else { false }
+   }
+
+   @x:func unparseExt(t) {
+      "[";
+      @x:var sep:= "";
+      @x:for e:=t.all {
+	 sep; unparseExp(0,e,topPrec,false);
+	 sep := ",";
+      }
+      "]"
+   }
+
+   @x:func unparseView(t) {
+      "#"; 
+      unparseExp(0,t,bottomPrec,false);
+   }
+
+   @x:func unparseOp(name,t,prec,view) {
+      @x:var name1 := name;
+      @x:if view != null & name1.size > 4 & name1(1..4) == "sys:" {
+	  // remove sys:
+          name1 := name1(5..name1.size);
+      }
+      @x:const size := t.size;
+      @x:const info := Dot(PTAB,name1,rec);
+      @x:if info != null {
+	 @x:const prec1 := info.prec#rec;
+	 @x:if size == 1 & info.prefix#rec == true {
+	    @x:if prec1 < prec { "(" }
+	    @x:if callBack != null {
+	       callBack("preop",info.op#rec);
+	    } @x:else {
+	       info.op#rec;
+	    }
+	    @x:if view != null { unparseView(view) }
+	    @x:if info.addSpace#rec != false { " " }
+	    unparseExp(0,t(1),prec1,false);
+	    @x:if prec1 < prec { ")" }
+	    done := true;
+	 } @x:orif size == 2 & info.prefix#rec != true {
+	    @x:if prec1 < prec { "(" }
+	    @x:if (info.op#rec == "=" & t(1)?xdom:name) {
+	       @x:tag aNameFont { t(1).val }
+	    } @x:else {
+	       unparseExp(0,t(1),prec1,false);
+	    }
+	    @x:if info.addSpace#rec != false { " " }
+	    @x:if callBack != null {
+	       callBack("inop",info.op#rec);
+	    } @x:else {
+	       info.op#rec;
+	    }
+	    @x:if view != null { unparseView(view) }
+	    @x:if info.addSpace#rec != false { " " }
+	    unparseExp(0,t(2),prec1,false);
+	    @x:if prec1 < prec { ")" }
+	    done := true;
+	 }
+      }
+   }
+
+   @x:func unparseDot(t,prec) {
+      @x:const func := t.func;
+      @x:const prec1 := DOTINFO.prec#rec;
+      @x:if (prec1 < prec) { "(" }
+      unparseExp(0,t(1),prec1,false);
+      ".";
+      @x:tag dotFont {
+	  addDollar(t(2).val);
+      }
+      @x:if func.hasExt { unparseExt(func) }
+      @x:if t.size == 3 { unparseView(t(3)) }
+      @x:if (prec1 < prec) { ")" }
+      done := true;
+   }
+
+   @x:func unparseString(t) {
+      @x:var ok := true;
+      @x:for a:=t.all {
+	 @x:if ! a?xdom:string & ! a?xdom:name {
+	    ok := false;
+	    @x:break;
+	 }
+      }
+      @x:if ok {
+	 @x:if t.kind != "single" {
+	    quot;
+	     @x:for a:=t.all {
+		@x:if a?xdom:string { encodeString(a.val,quot(1),html,html) }
+		@x:else { ESC; @x:tag nameFont { a.val } ";"}
+	     }
+	    quot
+	 } @x:else {
+	    apos;
+	    @x:for a:=t.all {
+	       @x:if a?xdom:string { encodeString(a.val,apos(1),html,html); }
+	       @x:else { ESC; @x:tag nameFont { a.val } ";"}
+	    }
+	    apos
+	 }
+	 done := true;
+      }
+   }
+
+   @x:func unparseSubscript(t) {
+      @x:const func := t.func;
+      unparseExp(0,func(1),topPrec,false);
+      "(";
+      @x:var sep := "";
+      @x:for a:=t.all {
+	 sep;
+	 unparseExp(0,a,topPrec,false);
+	 sep := ",";
+      }
+      ")";
+      unparseView(func(3));
+      done := true;
+   }
+
+   @x:func unparseList(t) {
+      "[";
+      @x:var sep := "";
+      @x:for a:=t.all {
+	 sep;
+	 unparseExp(0,a,topPrec,false);
+	 sep := ",";
+      }
+      "]";
+      done := true;
+   }
+
+   @x:func unparseExp1(indent,t,prec,xml) {
+      @x:if t?xdom:int { string(t.val) }
+      @x:orif t?xdom:float { string(t.val) }
+      @x:orif t?xdom:string {
+         @x:if t.kind == "comment" {
+	    @x:if xml {
+	       LEFT; "!--";
+	    } @x:else {
+	       "<!--";
+	    }
+	    indentS(indent,t.val);
+	    @x:if xml {
+	       "--"; RIGHT;
+	    } @x:else {
+	       "-->"
+	    }
+	 } @x:orif xml { 
+	    indentS(indent,encodeString(t.val,0,true,false)) 
+         } @x:else {
+	    @x:tag stringFont {
+		@x:if t.kind != "single" {
+		   quot;
+		   encodeString(t.val,quot(1),html,html);
+		   quot
+		} @x:else {
+		   apos;
+		   encodeString(t.val,apos(1),html,html);
+		   apos
+		}
+	     }
+	 }
+      } @x:orif t?xdom:name {
+	 @x:var s := t.val;
+	 @x:if xml {
+	    ESC; 
+	    @x:tag nameFont { s }
+	    ";"
+	 } @x:else {
+	    @x:if callBack != null {
+	       callBack("name",addDollar(t.val));
+	    } @x:else {
+	       @x:tag nameFont {
+	          addDollar(t.val);
+	       }
+	    }
+         }
+	 @x:if t.hasExt { unparseExt(t) }
+      } @x:orif t?xdom:call {
+	 @x:const func := t.func;
+	 @x:const oldDone := done;
+	 done := false;
+	 @x:if sugar {
+	    @x:if func?xdom:name {
+	       @x:if t.kind == "op" & ! func.hasExt {
+		  unparseOp(func.val,t,prec,null);
+	       } @x:orif t.kind == "dot" & func.val == "Dot" & 2 <= t.size &
+	       t.size <= 3 & t(2)?xdom:string {
+		  unparseDot(t,prec);
+	       } @x:orif (t.kind == "single" | t.kind == "double") &
+	       func.val == "Cat" {
+		  @x:tag stringFont {
+		     unparseString(t);
+		  }
+	       } @x:orif t.kind == "list" & func.val == "list" & !func.hasExt {
+	           unparseList(t);
+	       }
+	    } @x:orif func?xdom:call {
+	       @x:const func1 := func.func;
+	       @x:if t.kind == "op" & 
+	       func1?xdom:name & func1.val == "Dot" & ! func1.hasExt &
+	       2 <= func.size & func.size <= 3 & func(2)?xdom:string {
+		   unparseOp(func(2).val,t,prec,func(1));
+	       } @x:orif t.kind == "subscript" &
+	       func1?xdom:name & func1.val == "Dot" & ! func1.hasExt &
+	       func.size == 3 & func(2)?xdom:string & func(2).val == "sys:Subscript" {
+		   unparseSubscript(t);
+	       }
+	    }
+	 }
+	 @x:if ! done {
+	    @x:var sep := "";
+	    unparseExp(0,func,bottomPrec,false);
+	    "(";
+	    @x:for arg:=t.all {
+	       sep; unparseExp(0,arg,topPrec,false);
+	       sep := ",";
+	       @x:if html { sep := ",<wbr>" }
+	    }
+	    ")"
+	 }
+	 done := oldDone;
+      } @x:orif t?xdom:element {
+	 "**@"++t.tag++"**";  
+	 //Error("can't unparse element expression, tag:"++t.tag);
+      } @x:orif t?xdom:value {
+	     @x:if t.val?xdom {
+		"**xdom("; 
+		unparseExp(0,t.val,topPrec,false);
+		")"
+	     } @x:orif t.val == null {
+		"**null"
+	     } @x:else {
+		"**unknown("; 
+		'"';string(Type[t.val]);'"';
+		")"
+	     }	
+      } @x:else {
+	 "**unknown**";  
+	 //Error("unknown unparse expression type");
+      }
+   }
+
+   @x:func unparseExp(indent,t,prec,xml) {
+      @x:if graph & t?xdom:element {
+	 @x:if t.mark1 & ! t.mark2 & t.label == "*" {
+	    assignLabel(t);
+	    topLabel(t);
+	 }
+	 "graph:use("; quot; t.label; quot; ")";
+      } @x:orif graph & t?xdom:value & t.val?xdom:element {
+	 @x:if t.val.mark1 & ! t.val.mark2 & t.lable == "*" {
+	    assignLabel(t.val);
+	    topLabel(t.val);
+	 }
+	 "graph:usev("; quot; t.val.label; quot; ")";
+      } @x:orif graph & ! t.mark1 {
+	 assignLabel(t);
+	 "graph:use("; quot; t.label; quot; ")"
+      } @x:else {
+	 @x:if graph { 
+	    t.mark1 := false;
+	    assignLabel(t);
+	    @x:if t.label != "" { "graph:def("; quot; t.label; quot; "," }
+	    unparseExp1(indent,t,prec,xml);
+	    @x:if t.label != "" { ")" }
+	 } @x:else {
+	    unparseExp1(indent,t,prec,xml);
+	 }
+      }
+   }
+
+   @x:func isString(t) {
+      @x:if t?xdom:string {
+	 true
+      } @x:orif t?xdom:call & (t.kind == "single" | t.kind == "double") 
+      & t.func?xdom:name & t.func.val == "Cat" {
+	 true
+      } @x:else {	
+	 false
+      }
+   }
+   
+   @x:func unparse1(t1,indent,needSemi,xml,extra,only) {
+      @x:var outSemi := needSemi;
+      @x:var t:=t1;
+      @x:if sugar { t := checkIterator(t) }
+      @x:if sugar & t?xdom:element & t.kind == "short" & 
+      t.size#attr == 1 & t(1)#attr?xdom:string &
+      t.base == "comment" {
+	 t.space; "://"; t(1)#attr.val;
+	 outSemi := false;
+      } @x:orif sugar & t?xdom:element & t.kind == "long" & 
+      t.size#attr == 1 & t(1)#attr?xdom:string &
+      t.base == "comment" {
+	 t.space; ":/*"; indentS(indent,t(1)#attr.val); "*/";
+	 outSemi := false;
+      } @x:orif t.kind == "xml" | t.kind == "xmldecl" {
+	 @x:if partial == "" | partial == "start" {
+	    @x:tag xcmdFont {
+	       @x:if t.kind == "xml" { 
+		  LEFT
+	       } @x:else { LEFT; "?" }
+	       t.tag
+	    }
+	    @x:if only != null {
+	       " "; only
+	    } @x:orif t.size#attr != 0 | extra != null {
+	       @x:if extra != null { " "; extra }
+	       @x:var pos := 1;
+	       @x:for a:=t.all#attr {
+		  " "; 
+		  @x:if a?xdom:call & a.kind=="op" & a.func?xdom:name & a.func.val=="Equal" 
+		  & a.size == 2 {
+		     @x:if isString(a(2)) {
+			unparseExp(0,a,topPrec,false);		    
+		     } @x:else {
+			@x:tag aNameFont {
+			   "XEXP:";
+			   unparseExp(0,a(1),topPrec,false);
+			}
+			"="; "'";
+			encodeString(
+			   unparseExp(0,a(2),topPrec,false),
+			   apos(1),html,html);
+			"'";
+		     }
+		  } @x:else {
+		      @x:tag aNameFont {
+		         "XPOS:p"; pos; 
+		      }
+		      "=";
+		      "'";
+		      encodeString(
+			unparseExp(0,a,topPrec,false),
+			apos(1),html,html);
+		      "'";
+		  }
+		  pos := pos + 1;
+	       }
+	    }
+	    @x:if t.kind == "xmldecl" { @x:tag xcmdFont { "?"; RIGHT } }
+	    @x:orif t.size#body == 0 | only != null { @x:tag xcmdFont {"/"; RIGHT }}
+	    @x:else {
+	       @x:var space := t.spaceBeforeBody;
+	       @x:tag xcmdFont { RIGHT }
+	       @x:if partial == "" {
+		  @x:for b:=t.all#body {
+		     unparse(b,indent+incr,false,true,space);
+		     space := b.spaceAfter;
+		  }
+		  doSpace(indent,addSpace(space,t.spaceAfterBody));
+		  @x:tag xcmdFont {
+		     LEFT; "/"; 
+		     t.tag;
+		     RIGHT
+		  }
+	       }
+	    }
+	 } @x:orif partial == "body" {
+	    partial := "";
+	    @x:var space := "cancel"; 
+	    @x:for b:=t.all#body {
+	       unparse(b,indent,false,true,space);
+	       space := b.spaceAfter; 
+	    }
+	 } @x:orif partial == "end" {
+	    @x:tag xcmdFont {
+	       LEFT; "/"; 
+	       t.tag;
+	       RIGHT
+	    }
+	 }
+         outSemi := false;
+      } @x:else {
+         @x:if partial == "" | partial == "start" {
+	    @x:tag xcmdFont {
+	       @x:if (xml) { LEFT }
+	    }
+	    @x:if callBack != null {
+	       callBack("tag",addDollar(t.tag));
+	    } @x:else {
+	       @x:tag cmdFont {
+	          "@";addDollar(t.tag)
+	       }
+	    }
+	    @x:if only != null {
+	       " "; only
+	    } @x:orif t.size#attr != 0 | extra != null {
+	       @x:var sep:=" ";
+	       @x:var sep1 := ",";
+	       @x:if t.size#attr > 3 {
+		   sep:=EOL++doIndent(indent+1);
+		   sep1:=sep1++EOL++doIndent(indent+1);
+	       }
+	       @x:if extra != null { sep; extra; sep:=sep1; }
+	       @x:for a:=t.all#attr {
+		  sep; unparseExp(0,a,topPrec,false);
+		  sep:= sep1
+	       }
+	       
+	    }
+	    @x:const bsize := t.size#body;
+	    @x:if bsize != 0 & only == null {
+		@x:var space := t.spaceBeforeBody;
+		@x:const compound := isCompound(t);
+		@x:if compound {
+//                   space := addSpace(space,"line");
+		}
+	       @x:tag cmdFont { " {" }
+	       @x:if partial == "" {
+		  @x:for i:=1..bsize {
+		     @x:const b := t(i)#body;
+		     @x:var needSemi1 := true;
+		     @x:if i == bsize { needSemi1 := false }
+		     unparse(b,indent+incr,needSemi1,false,space);
+		     space := b.spaceAfter;
+		  }
+		  doSpace(indent,addSpace(space,t.spaceAfterBody));
+		  @x:tag cmdFont { "}" }
+		  outSemi := false;
+	       }
+	    }
+	    @x:if xml & partial == "" { @x:tag xcmdFont {"/"; RIGHT }}
+	 } @x:orif partial == "body" {
+	    partial := "";
+	    @x:const bsize := t.size#body;
+	    @x:var space := "cancel";
+	    @x:for i:=1..bsize {
+	       @x:const b := t(i)#body;
+	       @x:var needSemi1 := true;
+	       @x:if i == bsize { needSemi1 := false }
+	       unparse(b,indent,needSemi1,false,space);
+	       space := b.spaceAfter;
+	    }
+	 } @x:orif partial == "end" {
+	    @x:tag cmdFont {
+	       "}";
+	    }
+	    @x:tag cmdFont {
+	       @x:if xml & partial == "" { "/"; RIGHT }
+	    }	
+	    outSemi := false;
+	 }
+      }
+      @x:if outSemi { ";" }
+   }
+
+   @x:func unparse(t,indent,needSemi,xml,spaceBefore),visible {
+      doSpace(indent,addSpace(spaceBefore,t.spaceBefore));
+      @x:if t?xdom:element {
+	 @x:if graph & ! t.mark1 {
+	     assignLabel(t);
+	     @x:const only := "graph:use=" ++ quot ++ t.label ++ quot;
+	     unparse1(t,indent,needSemi,xml,null,only);
+	 } @x:else {
+	    @x:if graph { 
+	       t.mark1 := false;
+	       t.mark2 := false;
+	       @x:var extra := null;
+	       assignLabel(t);
+	       @x:if t.label != "" { extra := "graph:def=" ++ quot ++ t.label ++ quot }
+	       unparse1(t,indent,needSemi,xml,extra,null);
+	    } @x:else {
+	       unparse1(t,indent,needSemi,xml,null,null);
+	    }
+	 }
+      } @x:else {
+	 @x:var outSemi := needSemi;
+	 @x:if sugar & t?xdom:call & t.kind == "short" & t.func.val == "Comment" & 
+	 t.size == 1 & t(1)?xdom:string {
+	    @x:tag commentFont {
+	       "//"; t(1).val;
+	    } 
+	    outSemi := false;
+	 } @x:orif sugar & t?xdom:call & t.kind == "long" & t.func.val == "Comment" & 
+	 t.size == 1 & t(1)?xdom:string {
+	    @x:tag commentFont {
+	       "/*"; indentS(indent,t(1).val); "*/";
+	    }
+	    outSemi := false;
+	 } @x:else { 
+	    //???	    @x:if t?xdom:element { t.kind }
+	    @x:if ! t?xdom:string & ! t?xdom:name & xml {
+	       @x:const elem := xdom:element("x:exp",attr=list(t),kind="xml",spaceBefore=t.spaceBefore,spaceAfter=t.spaceAfter);
+	       t.spaceBefore := "empty";
+	       t.spaceAfter := "empty";
+	       unparse(elem,indent,needSemi,true,"empty");
+	    } @x:else {
+	       unparseExp(indent,t,topPrec,xml)
+	    }
+	 }
+	 @x:if outSemi { ";" }
+      }
+   }
+}
+
+@x:func Unparse(%L),visible {
+   ~ L.size > 0 & L(1)?xdom;
+   @x:const t:=L(1);
+   @x:var indent := L.indent#rec;
+   @x:var incr := L.incr#rec;
+   @x:var sugar := L.sugar#rec;
+   @x:var graph := L.graph#rec;
+   @x:var html := L.html#rec;
+   @x:var partial := L.partial#rec;
+   @x:var callBack := L.callBack#rec;
+   @x:if indent == null | ! indent?int { indent := 0 }
+   @x:if incr == null | ! incr?int { incr := 3 }
+   @x:if sugar != false { sugar := true }
+   @x:if graph != true { graph := false }
+   @x:if html != true { html := false }
+   @x:if partial == null { partial := "" }
+   @x:var u:=unparser(incr,sugar,graph,html,partial,callBack);
+   @x:if graph { u.graph1(t,true) }
+   @x:if html {
+      @font face="courier" {
+	 u.doIndent(indent);
+	 u.unparse(t,indent,false,false,"cancel");
+      }
+   } @x:else {
+      u.doIndent(indent);
+      u.unparse(t,indent,false,false,"cancel");	
+   }
+   @x:if graph { u.graphTop(indent,t.spaceAfter) }
+}

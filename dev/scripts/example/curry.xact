@@ -1,0 +1,30 @@
+@x:func f(a,b,c) {
+   a + b + c
+}
+
+@x:func f2[a,b](c) {
+   f(a,b,c)
+}
+@x:func f1[a](b) {
+   f2[a,b]
+}
+@x:func f0(a) {
+   f1[a]
+}
+f0(3)(5)(20); eol;
+
+@x:func curry[L](v) {
+   @x:const args := L.args#rec;
+   args.insert(v);
+   @x:if args.size == L.cnt#rec {
+        @x:const ff:=L.func#rec;
+	ff(%args)
+   }
+   @x:else {
+      curry[L]
+   }
+}
+@x:func curry(f,cnt) {
+   curry[rec(args=array(),func=f,cnt=cnt)];
+}
+curry(f,3)(3)(5)(20); eol;

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Unparse</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_5.html" target="nav1" class="top1">Libraries</a> >  <font face="courier"><a href="nav2_5_11.html" target="nav2" class="library1">library:unparser</a></font> >  <font face="courier"><font color="blue">Unparse</font></font>
+</b>
+<br/> 
+
+<a href="content_371.html" target="contents">prev</a>
+ 
+<a href="content_373.html" target="contents">next</a>
+<br/>
+
+
+<p>
+<font size="+1">
+<b>
+Description
+</b>
+</font>
+</p>
+<p>
+This function will unparse <b>@x:Act</b> scripts andthe subset of XML supported by <b>@x:Act</b> syntax.It also handles conversions to <font color="blue">Pure XML</font>.
+</p>
+<p>
+<font size="+1">
+<b>
+Function Unparse
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> Unparse(<font face="courier"><font color="#006699">tree</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font>,<wbr><font color="0AAAA">indent</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">indent1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> 0,<wbr><font color="0AAAA">incr</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">incr1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> 3,<wbr><font color="0AAAA">sugar</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">sugar1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font>,<wbr><font color="0AAAA">graph</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">graph1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font>,<wbr><font color="0AAAA">html</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">html1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font>,<wbr><font color="0AAAA">partial</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">partial1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_318.html" class="name1" target="contents">enum</a></font>[<font color="green">""</font>,<font color="green">"start"</font>,<font color="green">"body"</font>,<font color="green">"end"</font>] <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font color="green">""</font>,<wbr><font color="0AAAA">callBack</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">callBack1</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_221.html" class="name1" target="contents">null</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">tree</font></font></font>
+</td>
+<td>
+parse tree to be unparsed.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">indent</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">indent1</font></font></font>
+</td>
+<td>
+(optional) number of character positions to skip before startingeach line of output.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">incr</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">incr1</font></font></font>
+</td>
+<td>
+(optional) number of additional character positions to indent foreach nested level.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">sugar</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">sugar1</font></font></font>
+</td>
+<td>
+(optional) whether to show sugared forms in the output.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">graph</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">graph1</font></font></font>
+</td>
+<td>
+(optional) whether the input should be treated as a graph with sharing and cycles(rather than a tree).If cycles are present and <font face="courier"><font color="0AAAA">graph</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font></font>, then <font face="courier"><font face="courier"><a href="content_372.html" class="name1" target="contents">Unparse</a></font></font> will fail (with a stack overflow).For more information see <a href="content_45.html" class="numbered1" target="contents">Graphs</a> and the
+<font face="courier"><font face="courier"><a href="content_313.html" class="example1" target="contents">graph</a></font></font> example.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">html</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">html1</font></font></font>
+</td>
+<td>
+(optional) output should be XHTML (rather than plain text).
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">partial</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">partial1</font></font></font>
+</td>
+<td>
+(optional) if <font face="courier"><font face="courier"><font color="#006699">tree</font></font></font> has type <font face="courier"><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font></font>, thenthis parameter controls which parts of it should be output:only the start tag (<font face="courier" color="green">"start"</font>), only the body (<font face="courier" color="green">"body"</font>),only the end tag (<font face="courier" color="green">"end"</font>), or all parts (<font face="courier" color="green">""</font>).each nested level.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">callBack</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">callBack1</font></font></font>
+</td>
+<td>
+(optional) see below.This parameter is used to generate <b>@x:Act</b> documentation.If allows XHTML documentation links to be added for tags, names, infix ops,prefix ops.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+Returns the resulting unparsed text.
+<p>
+If the <font face="courier"><font face="courier"><font color="#006699">callBack</font></font></font> parameter is present, it should have the following form.
+</p>
+<p>
+<font size="+1">
+<b>
+Function callBack
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> callBack(<font face="courier"><font color="#006699">kind</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_318.html" class="name1" target="contents">enum</a></font>[<font color="green">"preop"</font>,<font color="green">"inop"</font>,<font color="green">"name"</font>,<font color="green">"tag"</font>],<wbr><font face="courier"><font color="#006699">name</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">kind</font></font></font>
+</td>
+<td>
+kind of text given by <font face="courier"><font face="courier"><font color="#006699">name</font></font></font>.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">name</font></font></font>
+</td>
+<td>
+text of name
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+Returns the marked-up (for <b>@x:Act</b> documentation an html <font face="courier" color="green">a</font> tagis added) form of <font face="courier"><font face="courier"><font color="#006699">name</font></font></font>.If just <font face="courier"><font face="courier"><font color="#006699">name</font></font></font> is returned, the call-back has no net effect.
+</body>
+</html>

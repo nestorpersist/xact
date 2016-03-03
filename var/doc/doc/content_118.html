@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>x:fork</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > C <a href="nav2_4_3.html" target="nav2" class="lettered1">Tags</a> >  <font face="courier">@<font color="brown">x:fork</font></font>
+</b>
+<br/> 
+
+<a href="content_117.html" target="contents">prev</a>
+ 
+<a href="content_119.html" target="contents">next</a>
+<br/>
+
+
+<p>
+<font size="+1">
+<b>
+Description
+</b>
+</font>
+</p>
+<p>
+This command encloses a set of <font face="courier"><font face="courier">@<a href="content_126.html" class="tag1" target="contents">x:thread</a></font></font> commandsto provide multi-thread fork/join semantics.
+</p>
+<p>
+<font size="+1">
+<b>
+Command Syntax
+</b>
+</font>
+</p>
+<p>
+<font face="courier">'<font color="brown">@x:fork</font>'</font>
+<p>
+No attributes, options or body are permitted.
+</p>
+</p>
+<p>
+<font size="+1">
+<b>
+Execution Semantics
+</b>
+</font>
+</p>
+<p>
+<p>
+The result of executing a <font face="courier"><font face="courier">@<a href="content_126.html" class="tag1" target="contents">x:thread</a></font></font> commandis the result of executing its body.
+</p>
+<p>
+After the body execution completes, the current thread waits untilall threads created by immediately enclosed <font face="courier"><font face="courier">@<a href="content_126.html" class="tag1" target="contents">x:thread</a></font></font> commandsfinish executing.
+</p>
+</p>
+<p>
+<font size="+1">
+<b>
+Examples
+</b>
+</font>
+</p>
+<p>
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_118.html" class="tag1" target="contents">x:fork</a></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_126.html" class="tag1" target="contents">x:thread</a></font> <font face="courier"><font color="#006699">t1</font></font><font color="brown"> {</font>&nbsp;<font face="courier"><font color="#006699">subtask1</font></font>()&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_126.html" class="tag1" target="contents">x:thread</a></font> <font face="courier"><font color="#006699">t2</font></font><font color="brown"> {</font>&nbsp;<font face="courier"><font color="#006699">subtask2</font></font>()&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">maintask</font></font>()<br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font></font>
+<br/>
+
+<p>
+See <font face="courier"><font face="courier"><a href="content_309.html" class="example1" target="contents">IncrParse</a></font></font> example and <font face="courier"><font face="courier"><a href="content_310.html" class="example1" target="contents">queue</a></font></font> example.
+</p>
+</p>
+</body>
+</html>

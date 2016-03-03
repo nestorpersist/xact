@@ -1,0 +1,18 @@
+@x:use library:Unparser;
+@x:use library:iterator;
+@x:func scriptToFile(path) {
+   options.scriptDir#rec;
+   @x:for s := Separate[path,":"] {
+	options.fileSep#rec;	
+	s
+   }
+}	
+@x:func pretty(path),visible {
+   @x:const base := scriptToFile(path);
+   @x:const fname := base ++ ".xact";
+   @x:const saveFname := base ++ ".save_xact";
+   @x:const txt := fname.read#file();
+   saveFname.write#file(txt);
+   @x:const tree := Parse(txt);
+   fname.write#file(Unparse(tree(1)#body)++eol);
+}

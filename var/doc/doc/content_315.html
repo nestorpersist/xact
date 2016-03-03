@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>DocTest</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > L <a href="nav2_4_12.html" target="nav2" class="lettered1">Examples</a> > L.13 <font face="courier"><font color="blue">DocTest</font></font>
+</b>
+<br/> 
+
+<a href="content_314.html" target="contents">prev</a>
+ 
+<a href="content_316.html" target="contents">next</a>
+<br/>
+
+
+<p>
+This example shows how to use the <font face="courier"><font face="courier"><a href="content_314.html" class="example1" target="contents">DocLang</a></font></font>
+sample language.First we show how to parse, bind and execute a scriptfor that language (this is script <font face="courier" color="green">example:RunDocTest.xact</font>).
+</p>
+<br/>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_128.html" class="tag1" target="contents">x:use</a></font> <font face="courier"><font color="#006699">library:path</font></font>;<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_128.html" class="tag1" target="contents">x:use</a></font> <font face="courier"><font color="#006699">DocLang</font></font>;<br/>
+<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">fname</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_359.html" class="name1" target="contents">pathToFile</a></font>(<font color="green">"example:doctest"</font>) <font face="courier"><a href="content_243.html" class="inop1" target="contents">++</a></font> <font color="green">".xact"</font>;<br/>
+<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">RunDocTest</font></font>,<font face="courier"><font color="#006699">visible</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">txt</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">fname</font></font>.<font color="FF00FF">read</font>#<font face="courier"><a href="content_159.html" class="name1" target="contents">file</a></font>();<br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">t</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_192.html" class="name1" target="contents">Parse</a></font>(<font face="courier"><font color="#006699">txt</font></font>)(1)#<font face="courier"><a href="content_155.html" class="name1" target="contents">body</a></font>;<br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">lang:doc</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">langtype:doc</font></font>(<font face="courier"><a href="content_217.html" class="name1" target="contents">lang:current</a></font>);<br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_169.html" class="name1" target="contents">Bind</a></font>(<font face="courier"><font color="#006699">t</font></font>,<wbr><font color="0AAAA">language</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">lang:doc</font></font>);<br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_179.html" class="name1" target="contents">Exec</a></font>(<font face="courier"><font color="#006699">t</font></font>,<wbr><font color="0AAAA">language</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">lang:doc</font></font>)<br/>
+<font color="brown">}</font></font>
+<p>
+Next we show the sample script to be executed(this is <font face="courier" color="green">example:DocTest.xact</font>).
+</p>
+<br/>
+<font face="courier"><font color="#FF9C00">&lt;doc:document</font><font color="#FF9C00">&gt;</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;doc:let</font> <font color="0AAAA">n</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font color="green">"Persist Software"</font><font color="#FF9C00">/&gt;</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;doc:style</font> <font color="0AAAA">name</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font color="green">"dark"</font> <font color="0AAAA">before</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font color="green">"&lt;b&gt;"</font> <font color="0AAAA">after</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font color="green">"&lt;/b&gt;"</font><font color="#FF9C00">/&gt;</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;doc:style</font> <font color="0AAAA">name</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font color="green">"list"</font> <font color="0AAAA">before</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font color="green">"&lt;ol&gt;"</font> <font color="0AAAA">after</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font color="green">"&lt;/ol&gt;"</font><font color="#FF9C00">/&gt;</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;doc:style</font> <font color="0AAAA">name</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font color="green">"item"</font> <font color="0AAAA">before</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font color="green">"&lt;li&gt;"</font> <font color="0AAAA">after</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font color="green">"&lt;/li&gt;"</font><font color="#FF9C00">/&gt;</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;doc:section</font> <font color="0AAAA">title</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font color="green">"Introduction"</font><font color="#FF9C00">&gt;</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This example is a special-purpose XML language<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brought to you by&nbsp;<font color="#FF9C00">&lt;</font><font face="courier">@<font color="red">doc:val</font></font> <font face="courier"><font color="#006699">n</font></font><font color="#FF9C00">/&gt;</font>.<br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;/doc:section&gt;</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;doc:section</font> <font color="0AAAA">title</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font color="green">"Discussion"</font><font color="#FF9C00">&gt;</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We can do several things.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;doc:list</font><font color="#FF9C00">&gt;</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;doc:item</font><font color="#FF9C00">&gt;</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We can display today's date,&nbsp;<font color="#FF9C00">&lt;</font><font face="courier">@<font color="red">doc:val</font></font> <font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>.<font color="FF00FF">now</font>()(1<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font>10)<font color="#FF9C00">/&gt;</font>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;/doc:item&gt;</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;doc:item</font><font color="#FF9C00">&gt;</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We can use a special&nbsp;<font color="#FF9C00">&lt;doc:dark</font><font color="#FF9C00">&gt;</font>style<font color="#FF9C00">&lt;/doc:dark&gt;</font>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;a</font> <font color="0AAAA">href</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font color="green">"foo"</font><font color="#FF9C00">&gt;</font>foo<font color="#FF9C00">&lt;/a&gt;</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;/doc:item&gt;</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;/doc:list&gt;</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;/doc:section&gt;</font><br/>
+<font color="#FF9C00">&lt;/doc:document&gt;</font></font>
+</body>
+</html>

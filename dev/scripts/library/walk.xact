@@ -1,0 +1,53 @@
+@x:func walk(t,act) {
+   @x:var done := false;
+   @x:if t?xdom {
+      act("before",t);
+      @x:if doBreak { done := true }
+      @x:if done {
+      } @x:orif t?xdom:element {
+         @x:for t1:=t.all#attr {
+	    walk(t1,act);
+	    @x:if doBreak { done := true }
+	 }
+	 @x:if ! done {
+	    act("between",t);
+	    @x:if doBreak { done := true }
+	 }
+	 @x:if ! done {
+	    @x:for t1:=t.all#body {
+	       walk(t1,act);
+	       @x:if doBreak { done := true }
+	    }
+	 }
+      } @x:orif t?xdom:call {
+         walk(t.func,act);
+	 @x:if doBreak { done := true }
+	 @x:if ! done {
+	    act("between",t);
+	 @x:if doBreak { done := true }
+	 }
+	 @x:if ! done {
+	    @x:for t1:=t.all {
+	       walk(t1,act);
+	       @x:if doBreak { done := true }
+	    }
+	 }
+      } @x:orif t?xdom:name {
+         @x:for t1:=t.all {
+	    walk(t1,act);
+	    @x:if doBreak { done := true }
+	 }
+      }
+      @x:if ! done {
+         act("after",t);
+	 @x:if doBreak { done := true }
+      }
+   }
+   @x:if done { @x:break }
+}
+
+@x:func Walk[t](act),visible {
+   @x:for i:= 1..1 {
+      walk(t,act);
+   }
+}

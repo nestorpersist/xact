@@ -1,0 +1,20 @@
+#!/bin/csh
+
+rm -Rf ../../var/release/*
+cp README ../../var/release
+cp -Rp ../../var/xact.jar ../../var/release
+cp -Rp ../../var/doc/doc ../../var/release
+mkdir ../../var/release/scripts
+mkdir ../../var/release/scripts/example
+mkdir ../../var/release/scripts/library
+cp -Rp ../scripts/default.xact ../../var/release/scripts
+cp -Rp ../scripts/error.xact ../../var/release/scripts
+cp -Rp ../scripts/example/*.xact ../../var/release/scripts/example
+cp -Rp ../scripts/library/*.xact ../../var/release/scripts/library
+mkdir ../../var/release/win
+mkdir ../../var/release/mac
+# run.bat runc.bat web.xml windef.bat
+# run runc web.xml macdef
+# log weblogs
+
+

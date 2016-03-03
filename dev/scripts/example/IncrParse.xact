@@ -1,0 +1,105 @@
+@x:use library:unparser;
+
+@x:const txt := 
+'@foo a="aaa" {
+   @aaa {
+      "xxx"
+   }
+   @bbb {
+      @ccc { "yyy" }
+      "zzz"
+   }
+}
+@bar b="bbb";
+';
+
+@x:func indent(cnt) {
+   @x:for i := 1..cnt {
+      "   ";
+   }
+}
+@x:var str := stream();
+
+@x:type iread;
+@x:self {
+   @x:var str;
+   @x:var level;
+   @x:func sys:Init(str),visible {
+       self.str := str;
+   }
+   @x:func start(),visible {
+       @x:func val {
+	   "START"; eol;
+       }
+       level := 0;
+       str.send(val)
+   }
+   @x:func end(),visible {
+       @x:func val {
+	   "END"; eol
+       }
+       str.send(val);
+       str.close();
+   }
+   @x:func startElement(e,hasAttrs),visible {
+       @x:func val {
+	   indent(level);
+	   "start ";
+	   e.tag; 
+	   " "; hasAttrs; eol
+       }
+       level := level + 1;
+       str.send(val);
+   }
+   @x:func startBody(e,hasBody),visible {
+       @x:func val {
+	   indent(level);
+	   "body ";
+	   e.tag; 
+	   " "; hasBody; eol
+       }
+       str.send(val);
+   }
+   @x:func endElement(e),visible {
+       @x:func val {
+	   indent(level);
+	   "end ";
+	   e.tag; eol
+       }
+       str.send(val);
+       level := level - 1
+   }
+   @x:func endAttr(e,at),visible {
+       @x:func val {
+	   indent(level);
+	   "end attr ";
+	   Unparse(at); eol
+       }
+       str.send(val);
+       null;
+   }
+   @x:func endChild(e,c),visible {
+       @x:func val {
+	   indent(level);
+	   "end child ";
+	   string(Type[c]); eol
+       }
+       str.send(val);
+       @x:if (level > 1) {
+          null
+       } @x:else {
+          c
+       }
+   }
+}
+
+@x:const ir := iread(str);
+@x:var t;
+@x:fork {
+    @x:thread parse {
+	t:=Parse(txt,handler=ir);
+    }
+    str.receive();
+}
+eol; 
+Unparse(t);

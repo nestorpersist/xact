@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Special Operations</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;2 <a href="nav1_2.html" target="nav1" class="numbered1">User Manual</a> > 2.5 <a href="nav2_2_5.html" target="nav2" class="numbered1">Types and Views</a> > 2.5.4 <font color="blue">Special Operations</font>
+</b>
+<br/> 
+
+<a href="content_40.html" target="contents">prev</a>
+ 
+<a href="content_42.html" target="contents">next</a>
+<br/>
+
+
+<p>
+A number of special operations can be defined on types and views.Most of these operations have names that start with <font face="courier" color="green">sys:</font>.Earlier sections discusses <font face="courier"><font face="courier"><font color="#006699">sys:Init</font></font></font> (for type constructors), <font face="courier"><font face="courier"><font color="#006699">sys:Make</font></font></font> (for view constructors) and <font face="courier"><font face="courier"><font color="#006699">sys:In</font></font></font> forview membership testing.
+</p>
+<p>
+It is possible to define the meaning of many prefix and infix operationsfor each type and view. The operator syntax is desuggared to callson type or view functions.For example, the expression <font face="courier"><font face="courier"><a href="content_228.html" class="preop1" target="contents">-</a></font> <font face="courier"><font color="#006699">x</font></font></font> is first changed to <font face="courier"><font face="courier"><a href="content_187.html" class="name1" target="contents">Minus</a></font>(<font face="courier"><font color="#006699">x</font></font>)</font> which calls <font face="courier"><font face="courier"><a href="content_199.html" class="name1" target="contents">Type</a></font>[<font face="courier"><font color="#006699">x</font></font>].<font color="FF00FF">sys:Minus</font>(<font face="courier"><font color="#006699">x</font></font>)</font>.This same approach also works for infix operations when both operands have the sametype.
+</p>
+<p>
+To support infix operations with operands of different types, an additional special functionis used. For example when adding an <font face="courier"><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font> value to a <font face="courier"><font face="courier"><a href="content_132.html" class="name1" target="contents">float</a></font></font> valuethen the <font face="courier"><font face="courier"><a href="content_132.html" class="name1" target="contents">float</a></font>.<font color="FF00FF">sys:Add</font></font> function is used. Here <font face="courier"><font face="courier"><a href="content_132.html" class="name1" target="contents">float</a></font></font> is said tocover <font face="courier"><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font>. This is specified by providing a function <font face="courier"><font face="courier"><a href="content_132.html" class="name1" target="contents">float</a></font>.<font color="FF00FF">sys:Cover</font>(<font face="courier"><font color="#006699">t</font></font>)</font> thatreturns <font face="courier"><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font> when <font face="courier"><font face="courier"><font color="#006699">t</font></font></font> has value <font face="courier"><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font>.
+</p>
+<p>
+Subscripting can also be defined.The expression <font face="courier"><font face="courier"><font color="#006699">x</font></font>(3)</font> results in a call to <font face="courier"><font face="courier"><a href="content_199.html" class="name1" target="contents">Type</a></font>[<font face="courier"><font color="#006699">x</font></font>].<font color="FF00FF">sys:Subscript</font>(3)</font>.
+</p>
+<p>
+Dot qualification can also be defined.The expression <font face="courier"><font face="courier"><font color="#006699">x</font></font>.<font color="FF00FF">foo</font></font> is first changed to <font face="courier"><font face="courier"><a href="content_175.html" class="name1" target="contents">Dot</a></font>(<font face="courier"><font color="#006699">x</font></font>,<wbr><font color="green">"foo"</font>)</font> whichcalls <font face="courier"><font face="courier"><font color="#006699">x</font></font>.<font color="FF00FF">sys:Dot</font>[<font color="green">"foo"</font>]</font>. The <font face="courier"><font face="courier"><font color="#006699">sys:Dot</font></font></font> function can appear insidethe <font face="courier"><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font>, <font face="courier"><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font></font>, and <font face="courier"><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font> commands.Since dot qualification is also used to select variables and functions, in the example here,there must not be any visible type or variable with name <font face="courier"><font face="courier"><font color="#006699">foo</font></font></font>.
+</p>
+<p>
+Finally it is useful to define a <font face="courier"><font face="courier"><font color="#006699">toString</font></font></font> function within the body of the <font face="courier"><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font> command to provide a string form of a value.
+</p>
+<p>
+</p>
+</body>
+</html>

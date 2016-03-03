@@ -1,0 +1,46 @@
+@x:const System := Java.java.lang.System;
+
+@x:func p {
+   @x:const props := System.getProperties();
+   @x:var e:=props.propertyNames();
+   @x:while e.hasMoreElements() {
+      @x:const key := e.nextElement().toString();
+      key;
+      "=";
+      props.getProperty(key);
+      eol; eol;
+   }
+}
+
+@x:func pHTML {
+   <head><title>Props</title></head>
+   <body bgcolor="white">
+      <h1>Props</h1>
+      <ul>
+      <@x:block {
+         @x:const props := System.getProperties();
+	 @x:var e:=props.propertyNames();
+	 @x:while e.hasMoreElements() {
+	    @x:const key := e.nextElement().toString();
+	    <li>
+	       <font face="courier">
+	          <@x:block {
+		     key;
+		     "=";
+		     props.getProperty(key)
+		  }/>
+	       </font>
+	    </li>
+	 }
+      }/>
+      </ul>
+   </body>
+}
+
+@x:func JavaProp,visible {
+   @x:if options.mime#rec != "" {
+      pHTML;
+   } @x:else {
+      p;
+   }
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Incremental Parse</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;2 <a href="nav1_2.html" target="nav1" class="numbered1">User Manual</a> > 2.7 <a href="nav2_2_7.html" target="nav2" class="numbered1">Incremental Execution</a> > 2.7.1 <font color="blue">Incremental Parse</font>
+</b>
+<br/> 
+
+<a href="content_45.html" target="contents">prev</a>
+ 
+<a href="content_47.html" target="contents">next</a>
+<br/>
+
+
+<p>
+ <b>@x:Act</b> provides a number of incremental execution features that allowprocessing of data that is too large to all fit in main memory at the same time.Incremental parsing in one of these features.
+</p>
+<p>
+There are two major kinds of XML parsers, those that build an entire DOM tree into mainmemory and those that don't build a tree but instead generate events (SAX).The <b>@x:Act</b>  <font face="courier"><font face="courier"><a href="content_192.html" class="name1" target="contents">Parse</a></font></font> function not only provides both these modesbut also provides a way to mix the two techniques.
+</p>
+<p>
+In the simple case the <font face="courier"><font face="courier"><a href="content_192.html" class="name1" target="contents">Parse</a></font></font> function just buildsan <font face="courier"><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font></font> tree.
+</p>
+<p>
+For incremental processing, the <font face="courier"><font face="courier"><a href="content_192.html" class="name1" target="contents">Parse</a></font></font> is passedan instance of a user-defined type that contains <font face="courier"><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font> functionsthat serve as event handlers.The <font face="courier" color="green">endAttr</font> function is called after each attribute tree is constructedand is passed that tree.The <font face="courier" color="green">endChild</font> function is called after each child of a command is constructedand is passed that tree.In each case the function can then decide whether to keep, discard, or replace that tree.By discarding subtrees as they are processed, parsing becomes incremental.
+</p>
+<p>
+See the <font face="courier"><font face="courier"><a href="content_309.html" class="example1" target="contents">IncrParse</a></font></font> example.
+</p>
+</body>
+</html>

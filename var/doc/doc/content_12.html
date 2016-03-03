@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>StringNull</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;1 <a href="nav1_1.html" target="nav1" class="numbered1">Introduction</a> > 1.2 <a href="nav2_1_2.html" target="nav2" class="numbered1">Examples</a> > 1.2.8 <font face="courier"><font color="blue">StringNull</font></font>
+</b>
+<br/> 
+
+<a href="content_11.html" target="contents">prev</a>
+ 
+<a href="content_13.html" target="contents">next</a>
+<br/>
+
+
+<p>
+Views can not only be used to narrow the value setof a type, they can also be to expand a value set.In <b>@x:Act</b> (unlike Java), types do not automaticallypermit a null value. The following exampleshows a new view where values can be either strings or null.
+</p>
+<br/>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font> <font face="courier"><font color="#006699">StringNull</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">sys:Is</font></font>(<font face="courier"><font color="#006699">v</font></font>),<font face="courier"><font color="#006699">visible</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">v</font></font><font face="courier"><a href="content_250.html" class="inop1" target="contents">?</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font> <font face="courier"><a href="content_241.html" class="inop1" target="contents">|</a></font> <font face="courier"><font color="#006699">v</font></font> <font face="courier"><a href="content_234.html" class="inop1" target="contents">==</a></font> <font face="courier"><a href="content_221.html" class="name1" target="contents">null</a></font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+<font color="brown">}</font>&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">display</font></font>()<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>,<font face="courier"><font color="#006699">visible</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_120.html" class="tag1" target="contents">x:if</a></font> <font face="courier"><font color="#006699">self</font></font> <font face="courier"><a href="content_234.html" class="inop1" target="contents">==</a></font> <font face="courier"><a href="content_221.html" class="name1" target="contents">null</a></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">"***"</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="brown">}</font>&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_114.html" class="tag1" target="contents">x:else</a></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">self</font></font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+<font color="brown">}</font><br/>
+<font face="courier"><a href="content_227.html" class="preop1" target="contents">~</a></font><font color="green">"abc"</font><font face="courier"><a href="content_250.html" class="inop1" target="contents">?</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>;<br/>
+<font face="courier"><a href="content_227.html" class="preop1" target="contents">~</a></font><font face="courier"><a href="content_229.html" class="preop1" target="contents">!</a></font> <font face="courier"><a href="content_221.html" class="name1" target="contents">null</a></font><font face="courier"><a href="content_250.html" class="inop1" target="contents">?</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>;<br/>
+<font face="courier"><a href="content_227.html" class="preop1" target="contents">~</a></font><font face="courier"><a href="content_229.html" class="preop1" target="contents">!</a></font> <font color="green">"abc"</font><font face="courier"><a href="content_250.html" class="inop1" target="contents">?</a></font><font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font>;<br/>
+<font face="courier"><a href="content_227.html" class="preop1" target="contents">~</a></font><font face="courier"><a href="content_221.html" class="name1" target="contents">null</a></font><font face="courier"><a href="content_250.html" class="inop1" target="contents">?</a></font><font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font>;<br/>
+<font face="courier"><a href="content_227.html" class="preop1" target="contents">~</a></font><font color="green">"abc"</font><font face="courier"><a href="content_250.html" class="inop1" target="contents">?</a></font><font face="courier"><font color="#006699">StringNull</font></font>;<br/>
+<font face="courier"><a href="content_227.html" class="preop1" target="contents">~</a></font><font face="courier"><a href="content_221.html" class="name1" target="contents">null</a></font><font face="courier"><a href="content_250.html" class="inop1" target="contents">?</a></font><font face="courier"><font color="#006699">StringNull</font></font>;<br/>
+<font face="courier"><a href="content_221.html" class="name1" target="contents">null</a></font>.<font color="FF00FF">display</font>#<font face="courier"><font color="#006699">StringNull</font></font>();&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font color="green">"abc"</font>.<font color="FF00FF">display</font>#<font face="courier"><font color="#006699">StringNull</font></font>();&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font></font>
+<p>
+Like types, operations can also be associated with view instances.Invoking the operation requires that the view be specified(following the <font face="courier" color="green">#</font>).
+</p>
+<p>
+The special name <font face="courier"><font face="courier"><font color="#006699">self</font></font></font> is automatically definedinside <font face="courier"><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font> commands and refers tothe current type or view instance.It plays the same role as <font face="courier" color="green">this</font> does in Java.
+</p>
+</body>
+</html>

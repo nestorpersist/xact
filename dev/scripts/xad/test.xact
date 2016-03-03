@@ -1,0 +1,37 @@
+@x:use library:unparser;
+@x:use test1;
+
+@x:type foo[a~string,b~boolean];
+
+//foo["a",true];
+//foo;
+@x:func test {
+   @x:const x:=rec();
+   @x:const t:=xdom:element("a",attr=rec(b="b",c=false,d=3,e=4.2,f=x),kind="normal");
+   @x:const t1:=Parse("@a b=3,c=false,d=2.3,e=3+4");
+   Unparse(t); eol;
+   t.kind := "xml";
+   Unparse(t); eol;
+   Unparse(t1); eol;
+   t1.kind := "xml";
+   Unparse(t1); eol;
+}
+
+@x:var a:=array(1,2,3);
+Unparse(a); eol;
+a(3) := 4;
+Unparse(a); eol;
+a.insert(7);
+Unparse(a); eol;
+a.kind; eol;
+string(Type[a]); eol;
+//test;
+
+@x:var r:=rec();
+Dot(r,"abc",rec) := 1;
+Dot(r,"abcdefghijklmn",rec) := 2;
+Dot(r,"value reference",rec) := 3;
+Unparse(r);
+Dot(r,"abc",rec);
+Dot(r,"abcdefghijklmn",rec);
+Dot(r,"value reference",rec);

@@ -1,0 +1,1223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>date</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > E <a href="nav2_4_5.html" target="nav2" class="lettered1">Views</a> >  <font face="courier"><font color="blue">date</font></font>
+</b>
+<br/> 
+
+<a href="content_157.html" target="contents">prev</a>
+ 
+<a href="content_159.html" target="contents">next</a>
+<br/>
+
+
+<p>
+<font size="+1">
+<b>
+Description
+</b>
+</font>
+</p>
+<p>
+<p>
+View of <font face="courier"><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font> where the value represents a date and time.Internally dates are represented as 64 bit integers that aremilliseconds after January 1, 1970 00:00:00 GMT.Externally dates are strings such as the following example.
+</p>
+ <font face="courier" color="green">2006/09/28&nbsp;10:22:34.881&nbsp;PDT</font> 
+<p>
+A date string consist of the following numeric parts.A numeric part may be omitted, but then all following numeric partsmust also be omitted.If a numeric part is omitted the default value is the minimum permitted.There is no default value for year.
+</p>
+<table border="2">
+<tr>
+<td><b>
+name
+</b></td>
+<td><b>
+separator
+</b></td>
+<td><b>
+value
+</b></td>
+</tr>
+<tr>
+<td>year</td>
+<td> <font face="courier" color="green">&nbsp;</font> </td>
+<td> <font face="courier"><font color="green">"2006"</font></font> </td>
+</tr>
+<tr>
+<td>month</td>
+<td> <font face="courier"><font color="green">"/"</font></font> </td>
+<td> <font face="courier"><font color="green">"09"</font></font> </td>
+</tr>
+<tr>
+<td>day</td>
+<td> <font face="courier"><font color="green">"/"</font></font> </td>
+<td> <font face="courier"><font color="green">"28"</font></font> </td>
+</tr>
+<tr>
+<td>hour</td>
+<td> <font face="courier"><font color="green">" "</font></font> </td>
+<td> <font face="courier"><font color="green">"10"</font></font> </td>
+</tr>
+<tr>
+<td>minute</td>
+<td> <font face="courier"><font color="green">":"</font></font> </td>
+<td> <font face="courier"><font color="green">"22"</font></font> </td>
+</tr>
+<tr>
+<td>second</td>
+<td> <font face="courier"><font color="green">":"</font></font> </td>
+<td> <font face="courier"><font color="green">"34"</font></font> </td>
+</tr>
+<tr>
+<td>millisecond</td>
+<td> <font face="courier"><font color="green">"."</font></font> </td>
+<td> <font face="courier"><font color="green">"881"</font></font> </td>
+</tr>
+</table>
+<p>
+This can optionally be followed by a time zone.The default for time zone is the local time zone.
+</p>
+<table border="2">
+<tr>
+<td><b>
+name
+</b></td>
+<td><b>
+separator
+</b></td>
+<td><b>
+value
+</b></td>
+</tr>
+<tr>
+<td>timezone</td>
+<td> <font face="courier"><font color="green">" "</font></font> </td>
+<td> <font face="courier"><font color="green">"PDT"</font></font> </td>
+</tr>
+</table>
+<p>
+Examples of how to use the date viewcan be found in the <font face="courier"><font face="courier"><a href="content_304.html" class="example1" target="contents">date</a></font></font> example.
+</p>
+</p>
+<p>
+<font size="+1">
+<b>
+View date
+</b>
+</font>
+</p>
+<p>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font> date</font>
+</p>
+<table border="3">
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Is" class="underline1">sys:Is</a>(<font face="courier"><font color="#006699">v</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Make" class="underline1">sys:Make</a>(<font face="courier"><font color="#006699">val</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>,<wbr><font color="0AAAA">year</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">year1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">month</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">month1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">day</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">day1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">hour</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">hour1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">minute</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">minute1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">second</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">second1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">millisecond</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">millisecond1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">timeZone</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">timeZone1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#now" class="underline1">now</a>()<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#gmt" class="underline1">gmt</a>()<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Sub" class="underline1">sys:Sub</a>(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Eq" class="underline1">sys:Eq</a>(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Ne" class="underline1">sys:Ne</a>(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Less" class="underline1">sys:Less</a>(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:LessEq" class="underline1">sys:LessEq</a>(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Greater" class="underline1">sys:Greater</a>(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:GreaterEq" class="underline1">sys:GreaterEq</a>(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <a href="#year" class="underline1">year</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <a href="#month" class="underline1">month</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <a href="#day" class="underline1">day</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <a href="#hour" class="underline1">hour</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <a href="#minute" class="underline1">minute</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <a href="#second" class="underline1">second</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <a href="#millisecond" class="underline1">millisecond</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <a href="#dayOfWeek" class="underline1">dayOfWeek</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <a href="#dayOfYear" class="underline1">dayOfYear</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <a href="#timeZone" class="underline1">timeZone</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <a href="#timeZoneLong" class="underline1">timeZoneLong</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <a href="#dst" class="underline1">dst</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#add" class="underline1">add</a>(<font color="0AAAA">year</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">year1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">month</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">month1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">day</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">day1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">hour</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">hour1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">minute</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">minute1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">second</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">second1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">millisecond</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">millisecond1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">timeZone</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">timeZone1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font></font>
+</font>
+</td>
+</tr>
+</table>
+<hr/>
+<a name="sys:Is"/>
+<p>
+<font size="+1">
+<b>
+View Function sys:Is
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Is(<font face="courier"><font color="#006699">v</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">v</font></font></font>
+</td>
+<td>
+value to test
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The result is <font face="courier"><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font> if <font face="courier"><font face="courier"><font color="#006699">val</font></font></font> isa <font face="courier"><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font> that represents a date.
+<hr/>
+<a name="sys:Make"/>
+<p>
+<font size="+1">
+<b>
+View Function sys:Make
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Make(<font face="courier"><font color="#006699">val</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>,<wbr><font color="0AAAA">year</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">year1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">month</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">month1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">day</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">day1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">hour</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">hour1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">minute</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">minute1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">second</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">second1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">millisecond</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">millisecond1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">timeZone</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">timeZone1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">val</font></font></font>
+</td>
+<td>
+(optional) a starting date value.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">year</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">year1</font></font></font>
+</td>
+<td>
+(optional) a year.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">month</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">month1</font></font></font>
+</td>
+<td>
+(optional) a month value (<font face="courier">1<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font>12</font>).
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">day</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">day1</font></font></font>
+</td>
+<td>
+(optional) a day (<font face="courier">1<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font>31</font>).
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">hour</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">hour1</font></font></font>
+</td>
+<td>
+(optional) an hour (<font face="courier">0<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font>23</font>).
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">minute</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">minute1</font></font></font>
+</td>
+<td>
+(optional) a minute (<font face="courier">0<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font>59</font>).
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">second</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">second1</font></font></font>
+</td>
+<td>
+(optional) a second (<font face="courier">0<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font>59</font>).
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">millisecond</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">millisecond1</font></font></font>
+</td>
+<td>
+(optional) a millisecond value (<font face="courier">0<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font>999</font>)
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">timeZone</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">timeZone1</font></font></font>
+</td>
+<td>
+(optional) a timezone.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+<p>
+If <font face="courier"><font face="courier"><font color="#006699">val</font></font></font> is present, it forms the initial value.If <font face="courier"><font face="courier"><font color="#006699">val</font></font></font> is not present, <font face="courier"><font face="courier"><font color="#006699">year</font></font></font> mustbe present and the initial value is formed from that yearand default values for all other fields.
+</p>
+<p>
+For each named parameter the initial value is modifiedfor that field to the specified value.The overall result is the result of applying allthese modifications to the initial value.
+</p>
+<hr/>
+<a name="now"/>
+<p>
+<font size="+1">
+<b>
+View Function now
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> now()<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The current date in the local timezone.
+<hr/>
+<a name="gmt"/>
+<p>
+<font size="+1">
+<b>
+View Function gmt
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> gmt()<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The current date in GMT (Greenwich Mean Time).
+<hr/>
+<a name="sys:Sub"/>
+<p>
+<font size="+1">
+<b>
+View Function sys:Sub
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Sub(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">a</font></font></font>
+</td>
+<td>
+first parameter
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">b</font></font></font>
+</td>
+<td>
+second parameter
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The result is the number of milliseconds that <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> isafter <font face="courier"><font face="courier"><font color="#006699">b</font></font></font>.
+<hr/>
+<a name="sys:Eq"/>
+<p>
+<font size="+1">
+<b>
+View Function sys:Eq
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Eq(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">a</font></font></font>
+</td>
+<td>
+first parameter
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">b</font></font></font>
+</td>
+<td>
+second parameter
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+If <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> and <font face="courier"><font face="courier"><font color="#006699">b</font></font></font> have the same datevalue, then the result is <font face="courier"><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font>,else the result is <font face="courier"><font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font></font>.
+<hr/>
+<a name="sys:Ne"/>
+<p>
+<font size="+1">
+<b>
+View Function sys:Ne
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Ne(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">a</font></font></font>
+</td>
+<td>
+first parameter
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">b</font></font></font>
+</td>
+<td>
+second parameter
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+If <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> and <font face="courier"><font face="courier"><font color="#006699">b</font></font></font> have the same datevalue, then the result is <font face="courier"><font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font></font>,else the result is <font face="courier"><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font>.
+<hr/>
+<a name="sys:Less"/>
+<p>
+<font size="+1">
+<b>
+View Function sys:Less
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Less(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">a</font></font></font>
+</td>
+<td>
+first parameter
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">b</font></font></font>
+</td>
+<td>
+second parameter
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+If <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> is less than <font face="courier"><font face="courier"><font color="#006699">b</font></font></font>,then the result is <font face="courier"><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font>,else the result is <font face="courier"><font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font></font>.
+<hr/>
+<a name="sys:LessEq"/>
+<p>
+<font size="+1">
+<b>
+View Function sys:LessEq
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:LessEq(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">a</font></font></font>
+</td>
+<td>
+first parameter
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">b</font></font></font>
+</td>
+<td>
+second parameter
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+If <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> is less than or equal to <font face="courier"><font face="courier"><font color="#006699">b</font></font></font>,then the result is <font face="courier"><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font>,else the result is <font face="courier"><font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font></font>.
+<hr/>
+<a name="sys:Greater"/>
+<p>
+<font size="+1">
+<b>
+View Function sys:Greater
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Greater(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">a</font></font></font>
+</td>
+<td>
+first parameter
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">b</font></font></font>
+</td>
+<td>
+second parameter
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+If <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> is greater than <font face="courier"><font face="courier"><font color="#006699">b</font></font></font>,then the result is <font face="courier"><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font>,else the result is <font face="courier"><font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font></font>.
+<hr/>
+<a name="sys:GreaterEq"/>
+<p>
+<font size="+1">
+<b>
+View Function sys:GreaterEq
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:GreaterEq(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">a</font></font></font>
+</td>
+<td>
+first parameter
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">b</font></font></font>
+</td>
+<td>
+second parameter
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+If <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> is greater than or equal to <font face="courier"><font face="courier"><font color="#006699">b</font></font></font>,then the result is <font face="courier"><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font>,else the result is <font face="courier"><font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font></font>.
+<hr/>
+<a name="year"/>
+<p>
+<font size="+1">
+<b>
+Self Const year
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> year<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The year part of the date.
+<hr/>
+<a name="month"/>
+<p>
+<font size="+1">
+<b>
+Self Const month
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> month<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The month part of the date (<font face="courier">1<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font>12</font>.
+<hr/>
+<a name="day"/>
+<p>
+<font size="+1">
+<b>
+Self Const day
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> day<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The day part of the date (<font face="courier">1<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font>31</font>.
+<hr/>
+<a name="hour"/>
+<p>
+<font size="+1">
+<b>
+Self Const hour
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> hour<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The hour part of the date (<font face="courier">0<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font>23</font>.
+<hr/>
+<a name="minute"/>
+<p>
+<font size="+1">
+<b>
+Self Const minute
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> minute<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The minute part of the date (<font face="courier">0<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font>59</font>.
+<hr/>
+<a name="second"/>
+<p>
+<font size="+1">
+<b>
+Self Const second
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> second<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The second part of the date (<font face="courier">0<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font>59</font>.
+<hr/>
+<a name="millisecond"/>
+<p>
+<font size="+1">
+<b>
+Self Const millisecond
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> millisecond<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The millisecond part of the date (<font face="courier">0<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font>999</font>.
+<hr/>
+<a name="dayOfWeek"/>
+<p>
+<font size="+1">
+<b>
+Self Const dayOfWeek
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> dayOfWeek<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The day of the week (<font face="courier">0<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font>6</font>.Sunday has value <font face="courier">0</font>.
+<hr/>
+<a name="dayOfYear"/>
+<p>
+<font size="+1">
+<b>
+Self Const dayOfYear
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> dayOfYear<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The day of the year (<font face="courier">1<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font>366</font>.January 1 has value <font face="courier">1</font>.
+<hr/>
+<a name="timeZone"/>
+<p>
+<font size="+1">
+<b>
+Self Const timeZone
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> timeZone<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The time zone part of the date.
+<hr/>
+<a name="timeZoneLong"/>
+<p>
+<font size="+1">
+<b>
+Self Const timeZoneLong
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> timeZoneLong<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The long form of the time zone part of the date.
+<hr/>
+<a name="dst"/>
+<p>
+<font size="+1">
+<b>
+Self Const dst
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> dst<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+If the date is in daylight savings time the result is <font face="courier"><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font>.
+<hr/>
+<a name="add"/>
+<p>
+<font size="+1">
+<b>
+Self Function add
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> add(<font color="0AAAA">year</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">year1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">month</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">month1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">day</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">day1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">hour</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">hour1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">minute</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">minute1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">second</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">second1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">millisecond</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">millisecond1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<wbr><font color="0AAAA">timeZone</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">timeZone1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_158.html" class="name1" target="contents">date</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">year</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">year1</font></font></font>
+</td>
+<td>
+(optional) a year delta.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">month</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">month1</font></font></font>
+</td>
+<td>
+(optional) a month delta.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">day</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">day1</font></font></font>
+</td>
+<td>
+(optional) a day delta.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">hour</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">hour1</font></font></font>
+</td>
+<td>
+(optional) an hour delta.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">minute</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">minute1</font></font></font>
+</td>
+<td>
+(optional) a minute delta.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">second</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">second1</font></font></font>
+</td>
+<td>
+(optional) a second delta.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">millisecond</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">millisecond1</font></font></font>
+</td>
+<td>
+(optional) a millisecond delta.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">timeZone</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">timeZone1</font></font></font>
+</td>
+<td>
+(optional) a new timezone.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The result starts with the <font face="courier"><font face="courier"><font color="#006699">self</font></font></font> data and thenapplies any deltas or timezone changes and returnsthat new date.
+<hr/>
+</body>
+</html>

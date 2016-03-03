@@ -1,0 +1,8 @@
+@x:view even {
+   @x:func sys:Is(v~int),visible {
+      v /+ 2 == 0
+   }
+}
+2 ~ even; eol;
+5 ? even; eol;
+10 ? even; eol;

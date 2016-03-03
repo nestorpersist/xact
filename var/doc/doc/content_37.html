@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Iterators</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;2 <a href="nav1_2.html" target="nav1" class="numbered1">User Manual</a> > 2.4 <a href="nav2_2_4.html" target="nav2" class="numbered1">Functions</a> > 2.4.5 <font color="blue">Iterators</font>
+</b>
+<br/> 
+
+<a href="content_36.html" target="contents">prev</a>
+ 
+<a href="content_38.html" target="contents">next</a>
+<br/>
+
+
+<p>
+In Java iterators are handled with iterator classes. <b>@x:Act</b> instead uses iterator functions declared with a <font face="courier"><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font></font> commandthat includes an <font face="courier" color="green">iterator</font> option.Iterators are invoked by a <font face="courier"><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font></font> command.
+</p>
+<p>
+When <font face="courier"><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font></font> command is executed, a newbody function object is created and passed as the single formalparameter to the iterator functionThe body function has formal parameters that correspond to the iteration variablesspecified in the <font face="courier"><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font></font> command and has a body that is the same asthe body of the <font face="courier"><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font></font> command.The <font face="courier"><font face="courier"><a href="content_308.html" class="example1" target="contents">iterators</a></font></font> example shows a number of examples of iterators.
+</p>
+<p>
+There are a number of predefined iterators as well as libraries of iterators.
+</p>
+<p>
+The <b>@x:Act</b> iterator functions can be recursive. For example, its easy towrite an iterator that walks a tree (something that would be difficult using Java iterators).
+</p>
+<p>
+Iterators can have arbitrary name parameters.It is easy to compose iterators by having an iterator that takesother iterators as name parameters.
+</p>
+<p>
+In Java it is easy to iterate over two data structures in parallel, looking at the firstelements of each together, then the second elements, and so forth.The <b>@x:Act</b>  <font face="courier"><font face="courier"><a href="content_346.html" class="name1" target="contents">Parallel</a></font></font> iterator provides this feature.Internally it uses two threads, one for each of the two underlying iterators.
+</p>
+</body>
+</html>

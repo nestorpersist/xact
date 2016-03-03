@@ -1,0 +1,87 @@
+@x:use library:iterator;
+
+@x:func args[c](%L) {
+   @x:if L.size#attr >#int 0 {
+      @x:for a:=L.all#attr {
+	 @x:if a?xdom:string {
+	     c.insert(a)
+	 }
+	 @x:else {
+	     Error("unsupported external parameter type");
+	 }
+      }
+   }
+}
+
+@x:func pass[x](other) {
+    @x:for a:=other.all#attr {
+	@x:if a?xdom:call & a.kind == "op" & a.func?xdom:name &
+	      a.func.val == "Equal" & a.size ==#int 2 & a(2)?xdom:string {
+	    x.insert(a);
+	}
+
+    }
+}
+
+@x:func A[%N](%L),visible {
+   ~ N.size >#int 0;
+   @x:var p := N.pass#rec;
+   @x:var inter := N.inter#rec;
+   @x:var prefix := N.prefix#rec;
+   @x:if inter == null { inter := options.inter#rec }
+   @x:if prefix == null { prefix := "" }
+   @x:var c;
+   @x:if L.size#attr >#int 0 {
+      c := xdom:call(xdom:name(N(1)));
+      args[c](%L);
+   }	
+   @x:else {
+      c := xdom:name(N(1));
+   }
+   @x:var x:= xdom:call(xdom:name("query"),list=list(c));
+   @x:if p != null {
+       pass[x](p);
+   }
+   xdom:element("a",attr=rec(href=prefix++inter++"?"++URLUnparseQuery(x)),spaceBeforeBody="erase",spaceAfterBody="erase")
+}
+
+@x:func FORM[%N](%L),visible {
+   ~ N.size >#int 0;
+   @x:var p := N.pass#rec;
+   @x:var inter := N.inter#rec;
+   @x:var prefix := N.prefix#rec;
+   @x:if inter == null { inter := options.inter#rec }
+   @x:if prefix == null { prefix := "" }
+   @x:var c;
+   @x:if L.size#attr >#int 0 {
+      c := xdom:call(xdom:name(N(1)));
+      args[c](%L);
+   }	
+   @x:else {
+      c := xdom:name(N(1));
+   }
+   @x:var x:= xdom:call(xdom:name("query"),list=list(c));
+   @x:if p != null {
+       pass[x](p);
+   }
+   xdom:element("form",attr=rec(action=prefix++inter++"?"++URLUnparseQuery(x),method="POST"))
+}
+
+@x:view REL,visible {
+   @x:func Dot[nnn],visible { 
+      @x:for part := ExceptLast[Separate[options.script#rec,":"]] {
+         part; ":";
+      }
+      nnn
+   }
+}
+
+@x:view REL[path],visible {
+   @x:func Dot[nnn],visible { 
+      path; ":"; nnn 
+   }
+}
+
+@x:view ABS,visible {
+   @x:func Dot[nnn],visible { nnn }
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Graphs</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;2 <a href="nav1_2.html" target="nav1" class="numbered1">User Manual</a> > 2.6 <a href="nav2_2_6.html" target="nav2" class="numbered1">XML</a> > 2.6.4 <font color="blue">Graphs</font>
+</b>
+<br/> 
+
+<a href="content_44.html" target="contents">prev</a>
+ 
+<a href="content_46.html" target="contents">next</a>
+<br/>
+
+
+<p>
+The <font face="courier"><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font></font> data structure is usually used to represent tree,but it can also be used to represent directed graphs. Graphs can include sharing(where there is more than one path to a single node) and cycles (where a nodeis its own descendent).
+</p>
+<p>
+Graphs in main memory present no special problems; but, when converted to anexternal form special actions are needed.First when converting from internal form to external form usingthe <font face="courier"><font face="courier"><a href="content_372.html" class="name1" target="contents">Unparse</a></font></font> function the <font face="courier"><font color="0AAAA">graph</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font> optionmust be used. If this option is not used the unparser will not terminate.Note that when this option is used mark1 bits in graph nodes are usedto detect sharing and cycles and the unparser is not thread safe.
+</p>
+<p>
+When there is more than one path to a node that node is labeled by addingon output an attribute of the form <font face="courier"><font color="0AAAA">graph:def</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font color="green">"L1"</font></font>. The second and later pathson output will contains a special reference node with an attribute of the form <font face="courier"><font color="0AAAA">graph:ref</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font color="green">"L1"</font></font>. By making these changes the output will be a tree(that represents the graph).
+</p>
+<p>
+When a graph external form is parsed using the <font face="courier"><font face="courier"><a href="content_192.html" class="name1" target="contents">Parse</a></font></font> function the resultwill be a the tree with the special <font face="courier"><font face="courier"><font color="#006699">graph</font></font></font> attributes.These attributes can be removed and sharing and cycles restored by callingthe <font face="courier"><font face="courier"><a href="content_326.html" class="name1" target="contents">graphExpand</a></font></font> function.
+</p>
+<p>
+The <font face="courier"><font face="courier"><a href="content_313.html" class="example1" target="contents">graph</a></font></font> example shows how this all works.
+</p>
+</body>
+</html>

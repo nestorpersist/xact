@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>CntTag</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;1 <a href="nav1_1.html" target="nav1" class="numbered1">Introduction</a> > 1.2 <a href="nav2_1_2.html" target="nav2" class="numbered1">Examples</a> > 1.2.11 <font face="courier"><font color="blue">CntTag</font></font>
+</b>
+<br/> 
+
+<a href="content_14.html" target="contents">prev</a>
+ 
+<a href="content_16.html" target="contents">next</a>
+<br/>
+
+
+<p>
+ <b>@x:Act</b> scripts can be parsed, manipulated, and then unparsed.This makes it easy to write tools that work on <b>@x:Act</b> scripts.Since XML is a subset of the <b>@x:Act</b> syntax, it is also easyto write tools for XML.
+</p>
+<p>
+The result of parsing an <b>@x:Act</b> script is a <font face="courier"><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font></font> tree.
+</p>
+<p>
+The following example counts the number of commands in itself.It reads in a copy of itself, parses that copy to producea <font face="courier"><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font></font> tree, then walks that tree using a recursive iterator.
+</p>
+<br/>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_128.html" class="tag1" target="contents">x:use</a></font> <font face="courier"><font color="#006699">library:unparser</font></font>;<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_128.html" class="tag1" target="contents">x:use</a></font> <font face="courier"><font color="#006699">library:iterator</font></font>;<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_128.html" class="tag1" target="contents">x:use</a></font> <font face="courier"><font color="#006699">library:path</font></font>;<br/>
+<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">elements</font></font>[<font face="courier"><font color="#006699">x</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font>](<font face="courier"><font color="#006699">act</font></font>)<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_120.html" class="tag1" target="contents">x:if</a></font> <font face="courier"><font color="#006699">x</font></font><font face="courier"><a href="content_250.html" class="inop1" target="contents">?</a></font><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">act</font></font>(<font face="courier"><font color="#006699">x</font></font>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font> <font face="courier"><font color="#006699">x1</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">x</font></font>.<font color="FF00FF">all</font>#<font face="courier"><a href="content_155.html" class="name1" target="contents">body</a></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">elements</font></font>[<font face="courier"><font color="#006699">x1</font></font>](<font face="courier"><font color="#006699">act</font></font>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+<font color="brown">}</font><br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <font face="courier"><font color="#006699">cnts</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font>();<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">fname</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_359.html" class="name1" target="contents">pathToFile</a></font>(<font color="green">"example:cntTag.xact"</font>);<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">txt</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">fname</font></font>.<font color="FF00FF">read</font>#<font face="courier"><a href="content_159.html" class="name1" target="contents">file</a></font>();<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">root</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_192.html" class="name1" target="contents">Parse</a></font>(<font face="courier"><font color="#006699">txt</font></font>);<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font> <font face="courier"><font color="#006699">e</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">elements</font></font>[<font face="courier"><font color="#006699">root</font></font>]<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_120.html" class="tag1" target="contents">x:if</a></font> <font face="courier"><font color="#006699">e</font></font> <font face="courier"><a href="content_235.html" class="inop1" target="contents">!=</a></font> <font face="courier"><font color="#006699">root</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">tag</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">e</font></font>.<font color="FF00FF">tag</font>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <font face="courier"><font color="#006699">cnt</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_175.html" class="name1" target="contents">Dot</a></font>(<font face="courier"><font color="#006699">cnts</font></font>,<wbr><font face="courier"><font color="#006699">tag</font></font>,<wbr><font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_120.html" class="tag1" target="contents">x:if</a></font> <font face="courier"><font color="#006699">cnt</font></font> <font face="courier"><a href="content_234.html" class="inop1" target="contents">==</a></font> <font face="courier"><a href="content_221.html" class="name1" target="contents">null</a></font><font color="brown"> {</font>&nbsp;<font face="courier"><font color="#006699">cnt</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> 0&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_175.html" class="name1" target="contents">Dot</a></font>(<font face="courier"><font color="#006699">cnts</font></font>,<wbr><font face="courier"><font color="#006699">tag</font></font>,<wbr><font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font>) <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">cnt</font></font> <font face="courier"><a href="content_244.html" class="inop1" target="contents">+</a></font> 1<br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+<font color="brown">}</font><br/>
+<font face="courier"><a href="content_372.html" class="name1" target="contents">Unparse</a></font>(<font face="courier"><font color="#006699">cnts</font></font>);&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font></font>
+<p>
+The <font face="courier"><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font></font> type is used to represent <b>@x:Act</b> commandsand XML elements.It also has views that enable it to be used as a record (<font face="courier"><font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font></font>)or array (<font face="courier"><font face="courier"><a href="content_153.html" class="name1" target="contents">array</a></font></font>).
+</p>
+<p>
+The record dot qualification operation <font face="courier"><font face="courier"><font color="#006699">r</font></font>.<font color="FF00FF">x</font>#<font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font></font> has ageneralized form <font face="courier"><font face="courier"><a href="content_175.html" class="name1" target="contents">Dot</a></font>(<font face="courier"><font color="#006699">r</font></font>,<wbr><font color="green">"x"</font>,<wbr><font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font>)</font> that allows the componentname to be a computed value.
+</p>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>High-Level Synchronization</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;2 <a href="nav1_2.html" target="nav1" class="numbered1">User Manual</a> > 2.9 <a href="nav2_2_9.html" target="nav2" class="numbered1">Multithreading</a> > 2.9.2 <font color="blue">High-Level Synchronization</font>
+</b>
+<br/> 
+
+<a href="content_54.html" target="contents">prev</a>
+ 
+<a href="content_56.html" target="contents">next</a>
+<br/>
+
+
+<p>
+The <font face="courier"><font face="courier"><a href="content_139.html" class="name1" target="contents">queue</a></font></font> and <font face="courier"><font face="courier"><a href="content_140.html" class="name1" target="contents">stream</a></font></font> types provides the main high-levelways to synchronize multiple threads.
+</p>
+<p>
+For a <font face="courier"><font face="courier"><a href="content_139.html" class="name1" target="contents">queue</a></font></font> object, one threadmakes multiple calls to the <font face="courier"><font face="courier"><font color="#006699">send</font></font></font> function andanother thread makes multiple calls to the <font face="courier"><font face="courier"><font color="#006699">receive</font></font></font> function.Each call sends or receives a single value.
+</p>
+<p>
+For a <font face="courier"><font face="courier"><a href="content_140.html" class="name1" target="contents">stream</a></font></font> object one thread makes multiple callsto the <font face="courier"><font face="courier"><font color="#006699">send</font></font></font> function followed by a single call to the <font face="courier"><font face="courier"><font color="#006699">close</font></font></font> function and another thread makes a single call to the <font face="courier"><font face="courier"><font color="#006699">receive</font></font></font> function.Each send call sends a string and the receive call retrieves the singleconcatenated result of all the sends.
+</p>
+</body>
+</html>

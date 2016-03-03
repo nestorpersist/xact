@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Chars</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > F <a href="nav2_4_6.html" target="nav2" class="lettered1">Functions</a> >  <font face="courier"><font color="blue">Chars</font></font>
+</b>
+<br/> 
+
+<a href="content_170.html" target="contents">prev</a>
+ 
+<a href="content_172.html" target="contents">next</a>
+<br/>
+
+
+<p>
+<font size="+1">
+<b>
+Description
+</b>
+</font>
+</p>
+<p>
+The <font face="courier"><font face="courier"><a href="content_171.html" class="name1" target="contents">Chars</a></font></font> iterator iteratesover each character of a <font face="courier"><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>.
+</p>
+<p>
+<font size="+1">
+<b>
+Function Chars[ ]
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> Chars[<font face="courier"><font color="#006699">str</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>](<font face="courier"><font color="#006699">act</font></font>)</font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">str</font></font></font>
+</td>
+<td>
+a string to be iterated over.This parameter is a <a href="content_49.html" class="numbered1" target="contents">Stream Sink</a>.When optimization is on, the implementation willin some cases start up a separate threadto evaluate this parameter.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">act</font></font></font>
+</td>
+<td>
+the iterator body function.It takes a single parameter of type <font face="courier"><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font> whichis a character code.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+This is an iterator function that iteratesover all character of a string.
+<p>
+<font size="+1">
+<b>
+Examples
+</b>
+</font>
+</p>
+<p>
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font> <font face="courier"><font color="#006699">ch</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_171.html" class="name1" target="contents">Chars</a></font>[<font color="green">"abc"</font>]<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">f</font></font>(<font face="courier"><font color="#006699">ch</font></font>)<br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font></font>
+<br/>
+
+</p>
+</body>
+</html>

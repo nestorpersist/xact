@@ -1,6 +1,21 @@
 *.class
 
+var/javadoc
+var/logs
+var/object
+var/release
+var/weblogs
+var/xact.jar
+dev/scripts/karst
+dev/scripts/artbase
+
+
+
+.DS_Store
 # Package Files #
 *.jar
 *.war
 *.ear
+**/.svn
+
+

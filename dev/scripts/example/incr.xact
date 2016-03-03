@@ -1,0 +1,11 @@
+@x:func incr[first,last,step](act) {
+   @x:var i := first;
+   @x:while i <= last {
+      act(i);
+      i := i + step;
+   }
+}
+
+@x:for i := incr[1,6,2] {
+   i; eol;
+}

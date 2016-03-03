@@ -1,0 +1,87 @@
+@x:type asmT;
+@x:self {
+
+   @x:var symtab := rec();
+
+   @x:func define(name,t) {
+      @x:if Dot(symtab,name,rec) != null { Error("duplicate label "++name) }
+      @x:else {
+	 Dot(symtab,name,rec) := t;
+      }
+   }
+
+   @x:func use(name,t) {
+      @x:var result := t;
+      @x:var t1 := Dot(symtab,name,rec);
+      @x:if t1 == null { 
+	 Error("undefined label "++name);
+      }
+      @x:else {
+	result := t1;
+      }
+      result
+   }	
+
+   @x:func asm1(t~xdom)~xdom,visible {
+      @x:var result := t;
+      @x:if t?xdom:element {
+	 @x:const def := t.graph:def#rec;
+	 @x:if def != null { 
+	    define(def,t);
+	    t.graph:def#rec := null;
+	 }
+	 @x:for i := 1..t.size#attr { t(i)#attr := asm1(t(i)#attr) }
+	 @x:for i := 1..t.size#body { t(i)#body := asm1(t(i)#body) }
+      }
+      @x:orif t?xdom:call {
+	 @x:if t.func?xdom:name & t.func.val == "graph:def" & ! t.func.hasExt &
+	 t.size ==#int 2 & t(1)?xdom:string {
+	    define(t(1).val,t(2));
+	    result := t(2);
+	 } 
+	 t.func := asm1(t.func);
+	 @x:for i := 1..t.size { t(i) := asm1(t(i)) }
+      }
+      @x:orif t?xdom:name {
+	 @x:for i := 1..t.size { t(i) := asm1(t(i)) }
+      }	
+      result
+   }
+
+   @x:func asm2(t~xdom)~xdom,visible {
+      @x:var result := t;
+      @x:if t?xdom:element {
+	 @x:const u := t.graph:use#rec;
+	 @x:if u != null { result := use(u,t) }
+	 @x:if t.tag != result.tag {
+	    Error("use tag "++t.tag++" does not match def tag "++result.tag);
+	 }
+	 @x:for i := 1..t.size#attr { t(i)#attr := asm2(t(i)#attr) }
+	 @x:for i := 1..t.size#body { t(i)#body := asm2(t(i)#body) }
+      }
+      @x:orif t?xdom:call {
+	 @x:if t.func?xdom:name & t.func.val == "graph:use" & ! t.func.hasExt &
+	 t.size ==#int 1 & t(1)?xdom:string {
+	    result :=  use(t(1).val,t);
+	 } 
+	 @x:orif t.func?xdom:name & t.func.val == "graph:usev" & ! t.func.hasExt &
+	 t.size ==#int 1 & t(1)?xdom:string {
+	    result :=  xdom:value(use(t(1).val,t));
+	 } 
+	 t.func := asm2(t.func);
+	 @x:for i := 1..t.size { t(i) := asm2(t(i)) }
+      }
+      @x:orif t?xdom:name {
+	 @x:for i := 1..t.size { t(i) := asm2(t(i)) }
+      }	
+      result
+   }
+}
+
+@x:func graphExpand(t~xdom)~xdom,visible {
+   @x:var t1:=t;
+   @x:var a := asmT();
+   t1:= a.asm1(t1);
+   t1:= a.asm2(t1);
+   t1
+}

@@ -1,0 +1,6 @@
+@a graph:def="A",graph:use("C"),c=graph:use("B") {
+   @b a="a",graph:def="B";
+   @b graph:use="B";
+   @a graph:use("A");
+}
+@c graph:def="C";

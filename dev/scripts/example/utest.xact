@@ -1,0 +1,28 @@
+@x:use library:stdunit;
+
+meter(5); eol;
+centi[meter](3); eol;
+foot(3); eol; eol;
+
+meter(3.2).in[centi[meter]]; eol;
+(meter(5.3)/second(3.3)).in[per[foot,minute]]; eol;
+per[mile,hour](60).in[per[foot,second]]; eol; eol;
+
+foot?Type[meter]; eol; 
+hour?Type[meter]; eol; eol;
+
+per[mega[bit](10),second]; eol;
+per[tera[bit],square[inch]]; eol;
+per[cent(8),gallon].in[per[dollar,cubic[yard]]]; eol;
+per[dollar(5.35),pound].in[per[cent,ounce]]; eol; eol;
+
+foot(3)+inch(2); eol;
+dollar(10)+cent(12); eol;
+10.3 * second; eol;
+kilo[meter](50)/hour; eol;
+meter/foot(3); eol;
+
+dollar(1) + "foo"; // will cause error
+dollar(4) + bit(3);  // will cause error
+
+

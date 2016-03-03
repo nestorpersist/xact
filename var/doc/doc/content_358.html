@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>SRC library:lang</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_5.html" target="nav1" class="top1">Libraries</a> >  <font face="courier"><a href="nav2_5_6.html" target="nav2" class="library1">library:lang</a></font> >  <font color="blue">SRC library:lang</font>
+</b>
+<br/> 
+
+<a href="content_357.html" target="contents">prev</a>
+ 
+<a href="content_359.html" target="contents">next</a>
+<br/>
+
+
+<br/>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><a href="content_356.html" class="name1" target="contents">walk:attrs</a></font>(<font face="courier"><font color="#006699">t</font></font>),<font face="courier"><font color="#006699">visible</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><a href="content_155.html" class="name1" target="contents">body</a></font>(<font face="courier"><font color="#006699">a</font></font>)<font color="brown"> {</font>&nbsp;<font face="courier"><a href="content_205.html" class="name1" target="contents">walk:exp</a></font>(<font face="courier"><font color="#006699">a</font></font>)&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">t</font></font>.<font color="FF00FF">all</font>#<font face="courier"><a href="content_154.html" class="name1" target="contents">attr</a></font>(<font face="courier"><a href="content_155.html" class="name1" target="contents">body</a></font>)<br/>
+<font color="brown">}</font><br/>
+<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><a href="content_357.html" class="name1" target="contents">walk:elem</a></font>(<font face="courier"><font color="#006699">t</font></font>,<wbr><font face="courier"><font color="#006699">lang</font></font>),<font face="courier"><font color="#006699">visible</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_356.html" class="name1" target="contents">walk:attrs</a></font>(<font face="courier"><font color="#006699">t</font></font>);<br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_203.html" class="name1" target="contents">walk:body</a></font>(<font face="courier"><font color="#006699">t</font></font>,<wbr><font face="courier"><font color="#006699">lang</font></font>)<br/>
+<font color="brown">}</font><br/>
+<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><a href="content_355.html" class="name1" target="contents">outSpace</a></font>(<font face="courier"><font color="#006699">sp</font></font>),<font face="courier"><font color="#006699">visible</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_120.html" class="tag1" target="contents">x:if</a></font> <font face="courier"><font color="#006699">sp</font></font> <font face="courier"><a href="content_234.html" class="inop1" target="contents">==</a></font> <font color="green">"lines"</font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font>&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_123.html" class="tag1" target="contents">x:orif</a></font> <font face="courier"><font color="#006699">sp</font></font> <font face="courier"><a href="content_234.html" class="inop1" target="contents">==</a></font> <font color="green">"line"</font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font>&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_123.html" class="tag1" target="contents">x:orif</a></font> <font face="courier"><font color="#006699">sp</font></font> <font face="courier"><a href="content_234.html" class="inop1" target="contents">==</a></font> <font color="green">"space"</font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">" "</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+<font color="brown">}</font><br/>
+<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font> <font face="courier"><a href="content_353.html" class="name1" target="contents">langtype:redirect</a></font>[<font face="courier"><font color="#006699">name1</font></font>,<font face="courier"><font color="#006699">langt1</font></font>],<font face="courier"><font color="#006699">visible</font></font>;<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <font face="courier"><font color="#006699">under</font></font>;<br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <font face="courier"><font color="#006699">lang1</font></font>;<br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">sys:Init</font></font>(<font face="courier"><font color="#006699">under</font></font>),<font face="courier"><font color="#006699">visible</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">self</font></font>.<font color="FF00FF">under</font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">under</font></font>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">lang1</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">langt1</font></font>(<font face="courier"><font color="#006699">under</font></font>)<br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">sys:Copy</font></font>(),<font face="courier"><font color="#006699">visible</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_199.html" class="name1" target="contents">Type</a></font>[<font face="courier"><font color="#006699">self</font></font>](<font face="courier"><font color="#006699">under</font></font>.<font color="FF00FF">sys:Copy</font>())<br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><a href="content_374.html" class="name1" target="contents">Walk</a></font>(<font face="courier"><font color="#006699">pass</font></font>,<wbr><font face="courier"><font color="#006699">space</font></font>,<wbr><font face="courier"><font color="#006699">base</font></font>,<wbr><font face="courier"><font color="#006699">elem</font></font>,<wbr><font face="courier"><font color="#006699">lang</font></font>,<wbr><font face="courier"><font color="#006699">info</font></font>),<font face="courier"><font color="#006699">visible</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_120.html" class="tag1" target="contents">x:if</a></font> <font face="courier"><font color="#006699">space</font></font> <font face="courier"><a href="content_234.html" class="inop1" target="contents">==</a></font> <font face="courier"><font color="#006699">name1</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_206.html" class="name1" target="contents">walk:other</a></font>(<font face="courier"><font color="#006699">lang1</font></font>,<wbr><font face="courier"><font color="#006699">space</font></font>,<wbr><font face="courier"><font color="#006699">base</font></font>,<wbr><font face="courier"><font color="#006699">elem</font></font>,<wbr><font face="courier"><font color="#006699">lang</font></font>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="brown">}</font>&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_114.html" class="tag1" target="contents">x:else</a></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_206.html" class="name1" target="contents">walk:other</a></font>(<font face="courier"><font color="#006699">under</font></font>,<wbr><font face="courier"><font color="#006699">space</font></font>,<wbr><font face="courier"><font color="#006699">base</font></font>,<wbr><font face="courier"><font color="#006699">elem</font></font>,<wbr><font face="courier"><font color="#006699">lang</font></font>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+<font color="brown">}</font><br/>
+<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font> <font face="courier"><a href="content_354.html" class="name1" target="contents">langtype:rename</a></font>[<font face="courier"><font color="#006699">old</font></font>,<font face="courier"><font color="#006699">new</font></font>],<font face="courier"><font color="#006699">visible</font></font>;<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <font face="courier"><font color="#006699">under</font></font>;<br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">sys:Init</font></font>(<font face="courier"><font color="#006699">under</font></font>),<font face="courier"><font color="#006699">visible</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">self</font></font>.<font color="FF00FF">under</font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">under</font></font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">sys:Copy</font></font>(),<font face="courier"><font color="#006699">visible</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_199.html" class="name1" target="contents">Type</a></font>[<font face="courier"><font color="#006699">self</font></font>](<font face="courier"><font color="#006699">under</font></font>.<font color="FF00FF">sys:Copy</font>())<br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><a href="content_374.html" class="name1" target="contents">Walk</a></font>(<font face="courier"><font color="#006699">pass</font></font>,<wbr><font face="courier"><font color="#006699">space</font></font>,<wbr><font face="courier"><font color="#006699">base</font></font>,<wbr><font face="courier"><font color="#006699">elem</font></font>,<wbr><font face="courier"><font color="#006699">lang</font></font>,<wbr><font face="courier"><font color="#006699">info</font></font>),<font face="courier"><font color="#006699">visible</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_120.html" class="tag1" target="contents">x:if</a></font> <font face="courier"><font color="#006699">space</font></font> <font face="courier"><a href="content_234.html" class="inop1" target="contents">==</a></font> <font face="courier"><font color="#006699">old</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_206.html" class="name1" target="contents">walk:other</a></font>(<font face="courier"><font color="#006699">under</font></font>,<wbr><font face="courier"><font color="#006699">new</font></font>,<wbr><font face="courier"><font color="#006699">base</font></font>,<wbr><font face="courier"><font color="#006699">elem</font></font>,<wbr><font face="courier"><font color="#006699">lang</font></font>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_114.html" class="tag1" target="contents">x:else</a></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_206.html" class="name1" target="contents">walk:other</a></font>(<font face="courier"><font color="#006699">under</font></font>,<wbr><font face="courier"><font color="#006699">space</font></font>,<wbr><font face="courier"><font color="#006699">base</font></font>,<wbr><font face="courier"><font color="#006699">elem</font></font>,<wbr><font face="courier"><font color="#006699">lang</font></font>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+<font color="brown">}</font></font>
+</body>
+</html>

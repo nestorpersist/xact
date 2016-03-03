@@ -1,0 +1,43 @@
+@x:view enum[%values],visible {
+   @x:func sys:Is(val),visible {
+      @x:var found := false;
+      @x:for value := values.all {
+         @x:if val == value {
+	    found := true;
+	    @x:break;
+         }
+      }
+      found
+   }
+   @x:func pos(a) {
+      @x:var result := 0;
+      @x:var i := 1;
+      @x:for v:=values.all {
+         @x:if v == a {
+	    result := i;
+	    @x:break;
+	 }
+	 i := i + 1;
+      }
+      ~ result != 0;
+      result;
+   }
+   @x:func sys:Eq(a,b),visible {
+      a == b
+   }
+   @x:func sys:Ne(a,b),visible {
+      a != b
+   }
+   @x:func sys:Less(a,b),visible {
+      pos(a) < pos(b);
+   }
+   @x:func sys:LessEq(a,b),visible {
+      pos(a) <= pos(b);
+   }
+   @x:func sys:Greater(a,b),visible {
+      pos(a) > pos(b);
+   }
+   @x:func sys:GreaterEq(a,b),visible {
+      pos(a) >= pos(b);
+   }
+}

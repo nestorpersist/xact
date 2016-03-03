@@ -1,0 +1,7 @@
+<project name="xact" default="comp" basedir="">
+   <target name="comp">
+      <javac srcdir="${SOURCE}" destdir="${OBJECT}" debug="true" verbose="false">
+	 <classpath path="${CLASSPATH}"/>
+      </javac>
+   </target>
+</project>

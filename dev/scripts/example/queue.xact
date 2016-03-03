@@ -1,0 +1,93 @@
+@x:func range[low,high](act) {
+   @x:var i := low;
+   @x:while i <= high {
+      act(i);
+      i:=i + 1
+   }
+}
+@x:func vals[%L] { L.all }
+
+@x:type queue1 {
+}
+@x:self {
+   @x:var notFull := lock();
+   @x:var notEmpty := lock();
+   @x:var lck := lock();
+   @x:var cnt;
+   @x:var size;
+   @x:var first;
+   @x:var last;
+   @x:var vals;
+   @x:func sys:Init(size),visible {
+      self.size := size;
+      cnt := 0;
+      first := 1;
+      last := size;
+      vals := array();
+      @x:for i:= range[1,size] {
+         vals.insert(null);
+      }
+   }
+   @x:func send(val),visible {
+      @x:exclude notFull {
+         @x:while cnt == size { notFull.wait() }
+	 last := last + 1;
+	 @x:if last > size { last := 1 }
+	 vals(last) := val;
+	 @x:exclude lck { cnt := cnt + 1 }
+      } 
+      @x:exclude notEmpty {
+         notEmpty.notifyAll()
+      }
+   }
+   @x:func receive(),visible {
+      @x:exclude notEmpty {
+         @x:while cnt == 0 { notEmpty.wait() }
+	 @x:exclude lck { cnt := cnt - 1 }
+	 vals(first);
+	 vals(first) := null;
+	 first := first + 1;
+	 @x:if first > size { first := 1 }
+      }
+      @x:exclude notFull {
+         notFull.notifyAll();
+      }
+   }
+}
+
+@x:func merge[iter1,iter2,cmp](act) {
+    @x:fork { 
+	@x:var end:=xdom:element("end");
+	@x:var q1:=queue1(1);
+	@x:var q2:=queue1(1);
+	@x:thread merge1 {
+	    @x:var foo1;
+	    @x:for i1 := iter1 { q1.send(i1) }
+	    q1.send(end)
+	} 
+	@x:thread merge2 {
+	    @x:var foo2;
+	    @x:for i2 := iter2 { q2.send(i2) }
+	    q2.send(end)
+	}
+	@x:var v1:=q1.receive();
+	@x:var v2:=q2.receive();
+	@x:while v1 != end | v2 != end {
+	    @x:if v2 == end {
+		act(v1); 
+		v1 := q1.receive();
+	    } @x:orif v1 == end {
+		act(v2); 
+		v2 := q2.receive();
+	    } @x:orif cmp(v1,v2) {
+		act(v1); 
+		v1 := q1.receive();
+	    } @x:else {
+		act(v2);
+		v2 := q2.receive();
+	    }
+	}
+    }
+}
+
+@x:for i:=merge[vals[1,3,5,99],vals[2,4,6,7,200,202],int.sys:Less] {i; "+" }

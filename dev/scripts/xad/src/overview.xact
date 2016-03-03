@@ -1,0 +1,129 @@
+<section name="Overview">
+   <p>
+      &xact; (pronounced "exact")
+      is a powerful scripting language with strong support for XML and JavaJJJ.
+   </p>
+
+   XACT can be used in several ways.
+   <list:unordered>
+      <list:item name="Stand-alone">
+	 &xact; is an excellent choice for writing stand-alone
+	 applications.  It is particularly handy for writing string and XML utilities.
+      </list:item>
+      <list:item name="Web server">
+	 &xact; can be used to quickly build advanced web sites.
+	 &xact; scripts can be run using either CGI or Java servlet
+	 connectors. Strong support is provided for XHTML and HTTP.
+	 &xact; scripts are a great replacement for JSP being
+	 both more powerful and easier to use.
+      </list:item>
+      <list:item name="Custom Languages">
+	 &xact; can be used to quickly design and implement special-purpose
+	 languages. Multiple custom languages can be easily combined
+	 within a single application.
+      </list:item>
+   </list:unordered>
+
+   The major features of &xact; are listed here.
+   <list:unordered>
+      <list:item name="Interpreted">
+	 The &xact; interpreter is written in Java.
+	 &xact; scripts can reference Java classes and
+	 call Java methods and Java programs can invoke
+	 &xact; scripts.
+	 &xact; inherits much of the Java run-time support
+	 including garbage collection, multithreading,
+	 and exception handling.
+      </list:item>
+      <list:item name="Dual Syntax">
+	 &xact; supports two complementary cleanly
+	 integrated syntaxes: one of which is pure XML
+	 (which includes XHTML) and the other
+	 is more like that of Java.
+	 Both forms support full Unicode characters sets.
+      </list:item>
+      <list:item name="Static name scopes">
+	 Names are defined statically (prior to the start of
+	 execution) within a set of nested scopes.
+	 Each name use binds to the definition of the same name
+	 in the smallest enclosing scope.
+	 A "separate compilation" mechanism can be used to assemble
+	 an application from multiple scripts.
+	 Visiblity controls support abstraction
+	 and data hiding.
+      </list:item>
+      <list:item name="Dynamically typed">
+	 In general, the type of the result of an expression
+	 can only be known after the expression has been executed.
+	 A variable can hold a value of any type.
+	 For prefix and infix operations the operator is typed
+	 not the operands.
+	 The types of expression results and variables
+	 can be restricted by explicit type assertions.
+	 &xact; views are similar to types.
+	 Although a value will have exactly one type,
+	 it can be associated with multiple views.
+      </list:item>
+      <list:item name="Rich built-in types">
+	 &xact; has two major built-in data types:
+	 strings and XDOM's (&xact; Document Object Model).
+	 Strings represent a sequence of Unicode characters
+	 and may not be modified.
+	 Strings are also used for boolean, integer, float, and date
+	 values.
+	 XDOM's can be used to represent XML data, &xact; scripts,
+	 arrays, records, lists, trees, and directed graphs.
+	 Every XDOM (even those with cycles) has an ASCII external form.
+	 Parsers and unparsers (pretty printers) are provided
+	 to convert between internal XDOM and external ASCII
+	 string forms.
+	 XDOM data structures can also be used from
+	 Java programs.
+      </list:item>
+      <list:item name="User-defined abstractions">
+	 A full set of user definable abstractions are provided
+	 including modules, functions, types, views, iterators,
+	 and virtual variables (via lhs/rhs function pairs).
+	 Variable length parameter lists and keyword (named)
+	 parameters are available.
+	 All language operations are user definable.
+	 Abstractions support parameterized types
+	 and generic/polymorphic functions.
+	 &xact; does not provide class inheritance.
+	 Views provide a safer cleaner alternative.
+      </list:item>
+      <list:item name="Stack-based execution">
+	 Unlike languages such as Lisp,
+	 &xact; stack frames are not retained when they are exited.
+	 &xact; does however have an extended name
+	 feature that can be used for currying and
+	 other techniques usually provided by retention.
+	 For multiple threads a "cactus stack" model is used.
+      </list:item>
+      <list:item name="Support for large data sets">
+	 &xact; provides incremental parsing and implicit
+	 streams that allow large data structures
+	 to be processed without all being in main memory
+	 at the same time.
+      </list:item>
+      <list:item name="Multithreading">
+	 &xact; provides multithreading, locks/monitors (like those of Java),
+	 and queues (that can be used for CSP style programming).
+      </list:item>
+      <list:item name="Extensible">
+	 <b>Extensible.</b>
+	 &xact; can be easily extended by defining new languages
+	 (collections of tags, operators, and abstractions).
+	 New functionality can be provided by escaping into Java
+	 (or even C via JNI).
+	 Multiple languages can be combined in single script to
+	 combine functionality or to provide a
+	 specification of multiple execution times/places (preprocess, server,
+	 client).
+      </list:item>
+      <list:item name="Visual IDE (under development)">
+	 This will include a debugger, editor, and refactoring support.
+      </list:item>
+   </list:unordered>
+
+</section>

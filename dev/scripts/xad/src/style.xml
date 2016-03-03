@@ -1,0 +1,21 @@
+<styles>
+   <nt font="courier" left="<" right=">" undef="black" def="green" used="green" hover="gold" underline="false"/>
+   <nt1 font="courier" undef="black" def="green" used="green" hover="gold" underline="false"/>
+   <term font="courier" left="'" right="'" undef="brown"/>
+   <term1 font="courier" undef="brown"/>
+   <preop font="courier"  undef="black" def="brown" hover="gold" underline="false"/>
+   <inop font="courier"  undef ="red" def="brown" hover="gold" underline="false"/>
+   <tag font="courier" left="@" def="brown" undef="red" hover="gold" underline="false"/>
+   <name font="courier" undef="#006699" def="blue" hover="gold" underline="false"/>
+   <library font="courier" undef="red" def="blue" hover="gold" underline="false"/>
+   <gloss undef="red" def="blue" hover="gold" underline="false"/>
+   <folder def="blue" hover="gold" underline="false"/>
+   <table def="blue" hover="gold" underline="false" number="1"/>
+   <unnumbered def="blue" hover="gold" underline="false"/>
+   <numbered def="blue" hover="gold" underline="false" number="1"/>
+   <lettered def="blue" hover="gold" underline="false" number="A"/>
+   <top def="black" hover="gold" underline="false"/>
+   <underline def="blue" hover="gold" underline="true"/>
+   <example font="courier" def="blue" hover="gold" underline="false" number="1"/>
+   <option font="courier" def="blue" hover="gold" undef="red" underline="false"/>
+</styles>

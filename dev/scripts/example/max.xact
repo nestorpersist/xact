@@ -1,0 +1,9 @@
+@x:func max(a,b) {
+   @x:if a > b { a } @x:else { b }
+}
+@x:var v1 := 2;
+@x:var v2 := 3;
+max(v1,v2); eol;
+v1 := "test";
+v2 := "example";
+max(v1,v2); eol;

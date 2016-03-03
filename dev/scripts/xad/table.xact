@@ -1,0 +1,52 @@
+@x:type Table[render1,render2],visible {
+   @x:func renderItem(e,title) {
+      @x:tag xdom:element("td",kind="xml",spaceBeforeBody="erase",spaceAfterBody="erase") {
+	 @x:var f:= null;
+	 @x:if title {f:=xdom:element("b",kind="xml")}
+	 @x:tag f {
+	    @x:for c:=e.all#body {
+	       render2(c);
+	    }
+	 }
+      }
+   }
+
+   @x:func renderRow(e) {
+      @x:tag xdom:element("tr",kind="xml") {
+	 @x:for c:=e.all#body {
+	    @x:if c.tag =="table:item" {
+	       renderItem(c,false);
+	    } 
+	 }
+      }
+   }
+
+   @x:func renderTitleRow(e) {
+      @x:tag xdom:element("tr",kind="xml") {
+	 @x:for c:=e.all#body {
+	    @x:if c.tag =="table:item" {
+	       renderItem(c,true);
+	    } 
+	 }
+      }
+   }
+
+   @x:func r1(e),visible {
+       @x:for c:=e.all#body {
+	   render1(c)
+       }
+   }
+   
+   @x:func r2(e),visible {
+      @x:tag xdom:element("table",attr=rec(border="2"),kind="xml") {
+	 @x:for c:=e.all#body {
+	    @x:if c.tag == "table:titlerow" {
+	       renderTitleRow(c);
+	    } @x:orif c.tag =="table:row" {
+	       renderRow(c);
+	    }
+	 }
+      }
+   }
+}
+@x:self;

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>escape</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > A <a href="nav2_4_1.html" target="nav2" class="lettered1">Syntax</a> >  <font face="courier">&lt;<font color="green">escape</font>&gt;</font>
+</b>
+<br/> 
+
+<a href="content_83.html" target="contents">prev</a>
+ 
+<a href="content_85.html" target="contents">next</a>
+<br/>
+
+<font size="+1"><b>Syntax</b></font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">escape</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">&</font>'</font> <font face="courier">'<font color="brown">#</font>'</font> {<font face="courier"><a href="content_79.html" class="nt11" target="contents">digit</a></font>}+ <font face="courier">'<font color="brown">;</font>'</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">escape</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">&</font>'</font> <font face="courier">'<font color="brown">#</font>'</font> {<font face="courier">'<font color="brown">x</font>'</font> | <font face="courier">'<font color="brown">X</font>'</font>} {<font face="courier"><a href="content_79.html" class="nt11" target="contents">digit</a></font> | <font face="courier"><a href="content_92.html" class="nt11" target="contents">letter</a></font>}+ <font face="courier">'<font color="brown">;</font>'</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">escape</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">&</font>'</font> <font face="courier">&lt;<a href="content_87.html" class="nt1" target="contents">extended id</a>&gt;</font> <font face="courier">'<font color="brown">;</font>'</font>
+</td>
+</tr>
+</table>
+
+</font>
+<p>
+<font size="+1">
+<b>
+Description
+</b>
+</font>
+</p>
+<p>
+Escapes are used within <font face="courier"><font face="courier">&lt;<a href="content_104.html" class="nt1" target="contents">string</a>&gt;</font></font>s andtext to represent addition characters.There are two kinds of escape: named and numbered.
+</p>
+<p>
+<font size="+1">
+<b>
+Semantics
+</b>
+</font>
+</p>
+<p>
+<p>
+A numbered escape represents the character whose decimal orhex value is specified.
+</p>
+<p>
+A named escape represents the value of the specified name.The name must be defined where the escape appears and have a stringvalue.There are predefined names for common escapes <font face="courier"><font face="courier"><a href="content_224.html" class="name1" target="contents">quot</a></font></font>, <font face="courier"><font face="courier"><a href="content_211.html" class="name1" target="contents">apos</a></font></font>, <font face="courier"><font face="courier"><a href="content_210.html" class="name1" target="contents">amp</a></font></font>, <font face="courier"><font face="courier"><a href="content_225.html" class="name1" target="contents">tab</a></font></font>, <font face="courier"><font face="courier"><a href="content_220.html" class="name1" target="contents">nbsp</a></font></font>,  and <font face="courier"><font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font></font>.
+</p>
+</p>
+<p>
+<font size="+1">
+<b>
+Examples
+</b>
+</font>
+</p>
+<p>
+A string with escapes.
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font color="green">"a&amp;<font color="blue">amp</font>;b==&amp;<font color="blue">quot</font>;c&amp;<font color="blue">quot</font>;!"</font></font>
+<br/>
+Escapes within XML text.
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font color="#FF9C00">&lt;foo</font><font color="#FF9C00">&gt;</font>The greek delta character is &amp;#916;.<font color="#FF9C00">&lt;/foo&gt;</font></font>
+<br/>
+
+</p>
+</body>
+</html>

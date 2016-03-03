@@ -1,0 +1,38 @@
+@x:func merge[iter1,iter2](doc) {
+   @x:fork {
+      @x:var end := "end";
+      @x:var q1 := queue(1);
+      @x:var q2 := queue(1);
+      @x:thread merge1 {
+         @x:for i1 := iter1 { q1.send(i1) }
+         q1.send(end)
+      }
+      @x:thread merge2 {
+         @x:for i2 := iter2 { q2.send(i2) }
+         q2.send(end)
+      }
+      @x:var v1 := q1.receive();
+      @x:var v2 := q2.receive();
+      @x:while v1 != end | v2 != end {
+         @x:if v2 == end {
+            doc(v1);
+            v1 := q1.receive()
+         } @x:orif v1 == end {
+            doc(v2);
+            v2 := q2.receive()
+         } @x:orif v1 < v2 {
+            doc(v1);
+            v1 := q1.receive()
+         } @x:else {
+            doc(v2);
+            v2 := q2.receive()
+         }
+      }
+   }
+}
+
+@x:const a1 := array(1,3,5,99);
+@x:const a2 := array(2,4,6,7,200,202);
+@x:for i := merge[a1.all,a2.all] {
+   i; eol;
+}

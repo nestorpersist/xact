@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>x:view</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > C <a href="nav2_4_3.html" target="nav2" class="lettered1">Tags</a> >  <font face="courier">@<font color="brown">x:view</font></font>
+</b>
+<br/> 
+
+<a href="content_129.html" target="contents">prev</a>
+ 
+<a href="content_131.html" target="contents">next</a>
+<br/>
+
+
+<p>
+<font size="+1">
+<b>
+Description
+</b>
+</font>
+</p>
+<p>
+This command declares a view.
+</p>
+<p>
+<font size="+1">
+<b>
+Command Syntax
+</b>
+</font>
+</p>
+<p>
+<font face="courier">'<font color="brown">@x:view</font>'</font> <font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font> {<font face="courier">'<font color="brown">[</font>'</font> <font face="courier">&lt;<font color="black">view formals</font>&gt;</font> <font face="courier">'<font color="brown">]</font>'</font>}?
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">view formals</font>&gt;</font> ::=
+</td>
+<td>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">view formals</font>&gt;</font> ::=
+</td>
+<td>
+'<font face="courier"><a href="content_230.html" class="preop1" target="contents">%</a></font>' <font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">view formals</font>&gt;</font> ::=
+</td>
+<td>
+{<font face="courier">&lt;<font color="black">view formal</font>&gt;</font> <font face="courier">'<font color="brown">,</font>'</font>}* <font face="courier">&lt;<font color="black">view formal</font>&gt;</font>
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">view formal</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font> {'<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font>' <font face="courier">&lt;<a href="content_85.html" class="nt1" target="contents">exp</a>&gt;</font>}?
+</td>
+</tr>
+</table>
+
+</font>
+<p>
+The following options are permitted.
+</p>
+<table border="2">
+<tr>
+<td><font face="courier"><font face="courier"><font color="red">visible</font></font></font></td>
+<td>The view name is declared as visible in the enclosing scope.If <font face="courier"><font face="courier"><font color="red">visible</font></font></font> is specified,then <font face="courier"><font face="courier"><font color="red">local</font></font></font> can not be specified.</td>
+</tr>
+<tr>
+<td><font face="courier"><font face="courier"><font color="red">local</font></font></font></td>
+<td>The view name is declared as local in the enclosing scope.If <font face="courier"><font face="courier"><font color="red">local</font></font></font> is specified,then <font face="courier"><font face="courier"><font color="red">visible</font></font></font> can not be specified.</td>
+</tr>
+</table>
+</p>
+<p>
+<font size="+1">
+<b>
+Name Semantics
+</b>
+</font>
+</p>
+<p>
+The view name is declared the scope that surrounds the
+<font face="courier"><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font></font> command.The view formal <font face="courier"><font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font></font>s are declared within the
+<font face="courier"><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font></font> command scope.
+</p>
+<p>
+<font size="+1">
+<b>
+Execution Semantics
+</b>
+</font>
+</p>
+<p>
+<p>
+Execution of the <font face="courier"><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font></font> commandassociates the view value with the instance of the view name.The result of execution of the <font face="courier"><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font></font> command is <font face="courier"><font face="courier"><a href="content_221.html" class="name1" target="contents">null</a></font></font>.
+</p>
+<p>
+Instances of the view declaration are created for each specific view referenced.If the view name has no extension there will be only one instance.If the view name has an extension, then there will be a different instancefor each different name extension value list.Instances are created on demand as needed and exist untilthe scope containing the view command exits.The body of the view command is executed for each view instance whenit is created. The result of that execution is discarded.
+</p>
+</p>
+<p>
+<font size="+1">
+<b>
+Examples
+</b>
+</font>
+</p>
+<p>
+See the <font face="courier"><font face="courier"><a href="content_11.html" class="example1" target="contents">even</a></font></font> example.
+</p>
+</body>
+</html>

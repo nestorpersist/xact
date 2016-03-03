@@ -1,0 +1,106 @@
+@x:use library:unparser;
+
+/***********************************************************
+*
+*   Global state
+*
+***********************************************************/
+
+@x:const styleFile := "src:style.xml",visible;
+
+@x:var inFname,visible;
+@x:const frameFname := "index",visible;
+@x:const nav1Fname := "nav1",visible;
+@x:const nav2Fname := "nav2",visible;
+@x:const contentFname := "content",visible;
+@x:const stylesheetFname := "style",visible;
+
+//@x:const frameFile := "dst:index",visible;
+//@x:const nav1File := "dst:nav1",visible;
+//@x:const nav2File := "dst:nav2",visible;
+//@x:const contentFile := "dst:content",visible;
+//@x:const stylesheetFile := "dst:style.css",visible;
+
+@x:const nav1Levels := 2,visible;
+@x:const nav2Levels := 1,visible;
+
+@x:const nav1Level := 1,visible;
+@x:const nav2Level := nav1Level + nav1Levels,visible;
+@x:const contentLevel := nav2Level + nav2Levels,visible;
+
+// From pass1
+@x:var lastPage := 0,visible;
+
+@x:var styles,visible;
+
+/***********************************************************
+*
+*   stack
+*	.name		the name  (.elem.name)
+*	.section	child section number
+*
+***********************************************************/
+
+@x:type stack,visible;
+@x:self {
+   @x:var size := 0,visible;
+   @x:var internal := 0;
+   @x:var vals := xdom:element("stack");
+   @x:const empty := xdom:element("empty");
+   @x:func expand() {
+      internal := internal + 5;
+      @x:for i := 1..5 {
+         vals.insert#body(empty);
+      }
+   }
+   @x:func push(e),visible {
+      @x:if size ==#int internal { expand() }
+      size := size + 1;
+      vals(size)#body := e;
+   }
+   @x:func get(i),~ 0 <#int i & i <=#int size,visible {
+      vals(i)#body;
+   }
+   @x:func pop(),visible {
+      vals(size)#body := empty;
+      size := size - 1;
+   }
+   @x:func dump(),visible {
+      Unparse(vals);
+   }
+}
+@x:var st := stack(),visible;
+
+
+/***********************************************************
+*
+*   def/ref symbol table
+*
+***********************************************************/
+@x:var symbols := rec(),visible;
+
+@x:func define(name,val),visible {
+   Dot(symbols,name,rec) := val;
+}
+@x:func lookup(name),visible {
+   Dot(symbols,name,rec)
+}
+/***********************************************************
+*
+*   page sort table
+*
+***********************************************************/
+
+@x:var pages := rec(),visible;
+@x:func pageSet(old,new),visible {
+   Dot(pages,"A"++old,rec) := new;
+}
+
+@x:func pageGet(old),visible {
+   @x:const new := Dot(pages,"A"++old,rec);
+   @x:if new == null {
+      old
+   } @x:else {
+      new
+   }
+}

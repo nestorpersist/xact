@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>queue</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > D <a href="nav2_4_4.html" target="nav2" class="lettered1">Types</a> >  <font face="courier"><font color="blue">queue</font></font>
+</b>
+<br/> 
+
+<a href="content_138.html" target="contents">prev</a>
+ 
+<a href="content_140.html" target="contents">next</a>
+<br/>
+
+
+<p>
+<font size="+1">
+<b>
+Description
+</b>
+</font>
+</p>
+<p>
+<p>
+The <font face="courier"><font face="courier"><a href="content_139.html" class="name1" target="contents">queue</a></font></font> type isis used for high-level multithread synchronization.One thread sends values to the queue, while another threadreceives those values.
+</p>
+<p>
+The <font face="courier"><font face="courier"><a href="content_310.html" class="example1" target="contents">queue</a></font></font> examplesshows how a type with the same semantics as <font face="courier"><font face="courier"><a href="content_139.html" class="name1" target="contents">queue</a></font></font> can be implemented using <font face="courier"><font face="courier"><a href="content_138.html" class="name1" target="contents">lock</a></font></font>s.
+</p>
+</p>
+<p>
+<font size="+1">
+<b>
+Type queue
+</b>
+</font>
+</p>
+<p>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font> queue</font>
+</p>
+<table border="3">
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#send" class="underline1">send</a>(<font face="courier"><font color="#006699">val</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#receive" class="underline1">receive</a>()</font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Eq" class="underline1">sys:Eq</a>(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_139.html" class="name1" target="contents">queue</a></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_139.html" class="name1" target="contents">queue</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Ne" class="underline1">sys:Ne</a>(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_139.html" class="name1" target="contents">queue</a></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_139.html" class="name1" target="contents">queue</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Init" class="underline1">sys:Init</a>(<font face="courier"><font color="#006699">count</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#toString" class="underline1">toString</a>()<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>
+</font>
+</td>
+</tr>
+</table>
+<hr/>
+<a name="send"/>
+<p>
+<font size="+1">
+<b>
+Self Function send
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> send(<font face="courier"><font color="#006699">val</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">val</font></font></font>
+</td>
+<td>
+A value to be sent.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+Sends a value to the queue.Waits if queue is full.
+<hr/>
+<a name="receive"/>
+<p>
+<font size="+1">
+<b>
+Self Function receive
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> receive()</font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+Receives and returns a value from the queue.Waits if the queue is empty.
+<hr/>
+<a name="sys:Eq"/>
+<p>
+<font size="+1">
+<b>
+Type Function sys:Eq
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Eq(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_139.html" class="name1" target="contents">queue</a></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_139.html" class="name1" target="contents">queue</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">a</font></font></font>
+</td>
+<td>
+first parameter
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">b</font></font></font>
+</td>
+<td>
+second parameter
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+If <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> and <font face="courier"><font face="courier"><font color="#006699">b</font></font></font> are the same queue,then the result is <font face="courier"><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font>, else the result is <font face="courier"><font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font></font>.
+<hr/>
+<a name="sys:Ne"/>
+<p>
+<font size="+1">
+<b>
+Type Function sys:Ne
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Ne(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_139.html" class="name1" target="contents">queue</a></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_139.html" class="name1" target="contents">queue</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">a</font></font></font>
+</td>
+<td>
+first parameter
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">b</font></font></font>
+</td>
+<td>
+second parameter
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+If <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> and <font face="courier"><font face="courier"><font color="#006699">b</font></font></font> are the same queue,then the result is <font face="courier"><font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font></font>, else the result is <font face="courier"><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font>.
+<hr/>
+<a name="sys:Init"/>
+<p>
+<font size="+1">
+<b>
+Self Function sys:Init
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Init(<font face="courier"><font color="#006699">count</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">count</font></font></font>
+</td>
+<td>
+A queue size.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+Initializes a new queue object of size specified by <font face="courier"><font face="courier"><font color="#006699">size</font></font></font>.
+<hr/>
+<a name="toString"/>
+<p>
+<font size="+1">
+<b>
+Self Function toString
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> toString()<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The result is the string <font face="courier"><font color="green">"queue"</font></font>.
+<hr/>
+</body>
+</html>

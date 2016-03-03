@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Percent</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > F <a href="nav2_4_6.html" target="nav2" class="lettered1">Functions</a> >  <font face="courier"><font color="blue">Percent</font></font>
+</b>
+<br/> 
+
+<a href="content_192.html" target="contents">prev</a>
+ 
+<a href="content_194.html" target="contents">next</a>
+<br/>
+
+
+<p>
+<font size="+1">
+<b>
+Description
+</b>
+</font>
+</p>
+<p>
+The expression
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_230.html" class="preop1" target="contents">%</a></font><font face="courier"><font color="#006699">L</font></font></font>
+<br/>
+is desugared to
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_193.html" class="name1" target="contents">Percent</a></font>(<font face="courier"><font color="#006699">L</font></font>)</font>
+<br/>
+
+</p>
+<p>
+<font size="+1">
+<b>
+Function Percent
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> Percent(<font face="courier"><font color="#006699">L</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">L</font></font></font>
+</td>
+<td>
+first parameter.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The percent function has special semantics for dealingwith variable length parameter list.A function that takes a variable number of parametershas a single formal parameter whose name is preceded witha <font face="courier" color="green">%</font> prefix operator.When an actual parameter has the form <font face="courier"><font face="courier"><a href="content_230.html" class="preop1" target="contents">%</a></font><font face="courier"><font color="#006699">L</font></font></font>,it is replaced by a sequence of positional and namedparameters that come from the attributes of <font face="courier"><font face="courier"><font color="#006699">L</font></font></font>.
+<p>
+<font size="+1">
+<b>
+Examples
+</b>
+</font>
+</p>
+<p>
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">bar</font></font>(<font face="courier"><a href="content_230.html" class="preop1" target="contents">%</a></font><font face="courier"><font color="#006699">L</font></font>)<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font> <font face="courier"><font color="#006699">v</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">L</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">v</font></font>;&nbsp;<font color="green">";"</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">foo</font></font>(<font face="courier"><a href="content_230.html" class="preop1" target="contents">%</a></font><font face="courier"><font color="#006699">L</font></font>)<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">bar</font></font>(<font face="courier"><a href="content_230.html" class="preop1" target="contents">%</a></font><font face="courier"><font color="#006699">L</font></font>,<wbr><font color="green">"abc"</font>)<br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">foo</font></font>(1,<wbr>2,<wbr>3);<br/>
+&nbsp;&nbsp;&nbsp;<font color="00CD00">// result is: 1;2;3;abc;</font></font>
+<br/>
+
+</p>
+</body>
+</html>

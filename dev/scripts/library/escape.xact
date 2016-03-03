@@ -1,0 +1,60 @@
+@x:func escapeSingleString(s),visible {
+   @x:for ch := Chars[s] {
+      @x:if ch == apos(1) {
+         amp; "apos;"
+      } @x:orif ch == amp(1) {
+         amp; "amp;"
+      } @x:else {
+         string(code=ch)
+      }
+   }
+}
+
+@x:func escapeDoubleString(s),visible {
+   @x:for ch := Chars[s] {
+      @x:if ch == quot(1) {
+         amp; "quot;"
+      } @x:orif ch == amp(1) {
+         amp; "amp;"
+      } @x:else {
+         string(code=ch)
+      }
+   }
+}
+
+@x:func escapeXMLText(s),visible {
+   @x:for ch := Chars[s] {
+      @x:if ch == "<"(1) {
+         amp; "lt;"
+      } @x:orif ch == ">"(1) {
+         amp; "gt;"
+      } @x:orif ch == amp(1) {
+         amp; "amp;"
+      } @x:else {
+         string(code=ch)
+      }
+   }
+}
+
+@x:func asciiXML(s),visible {
+   @x:for ch := Chars[s] {
+     @x:if (ch ==#int nbsp(1)) { amp; "nbsp;" }
+     @x:orif (ch <#int 32 & ch !=#int 10 & ch!=#int 13) { amp; "#"; ch; ";" }
+     @x:orif (ch >=#int 127) { amp; "#"; ch; ";" }
+     @x:else { string(code=ch) }
+   }
+}
+
+@x:func quoteXML(s),visible {
+   @x:for ch := Chars[s] {
+     @x:if (ch ==#int amp(1)) { amp; "amp;" }
+     @x:orif (ch ==#int lt(1)) { amp; "lt;" }
+     @x:orif (ch ==#int gt(1)) { amp; "gt;" }
+     @x:orif (ch ==#int nbsp(1) | ch ==#int 32) { amp; "nbsp;" }
+     @x:orif (ch ==#int 13) { }
+     @x:orif (ch ==#int 10) { "<br>"; string(code=ch) }
+     @x:orif (ch <#int 32) { amp; "#"; ch; ";" }
+     @x:orif (ch >=#int 127) { amp; "#"; ch; ";" }
+     @x:else { string(code=ch) }
+   }
+}

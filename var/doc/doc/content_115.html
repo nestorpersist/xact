@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>x:exclude</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > C <a href="nav2_4_3.html" target="nav2" class="lettered1">Tags</a> >  <font face="courier">@<font color="brown">x:exclude</font></font>
+</b>
+<br/> 
+
+<a href="content_114.html" target="contents">prev</a>
+ 
+<a href="content_116.html" target="contents">next</a>
+<br/>
+
+
+<p>
+<font size="+1">
+<b>
+Description
+</b>
+</font>
+</p>
+<p>
+This command is used for mutual exclusion and monitors basedon a <font face="courier"><font face="courier"><a href="content_138.html" class="name1" target="contents">lock</a></font></font>.
+</p>
+<p>
+<font size="+1">
+<b>
+Command Syntax
+</b>
+</font>
+</p>
+<p>
+<font face="courier">'<font color="brown">@x:exclude</font>'</font> <font face="courier">&lt;<a href="content_85.html" class="nt1" target="contents">exp</a>&gt;</font>
+<p>
+No options are permitted.
+</p>
+</p>
+<p>
+<font size="+1">
+<b>
+Execution Semantics
+</b>
+</font>
+</p>
+<p>
+The expression is evaluated and the result must have type <font face="courier"><font face="courier"><a href="content_138.html" class="name1" target="contents">lock</a></font></font>.If the lock is locked, execution of the current thread waitsuntil the lock is unlocked.If the lock is unlocked, then it is locked and the body is executed.After the end of body execution the lock is unlocked.Calling <font face="courier"><font face="courier"><a href="content_138.html" class="name1" target="contents">lock</a></font></font> operations within the bodycan be used to make the <font face="courier"><font face="courier">@<a href="content_115.html" class="tag1" target="contents">x:exclude</a></font></font> command operate as a monitor.
+</p>
+<p>
+<font size="+1">
+<b>
+Examples
+</b>
+</font>
+</p>
+<p>
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font> <font face="courier"><font color="#006699">counter</font></font>;<br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <font face="courier"><font color="#006699">val</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> 0;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <font face="courier"><font color="#006699">lock1</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_138.html" class="name1" target="contents">lock</a></font>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">incr</font></font>(),<font face="courier"><font color="#006699">visible</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_115.html" class="tag1" target="contents">x:exclude</a></font> <font face="courier"><font color="#006699">lock1</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">val</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">val</font></font> <font face="courier"><a href="content_244.html" class="inop1" target="contents">+</a></font> 1<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">decr</font></font>(),<font face="courier"><font color="#006699">visible</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_115.html" class="tag1" target="contents">x:exclude</a></font> <font face="courier"><font color="#006699">lock1</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">val</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">val</font></font> <font face="courier"><a href="content_245.html" class="inop1" target="contents">-</a></font> 1<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font></font>
+<br/>
+
+<p>
+The <font face="courier"><font face="courier"><a href="content_310.html" class="example1" target="contents">queue</a></font></font> example shows the use of monitors.
+</p>
+</p>
+</body>
+</html>

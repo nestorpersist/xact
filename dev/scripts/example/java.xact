@@ -1,0 +1,21 @@
+@x:const System := Java.java.lang.System;
+@x:const StringBuffer := Java.java.lang.StringBuffer;
+@x:const ArrayList := Java.java.util.ArrayList;
+
+@x:func Discard(x) { }
+
+System.out.println("ABC");
+
+@x:var sb := StringBuffer();
+sb := sb.append("test");
+sb := sb.append("=");
+sb := sb.append("xxx");
+sb := sb.append(eol);
+sb.toString();
+
+@x:const ar := ArrayList();
+Discard(ar.add("abc"));
+Discard(ar.add("def"));
+@x:for i:=0..ar.size()-1 {
+   ar.get(i); eol;
+}

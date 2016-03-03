@@ -1,0 +1,25 @@
+@x:use library:unparser;
+@x:use library:iterator;
+@x:use library:path;
+
+@x:func elements[x~xdom](act) {
+   @x:if x?xdom:element {
+      act(x);
+      @x:for x1 := x.all#body {
+         elements[x1](act);
+      }
+   }
+}
+@x:var cnts := rec();
+@x:const fname := pathToFile("example:cntTag.xact");
+@x:const txt := fname.read#file();
+@x:const root := Parse(txt);
+@x:for e := elements[root] {
+    @x:if e != root {
+       @x:const tag := e.tag;
+       @x:var cnt := Dot(cnts,tag,rec);
+       @x:if cnt == null { cnt := 0 }
+       Dot(cnts,tag,rec) := cnt + 1;
+    }
+}
+Unparse(cnts); eol;

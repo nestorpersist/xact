@@ -1,0 +1,27 @@
+@x:func checkT(a,b) {
+   @x:if a?int & b?int {
+      @x:if a > b {
+         "parameter 1 (";
+	 a;
+	 ") may not be greater than parameter 2 (";
+	 b;
+	 ")"
+      } @x:else {
+         true
+      }
+   } @x:orif (! a?int) & (! b?int) {
+      "parameters are not ints"
+   } @x:orif ! a?int {
+      "parameter 1 is not an int"
+   } @x:else {
+      "parameter 2 is not an int"
+   } 
+}
+
+@x:func t(a,b),~checkT(a,b) {
+   a+b
+}
+
+t(2,1);  // will fail
+t(1,2);
+t(false,3); // will fail

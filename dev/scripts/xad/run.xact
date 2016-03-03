@@ -1,0 +1,20 @@
+@x:use library:unparser;
+@x:use xad:page;
+@x:func run(name),visible {
+   @head{
+      @title {
+         name
+      }
+   }
+   @body bgcolor="white" {
+     @h2 { name }
+     @x:const fname := "c:\nestor\xact\scripts\xad\example\" ++ name ++ ".xact";
+     @x:const txt := fname.read#file();
+     @x:const t := Parse(txt);
+//     fname;
+//     Unparse(t,html=true);
+     Bind(t);
+     HEncode(Exec(t));
+//     Exec(t);
+   }
+}

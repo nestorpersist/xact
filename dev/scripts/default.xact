@@ -1,0 +1,21 @@
+@x:use library:html;
+@x:func default,visible {
+   <html>
+   <head>
+      <title>
+	 @X:ACT Scripting System
+      </title>
+   </head>
+   <body bgcolor="white">
+      <h1>@X:ACT Scripting System</h1>
+      <ul>
+         <li>
+             <@x:exp "path:"++options.httpRequest#rec.getPathInfo()/> 
+         </li>
+	 <li>
+	    <@x:tag A[ABS.demo](){"Sample Code"}/>
+	 </li>
+      </ul>
+   </body>
+   </html>
+}

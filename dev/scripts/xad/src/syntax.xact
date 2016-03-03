@@ -1,0 +1,1406 @@
+<section:lettered name="Syntax" sort="fold">
+   <section:nt name="script">
+      <syn:prods>
+         <ref:nt name="script"/>
+	 <syn:prod>
+	    <syn:opt>
+	       <syn:opt><ref:nt1 name="S"/></syn:opt>
+	       <ref:nt name="cmds"/>
+	    </syn:opt>
+	    <syn:opt><ref:nt1 name="S"/></syn:opt>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 This is the top level non-terminal for the &xact; syntax.
+	 Each &xact; script lives in a separate file.
+      </part>
+      <part name="Parsing">
+         <p>
+	 When a script is parsed the sequence of commands
+	 are placed within the body of a single top-level <@icode{xdom:element}/> tree node
+	 with tag <ref:tag name="x:block"/>.
+	 </p>
+	 <p>
+	    The <ref:numbered name="Character Set"/> used for scripts is <@icode{"UTF-8"}/>.
+	 </p>
+      </part>
+   </section:nt>
+   <section:nt name="cmds">
+      <syn:prods>
+         <ref:nt name="cmds"/>
+	 <syn:prod>
+	    <syn:star>
+	       <syn:or>
+		  <syn:seq>
+		     <ref:nt name="simple cmd"/>
+		     <syn:opt><ref:nt1 name="S"/></syn:opt>
+		     <ref:term name=";"/>
+		     <syn:opt><ref:nt1 name="S"/></syn:opt>
+		  </syn:seq>
+		  <syn:seq>
+		     <ref:nt name="compound cmd"/>
+		     <syn:opt><ref:nt1 name="S"/></syn:opt>
+		  </syn:seq>
+	       </syn:or>
+	    </syn:star>
+	    <syn:break/>
+	    <syn:or>
+	       <syn:seq>
+		  <ref:nt name="simple cmd"/>
+		  <syn:opt>
+		     <syn:opt><ref:nt1 name="S"/></syn:opt>
+		     <ref:term name=";"/>
+		  </syn:opt>
+	       </syn:seq>
+	       <ref:nt name="compound cmd"/>
+	    </syn:or>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 Semicolons (@verb{";"}/>) are used to terminate simple commands.
+	 The semicolon on the last simple command is optional.
+      </part>
+   </section:nt>
+   <section:nt name="simple cmd">
+      <syn:prods>
+         <ref:nt name="simple cmd"/>
+	 <syn:prod>
+	    <syn:or>
+	       <ref:nt name="short cmd"/>
+	       <ref:nt name="exp"/>
+	    </syn:or>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 A simple command is a command that does not have a body.
+      </part>
+   </section:nt>
+   <section:nt name="compound cmd">
+      <syn:prods>
+         <ref:nt name="compound cmd"/>
+	 <syn:prod>
+	    <syn:or>
+	       <ref:nt name="long cmd"/>
+	       <ref:nt name="element"/>
+	    </syn:or>
+	 </syn:prod>
+	 <syn:prod>
+	    <syn:opt>
+	       <ref:nt name="id"/>
+	       <ref:term name=":"/>
+	    </syn:opt>
+	    <ref:term name="/*"/>
+	    <syn:minus>
+	       <ref:nt1 name="text"/>
+	       <syn:seq>
+		  <ref:nt1 name="text"/>
+		  <ref:term name="*/"/>
+		  <ref:nt1 name="text"/>
+	       </syn:seq>
+	    </syn:minus>
+	    <ref:term name="*/"/>
+	 </syn:prod>
+	 <syn:prod>
+	    <syn:opt>
+	       <ref:nt name="id"/>
+	       <ref:term name=":"/>
+	    </syn:opt>
+	    <ref:term name="//"/>
+	    <syn:minus>
+	       <ref:nt1 name="text"/>
+	       <syn:seq>
+		  <ref:nt1 name="text"/>
+		  <ref:nt1 name="eol"/>
+		  <ref:nt1 name="text"/>
+	       </syn:seq>
+	    </syn:minus>
+	    <ref:nt1 name="eol"/>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 A compound command can be a tagged log command, and XML element,
+	 or a comment.
+      </part>
+      <part name="Parsing Long Comments">
+	 <p>
+	 Comments are a form of syntactic sugar.
+	 The following form
+	 </p>
+	 <@verb{"/*...*/"}/>
+	 <p>
+	    is equivalent to
+	 </p>
+	 <@icode{Comment("...")}/>
+	 <p>
+	    and will produce an <@icode{xdom:call}/> tree node with kind
+	    set to <@icode{"long"}/>.
+	 </p>
+	 <p>
+	    The form
+	 </p>
+	 <@verb{"z:/*..."}/>
+	 <p>
+	    is equivalent to
+	 </p>
+	 <@icode{@z:comment "..."}/>
+	 <p>
+	    and will produce an <@icode{xdom:element}/> tree node with kind
+	    set to <@icode{"long"}/>.
+	 </p>
+      </part>
+      <part name="Parsing Short Comments">
+	 <p>
+	 Comments are a form of syntactic sugar.
+	 The following form
+	 </p>
+	 <@verb{"//..."}/>
+	 <p>
+	    is equivalent to
+	 </p>
+	 <@icode{Comment("...")}/>
+	 <p>
+	    and will produce an <@icode{xdom:call}/> tree node with kind
+	    set to <@icode{"short"}/>.
+	 </p>
+	 <p>
+	    The form
+	 </p>
+	 <@verb{"z://..."}/>
+	 <p>
+	    is equivalent to
+	 </p>
+	 <@icode{@x:comment "..."}/>
+	 <p>
+	    and will produce an <@icode{xdom:element}/> tree node with kind
+	    set to <@icode{"long"}/>.
+	 </p>
+      </part>
+   </section:nt>
+   <section:nt name="short cmd">
+      <syn:prods>
+         <ref:nt name="short cmd"/>
+	 <syn:prod>
+	    <ref:term name="@"/>
+	    <ref:nt name="id"/>
+	    <ref:nt1 name="S"/>
+	    <syn:opt>
+	       <ref:nt name="exps"/>
+	    </syn:opt>
+	 </syn:prod>
+	 <part name="Description">
+	    A list of expressions.
+	 </part>
+	 <part name="Examples">
+	    <@code{f(1,2,3)}/>
+	    <@code{Enum["red","green","blue"]}/>
+	 </part>
+      </syn:prods>
+      <part name="Description">
+	 A short command is a tagged command that does not have a body.
+	 The <ref:nt name="id"/> is the tag. The <ref:nt name="exp"/>'s
+	 are command attributes and options.
+      </part>
+      <part name="Parsing">
+	 The result of parsing a short command will be a <@icode{xdom:element}/> node
+	 with kind <@icode{"normal"}/> and an empty body.    
+      </part>
+   </section:nt>
+   <section:nt name="long cmd">
+      <syn:prods>
+         <ref:nt name="long cmd"/>
+	 <syn:prod>
+	    <ref:nt name="short cmd"/>
+	    <syn:opt>
+	       <ref:nt1 name="S"/>
+	    </syn:opt>
+	    <ref:term name="{"/>
+	    <syn:opt>
+	       <syn:opt>
+		  <ref:nt1 name="S"/>
+	       </syn:opt>
+	       <ref:nt name="cmds"/>
+	    </syn:opt>
+	    <syn:opt>
+	       <ref:nt1 name="S"/>
+	    </syn:opt>
+	    <ref:term name="}"/>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 A long command is a tagged command that has a body.
+      </part>
+      <part name="Parsing">
+	 The result of parsing a long command will be a <@icode{xdom:element}/> node
+	 with kind <@icode{"normal"}/>.
+      </part>
+   </section:nt>
+   <section:nt name="element">
+      <syn:prods>
+         <ref:nt name="element"/>
+	 <syn:prod>
+	    <ref:nt name="start tag"/>
+	    <syn:opt>
+	       <ref:nt1 name="S"/>
+	    </syn:opt>
+	    <syn:star>
+	       <ref:nt name="xml"/>
+	       <syn:opt>
+		  <ref:nt1 name="S"/>
+	       </syn:opt>
+	    </syn:star>
+	    <ref:nt name="end tag"/>
+	 </syn:prod>
+	 <syn:prod>
+	    <ref:nt name="empty tag"/>
+	 </syn:prod>
+	 <syn:prod>
+	    <ref:term name="<?xml"/>
+	    <syn:star>
+	       <ref:nt1 name="S"/>
+	       <ref:nt name="attr"/>
+	    </syn:star>
+	    <syn:opt>
+	       <ref:nt1 name="S"/>
+	    </syn:opt>
+	    <ref:term name="?>"/>
+	 </syn:prod>
+	 <syn:prod>
+	    <ref:term name="<"/>
+	    <syn:or>
+	       <ref:nt name="short cmd"/>
+	       <ref:nt name="long cmd"/>
+	    </syn:or>
+	    <syn:opt>
+	       <ref:nt1 name="S"/>
+	    </syn:opt>
+	    <ref:term name="/>"/>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 <p>
+	 An XML element.
+	 </p>
+	 <p>
+	    Note how a tagged short or long command can be embedded inside XML using
+	    this escape sequence.
+	 </p>
+      </part>
+      <part name="Parsing">
+	 <p>
+	 For a simple XML element, result will be an <@icode{xdom:element}/> tree node
+	 with kind <@icode{"xml"}/>.
+	 </p>
+	 <p>
+	    For the <@verb{"?xml"}/> form, the result will be an <@icode{xdom:element}/> tree node
+	    with tag <ref:tag name="xml"/> and kind <@verb{"xmldecl"}/>.
+	 </p>
+      </part>
+   </section:nt>
+   <section:nt name="start tag">
+      <syn:prods>
+         <ref:nt name="start tag"/>
+	 <syn:prod>
+	    <ref:term name="<"/>
+	    <ref:nt name="extended id"/>
+	    <syn:star>
+	       <ref:nt1 name="S"/>
+	       <ref:nt name="attr"/>
+	    </syn:star>
+	    <syn:opt>
+	       <ref:nt1 name="S"/>
+	    </syn:opt>
+	    <ref:term name=">"/>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 An XML start tag (see <ref:nt name="element"/>).
+      </part>
+   </section:nt>
+   <section:nt name="end tag">
+      <syn:prods>
+         <ref:nt name="end tag"/>
+	 <syn:prod>
+	    <ref:term name="</"/>
+	    <ref:nt name="extended id"/>
+	    <syn:opt>
+	       <ref:nt1 name="S"/>
+	    </syn:opt>
+	    <ref:term name=">"/>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 An XML end tag (see <ref:nt name="element"/>).
+      </part>
+   </section:nt>
+   <section:nt name="empty tag">
+      <syn:prods>
+         <ref:nt name="empty tag"/>
+	 <syn:prod>
+	    <ref:term name="<"/>
+	    <ref:nt name="extended id"/>
+	    <syn:star>
+	       <ref:nt1 name="S"/>
+	       <ref:nt name="attr"/>
+	    </syn:star>
+	    <syn:opt>
+	       <ref:nt1 name="S"/>
+	    </syn:opt>
+	    <ref:term name="/>"/>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 An XML empty tag (see <ref:nt name="element"/>).
+      </part>
+   </section:nt>
+   <section:nt name="attr">
+      <syn:prods>
+         <ref:nt name="attr"/>
+	 <syn:prod>
+	    <ref:nt name="extended id"/>
+	    <syn:opt>
+	       <ref:nt1 name="S"/>
+	    </syn:opt>
+	    <ref:term name="="/>
+	    <syn:opt>
+	       <ref:nt1 name="S"/>
+	    </syn:opt>
+	    <ref:nt name="string"/>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 An XML attribute.
+      </part>
+      <part name="Parsing">
+	 An attribute is represented as a <@icode{xdom:call}/> tree node
+	 with function name <@icode{Equal}/> and kind <@icode{"op"}/>.
+      </part>
+   </section:nt>
+   <section:nt name="xml">
+      <syn:prods>
+         <ref:nt name="xml"/>
+	 <syn:prod>
+	    <syn:or>
+	       <ref:nt name="element"/>
+	       <ref:nt name="escape"/>
+	    </syn:or>
+	 </syn:prod>
+	 <syn:prod>
+	    <syn:minus>
+	       <ref:nt1 name="text"/>
+	       <syn:seq>
+		  <ref:nt1 name="text"/>
+		  <syn:or>
+		     <ref:term name="<"/>
+		     <ref:term name="&amp;"/>
+		  </syn:or>
+		  <ref:nt1 name="text"/>
+	       </syn:seq>
+	    </syn:minus>
+	 </syn:prod>
+	 <syn:prod>
+	    <ref:term name="<!--"/>
+	    <syn:minus>
+	       <ref:nt1 name="text"/>
+	       <syn:seq>
+		  <ref:nt1 name="text"/>
+		  <ref:term name="-->"/>
+		  <ref:nt1 name="text"/>
+	       </syn:seq>
+	    </syn:minus>
+	    <ref:term name="-->"/>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 This is all the forms that are allowed inside an XML <ref:nt name="element"/>.
+      </part>
+      <part name="Parsing">
+	 <p>
+	    Text here is represented as a <@icode{xdom:string}/> tree node
+	    with type <@icode{"xml"}/>.
+	 </p>
+	 <p>
+	    An escaped entity is represented as a <@icode{xdom:name}/> tree node
+	    with kind <@icode{"xml"}/>.
+	 </p>
+	 <p>
+	    A XML comment is represented as a <@icode{xdom:string}/> tree node with
+	    kind <@icode{"comment"}/>.
+	 </p>
+      </part>
+      <part name="Execution">
+	 Execution of XML text results in a rendering of that text.
+	 Three special XML characters are escaped:
+	 <@verb{"<"}/> becomes <@verb{"&amp;lt;"}/>,
+	 <@verb{">"}/> becomes <@verb{"&amp;gt;"}/>,
+	 and <@verb{"&amp;"}/> becomes <@verb{"&amp;amp;"}/>.
+	 Names are replaced with the <@icode{string}/> value of the name.
+	 These name strings are also escaped for the three special XML characters.
+      </part>
+   </section:nt>
+   <section:nt name="escape">
+      <syn:prods>
+         <ref:nt name="escape"/>
+	 <syn:prod>
+	    <ref:term name="&amp;"/>
+	    <ref:term name="#"/>
+	    <syn:plus>
+	       <ref:nt1 name="digit"/>
+	    </syn:plus>
+	    <ref:term name=";"/>
+	 </syn:prod>
+	 <syn:prod>
+	    <ref:term name="&amp;"/>
+	    <ref:term name="#"/>
+	    <syn:or>
+	       <ref:term name="x"/>
+	       <ref:term name="X"/>
+	    </syn:or>
+	    <syn:plus>
+	       <syn:or>
+		  <ref:nt1 name="digit"/>
+		  <ref:nt1 name="letter"/>
+	       </syn:or>
+	    </syn:plus>
+	    <ref:term name=";"/>
+	 </syn:prod>
+	 <syn:prod>
+	    <ref:term name="&amp;"/>
+	    <ref:nt name="extended id"/>
+	    <ref:term name=";"/>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 Escapes are used within <@ref:nt name="string"/>s and
+	 <@reg:nt name="xml"/> text to represent addition characters.
+	 There are two kinds of escape: named and numbered.
+      </part>
+      <part name="Semantics">
+	 <p>
+	    A numbered escape represents the character whose decimal or
+	    hex value is specified.
+	 </p>
+	 <p>
+	    A named escape represents the value of the specified name.
+	    The name must be defined where the escape appears and have a string
+	    value.
+	    There are predefined names for common escapes <@icode{quot}/>, <@icode{apos}/>, <@icode{amp}/>,
+	    <@icode{tab}/>, <@icode{nbsp}/>,  and <@icode{eol}/>.
+	 </p>
+      </part>
+      <part name="Examples">
+	 A string with escapes.
+	 <@code{"a&amp;b==&quot;c&quot;!"}/>
+	 Escapes within XML text.
+	 <@code{<foo>The greek delta character is &#X0394;.</foo>}/>
+      </part>
+   </section:nt>
+   <section:nt1 name="S">
+      <syn:prods>
+         <ref:nt1 name="S"/>
+	 <syn:prod>
+	    <syn:plus>
+	       <syn:or>
+		  <ref:term name=" "/>
+		  <ref:term1 name="tab"/>
+		  <ref:nt1 name="eol"/>
+	       </syn:or>
+	    </syn:plus>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 These are the permitted space characters.
+	 See also <ref:nt1 name="char"/>, the set of permitted printable characters.
+      </part>
+   </section:nt1>
+   <section:nt name="exps">
+      <syn:prods>
+         <ref:nt name="exps"/>
+	 <syn:prod>
+	    <ref:nt name="exp"/>
+	    <syn:star>
+	       <syn:opt>
+		  <ref:nt1 name="S"/>
+	       </syn:opt>
+	       <ref:term name=","/>
+	       <syn:opt>
+		  <ref:nt1 name="S"/>
+	       </syn:opt>
+	       <ref:nt name="exp"/>
+	    </syn:star>
+	 </syn:prod>
+      </syn:prods>
+   </section:nt>
+   <section:nt name="exp">
+      <syn:prods>
+         <ref:nt name="exp"/>
+	 <syn:prod>
+	    <ref:nt name="qualified"/>
+	 </syn:prod>
+	 <syn:prod>
+	    <ref:nt name="prefix op"/>
+	    <syn:opt>
+	       <ref:nt1 name="S"/>
+	    </syn:opt>
+	    <syn:opt>
+	       <ref:term name="#"/>
+	       <syn:opt>
+		  <ref:nt1 name="S"/>
+	       </syn:opt>
+	       <ref:nt name="primary"/>
+	       <syn:opt>
+		  <ref:nt1 name="S"/>
+	       </syn:opt>
+	    </syn:opt>
+	    <ref:nt name="exp"/>
+	 </syn:prod>
+	 <syn:prod>
+	    <ref:nt name="exp"/>
+	    <syn:opt>
+	       <ref:nt1 name="S"/>
+	    </syn:opt>
+	    <ref:nt name="infix op"/>
+	    <syn:opt>
+	       <ref:nt1 name="S"/>
+	    </syn:opt>
+	    <syn:opt>
+	       <ref:term name="#"/>
+	       <syn:opt>
+		  <ref:nt1 name="S"/>
+	       </syn:opt>
+	       <ref:nt name="primary"/>
+	       <syn:opt>
+		  <ref:nt1 name="S"/>
+	       </syn:opt>
+	    </syn:opt>
+	    <ref:nt name="exp"/>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 <p>
+	    Expressions can include both <ref:nt name="prefix op"/>s and <ref:nt name="infix op"/>s.
+	    The relative grouping of operators is controlled by <ref:table name="Precedence"/> and 
+	    the rule that all infix operators are left associative.
+	    Parenthesis (see <ref:nt name="primary"/>) can be used to modify that grouping.
+	 </p>
+	 <p>
+	    The semantics of operators in the simple case is controlled by the type
+	    of their operands 
+	    It is also possible to explicitly
+	    select an alternative semantics by specifying a type or view following a sharp.
+	 </p>
+      </part>
+
+      <part name="Semantics">
+	 See the individual <ref:nt name="prefix op"/>s and <ref:nt name="infix op"/>s.
+      </part>
+      <part name="Parsing">
+	 <p>
+	    Every operator has a corresponding function name (see the <ref:table name="Precedence"/> table).
+	    When parsed, infix and prefix operator expressions are represented 
+	    by <ref:name name="xdom:call"/> nodes whose kind is set to <@icode{"op"}/>.
+	    For example, each operator expression in the first column and call expression
+	    in the second column are represented by identical <ref:name name="xdom:call"/> nodes,
+	    except the first has kind <@icode{"op"}/> and
+	    the second has kind <@icode{"normal"}/>.
+	 </p>
+	 <table:table>
+	    <table:row>
+	       <table:item>
+		  <@icode{-b}/>
+	       </table:item>
+	       <table:item>
+		  <@icode{Minus(a)}/>
+	       </table:item>
+	    </table:row>
+	    <table:row>
+	       <table:item>
+		  <@icode{a+b}/>
+	       </table:item>
+	       <table:item>
+		  <@icode{Add(a,b)}/>
+	       </table:item>
+	    </table:row>
+	    <table:row>
+	       <table:item>
+		  <@icode{-#t b}/>
+	       </table:item>
+	       <table:item>
+		  <@icode{t.sys:Minus(a)}/>
+	       </table:item>
+	    </table:row>
+	    <table:row>
+	       <table:item>
+		  <@icode{a +#t b}/>
+	       </table:item>
+	       <table:item>
+		  <@icode{t.sys:Add(a,b)}/>
+	       </table:item>
+	    </table:row>
+	 </table:table>
+      </part>
+      <part name="Examples">
+	 <p>
+	    In the expression
+	    <@code{a*b+c/d}/>
+	    the multiply and divide are done before the add.
+	    In the expression
+	    <@code{a-b-c}/>
+	    the left subtract is done before the right subtract.
+	 </p>
+	 <p>
+	    The expression
+	    <@code{~ "abc" != "ABC"}/>
+	    uses the <ref:name name="string"/> <ref:name name="sys:Eq"/> function, but
+	    <@code{~ "abc" ==#fold "ABC"}/>
+	    uses the <ref:name name="fold"/> <ref:name name="sys:Eq"/> function that ignores case of letters.
+	 </p>
+      </part>
+   </section:nt>
+   <section:nt name="qualified">
+      <syn:prods>
+         <ref:nt name="qualified"/>
+	 <syn:prod>
+	    <ref:nt name="primary"/>
+	 </syn:prod>
+	 <syn:prod>
+	    <ref:nt name="qualified"/>
+	    <syn:opt>
+	       <ref:nt1 name="S"/>
+	    </syn:opt>
+	    <ref:term name="."/>
+	    <syn:opt>
+	       <ref:nt1 name="S"/>
+	    </syn:opt>
+	    <ref:nt name="name"/>
+	    <syn:opt>
+	       <syn:opt>
+		  <ref:nt1 name="S"/>
+	       </syn:opt>
+	       <ref:term name="#"/>
+	       <syn:opt>
+		  <ref:nt1 name="S"/>
+	       </syn:opt>
+	       <ref:nt name="primary"/>
+	    </syn:opt>
+	 </syn:prod>
+	 <syn:prod>
+	    <ref:nt name="qualified"/>
+	    <syn:opt>
+	       <ref:nt1 name="S"/>
+	    </syn:opt>
+	    <ref:term name="("/>
+	    <syn:opt>
+	       <ref:nt1 name="S"/>
+	    </syn:opt>
+	    <syn:opt>
+	       <ref:nt name="exps"/>
+	       <syn:opt>
+		  <ref:nt1 name="S"/>
+	       </syn:opt>
+	    </syn:opt>
+	    <ref:term name=")"/>
+	    <syn:opt>
+	       <syn:opt>
+		  <ref:nt1 name="S"/>
+	       </syn:opt>
+	       <ref:term name="#"/>
+	       <syn:opt>
+		  <ref:nt1 name="S"/>
+	       </syn:opt>
+	       <ref:nt name="primary"/>
+	    </syn:opt>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 <p>
+	 There are two kinds of qualified expressions
+	 <list:unordered>
+	    <list:item name="Dot">
+	       This form is used to select a named component
+	       of the value of the expression before the dot.
+	    </list:item>
+	    <list:item name="Subscript/construct/call">
+	       This form is used to select a numbered component
+	       of the value of the expression before the parenthesis,
+	       to construct an object,
+	       or to call a function.
+	    </list:item>
+	 </list:unordered>
+	 </p>
+	 <p>
+	    The semantics of qualified expression in the simple case is controlled by the type
+	    of initial expression. It is also possible to select an alternate semantics
+	    by specifying a type or view following a sharp.
+	 </p>
+      </part>
+      <part name="Semantics">
+	 <p>
+	 The semantics of dot qualified expression is given by
+	 by the parsing transforms specified below and the semantics of
+	 the <ref:name name="Dot"/> function.
+	 </p>
+	 <p>
+	    The semantics of subscript/construct/call qualified expression depends upon the
+	    type of value from evaluating the initial expression.
+	    <list:unordered>
+	       <list:item name="Function">
+		  If the value has type <ref:name name="func"/>, then that function is called
+		  passing the values of the expressions inside the parenthesis as parameters.
+	       </list:item>
+	       <list:item name="Type Constructor">
+		  If the value has type  <ref:name name="type"/>, then a new object of that
+		  type is created. If defined, the <@icode{sys:Init}/> function for that object is then called.
+		  For example, if <@icode{T}/> is a type then
+		  <@code{T(a,b,c)}/>
+		  creates a new object, <@icode{X}/> of type <@icode{T}/> 
+		  and if <@icode{HasDot(T,"sys:Init")}/> then calls
+		  <@code{X.sys:Init(a,b,c)}/>
+	       </list:item>
+	       <list:item name="View Constructor">
+		  The view <@icode{sys:Make}/> function is called. For example if <@icode{V}/> is a view, then
+		  <@code{V(a,b,c)}/>
+		  produces
+		  <@code{V.sys:Make(a,b,c)}/>
+		  By convention the result should be in view <@icode{V}/>. So here
+		  <@code{V(a,b,c)~V}/>
+	       </list:item>
+	       <list:item name="Subscript">
+		  Otherwise, the <@icode{sys:Subscript}/> function for the value is called.
+		  For example,
+		  <@code{X(i,j)}/>
+		  results in
+		  <@code{X.sys:Subscript(i,j)}/>
+	       </list:item>
+	    </list:unordered>
+	    In all except the subscript case, the sharp and expression after the parenthesis are not permitted.
+	    For subscript, the following example
+	    <@code{X(i,j)#V}/>
+	    results in
+	    <@code{X.sys:Subscript#V(i,j)}/>
+	 </p>
+      </part>
+      <part name="Parsing">
+	 <p>
+	    When parsed subscript/call qualified expressions are represented by
+	    <ref:name name="xcom:call"/> nodes.
+	 </p>
+	 <p>
+	    When parsed, a dot qualified expressions are represented
+	    by <ref:name name="xdom:call"/> nodes whose kind is set to <@icode{"dot"}/>.
+	    For example, each dot expression in the first column and the call expression
+	    in the second column are represented by identical <ref:name name="xdom:call"/> nodes,
+	    except the first has kind <@icode{"dot"}/> and
+	    the second has kind <@icode{"normal"}/>.
+	    <table:table>
+	       <table:row>
+		  <table:item>
+		     <@icode{a.b}/>
+		  </table:item>
+		  <table:item>
+		     <@icode{Dot(a,"b")}/>
+		  </table:item>
+	       </table:row>
+	       <table:row>
+		  <table:item>
+		     <@icode{a.b#c}/>
+		  </table:item>
+		  <table:item>
+		     <@icode{Dot(a,"b",c)}/>
+		  </table:item>
+	       </table:row>
+	       <table:row>
+		  <table:item>
+		     <@icode{a.b[L]}/>
+		  </table:item>
+		  <table:item>
+		     <@icode{Dot[L](a,"b")}/>
+		  </table:item>
+	       </table:row>
+	       <table:row>
+		  <table:item>
+		     <@icode{a.b[L]#c}/>
+		  </table:item>
+		  <table:item>
+		     <@icode{Dot[L](a,"b",c)}/>
+		  </table:item>
+	       </table:row>
+	    </table:table>
+	    Note that the <ref:name name="Dot"/> function is more general that the dot qualified expression,
+	    because the selected name can be a computed value rather than a constant.
+	 </p>
+      </part>
+   </section:nt>
+   <section:nt name="primary">
+      <syn:prods>
+         <ref:nt name="primary"/>
+	 <syn:prod>
+	    <syn:or>
+	       <ref:nt name="name"/>
+	       <ref:nt name="int"/>
+	       <ref:nt name="float"/>
+	       <ref:nt name="string"/>
+	    </syn:or>
+	 </syn:prod>
+	 <syn:prod>
+	    <ref:term name="("/>
+	    <syn:opt>
+	       <ref:nt1 name="S"/>
+	    </syn:opt>
+	    <ref:nt name="exp"/>
+	    <syn:opt>
+	       <ref:nt1 name="S"/>
+	    </syn:opt>
+	    <ref:term name=")"/>
+	 </syn:prod>
+	 <syn:prod>
+	    <ref:term name="["/>
+	    <syn:opt>
+	       <ref:nt1 name="S"/>
+	    </syn:opt>
+	    <ref:nt name="exps"/>
+	    <syn:opt>
+	       <ref:nt1 name="S"/>
+	    </syn:opt>
+	    <ref:term name="]"/>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 Parenthesis are used to change the grouping of operators by precedence.
+	 Square brackets are sugar for a list constructor.
+      </part>
+      <part name="Semantics">
+         <p>
+	 A parenthesized expression is semantically equivalent to the expression it contains.
+	 </p>
+         <p>
+	    The expression <@icode{[2,3]}/> is equivalent to <@icode{list(2,3)}/>.
+	 </p>
+      </part>
+      <part name="Parsing">
+         <p>
+	 During parsing parenthesis are removed.
+	 After parsing the grouping of operators is encoded in the tree of <@icode{xdom:call}/>
+	 nodes.  Parenthesis are reinserted, when necessary, during unparsing.
+	 Parsing followed by unparsing will remove any unnecessary parenthesis.
+	 </p>
+         <p>
+	 For the square bracket list constructor, the <@icode{xdom:call}/> node
+	 will have kind <@icode{"list"}/>.
+	 </p>
+      </part>
+   </section:nt>
+   <section:nt name="prefix op">
+      <syn:prods>
+         <ref:nt name="prefix op"/>
+	 <syn:prod>
+	    <syn:or>
+	       <ref:preop name="~"/>
+	       <ref:preop name="-"/>
+	       <ref:preop name="!"/>
+	       <ref:preop name="%"/>
+	       <ref:preop name="**"/>
+	    </syn:or>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 The prefix operations used in <ref:nt name="exp"/>s.
+      </part>	 
+   </section:nt>
+   <section:nt name="infix op">
+      <syn:prods>
+         <ref:nt name="infix op"/>
+	 <syn:prod>
+	    <ref:inop name="="/>
+	    <ref:inop name=":="/>
+	    <ref:inop name=".."/>
+	    <ref:inop name="++"/>
+	    <ref:inop name="~"/>
+	    <ref:inop name="?"/>
+	 </syn:prod>
+	 <syn:prod>
+	    <syn:or>
+	       <ref:inop name="=="/>
+	       <ref:inop name="!="/>
+	       <ref:inop name="<"/>
+	       <ref:inop name=">"/>
+	       <ref:inop name="<="/>
+	       <ref:inop name=">="/>
+	    </syn:or>
+	 </syn:prod>
+	 <syn:prod>
+	    <syn:or>
+	       <ref:inop name="+"/>
+	       <ref:inop name="-"/>
+	       <ref:inop name="*"/>
+	       <ref:inop name="/"/>
+	       <ref:inop name="/+"/>
+	    </syn:or>
+	 </syn:prod>
+	 <syn:prod>
+	    <syn:or>
+	       <ref:inop name="&amp;"/>
+	       <ref:inop name="|"/>
+	       <ref:inop name="^"/>
+	    </syn:or>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 The infix operations used in <ref:nt name="exp"/>s.
+      </part>	 
+   </section:nt>
+   <section:nt name="name">
+      <syn:prods>
+         <ref:nt name="name"/>
+	 <syn:prod>
+	    <ref:nt name="id"/>
+	    <syn:opt>
+	       <syn:opt>
+		  <ref:nt1 name="S"/>
+	       </syn:opt>
+	       <ref:term name="["/>
+	       <syn:opt>
+		  <ref:nt1 name="S"/>
+	       </syn:opt>
+	       <syn:opt>
+		  <ref:nt name="exps"/>
+		  <syn:opt>
+		     <ref:nt1 name="S"/>
+		  </syn:opt>
+	       </syn:opt>
+	       <ref:term name="]"/>
+	    </syn:opt>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 This is the most general form of name.
+	 A name can be simply an <ref:nt name="id"/>.
+	 Names of functions, types and views can also include a list of
+	 expressions whose values are part of the name.
+	 For types (and views), these expression lists are used
+	 for parametrized types (and views).
+      </part>
+      <part name="Semantics">
+	 <p>
+	    Every occurrence of a name is either defines the name or is a use of the name.
+	    For every use there must be a corresponding definition.
+	 </p>
+	 <p>
+	    Two names are the same if they have the same <@ref:nt name="id"/>s and
+	    neither has an expression list of both have an expression list.
+	    Two names with expression lists are the same if both have the
+	    same <@ref:nt name="id"/>, the number of expressions
+	    is the same, and each corresponding expression has the same value.
+	 </p>
+      </part>
+      <part name="Examples">
+	 The following example defines name <@icode{i}/> and uses name <@icode{j}/>.
+	 <@code{@x:var i := j + 1}/>
+	 The following is an example of the definition of a parametrized type.
+	 <@code{@x:type stack[elem]}/>
+	 Here the name <@icode{elem}/> is defined and the names
+	 with <@ref:nt name="id"/> <@icode{stack}/> and 1 expression are defined.
+      </part>
+   </section:nt>
+   <section:nt name="id">
+      <syn:prods>
+         <ref:nt name="id"/>
+	 <syn:prod>
+	    <syn:or>
+	       <ref:nt name="basic id"/>
+	       <syn:seq>
+		  <ref:term name="$"/>
+		  <ref:nt name="extended id"/>
+		  <ref:term name="$"/>
+	       </syn:seq>
+	    </syn:or>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 <p>
+	 Ids are used for names (see <@ref:nt name="name"/> and <@ref:nt name="escape"/>), tags
+	 (see <@ref:nt name="short cmd"/>, <@ref:nt name="start tag"/> and <@ref:nt name="compound cmd"/>), and
+	 attributes (see <@ref:nt name="attr"/> and <@ref:nt name="qualified"/>).
+	 </p>
+	 <p>
+	    There are two kinds of ids: basic and extended.
+	    Basic ids have a Java-like form.
+	    Extended ids have a richer XML-like syntax.
+	    Extended ids can be used in non-XML contexts by being surrounded with $ signs.
+	 </p>
+	 <part name="Semantics">
+	    Simple and compound names with the same characters are considered to be the same.
+	 </part>
+	 <part name="Examples">
+	    Some base ids.
+	    <@code{f(A,f_3)}/>
+	    Some extended ids in an XML context
+	    <@code{<a:b-c d.x="3"/>}/>
+	    An extended variable name in a non-XML context.
+	    <@code{@x:var $a:b.c$ := 0}/>
+	 </part>
+	 
+      </part>
+   </section:nt>
+   <section:nt name="basic id">
+      <syn:prods>
+         <ref:nt name="basic id"/>
+	 <syn:prod>
+	    <syn:or>
+	       <ref:nt1 name="letter"/>
+	       <ref:term name="_"/>
+	       <ref:term name=":"/>
+	    </syn:or>
+	    <syn:break/>
+	    <syn:star>
+	       <syn:or>
+		  <ref:nt1 name="letter"/>
+		  <ref:term name="_"/>
+		  <ref:term name=":"/>
+		  <ref:nt1 name="digit"/>
+	       </syn:or>
+	    </syn:star>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 Basic ids are the Java-like form of <@ref:nt name="id"/>.
+      </part>
+      <part name="Semantics">
+	 The case of letters in ids is significant.
+      </part>
+      <part name="Examples">
+	 Some base ids.
+	 <@code{f(A,f_3)}/>
+      </part>
+   </section:nt>
+   <section:nt name="extended id">
+      <syn:prods>
+         <ref:nt name="extended id"/>
+	 <syn:prod>
+	    <syn:or>
+	       <ref:nt1 name="letter"/>
+	       <ref:term name="_"/>
+	       <ref:term name=":"/>
+	       <ref:term name="."/>
+	    </syn:or>
+	    <syn:break/>
+	    <syn:star>
+	       <syn:or>
+		  <ref:nt1 name="letter"/>
+		  <ref:term name="_"/>
+		  <ref:term name=":"/>
+		  <ref:term name="."/>
+		  <ref:term name="-"/>
+		  <ref:nt1 name="digit"/>
+	       </syn:or>
+	    </syn:star>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 Extended ids are the XML-like form of <@ref:nt name="id"/>.
+      </part>
+      <part name="Semantics">
+	 The case of letters in ids is significant.
+      </part>
+      <part name="Examples">
+	 Some extended ids in an XML context
+	 <@code{<a:b-c d.x="3"/>}/>
+	 An extended variable name in a non-XML context.
+	 <@code{@x:var $a:b.c$ := 0}/>
+      </part>
+   </section:nt>
+   <section:nt name="string">
+      <syn:prods>
+         <ref:nt name="string"/>
+	 <syn:prod>
+	    <ref:term name='"'/>
+	    <syn:star>
+	       <syn:or>
+		  <syn:minus>
+		     <ref:nt1 name="schar"/>
+		     <ref:term name='"'/>
+		  </syn:minus>
+		  <ref:nt name="escape"/>
+	       </syn:or>
+	    </syn:star>
+	    <ref:term name='"'/>
+	 </syn:prod>
+	 <syn:prod>
+	    <ref:term name="'"/>
+	    <syn:star>
+	       <syn:or>
+		  <syn:minus>
+		     <ref:nt1 name="schar"/>
+		     <ref:term name="'"/>
+		  </syn:minus>
+		  <ref:nt name="escape"/>
+	       </syn:or>
+	    </syn:star>
+	    <ref:term name="'"/>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 This form represents a string literal.
+      </part>
+      <part name="Semantics">
+	 <p>
+	    The result of evaluating a string literal will have type <@icode{string}/> and
+	    the specified value. Escapes provide a way to include special characters. For example,
+	    <@code{"The next word is &quot;quoted&quot;."}/>
+	    represents the sentence: The next word is "quoted".
+	 </p>
+	 <p>
+	    Escapes work by substituting in the value of the name.
+	    There are predefined names for common escapes <@icode{quot}/>, <@icode{apos}/>, <@icode{amp}/>,
+	    <@icode{tab}/>, <@icode{nbsp}/>,  and <@icode{eol}/>.
+	    Names can also refer to arbitrary variables.
+	    <@code{
+	        @x:const x := "foo";
+	        @x:const y := 2+3;
+	        ~ "&x;=&y;" == "foo=5"
+	     }/>
+	 </p>
+	 <p>
+	    It is illegal if an escape name is not defined at the place where the enclosing string occurs
+	    or if the value of the name does not have type <@icode{string}/>.
+	 </p>
+      </part>
+      <part name="Parsing">
+	 <p>
+	    Parsing a string literal without escapes results in a <@icode{xdom:string}/> tree node.
+	 </p>
+	 <p>
+	    Parsing a string literal with escapes results in <@icode{xdom:call}/> node that represents
+	    a call to <@icode{Cat}/>.
+	    For example 
+	    <@code{"abc&def;ghi"}/>
+	    and
+	    <@code{Cat("abc",def,"ghi")}/>
+	    after parsing are represented by identical trees except
+	    the first has a top-level <@icode{xdom:call}/> node with kind <@icode{"double"}/> and
+	    the second has a top-level <@icode{xdom:call}/> node with kind <@icode{"normal"}/>.
+	    For single quotes 
+	    <@code{'abc&def;ghi'}/>
+	    and
+	    <@code{Cat('abc',def,'ghi')}/>
+	    after parsing are represented by identical trees except
+	    the first has a top-level <@icode{xdom:call}/> node with kind <@icode{"single"}/> and
+	    the second has a top-level <@icode{xdom:call}/> node with kind <@icode{"normal"}/>.
+	 </p>
+      </part>
+   </section:nt>
+   <section:nt name="int">
+      <syn:prods>
+         <ref:nt name="int"/>
+	 <syn:prod>
+	    <syn:plus>
+	       <ref:nt1 name="digit"/>
+	    </syn:plus>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 This form represents an integer literal.
+	 There is no negative integer literal.
+      </part>
+      <part name="Semantics">
+	 The result of evaluating an integer literal will have type <@icode{int}/> and
+	 the specified value.
+	 A negative integer value can be produced by applying the <ref:preop name="-"/> prefix
+	 operator to an integer literal.
+      </part>
+      <part name="Parsing">
+	 Parsing an integer literal results in a <@icode{xdom:int}/> tree node.
+      </part>
+      <part name="Examples">
+	 <@code{15 - 40 == -25}/>
+      </part>
+   </section:nt>
+   <section:nt name="float">
+      <syn:prods>
+         <ref:nt name="float"/>
+	 <syn:prod>
+	    <ref:nt name="int"/>
+	    <ref:term name="."/>
+	    <syn:opt>
+	       <ref:nt name="int"/>
+	    </syn:opt>
+	    <syn:opt>
+	       <syn:or>
+		  <ref:term name="e"/>
+		  <ref:term name="E"/>
+	       </syn:or>
+	       <syn:opt>
+		  <syn:or>
+		     <ref:term name="+"/>
+		     <ref:term name="-"/>
+		  </syn:or>
+	       </syn:opt>
+	       <ref:nt name="int"/>
+	    </syn:opt>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 This form represents an floating point literal.
+	 There is no negative floating point literal.
+      </part>
+      <part name="Semantics">
+	 The result of evaluating a float literal will have type <@icode{float}/> and
+	 the specified value.
+	 A negative floating point value can be produced by applying the <ref:preop name="-"/> prefix
+	 operator to a floating point literal.
+      </part>
+      <part name="Parsing">
+	 Parsing an float literal results in a <@icode{xdom:float}/> tree node.
+      </part>
+      <part name="Examples">
+	 <@code{2.3 * 5.0E20}/>
+      </part>
+   </section:nt>
+   <section:nt1 name="char">
+      <syn:prods>
+         <ref:nt1 name="char"/>
+	 <syn:prod>
+	    <syn:or>
+	       <ref:nt1 name="letter"/>
+	       <ref:nt1 name="digit"/>
+	       <ref:term name="@"/>
+	       <ref:term name="_"/>
+	       <ref:term name="."/>
+	       <ref:term name="$"/>
+	       <ref:term name="%"/>
+	       <syn:break/>
+	       <ref:term name="("/>
+	       <ref:term name=")"/>
+	       <ref:term name="{"/>
+	       <ref:term name="}"/>
+	       <ref:term name="["/>
+	       <ref:term name="]"/>
+	       <ref:term name="'"/>
+	       <ref:term name="&quot;"/>
+	       <ref:term name="`"/>
+	       <syn:break/>
+	       <ref:term name="+"/>
+	       <ref:term name="-"/>
+	       <ref:term name="*"/>
+	       <ref:term name="/"/>
+	       <ref:term name="|"/>
+	       <ref:term name="^"/>
+	       <ref:term name="&amp;"/>
+	       <ref:term name="!"/>
+	       <syn:break/>
+	       <ref:term name=":"/>
+	       <ref:term name="="/>
+	       <ref:term name="<"/>
+	       <ref:term name=">"/>
+	       <syn:break/>
+	       <ref:term name="~"/>
+	       <ref:term name="?"/>
+	       <ref:term name="#"/>
+	       <ref:term name=";"/>
+	       <ref:term name=","/>
+	       <ref:term name="\"/>
+	    </syn:or>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 These are the permitted printable characters.
+	 See also <ref:nt1 name="S"/>, the set of permitted space characters.
+      </part>
+   </section:nt1>
+   <section:nt1 name="schar">
+      <syn:prods>
+         <ref:nt1 name="schar"/>
+	 <syn:prod>
+	    <syn:minus>
+	       <syn:or>
+		  <ref:nt1 name="char"/>
+		  <ref:term name=" "/>
+	       </syn:or>
+	       <ref:term name="&amp;"/>
+	    </syn:minus>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 A <ref:nt name="string"/> can contain any <ref:nt1 name="schar"/> that is not also
+	 the quoting character for the string.
+	 Ampersands are reserved for use as string <ref:nt name="escape"/>s.
+      </part>
+   </section:nt1>
+   <section:nt1 name="text">
+      <syn:prods>
+         <ref:nt1 name="text"/>
+	 <syn:prod>
+	    <syn:star>
+	       <syn:or>
+		  <ref:nt1 name="char"/>
+		  <ref:nt1 name="S"/>
+	       </syn:or>
+	    </syn:star>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 A text character is any printable character or space character.
+	 A text character can appear within comments
+	 and xml tags
+	 (see <ref:nt name="compound cmd"/> and <ref:nt name="xml"/>).
+	 Text within comments may not include the sequence of characters that terminate the comment.
+      </part>
+   </section:nt1>
+   <section:nt1 name="eol">
+      <syn:prods>
+         <ref:nt1 name="eol"/>
+	 <syn:prod>
+	    <syn:opt>
+	       <ref:term1 name="CR"/>
+	    </syn:opt>
+	    <ref:term1 name="LF"/>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 Two end of line sequences are supported: the Unix/Linux convention of a single
+	 line feed character and the Windows convention of a carriage return character followed
+	 by a line feed character.
+	 A carriage return character not followed by a line feed character is illegal.
+      </part>
+   </section:nt1>
+   <section:nt1 name="letter">
+      <syn:prods>
+         <ref:nt1 name="letter"/>
+	 <syn:prod>
+	    <syn:or>
+	       <syn:range>
+		  <ref:term name="a"/>
+		  <ref:term name="z"/>
+	       </syn:range>
+	       <syn:range>
+		  <ref:term name="A"/>
+		  <ref:term name="Z"/>
+	       </syn:range>
+	    </syn:or>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 These characters represent letters.
+	 The case of letters is significant.
+      </part>
+      <part name="Example">
+	 The identifier
+	 <@code{a}/>
+	 is different than the identifier
+	 <@code{A}/>
+      </part>
+   </section:nt1>
+   <section:nt1 name="digit">
+      <syn:prods>
+         <ref:nt1 name="digit"/>
+	 <syn:prod>
+	    <syn:range>
+	       <ref:term name="0"/>
+	       <ref:term name="9"/>
+	    </syn:range>
+	 </syn:prod>
+      </syn:prods>
+      <part name="Description">
+	 These characters represent decimal digits.
+      </part>
+   </section:nt1>
+</section:lettered>

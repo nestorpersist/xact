@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>INTRO library:unit</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_5.html" target="nav1" class="top1">Libraries</a> >  <font face="courier"><a href="nav2_5_10.html" target="nav2" class="library1">library:unit</a></font> >  <font color="blue">INTRO library:unit</font>
+</b>
+<br/> 
+
+<a href="content_364.html" target="contents">prev</a>
+ 
+<a href="content_366.html" target="contents">next</a>
+<br/>
+
+
+<p>
+The unit library allows unit type informationto be attached to <font face="courier"><font face="courier"><a href="content_132.html" class="name1" target="contents">float</a></font></font> values.For example multiplying an velocity <font face="courier"><font face="courier"><font color="#006699">meter</font></font>(100) <font face="courier"><a href="content_247.html" class="inop1" target="contents">/</a></font> <font face="courier"><font color="#006699">second</font></font></font> by a time <font face="courier"><font face="courier"><font color="#006699">second</font></font>(4)</font> yields <font face="courier"><font face="courier"><font color="#006699">meter</font></font>(25)</font>.The <font face="courier"><font face="courier"><a href="content_312.html" class="example1" target="contents">utest</a></font></font> example shows morepossible forms.
+</p>
+<p>
+The kinds of units are arbitrary.The <a href="content_361.html" class="unnumbered1" target="contents">INTRO library:stdunit</a> library definesmany common one.
+</p>
+<p>
+Units are checked by keeping track of exponentsfor each kind of unit.For example velocity (@icode{meter/second}/&gt;)will have non-zero exponents <font face="courier">[<font color="0AAAA">meter</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font>1,<font color="0AAAA">second</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font>-1]</font>.Addition, subtraction, and comparison infix operationsrequire that the exponentsof both unit operands be equal.
+</p>
+<p>
+Unit values can be mixed in arithmetic operations with <font face="courier"><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font> and <font face="courier"><font face="courier"><a href="content_132.html" class="name1" target="contents">float</a></font></font> values.Results with all exponents of zero will have type <font face="courier"><font face="courier"><a href="content_132.html" class="name1" target="contents">float</a></font></font>.
+</p>
+<p>
+The following unit multipliers are also definedby this library.
+</p>
+<ul>
+<li>
+<b>
+yocto. 
+</b>
+0.001 zepto
+</li>
+<li>
+<b>
+zepto. 
+</b>
+0.001 atto
+</li>
+<li>
+<b>
+atto. 
+</b>
+0.001 femto
+</li>
+<li>
+<b>
+femto. 
+</b>
+0.001 pico
+</li>
+<li>
+<b>
+pico. 
+</b>
+0.001 nano
+</li>
+<li>
+<b>
+nano. 
+</b>
+0.001 micro
+</li>
+<li>
+<b>
+micro. 
+</b>
+0.001 milli
+</li>
+<li>
+<b>
+milli. 
+</b>
+0.001
+</li>
+<li>
+<b>
+centi. 
+</b>
+0.01
+</li>
+<li>
+<b>
+deci. 
+</b>
+0.1
+</li>
+<li>
+<b>
+deka. 
+</b>
+10
+</li>
+<li>
+<b>
+hecto. 
+</b>
+100
+</li>
+<li>
+<b>
+kilo. 
+</b>
+1000
+</li>
+<li>
+<b>
+mega. 
+</b>
+1000 kilo
+</li>
+<li>
+<b>
+giga. 
+</b>
+1000 mega
+</li>
+<li>
+<b>
+tera. 
+</b>
+1000 giga
+</li>
+<li>
+<b>
+peta. 
+</b>
+1000 tera
+</li>
+<li>
+<b>
+exa. 
+</b>
+1000 peta
+</li>
+<li>
+<b>
+zetta. 
+</b>
+1000 exa
+</li>
+<li>
+<b>
+yotta. 
+</b>
+1000 zetta
+</li>
+</ul>
+<p>
+For example a kilometer is written as <font face="courier"><font face="courier"><font color="#006699">kilo</font></font>[<font face="courier"><font color="#006699">meter</font></font>]</font> and a milligram is written as <font face="courier"><font face="courier"><font color="#006699">milli</font></font>[<font face="courier"><font color="#006699">gram</font></font>]</font>.
+</p>
+</body>
+</html>

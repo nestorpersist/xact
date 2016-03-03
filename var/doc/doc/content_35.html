@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Function Name Parameters</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;2 <a href="nav1_2.html" target="nav1" class="numbered1">User Manual</a> > 2.4 <a href="nav2_2_4.html" target="nav2" class="numbered1">Functions</a> > 2.4.3 <font color="blue">Function Name Parameters</font>
+</b>
+<br/> 
+
+<a href="content_34.html" target="contents">prev</a>
+ 
+<a href="content_36.html" target="contents">next</a>
+<br/>
+
+
+<p>
+Functions can have two parameter lists: a <font face="courier"><font face="courier">&lt;<a href="content_94.html" class="nt1" target="contents">name</a>&gt;</font></font> parameter list (enclosed in <font face="courier" color="green">[]</font>) anda regular parameter list (enclosed in <font face="courier" color="green">()</font>).The name parameter list is used in a number of different ways.
+</p>
+<ul>
+<li>
+It can be used as a generic parameter list.For example a sort function could take a name parameter that is the typeof elements to be sorted and regular parameter that is an array ofelements of that type.(Note that since <b>@x:Act</b> has dynamic typing, this extra type parameter is notreally required since the element type could be found just by looking at the regularparameter. Even so, there are cases where making the type an explicit parameterhelps to write clearer code.)
+</li>
+<li>
+Another kind of generic parameter list can be seen in the <font face="courier"><font face="courier"><a href="content_366.html" class="name1" target="contents">Units</a></font></font> type.
+</li>
+<li>
+Since <b>@x:Act</b> has a stack-based execution model, there are no function closuresthat exists after the scope instance where the function declaration was executedhas exited.Since name parameters tightly bound as part of the function name, they canserve as kind of closure mechanism (see <font face="courier"><font face="courier"><a href="content_311.html" class="example1" target="contents">curry</a></font></font>).
+</li>
+<li>
+
+<a href="content_37.html" class="numbered1" target="contents">Iterators</a> use the regular parameter list to passin the loop body function, so other parameters to the iterator mustbe passed as name parameters.
+</li>
+</ul>
+</body>
+</html>

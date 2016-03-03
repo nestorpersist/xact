@@ -1,0 +1,4 @@
+<a graph:def="A">
+   <b a="a" graph:def="B"/>
+   <b graph:use="B"/>
+</a>

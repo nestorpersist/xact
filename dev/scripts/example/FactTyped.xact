@@ -1,0 +1,12 @@
+@x:func fact(n~int)~int {
+   ~ n >= 0;
+   @x:if n == 0 {
+      1
+   } @x:else {
+      n * fact(n - 1)
+   }
+}
+@x:for i :=1..10 {
+   @x:const j~int := fact(i);
+   "fact(&i;)=&j;&eol;"~string
+}

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>REL</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_5.html" target="nav1" class="top1">Libraries</a> >  <font face="courier"><a href="nav2_5_4.html" target="nav2" class="library1">library:html</a></font> >  <font face="courier"><font color="blue">REL</font></font>
+</b>
+<br/> 
+
+<a href="content_331.html" target="contents">prev</a>
+ 
+<a href="content_333.html" target="contents">next</a>
+<br/>
+
+
+<p>
+This view is a convenient way of specifyingrelative script paths.Suppose that the current scripts as given by <font face="courier"><font face="courier"><a href="content_222.html" class="name1" target="contents">options</a></font>.<font color="FF00FF">script</font>#<font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font></font> is <font face="courier"><font face="courier"><font color="#006699">a:b:c</font></font></font>.Now <font face="courier"><font face="courier"><a href="content_332.html" class="name1" target="contents">REL</a></font>.<font color="FF00FF">x:y</font></font> returns <font face="courier"><font color="green">"a:b:x:y"</font></font>.See also <font face="courier"><font face="courier"><a href="content_332.html" class="name1" target="contents">REL</a></font></font>.
+</p>
+<p>
+It is also possible to specify the path from which to be relative.For example <font face="courier"><font face="courier"><a href="content_332.html" class="name1" target="contents">REL</a></font>[<font color="green">"m:n"</font>].<font color="FF00FF">x:y</font></font> returns <font face="courier"><font color="green">"m:n:x:y"</font></font> 
+</p>
+<p>
+<font size="+1">
+<b>
+View REL
+</b>
+</font>
+</p>
+<p>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font> REL</font>
+</p>
+<table border="3">
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Dot" class="underline1">sys:Dot</a>[<font face="courier"><font color="#006699">name</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>]<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>
+</font>
+</td>
+</tr>
+</table>
+<hr/>
+<a name="sys:Dot"/>
+<p>
+<font size="+1">
+<b>
+View Function sys:Dot[ ]
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Dot[<font face="courier"><font color="#006699">name</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>]<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">name</font></font></font>
+</td>
+<td>
+the relative script path
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The result is the corresponding absolute script path.
+<hr/>
+<p>
+<font size="+1">
+<b>
+View REL[ ]
+</b>
+</font>
+</p>
+<p>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font> REL[<font face="courier"><font color="#006699">path</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>]</font>
+</p>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">path</font></font></font>
+</td>
+<td>
+the path to be relative to.
+</td>
+</tr>
+</table>
+<br/>
+<table border="3">
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Dot" class="underline1">sys:Dot</a>[<font face="courier"><font color="#006699">name</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>]<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>
+</font>
+</td>
+</tr>
+</table>
+<hr/>
+<hr/>
+<a name="sys:Dot"/>
+<p>
+<font size="+1">
+<b>
+View Function sys:Dot[ ]
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Dot[<font face="courier"><font color="#006699">name</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>]<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">name</font></font></font>
+</td>
+<td>
+the relative script path.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The result is the corresponding absolute script path.
+<hr/>
+</body>
+</html>

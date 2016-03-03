@@ -1,0 +1,5 @@
+@x:var q := 23,visible;
+
+@x:func foo,visible {q}
+
+@x:func bar,visible { "bar" }

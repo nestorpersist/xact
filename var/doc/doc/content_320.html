@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>asciiXML</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_5.html" target="nav1" class="top1">Libraries</a> >  <font face="courier"><a href="nav2_5_2.html" target="nav2" class="library1">library:escape</a></font> >  <font face="courier"><font color="blue">asciiXML</font></font>
+</b>
+<br/> 
+
+<a href="content_319.html" target="contents">prev</a>
+ 
+<a href="content_321.html" target="contents">next</a>
+<br/>
+
+
+<p>
+This function takes a string andescapes it using XML escapes so it contains only ASCII characters.
+</p>
+<p>
+<font size="+1">
+<b>
+Function asciiXML
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> asciiXML(<font face="courier"><font color="#006699">s</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">s</font></font></font>
+</td>
+<td>
+a string value.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The escaped string.Non-breaking space (<font face="courier"><font face="courier"><a href="content_220.html" class="name1" target="contents">nbsp</a></font></font>) is escaped to <font face="courier" color="green">&amp;nbsp;</font>.Characters less then <font face="courier">32</font> (except cariage return and line feed)and characters greater than or equal to <font face="courier">127</font> (other than non-breaking space)are escaped using XML hex <font face="courier"><font face="courier">&lt;<a href="content_84.html" class="nt1" target="contents">escape</a>&gt;</font></font>s.The <font face="courier"><font face="courier"><a href="content_252.html" class="option1" target="contents">asciiXML</a></font></font> option applies this sameset of escapes to program output.
+</body>
+</html>

@@ -1,0 +1,22 @@
+<doc:document>
+   <doc:let n="Persist Software"/>
+   <doc:style name="dark" before="<b>" after="</b>"/>
+   <doc:style name="list" before="<ol>" after="</ol>"/>
+   <doc:style name="item" before="<li>" after="</li>"/>
+   <doc:section title="Introduction">
+      This example is a special-purpose XML language
+      brought to you by <@doc:val n/>.
+   </doc:section>
+   <doc:section title="Discussion">
+      We can do several things.
+      <doc:list>
+	 <doc:item>
+	    We can display today's date, <@doc:val date.now()(1..10)/>.
+	 </doc:item>
+	 <doc:item>
+	    We can use a special <doc:dark>style</doc:dark>.
+	    <a href="foo">foo</a>
+	 </doc:item>
+      </doc:list>
+   </doc:section>
+</doc:document>
