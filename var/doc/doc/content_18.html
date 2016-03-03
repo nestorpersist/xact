@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Parse Trees</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;2 <a href="nav1_2.html" target="nav1" class="numbered1">User Manual</a> > 2.1 <a href="nav2_2_1.html" target="nav2" class="numbered1">Syntax</a> > 2.1.3 <font color="blue">Parse Trees</font>
+</b>
+<br/> 
+
+<a href="content_17.html" target="contents">prev</a>
+ 
+<a href="content_19.html" target="contents">next</a>
+<br/>
+
+
+<p>
+The result of parsing an <b>@x:Act</b>  <font face="courier"><font face="courier">&lt;<a href="content_100.html" class="nt1" target="contents">script</a>&gt;</font></font> isrepresented by an <font face="courier"><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font></font> (<b>@x:Act</b> Document Model) parse tree.
+</p>
+<p>
+A <font face="courier"><font face="courier">&lt;<a href="content_100.html" class="nt1" target="contents">script</a>&gt;</font></font> can be converted to an <font face="courier"><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font></font> using the built-in <font face="courier"><font face="courier"><a href="content_192.html" class="name1" target="contents">Parse</a></font></font> function.An <font face="courier"><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font></font> can be converted to a <font face="courier"><font face="courier">&lt;<a href="content_100.html" class="nt1" target="contents">script</a>&gt;</font></font> using the library <font face="courier"><font face="courier"><a href="content_372.html" class="name1" target="contents">Unparse</a></font></font> function.Combining the <font face="courier"><font face="courier"><a href="content_192.html" class="name1" target="contents">Parse</a></font></font> and <font face="courier"><font face="courier"><a href="content_372.html" class="name1" target="contents">Unparse</a></font></font> functionsyields a pretty printer.The pretty printer preserves code and comments but reformats an <b>@x:Act</b>  <font face="courier"><font face="courier">&lt;<a href="content_100.html" class="nt1" target="contents">script</a>&gt;</font></font> bychanging white space (sequences of space and end-of-line characters).The <font face="courier"><font face="courier"><a href="content_372.html" class="name1" target="contents">Unparse</a></font></font> function also provides an option to produce acolor marked-up XHTML version of the script.
+</p>
+<p>
+Having a simple <font face="courier"><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font></font> representation of all <b>@x:Act</b>  <font face="courier"><font face="courier">&lt;<a href="content_100.html" class="nt1" target="contents">script</a>&gt;</font></font>smakes it easy to develop <b>@x:Act</b> program generation, analysis, and transformation tools.
+</p>
+<p>
+To make it simple to process <font face="courier"><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font></font> trees, there are only 7 types of tree nodes.The <b>@x:Act</b> syntax however contains lots more than 7 forms.These additional forms are considered to be "syntactic sugar" and are mapped toon of the 7 <font face="courier"><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font></font> types.Each <font face="courier"><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font></font> node contains a kind field that specifies which alternate syntax formit was parsed from.The <font face="courier"><font face="courier"><a href="content_372.html" class="name1" target="contents">Unparse</a></font></font> function uses the kind field to restore the originalricher syntax forms.In the xdom tree the two major forms of syntax use the same nodes but have different kinds.So conversion between forms involves simply walking the xdom tree and changing kinds.
+</p>
+<p>
+The 7 types of <font face="courier"><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font></font> tree nodes are listed here together with some of the syntax formsthat are mapped to these kinds of node.
+<ul>
+<li>
+ <font face="courier"><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font></font>: <font face="courier"><font face="courier">&lt;<a href="content_102.html" class="nt1" target="contents">simple cmd</a>&gt;</font></font>, <font face="courier"><font face="courier">&lt;<a href="content_78.html" class="nt1" target="contents">compound cmd</a>&gt;</font></font>, <font face="courier"><font face="courier">&lt;<a href="content_80.html" class="nt1" target="contents">element</a>&gt;</font></font>,
+<font face="courier"><font face="courier">&lt;<a href="content_106.html" class="nt1" target="contents">xml</a>&gt;</font></font> comments, comments (<font face="courier"><font face="courier">&lt;<a href="content_78.html" class="nt1" target="contents">compound cmd</a>&gt;</font></font>), the ?xml <font face="courier"><font face="courier">&lt;<a href="content_80.html" class="nt1" target="contents">element</a>&gt;</font></font>
+
+</li>
+<li>
+ <font face="courier"><font face="courier"><a href="content_150.html" class="name1" target="contents">xdom:name</a></font></font>: <font face="courier"><font face="courier">&lt;<a href="content_94.html" class="nt1" target="contents">name</a>&gt;</font></font>, <font face="courier"><font face="courier">&lt;<a href="content_84.html" class="nt1" target="contents">escape</a>&gt;</font></font>
+
+</li>
+<li>
+ <font face="courier"><font face="courier"><a href="content_151.html" class="name1" target="contents">xdom:string</a></font></font>: <font face="courier"><font face="courier">&lt;<a href="content_104.html" class="nt1" target="contents">string</a>&gt;</font></font>, <font face="courier"><font face="courier">&lt;<a href="content_106.html" class="nt1" target="contents">xml</a>&gt;</font></font> text
+</li>
+<li>
+ <font face="courier"><font face="courier"><a href="content_149.html" class="name1" target="contents">xdom:int</a></font></font>: <font face="courier"><font face="courier">&lt;<a href="content_91.html" class="nt1" target="contents">int</a>&gt;</font></font>
+
+</li>
+<li>
+ <font face="courier"><font face="courier"><a href="content_148.html" class="name1" target="contents">xdom:float</a></font></font>: <font face="courier"><font face="courier">&lt;<a href="content_88.html" class="nt1" target="contents">float</a>&gt;</font></font>
+
+</li>
+<li>
+ <font face="courier"><font face="courier"><a href="content_146.html" class="name1" target="contents">xdom:call</a></font></font>: call/subscript/dot qualification (<font face="courier"><font face="courier">&lt;<a href="content_97.html" class="nt1" target="contents">qualified</a>&gt;</font></font>), operator <font face="courier"><font face="courier">&lt;<a href="content_85.html" class="nt1" target="contents">exp</a>&gt;</font></font>
+
+</li>
+<li>
+ <font face="courier"><font face="courier"><a href="content_152.html" class="name1" target="contents">xdom:value</a></font></font>: Allows an arbitrary <b>@x:Act</b> value to be store in an <font face="courier"><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font></font> tree.Support in <font face="courier"><font face="courier"><a href="content_192.html" class="name1" target="contents">Parse</a></font></font> and <font face="courier"><font face="courier"><a href="content_372.html" class="name1" target="contents">Unparse</a></font></font> is limited for this kind of node.
+</li>
+</ul>
+</p>
+</body>
+</html>

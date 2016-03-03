@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>cover</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > K <a href="nav2_4_11.html" target="nav2" class="lettered1">Glossary</a> >  <font color="blue">cover</font>
+</b>
+<br/> 
+
+<a href="content_278.html" target="contents">prev</a>
+ 
+<a href="content_280.html" target="contents">next</a>
+<br/>
+
+
+<p>
+Cover rules permit mixed type arithmetic.Consider for example <font face="courier"><font face="courier"><font color="#006699">a</font></font> <font face="courier"><a href="content_244.html" class="inop1" target="contents">+</a></font> <font face="courier"><font color="#006699">b</font></font></font>.If <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> and @icode{b}/&gt; have the sametype then the <font face="courier"><font face="courier"><font color="#006699">sys:Add</font></font></font> operationfor that type is used. If however <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> and <font face="courier"><font face="courier"><font color="#006699">b</font></font></font> havedifferent types, then cover rules determine which of those two typesto use.
+</p>
+<p>
+Consider for example, <font face="courier">2 <font face="courier"><a href="content_244.html" class="inop1" target="contents">+</a></font> 3.5</font>. Since thetype <font face="courier"><font face="courier"><a href="content_132.html" class="name1" target="contents">float</a></font></font> covers <font face="courier"><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font>, the <font face="courier"><font face="courier"><a href="content_132.html" class="name1" target="contents">float</a></font>.<font color="FF00FF">sys:Add</font></font> operationis used.Cover rules are given by <font face="courier"><font face="courier"><font color="#006699">sys:Cover</font></font></font> type operations.For the example here, <font face="courier"><font face="courier"><a href="content_132.html" class="name1" target="contents">float</a></font>.<font color="FF00FF">sys:Cover</font>(2)</font> returns <font face="courier"><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font>.
+</p>
+</body>
+</html>

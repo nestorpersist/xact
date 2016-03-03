@@ -1,0 +1,936 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Units</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_5.html" target="nav1" class="top1">Libraries</a> >  <font face="courier"><a href="nav2_5_10.html" target="nav2" class="library1">library:unit</a></font> >  <font face="courier"><font color="blue">Units</font></font>
+</b>
+<br/> 
+
+<a href="content_365.html" target="contents">prev</a>
+ 
+<a href="content_367.html" target="contents">next</a>
+<br/>
+
+
+<p>
+<font size="+1">
+<b>
+Type Units[ ]
+</b>
+</font>
+</p>
+<p>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font> Units[<font face="courier"><a href="content_230.html" class="preop1" target="contents">%</a></font><font face="courier"><font color="#006699">dim</font></font>]</font>
+</p>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><a href="content_230.html" class="preop1" target="contents">%</a></font><font face="courier"><font color="#006699">dim</font></font></font>
+</td>
+<td>
+an array of <font face="courier"><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>s,one for each base unit.
+</td>
+</tr>
+</table>
+<br/>
+<table border="3">
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#baseUnit" class="underline1">baseUnit</a>(<font face="courier"><font color="#006699">uname</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>)</font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font> <a href="#Unit" class="underline1">Unit</a>[<font face="courier"><a href="content_230.html" class="preop1" target="contents">%</a></font><font face="courier"><font color="#006699">DIM</font></font>]</font>
+</font>
+</td>
+</tr>
+</table>
+<hr/>
+<hr/>
+<a name="baseUnit"/>
+<p>
+<font size="+1">
+<b>
+Type Function baseUnit
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> baseUnit(<font face="courier"><font color="#006699">uname</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>)</font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">uname</font></font></font>
+</td>
+<td>
+the name of one of the base units specified in <font face="courier"><font face="courier"><font color="#006699">dim</font></font></font>.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+Within the type <font face="courier"><font face="courier"><a href="content_366.html" class="name1" target="contents">Units</a></font>[<font color="green">"a"</font>,<font color="green">"b"</font>,<font color="green">"c"</font>]</font> the result of <font face="courier"><font face="courier"><font color="#006699">baseUnit</font></font>(<font color="green">"b"</font>)</font> will be <font face="courier"><font face="courier"><font color="#006699">Unit</font></font>[<font color="0AAAA">a</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font>0,<font color="0AAAA">b</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font>1,<font color="0AAAA">c</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font>0]</font>.
+<hr/>
+<a name="Unit"/>
+<p>
+<font size="+1">
+<b>
+Type Unit[ ]
+</b>
+</font>
+</p>
+<p>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font> Unit[<font face="courier"><a href="content_230.html" class="preop1" target="contents">%</a></font><font face="courier"><font color="#006699">DIM</font></font>]</font>
+</p>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><a href="content_230.html" class="preop1" target="contents">%</a></font><font face="courier"><font color="#006699">DIM</font></font></font>
+</td>
+<td>
+type exponents
+</td>
+</tr>
+</table>
+<br/>
+<table border="3">
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Add" class="underline1">sys:Add</a>(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Sub" class="underline1">sys:Sub</a>(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Minus" class="underline1">sys:Minus</a>(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Mult" class="underline1">sys:Mult</a>(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_363.html" class="name1" target="contents">TypeOr</a></font>[<font face="courier"><font color="#006699">Unit</font></font>,<font face="courier"><a href="content_132.html" class="name1" target="contents">float</a></font>]</font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Div" class="underline1">sys:Div</a>(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_363.html" class="name1" target="contents">TypeOr</a></font>[<font face="courier"><font color="#006699">Unit</font></font>,<font face="courier"><a href="content_132.html" class="name1" target="contents">float</a></font>]</font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Eq" class="underline1">sys:Eq</a>(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Ne" class="underline1">sys:Ne</a>(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Less" class="underline1">sys:Less</a>(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:LessEq" class="underline1">sys:LessEq</a>(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Greater" class="underline1">sys:Greater</a>(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:GreaterEq" class="underline1">sys:GreaterEq</a>(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Cover" class="underline1">sys:Cover</a>(<font face="courier"><font color="#006699">t</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_143.html" class="name1" target="contents">type</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Subscript" class="underline1">sys:Subscript</a>(<font face="courier"><font color="#006699">val</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_363.html" class="name1" target="contents">TypeOr</a></font>[<font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<font face="courier"><a href="content_132.html" class="name1" target="contents">float</a></font>])<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Init" class="underline1">sys:Init</a>(<font face="courier"><font color="#006699">val</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_363.html" class="name1" target="contents">TypeOr</a></font>[<font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<font face="courier"><a href="content_132.html" class="name1" target="contents">float</a></font>])<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#toString" class="underline1">toString</a>()<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#in" class="underline1">in</a>[]<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_132.html" class="name1" target="contents">float</a></font></font>
+</font>
+</td>
+</tr>
+</table>
+<hr/>
+<hr/>
+<a name="sys:Add"/>
+<p>
+<font size="+1">
+<b>
+Type Function sys:Add
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Add(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">a</font></font></font>
+</td>
+<td>
+first parameter
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">b</font></font></font>
+</td>
+<td>
+second parameter
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+Both <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> and <font face="courier"><font face="courier"><font color="#006699">b</font></font></font> must have the sametype. This type will be the type of the result.The result is the sum of <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> and <font face="courier"><font face="courier"><font color="#006699">b</font></font></font>.
+<hr/>
+<a name="sys:Sub"/>
+<p>
+<font size="+1">
+<b>
+Type Function sys:Sub
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Sub(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">a</font></font></font>
+</td>
+<td>
+first parameter
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">b</font></font></font>
+</td>
+<td>
+second parameter
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+Both <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> and <font face="courier"><font face="courier"><font color="#006699">b</font></font></font> must have the sametype. This type will be the type of the result.The result is the value from subtracting <font face="courier"><font face="courier"><font color="#006699">b</font></font></font> from <font face="courier"><font face="courier"><font color="#006699">a</font></font></font>.
+<hr/>
+<a name="sys:Minus"/>
+<p>
+<font size="+1">
+<b>
+Type Function sys:Minus
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Minus(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">a</font></font></font>
+</td>
+<td>
+first parameter
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The result will have the same type as <font face="courier"><font face="courier"><font color="#006699">a</font></font></font>.The result value will be the negation of <font face="courier"><font face="courier"><font color="#006699">a</font></font></font>.
+<hr/>
+<a name="sys:Mult"/>
+<p>
+<font size="+1">
+<b>
+Type Function sys:Mult
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Mult(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_363.html" class="name1" target="contents">TypeOr</a></font>[<font face="courier"><font color="#006699">Unit</font></font>,<font face="courier"><a href="content_132.html" class="name1" target="contents">float</a></font>]</font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">a</font></font></font>
+</td>
+<td>
+first parameter
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">b</font></font></font>
+</td>
+<td>
+second parameter
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The result type will be the sum of the exponents of <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> and <font face="courier"><font face="courier"><font color="#006699">b</font></font></font>.If all exponents are <font face="courier">0</font> then the resultwill have type <font face="courier"><font face="courier"><a href="content_132.html" class="name1" target="contents">float</a></font></font>.The result is the product of <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> and <font face="courier"><font face="courier"><font color="#006699">b</font></font></font>.
+<hr/>
+<a name="sys:Div"/>
+<p>
+<font size="+1">
+<b>
+Type Function sys:Div
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Div(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_363.html" class="name1" target="contents">TypeOr</a></font>[<font face="courier"><font color="#006699">Unit</font></font>,<font face="courier"><a href="content_132.html" class="name1" target="contents">float</a></font>]</font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">a</font></font></font>
+</td>
+<td>
+first parameter
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">b</font></font></font>
+</td>
+<td>
+second parameter
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The result type will be the resultof subtracting <font face="courier"><font face="courier"><font color="#006699">b</font></font></font> exponents from <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> exponents.If all exponents are <font face="courier">0</font> then the resultwill have type <font face="courier"><font face="courier"><a href="content_132.html" class="name1" target="contents">float</a></font></font>.The result is the value from dividing <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> by <font face="courier"><font face="courier"><font color="#006699">b</font></font></font>.
+<hr/>
+<a name="sys:Eq"/>
+<p>
+<font size="+1">
+<b>
+Type Function sys:Eq
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Eq(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">a</font></font></font>
+</td>
+<td>
+first parameter
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">b</font></font></font>
+</td>
+<td>
+second parameter
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+Both <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> and <font face="courier"><font face="courier"><font color="#006699">b</font></font></font> must have the sametype. If <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> and <font face="courier"><font face="courier"><font color="#006699">b</font></font></font> have the samevalue, then the result is <font face="courier"><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font>,else the result is <font face="courier"><font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font></font>.
+<hr/>
+<a name="sys:Ne"/>
+<p>
+<font size="+1">
+<b>
+Type Function sys:Ne
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Ne(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">a</font></font></font>
+</td>
+<td>
+first parameter
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">b</font></font></font>
+</td>
+<td>
+second parameter
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+Both <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> and <font face="courier"><font face="courier"><font color="#006699">b</font></font></font> must have the sametype. If <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> and <font face="courier"><font face="courier"><font color="#006699">b</font></font></font> have the samevalue, then the result is <font face="courier"><font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font></font>,else the result is <font face="courier"><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font>.
+<hr/>
+<a name="sys:Less"/>
+<p>
+<font size="+1">
+<b>
+Type Function sys:Less
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Less(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">a</font></font></font>
+</td>
+<td>
+first parameter
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">b</font></font></font>
+</td>
+<td>
+second parameter
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+Both <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> and <font face="courier"><font face="courier"><font color="#006699">b</font></font></font> must have the sametype. If <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> is less than <font face="courier"><font face="courier"><font color="#006699">b</font></font></font>,then the result is <font face="courier"><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font>,else the result is <font face="courier"><font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font></font>.
+<hr/>
+<a name="sys:LessEq"/>
+<p>
+<font size="+1">
+<b>
+Type Function sys:LessEq
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:LessEq(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">a</font></font></font>
+</td>
+<td>
+first parameter
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">b</font></font></font>
+</td>
+<td>
+second parameter
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+Both <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> and <font face="courier"><font face="courier"><font color="#006699">b</font></font></font> must have the sametype. If <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> is less than or equal to <font face="courier"><font face="courier"><font color="#006699">b</font></font></font>,then the result is <font face="courier"><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font>,else the result is <font face="courier"><font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font></font>.
+<hr/>
+<a name="sys:Greater"/>
+<p>
+<font size="+1">
+<b>
+Type Function sys:Greater
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Greater(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">a</font></font></font>
+</td>
+<td>
+first parameter
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">b</font></font></font>
+</td>
+<td>
+second parameter
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+Both <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> and <font face="courier"><font face="courier"><font color="#006699">b</font></font></font> must have the sametype. If <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> is greater than <font face="courier"><font face="courier"><font color="#006699">b</font></font></font>,then the result is <font face="courier"><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font>,else the result is <font face="courier"><font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font></font>.
+<hr/>
+<a name="sys:GreaterEq"/>
+<p>
+<font size="+1">
+<b>
+Type Function sys:GreaterEq
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:GreaterEq(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">a</font></font></font>
+</td>
+<td>
+first parameter
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">b</font></font></font>
+</td>
+<td>
+second parameter
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+Both <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> and <font face="courier"><font face="courier"><font color="#006699">b</font></font></font> must have the sametype. If <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> is greater than or equal to <font face="courier"><font face="courier"><font color="#006699">b</font></font></font>,then the result is <font face="courier"><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font>,else the result is <font face="courier"><font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font></font>.
+<hr/>
+<a name="sys:Cover"/>
+<p>
+<font size="+1">
+<b>
+Type Function sys:Cover
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Cover(<font face="courier"><font color="#006699">t</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_143.html" class="name1" target="contents">type</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">t</font></font></font>
+</td>
+<td>
+a type to test.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The result is <font face="courier"><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font> if <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> iseither <font face="courier"><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font> or <font face="courier"><font face="courier"><a href="content_132.html" class="name1" target="contents">float</a></font></font>.
+<hr/>
+<a name="sys:Subscript"/>
+<p>
+<font size="+1">
+<b>
+Self Function sys:Subscript
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Subscript(<font face="courier"><font color="#006699">val</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_363.html" class="name1" target="contents">TypeOr</a></font>[<font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<font face="courier"><a href="content_132.html" class="name1" target="contents">float</a></font>])<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">Unit</font></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">val</font></font></font>
+</td>
+<td>
+a value.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+Used to specify a value with units.For example, the value 10 feet would be encodedas <font face="courier"><font face="courier"><font color="#006699">foot</font></font>(10)</font> which is equivalentto <font face="courier">10 <font face="courier"><a href="content_246.html" class="inop1" target="contents">*</a></font> <font face="courier"><font color="#006699">foot</font></font></font>.
+<hr/>
+<a name="sys:Init"/>
+<p>
+<font size="+1">
+<b>
+Self Function sys:Init
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Init(<font face="courier"><font color="#006699">val</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_363.html" class="name1" target="contents">TypeOr</a></font>[<font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<font face="courier"><a href="content_132.html" class="name1" target="contents">float</a></font>])<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">val</font></font></font>
+</td>
+<td>
+an initial value.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+Initializes a new Unit object.
+<hr/>
+<a name="toString"/>
+<p>
+<font size="+1">
+<b>
+Self Function toString
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> toString()<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The result is a readable representationof the value and its units.
+<hr/>
+<a name="in"/>
+<p>
+<font size="+1">
+<b>
+Self Function in[ ]
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> in[]<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_132.html" class="name1" target="contents">float</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">t</font></font></font>
+</td>
+<td>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The value of <font face="courier"><font face="courier"><font color="#006699">self</font></font></font> and <font face="courier"><font face="courier"><font color="#006699">t</font></font></font> must have the same Unit type.The result of <font face="courier"><font face="courier"><font color="#006699">meter</font></font>(3).<font color="FF00FF">in</font>[<font face="courier"><font color="#006699">centi</font></font>[<font face="courier"><font color="#006699">meter</font></font>]]</font> is equivalent to <font face="courier"><font face="courier"><font color="#006699">meter</font></font>(3) <font face="courier"><a href="content_247.html" class="inop1" target="contents">/</a></font> <font face="courier"><font color="#006699">centi</font></font>[<font face="courier"><font color="#006699">meter</font></font>]</font> whose result value is <font face="courier">300.0</font>.
+<hr/>
+<hr/>
+</body>
+</html>

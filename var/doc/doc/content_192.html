@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Parse</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > F <a href="nav2_4_6.html" target="nav2" class="lettered1">Functions</a> >  <font face="courier"><font color="blue">Parse</font></font>
+</b>
+<br/> 
+
+<a href="content_191.html" target="contents">prev</a>
+ 
+<a href="content_193.html" target="contents">next</a>
+<br/>
+
+
+<p>
+<font size="+1">
+<b>
+Description
+</b>
+</font>
+</p>
+<p>
+This function is the build-in <b>@x:Act</b> parser.It will parse <b>@x:Act</b> scripts andthe subset of XML supported by <b>@x:Act</b> syntax.
+</p>
+<p>
+<font size="+1">
+<b>
+Function Parse
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> Parse(<font face="courier"><font color="#006699">text</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>,<wbr><font color="0AAAA">handler</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">handler1</font></font>,<wbr><font color="0AAAA">fileName</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">fileName1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>,<wbr><font color="0AAAA">scriptName</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">scriptName1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>,<wbr><font color="0AAAA">name</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">name1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">text</font></font></font>
+</td>
+<td>
+input text to be parsed.This parameter is a <a href="content_49.html" class="numbered1" target="contents">Stream Sink</a>.When optimization is on, the implementation willin some cases start up a separate threadto evaluate this parameter.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">handler</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">handler1</font></font></font>
+</td>
+<td>
+(optional) parse event handler object.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">fileName</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">fileName1</font></font></font>
+</td>
+<td>
+(optional) if the <font face="courier"><font face="courier"><font color="#006699">text</font></font></font> parameter is a file, the name of that file.This is used for error reporting.Only one of <font face="courier"><font face="courier"><font color="#006699">fileName</font></font></font>, <font face="courier"><font face="courier"><font color="#006699">scriptName</font></font></font>, and <font face="courier"><font face="courier"><font color="#006699">name</font></font></font> may be present.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">scriptName</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">scriptName1</font></font></font>
+</td>
+<td>
+(optional) if the <font face="courier"><font face="courier"><font color="#006699">text</font></font></font> parameter is a script file, the script name ofthat script.This is used for error reporting.Only one of <font face="courier"><font face="courier"><font color="#006699">fileName</font></font></font>, <font face="courier"><font face="courier"><font color="#006699">scriptName</font></font></font>, and <font face="courier"><font face="courier"><font color="#006699">name</font></font></font> may be present.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">name</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">name1</font></font></font>
+</td>
+<td>
+(optional) a short description of the text being parsed.This is used for error reporting.Only one of <font face="courier"><font face="courier"><font color="#006699">fileName</font></font></font>, <font face="courier"><font face="courier"><font color="#006699">scriptName</font></font></font>, and <font face="courier"><font face="courier"><font color="#006699">name</font></font></font> may be present.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+Returns the resulting parse tree.
+<p>
+If the <font face="courier"><font face="courier"><font color="#006699">handler</font></font></font> is specified it may have anyof the following operations.
+</p>
+<p>
+<font size="+1">
+<b>
+Type 
+</b>
+</font>
+</p>
+<p>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font>
+</p>
+<table border="3">
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#start" class="underline1">start</a>()<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#end" class="underline1">end</a>()<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#startElement" class="underline1">startElement</a>(<font face="courier"><font color="#006699">elem</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font>,<wbr><font face="courier"><font color="#006699">hasAttr</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#endElement" class="underline1">endElement</a>(<font face="courier"><font color="#006699">elem</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#startBody" class="underline1">startBody</a>(<font face="courier"><font color="#006699">elem</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font>,<wbr><font face="courier"><font color="#006699">hasBody</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#endAttr" class="underline1">endAttr</a>(<font face="courier"><a href="content_154.html" class="name1" target="contents">attr</a></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font>,<wbr><font face="courier"><a href="content_154.html" class="name1" target="contents">attr</a></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_363.html" class="name1" target="contents">TypeOr</a></font>[<font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font>,<font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font>]</font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#endChild" class="underline1">endChild</a>(<font face="courier"><font color="#006699">elem</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font>,<wbr><font face="courier"><a href="content_154.html" class="name1" target="contents">attr</a></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_363.html" class="name1" target="contents">TypeOr</a></font>[<font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font>,<font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font>]</font>
+</font>
+</td>
+</tr>
+</table>
+<hr/>
+<a name="start"/>
+<p>
+<font size="+1">
+<b>
+Self Function start
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> start()<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+Called before parsing starts.
+<hr/>
+<a name="end"/>
+<p>
+<font size="+1">
+<b>
+Self Function end
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> end()<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+Called after parsing is done.
+<hr/>
+<a name="startElement"/>
+<p>
+<font size="+1">
+<b>
+Self Function startElement
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> startElement(<font face="courier"><font color="#006699">elem</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font>,<wbr><font face="courier"><font color="#006699">hasAttr</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">elem</font></font></font>
+</td>
+<td>
+element.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">hasAttr</font></font></font>
+</td>
+<td>
+has value <font face="courier"><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font> if the element has any attributes.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+Called at the start of an XML element / <b>@x:Act</b> command.
+<hr/>
+<a name="endElement"/>
+<p>
+<font size="+1">
+<b>
+Self Function endElement
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> endElement(<font face="courier"><font color="#006699">elem</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">elem</font></font></font>
+</td>
+<td>
+element.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+Called at the end of an XML element / <b>@x:Act</b> command.
+<hr/>
+<a name="startBody"/>
+<p>
+<font size="+1">
+<b>
+Self Function startBody
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> startBody(<font face="courier"><font color="#006699">elem</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font>,<wbr><font face="courier"><font color="#006699">hasBody</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">elem</font></font></font>
+</td>
+<td>
+element.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">hasBody</font></font></font>
+</td>
+<td>
+has value <font face="courier"><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font> if the elementbody is not empty.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+Called at the start of the body of an XML element / <b>@x:Act</b> command.
+<hr/>
+<a name="endAttr"/>
+<p>
+<font size="+1">
+<b>
+Self Function endAttr
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> endAttr(<font face="courier"><a href="content_154.html" class="name1" target="contents">attr</a></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font>,<wbr><font face="courier"><a href="content_154.html" class="name1" target="contents">attr</a></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_363.html" class="name1" target="contents">TypeOr</a></font>[<font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font>,<font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font>]</font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><a href="content_154.html" class="name1" target="contents">attr</a></font></font>
+</td>
+<td>
+element that contains the attribute.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><a href="content_154.html" class="name1" target="contents">attr</a></font></font>
+</td>
+<td>
+attribute.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+Called at the end of an attribute.A result of <font face="courier"><font face="courier"><a href="content_221.html" class="name1" target="contents">null</a></font></font> discards the attribute.Returning <font face="courier"><font face="courier"><a href="content_154.html" class="name1" target="contents">attr</a></font></font> keeps the attribute.Returning any other value substitutes that value for the attribute.
+<hr/>
+<a name="endChild"/>
+<p>
+<font size="+1">
+<b>
+Self Function endChild
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> endChild(<font face="courier"><font color="#006699">elem</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font>,<wbr><font face="courier"><a href="content_154.html" class="name1" target="contents">attr</a></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_363.html" class="name1" target="contents">TypeOr</a></font>[<font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font>,<font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font>]</font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">elem</font></font></font>
+</td>
+<td>
+element that contains the child
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><a href="content_154.html" class="name1" target="contents">attr</a></font></font>
+</td>
+<td>
+child element.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+Called at the end of a child element.A result of <font face="courier"><font face="courier"><a href="content_221.html" class="name1" target="contents">null</a></font></font> discards the child.Returning <font face="courier"><font face="courier"><a href="content_154.html" class="name1" target="contents">attr</a></font></font> keeps the child.Returning any other value substitutes that value for the child.
+<hr/>
+</body>
+</html>

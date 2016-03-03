@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>xml</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > A <a href="nav2_4_1.html" target="nav2" class="lettered1">Syntax</a> >  <font face="courier">&lt;<font color="green">xml</font>&gt;</font>
+</b>
+<br/> 
+
+<a href="content_105.html" target="contents">prev</a>
+ 
+<a href="content_107.html" target="contents">next</a>
+<br/>
+
+<font size="+1"><b>Syntax</b></font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">xml</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_80.html" class="nt1" target="contents">element</a>&gt;</font> | <font face="courier">&lt;<a href="content_84.html" class="nt1" target="contents">escape</a>&gt;</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">xml</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier"><a href="content_105.html" class="nt11" target="contents">text</a></font> - {<font face="courier"><a href="content_105.html" class="nt11" target="contents">text</a></font> {<font face="courier">'<font color="brown">&lt;</font>'</font> | <font face="courier">'<font color="brown">&</font>'</font>} <font face="courier"><a href="content_105.html" class="nt11" target="contents">text</a></font>}
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">xml</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">&lt;!--</font>'</font> {<font face="courier"><a href="content_105.html" class="nt11" target="contents">text</a></font> - {<font face="courier"><a href="content_105.html" class="nt11" target="contents">text</a></font> <font face="courier">'<font color="brown">--&gt;</font>'</font> <font face="courier"><a href="content_105.html" class="nt11" target="contents">text</a></font>}} <font face="courier">'<font color="brown">--&gt;</font>'</font>
+</td>
+</tr>
+</table>
+
+</font>
+<p>
+<font size="+1">
+<b>
+Description
+</b>
+</font>
+</p>
+<p>
+This is all the forms that are allowed inside an XML <font face="courier"><font face="courier">&lt;<a href="content_80.html" class="nt1" target="contents">element</a>&gt;</font></font>.
+</p>
+<p>
+<font size="+1">
+<b>
+Parsing
+</b>
+</font>
+</p>
+<p>
+<p>
+Text here is represented as a <font face="courier"><font face="courier"><a href="content_151.html" class="name1" target="contents">xdom:string</a></font></font> tree nodewith type <font face="courier"><font color="green">"xml"</font></font>.
+</p>
+<p>
+An escaped entity is represented as a <font face="courier"><font face="courier"><a href="content_150.html" class="name1" target="contents">xdom:name</a></font></font> tree nodewith kind <font face="courier"><font color="green">"xml"</font></font>.
+</p>
+<p>
+A XML comment is represented as a <font face="courier"><font face="courier"><a href="content_151.html" class="name1" target="contents">xdom:string</a></font></font> tree node withkind <font face="courier"><font color="green">"comment"</font></font>.
+</p>
+</p>
+<p>
+<font size="+1">
+<b>
+Execution
+</b>
+</font>
+</p>
+<p>
+Execution of XML text results in a rendering of that text.Three special XML characters are escaped: <font face="courier" color="green">&lt;</font> becomes <font face="courier" color="green">&amp;lt;</font>, <font face="courier" color="green">&gt;</font> becomes <font face="courier" color="green">&amp;gt;</font>,and <font face="courier" color="green">&amp;</font> becomes <font face="courier" color="green">&amp;amp;</font>.Names are replaced with the <font face="courier"><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font> value of the name.These name strings are also escaped for the three special XML characters.
+</p>
+</body>
+</html>

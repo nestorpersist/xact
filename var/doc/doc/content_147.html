@@ -1,0 +1,1037 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>xdom:element</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > D <a href="nav2_4_4.html" target="nav2" class="lettered1">Types</a> >  <font face="courier"><font color="blue">xdom:element</font></font>
+</b>
+<br/> 
+
+<a href="content_146.html" target="contents">prev</a>
+ 
+<a href="content_148.html" target="contents">next</a>
+<br/>
+
+
+<p>
+<font size="+1">
+<b>
+Description
+</b>
+</font>
+</p>
+<p>
+<p>
+The <font face="courier"><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font></font> type is used torepresent <b>@x:Act</b> commands and XML element nodes within an <font face="courier"><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font></font> tree.
+</p>
+<p>
+Subscripting of an <font face="courier"><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font></font> provides array access.The <font face="courier"><font face="courier"><font color="#006699">i</font></font></font>th element will be the value of the <font face="courier"><font face="courier"><font color="#006699">i</font></font></font>thunnamed attribute.
+</p>
+<p>
+Views of <font face="courier"><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font></font> include <font face="courier"><font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font></font>, <font face="courier"><font face="courier"><a href="content_154.html" class="name1" target="contents">attr</a></font></font>, <font face="courier"><font face="courier"><a href="content_155.html" class="name1" target="contents">body</a></font></font>, <font face="courier"><font face="courier"><a href="content_156.html" class="name1" target="contents">bodyrec</a></font></font>, @icode{array}/&gt;, and <font face="courier"><font face="courier"><a href="content_161.html" class="name1" target="contents">list</a></font></font>.These views provide subscripting based on other views of the list of attributes andbody subtrees.
+</p>
+</p>
+<p>
+<font size="+1">
+<b>
+Type xdom:element
+</b>
+</font>
+</p>
+<p>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font> xdom:element</font>
+</p>
+<table border="3">
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Init" class="underline1">sys:Init</a>(<font face="courier"><font color="#006699">tag</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>,<wbr><font color="0AAAA">attr</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">attr1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_363.html" class="name1" target="contents">TypeOr</a></font>[<font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font>,<font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font>] <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_221.html" class="name1" target="contents">null</a></font>,<wbr><font color="0AAAA">body</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">body1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_363.html" class="name1" target="contents">TypeOr</a></font>[<font face="courier"><a href="content_161.html" class="name1" target="contents">list</a></font>,<font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font>] <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_221.html" class="name1" target="contents">null</a></font>,<wbr><font color="0AAAA">noStep</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">noStep1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font>,<wbr><font color="0AAAA">breakBefore</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">breakBefore1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font>,<wbr><font color="0AAAA">breakAfter</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">breakAfter1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font>,<wbr><font color="0AAAA">mark1</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">mark11</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font>,<wbr><font color="0AAAA">mark2</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">mark21</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font>,<wbr><font color="0AAAA">mark3</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">mark31</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font>,<wbr><font color="0AAAA">label</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">label1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font color="green">""</font>,<wbr><font color="0AAAA">spaceBefore</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">spaceBefore1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_318.html" class="name1" target="contents">enum</a></font>[<font color="green">"empty"</font>,<font color="green">"space"</font>,<font color="green">"line"</font>,<font color="green">"lines"</font>,<font color="green">"erase"</font>] <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font color="green">"line"</font>,<wbr><font color="0AAAA">spaceAfter</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">spaceAfter1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_318.html" class="name1" target="contents">enum</a></font>[<font color="green">"empty"</font>,<font color="green">"space"</font>,<font color="green">"line"</font>,<font color="green">"lines"</font>,<font color="green">"erase"</font>] <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font color="green">"line"</font>,<wbr><font color="0AAAA">spaceBeforeBody</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">spaceBeforeBody1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_318.html" class="name1" target="contents">enum</a></font>[<font color="green">"empty"</font>,<font color="green">"space"</font>,<font color="green">"line"</font>,<font color="green">"lines"</font>,<font color="green">"erase"</font>] <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font color="green">"line"</font>,<wbr><font color="0AAAA">spaceAfterBody</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">spaceAfterBody1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_318.html" class="name1" target="contents">enum</a></font>[<font color="green">"empty"</font>,<font color="green">"space"</font>,<font color="green">"line"</font>,<font color="green">"lines"</font>,<font color="green">"erase"</font>] <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font color="green">"line"</font>,<wbr><font color="0AAAA">kind</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">kind1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_318.html" class="name1" target="contents">enum</a></font>[<font color="green">"normal"</font>,<font color="green">"xml"</font>,<font color="green">"iterator"</font>,<font color="green">"xmldecl"</font>,<font color="green">"short"</font>,<font color="green">"long"</font>] <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font color="green">"normal"</font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <a href="#tag" class="underline1">tag</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <a href="#space" class="underline1">space</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <a href="#base" class="underline1">base</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <a href="#size" class="underline1">size</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Subscript" class="underline1">sys:Subscript</a>(<font face="courier"><font color="#006699">index</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>)</font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#insert" class="underline1">insert</a>(<font face="courier"><font color="#006699">val</font></font>,<wbr><font face="courier"><font color="#006699">pos</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">self</font></font>.<font color="FF00FF">size</font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#delete" class="underline1">delete</a>(<font face="courier"><font color="#006699">pos</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <a href="#all" class="underline1">all</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_133.html" class="name1" target="contents">func</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Eq" class="underline1">sys:Eq</a>(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Ne" class="underline1">sys:Ne</a>(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <a href="#noStep" class="underline1">noStep</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <a href="#breakBefore" class="underline1">breakBefore</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <a href="#breakAfter" class="underline1">breakAfter</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <a href="#mark1" class="underline1">mark1</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <a href="#mark2" class="underline1">mark2</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <a href="#mark3" class="underline1">mark3</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <a href="#label" class="underline1">label</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <a href="#spaceBefore" class="underline1">spaceBefore</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_318.html" class="name1" target="contents">enum</a></font>[<font color="green">"empty"</font>,<font color="green">"space"</font>,<font color="green">"line"</font>,<font color="green">"lines"</font>,<font color="green">"erase"</font>]</font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <a href="#spaceAfter" class="underline1">spaceAfter</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_318.html" class="name1" target="contents">enum</a></font>[<font color="green">"empty"</font>,<font color="green">"space"</font>,<font color="green">"line"</font>,<font color="green">"lines"</font>,<font color="green">"erase"</font>]</font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <a href="#spaceBeforeBody" class="underline1">spaceBeforeBody</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_318.html" class="name1" target="contents">enum</a></font>[<font color="green">"empty"</font>,<font color="green">"space"</font>,<font color="green">"line"</font>,<font color="green">"lines"</font>,<font color="green">"erase"</font>]</font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <a href="#spaceAfterBody" class="underline1">spaceAfterBody</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_318.html" class="name1" target="contents">enum</a></font>[<font color="green">"empty"</font>,<font color="green">"space"</font>,<font color="green">"line"</font>,<font color="green">"lines"</font>,<font color="green">"erase"</font>]</font>
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <a href="#kind" class="underline1">kind</a><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_318.html" class="name1" target="contents">enum</a></font>[<font color="green">"normal"</font>,<font color="green">"xml"</font>,<font color="green">"iterator"</font>,<font color="green">"xmldecl"</font>,<font color="green">"short"</font>,<font color="green">"long"</font>]</font>
+</font>
+</td>
+</tr>
+</table>
+<hr/>
+<a name="sys:Init"/>
+<p>
+<font size="+1">
+<b>
+Self Function sys:Init
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Init(<font face="courier"><font color="#006699">tag</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>,<wbr><font color="0AAAA">attr</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">attr1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_363.html" class="name1" target="contents">TypeOr</a></font>[<font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font>,<font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font>] <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_221.html" class="name1" target="contents">null</a></font>,<wbr><font color="0AAAA">body</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">body1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_363.html" class="name1" target="contents">TypeOr</a></font>[<font face="courier"><a href="content_161.html" class="name1" target="contents">list</a></font>,<font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font>] <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_221.html" class="name1" target="contents">null</a></font>,<wbr><font color="0AAAA">noStep</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">noStep1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font>,<wbr><font color="0AAAA">breakBefore</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">breakBefore1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font>,<wbr><font color="0AAAA">breakAfter</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">breakAfter1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font>,<wbr><font color="0AAAA">mark1</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">mark11</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font>,<wbr><font color="0AAAA">mark2</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">mark21</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font>,<wbr><font color="0AAAA">mark3</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">mark31</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font>,<wbr><font color="0AAAA">label</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">label1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font color="green">""</font>,<wbr><font color="0AAAA">spaceBefore</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">spaceBefore1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_318.html" class="name1" target="contents">enum</a></font>[<font color="green">"empty"</font>,<font color="green">"space"</font>,<font color="green">"line"</font>,<font color="green">"lines"</font>,<font color="green">"erase"</font>] <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font color="green">"line"</font>,<wbr><font color="0AAAA">spaceAfter</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">spaceAfter1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_318.html" class="name1" target="contents">enum</a></font>[<font color="green">"empty"</font>,<font color="green">"space"</font>,<font color="green">"line"</font>,<font color="green">"lines"</font>,<font color="green">"erase"</font>] <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font color="green">"line"</font>,<wbr><font color="0AAAA">spaceBeforeBody</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">spaceBeforeBody1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_318.html" class="name1" target="contents">enum</a></font>[<font color="green">"empty"</font>,<font color="green">"space"</font>,<font color="green">"line"</font>,<font color="green">"lines"</font>,<font color="green">"erase"</font>] <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font color="green">"line"</font>,<wbr><font color="0AAAA">spaceAfterBody</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">spaceAfterBody1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_318.html" class="name1" target="contents">enum</a></font>[<font color="green">"empty"</font>,<font color="green">"space"</font>,<font color="green">"line"</font>,<font color="green">"lines"</font>,<font color="green">"erase"</font>] <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font color="green">"line"</font>,<wbr><font color="0AAAA">kind</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">kind1</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_318.html" class="name1" target="contents">enum</a></font>[<font color="green">"normal"</font>,<font color="green">"xml"</font>,<font color="green">"iterator"</font>,<font color="green">"xmldecl"</font>,<font color="green">"short"</font>,<font color="green">"long"</font>] <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font color="green">"normal"</font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">tag</font></font></font>
+</td>
+<td>
+the tag for the new element.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">attr</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">attr1</font></font></font>
+</td>
+<td>
+(optional) the set of initial attributes.If <font face="courier"><font face="courier"><a href="content_221.html" class="name1" target="contents">null</a></font></font>, the result will have no attributes.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">body</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">body1</font></font></font>
+</td>
+<td>
+(optional) the list of body <font face="courier"><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font></font> tree nodes.If <font face="courier"><font face="courier"><a href="content_221.html" class="name1" target="contents">null</a></font></font>, the body of the result will be empty.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">noStep</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">noStep1</font></font></font>
+</td>
+<td>
+(optional) sets <font face="courier"><font face="courier"><font color="#006699">self</font></font>.<font color="FF00FF">noStep</font></font> 
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">breakBefore</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">breakBefore1</font></font></font>
+</td>
+<td>
+(optional) sets <font face="courier"><font face="courier"><font color="#006699">self</font></font>.<font color="FF00FF">breakBefore</font></font> 
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">breakAfter</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">breakAfter1</font></font></font>
+</td>
+<td>
+(optional) sets <font face="courier"><font face="courier"><font color="#006699">self</font></font>.<font color="FF00FF">breakAfter</font></font> 
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">mark1</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">mark11</font></font></font>
+</td>
+<td>
+(optional) sets <font face="courier"><font face="courier"><font color="#006699">self</font></font>.<font color="FF00FF">mark1</font></font> 
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">mark2</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">mark21</font></font></font>
+</td>
+<td>
+(optional) sets <font face="courier"><font face="courier"><font color="#006699">self</font></font>.<font color="FF00FF">mark2</font></font> 
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">mark3</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">mark31</font></font></font>
+</td>
+<td>
+(optional) sets <font face="courier"><font face="courier"><font color="#006699">self</font></font>.<font color="FF00FF">mark3</font></font> 
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">label</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">label1</font></font></font>
+</td>
+<td>
+(optional) sets <font face="courier"><font face="courier"><font color="#006699">self</font></font>.<font color="FF00FF">label</font></font> 
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">spaceBefore</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">spaceBefore1</font></font></font>
+</td>
+<td>
+(optional) sets <font face="courier"><font face="courier"><font color="#006699">self</font></font>.<font color="FF00FF">spaceBefore</font></font> 
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">spaceAfter</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">spaceAfter1</font></font></font>
+</td>
+<td>
+(optional) sets <font face="courier"><font face="courier"><font color="#006699">self</font></font>.<font color="FF00FF">spaceAfter</font></font> 
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">spaceBeforeBody</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">spaceBeforeBody1</font></font></font>
+</td>
+<td>
+(optional) sets <font face="courier"><font face="courier"><font color="#006699">self</font></font>.<font color="FF00FF">spaceBeforeBody</font></font> 
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">spaceAfterBody</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">spaceAfterBody1</font></font></font>
+</td>
+<td>
+(optional) sets <font face="courier"><font face="courier"><font color="#006699">self</font></font>.<font color="FF00FF">spaceAfterBody</font></font> 
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font color="0AAAA">kind</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">kind1</font></font></font>
+</td>
+<td>
+(optional) sets <font face="courier"><font face="courier"><font color="#006699">self</font></font>.<font color="FF00FF">kind</font></font> 
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+Initializes a new <font face="courier"><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font></font> tree node.
+<hr/>
+<a name="tag"/>
+<p>
+<font size="+1">
+<b>
+Self Var tag
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> tag<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The command name / XML element tag.
+<hr/>
+<a name="space"/>
+<p>
+<font size="+1">
+<b>
+Self Var space
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> space<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The part of <font face="courier"><font face="courier"><font color="#006699">tag</font></font></font> before the first <font face="courier" color="green">:</font> or <font face="courier"><font color="green">""</font></font> if there is no <font face="courier" color="green">:</font>.
+<hr/>
+<a name="base"/>
+<p>
+<font size="+1">
+<b>
+Self Var base
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> base<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The part of <font face="courier"><font face="courier"><font color="#006699">tag</font></font></font> after the first <font face="courier" color="green">:</font> or the entire <font face="courier"><font face="courier"><font color="#006699">tag</font></font></font> if there is no <font face="courier" color="green">:</font>.
+<hr/>
+<a name="size"/>
+<p>
+<font size="+1">
+<b>
+Self Const size
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> size<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The number of array elements (unnamed attributes).
+<hr/>
+<a name="sys:Subscript"/>
+<p>
+<font size="+1">
+<b>
+LHS/RHS Self Function sys:Subscript
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Subscript(<font face="courier"><font color="#006699">index</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>)</font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">index</font></font></font>
+</td>
+<td>
+The index of the array element (unnamed attribute)to be selected.For element <font face="courier"><font face="courier"><font color="#006699">e</font></font></font> thismust be in the range <font face="courier">1<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font><font face="courier"><font color="#006699">e</font></font>.<font color="FF00FF">size</font></font>.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The <font face="courier"><font face="courier"><font color="#006699">index</font></font></font>th array element (unnamed attribute)value.
+<hr/>
+<a name="insert"/>
+<p>
+<font size="+1">
+<b>
+Self Function insert
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> insert(<font face="courier"><font color="#006699">val</font></font>,<wbr><font face="courier"><font color="#006699">pos</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">self</font></font>.<font color="FF00FF">size</font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">val</font></font></font>
+</td>
+<td>
+a value to be inserted
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">pos</font></font></font>
+</td>
+<td>
+(optional) the value must be in the range <font face="courier">0<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font><font face="courier"><font color="#006699">self</font></font>.<font color="FF00FF">size</font></font>.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+Inserts the new value at the specified position.If the position is <font face="courier">0</font>, the value is insertedat the beginning of the array.Otherwise, the value is inserted after the <font face="courier"><font face="courier"><font color="#006699">pos</font></font></font> element.
+<hr/>
+<a name="delete"/>
+<p>
+<font size="+1">
+<b>
+Self Function delete
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> delete(<font face="courier"><font color="#006699">pos</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">pos</font></font></font>
+</td>
+<td>
+(optional) for element <font face="courier"><font face="courier"><font color="#006699">e</font></font></font>,the value must be in the range <font face="courier">1<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font><font face="courier"><font color="#006699">e</font></font>.<font color="FF00FF">size</font></font>.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The element at the specified position is deleted from the array.
+<hr/>
+<a name="all"/>
+<p>
+<font size="+1">
+<b>
+Self Const all
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> all<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_133.html" class="name1" target="contents">func</a></font></font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+An iterator function that iterates over all the array elements.
+<hr/>
+<a name="sys:Eq"/>
+<p>
+<font size="+1">
+<b>
+Type Function sys:Eq
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Eq(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">a</font></font></font>
+</td>
+<td>
+first parameter
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">b</font></font></font>
+</td>
+<td>
+second parameter
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+If <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> and <font face="courier"><font face="courier"><font color="#006699">b</font></font></font> are the same treenode, then the result is <font face="courier"><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font>,else the result is <font face="courier"><font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font></font>.
+<hr/>
+<a name="sys:Ne"/>
+<p>
+<font size="+1">
+<b>
+Type Function sys:Ne
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Ne(<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">a</font></font></font>
+</td>
+<td>
+first parameter
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">b</font></font></font>
+</td>
+<td>
+second parameter
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+If <font face="courier"><font face="courier"><font color="#006699">a</font></font></font> and <font face="courier"><font face="courier"><font color="#006699">b</font></font></font> are the same treenode, then the result is <font face="courier"><font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font></font>,else the result is <font face="courier"><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font>.
+<hr/>
+<a name="noStep"/>
+<p>
+<font size="+1">
+<b>
+Self Var noStep
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> noStep<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The debugger should not break before or after this node when in single step mode.
+<hr/>
+<a name="breakBefore"/>
+<p>
+<font size="+1">
+<b>
+Self Var breakBefore
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> breakBefore<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The debugger should break before executing this node.
+<hr/>
+<a name="breakAfter"/>
+<p>
+<font size="+1">
+<b>
+Self Var breakAfter
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> breakAfter<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The debugger should break after executing this node.
+<hr/>
+<a name="mark1"/>
+<p>
+<font size="+1">
+<b>
+Self Var mark1
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> mark1<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+A boolean used for directed graph traversal.
+<hr/>
+<a name="mark2"/>
+<p>
+<font size="+1">
+<b>
+Self Var mark2
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> mark2<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+A boolean used for directed graph traversal.
+<hr/>
+<a name="mark3"/>
+<p>
+<font size="+1">
+<b>
+Self Var mark3
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> mark3<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+A boolean used for directed graph traversal.
+<hr/>
+<a name="label"/>
+<p>
+<font size="+1">
+<b>
+Self Var label
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> label<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+A label name used when unparsing directed graphs.
+<hr/>
+<a name="spaceBefore"/>
+<p>
+<font size="+1">
+<b>
+Self Var spaceBefore
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> spaceBefore<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_318.html" class="name1" target="contents">enum</a></font>[<font color="green">"empty"</font>,<font color="green">"space"</font>,<font color="green">"line"</font>,<font color="green">"lines"</font>,<font color="green">"erase"</font>]</font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The amount of space present between the last non-blank character before this <font face="courier"><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font></font> item and the beginning of this xdom item.
+<hr/>
+<a name="spaceAfter"/>
+<p>
+<font size="+1">
+<b>
+Self Var spaceAfter
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> spaceAfter<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_318.html" class="name1" target="contents">enum</a></font>[<font color="green">"empty"</font>,<font color="green">"space"</font>,<font color="green">"line"</font>,<font color="green">"lines"</font>,<font color="green">"erase"</font>]</font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The amount of space present between the end of this <font face="courier"><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font></font> item and the next non-blank character.
+<hr/>
+<a name="spaceBeforeBody"/>
+<p>
+<font size="+1">
+<b>
+Self Var spaceBeforeBody
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> spaceBeforeBody<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_318.html" class="name1" target="contents">enum</a></font>[<font color="green">"empty"</font>,<font color="green">"space"</font>,<font color="green">"line"</font>,<font color="green">"lines"</font>,<font color="green">"erase"</font>]</font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The amount of space present between the end of the start tag and the firstnon-blank character of the body.
+<hr/>
+<a name="spaceAfterBody"/>
+<p>
+<font size="+1">
+<b>
+Self Var spaceAfterBody
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> spaceAfterBody<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_318.html" class="name1" target="contents">enum</a></font>[<font color="green">"empty"</font>,<font color="green">"space"</font>,<font color="green">"line"</font>,<font color="green">"lines"</font>,<font color="green">"erase"</font>]</font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The amount of space present between the last non-blank character of the bodyand the beginning of the end tag.
+<hr/>
+<a name="kind"/>
+<p>
+<font size="+1">
+<b>
+Self Var kind
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> kind<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_318.html" class="name1" target="contents">enum</a></font>[<font color="green">"normal"</font>,<font color="green">"xml"</font>,<font color="green">"iterator"</font>,<font color="green">"xmldecl"</font>,<font color="green">"short"</font>,<font color="green">"long"</font>]</font>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+<p>
+The kind of syntactic sugar for this element.
+</p>
+<table border="2">
+<tr>
+<td> <font face="courier"><font color="green">"normal"</font></font> </td>
+<td> <font face="courier"><font color="#FF9C00"></font><font face="courier">@<font color="red">foo</font></font><font color="brown"> {</font>&nbsp;<font face="courier"><font color="#006699">bar</font></font>&nbsp;<font color="brown">}</font></font> </td>
+</tr>
+<tr>
+<td> <font face="courier"><font color="green">"xml"</font></font> </td>
+<td> <font face="courier"><font color="#FF9C00">&lt;foo</font><font color="#FF9C00">&gt;</font>bar<font color="#FF9C00">&lt;/foo&gt;</font></font> </td>
+</tr>
+<tr>
+<td> <font face="courier"><font color="green">"iterator"</font></font> </td>
+<td> <font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font> <font face="courier"><font color="#006699">i</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> 1<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font>10<font color="brown"> {</font>&nbsp;<font face="courier"><font color="#006699">i</font></font>&nbsp;<font color="brown">}</font></font> </td>
+</tr>
+<tr>
+<td> <font face="courier"><font color="green">"xmldecl"</font></font> </td>
+<td> <font face="courier"><font color="#FF9C00">&lt;?xml</font> <font color="0AAAA">version</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font color="green">"1.0"</font> <font color="0AAAA">encoding</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font color="green">"UTF-8"</font><font color="#FF9C00">?&gt;</font></font> </td>
+</tr>
+<tr>
+<td> <font face="courier"><font color="green">"short"</font></font> </td>
+<td> <font face="courier"><font color="00CD00">// short comment</font></font> </td>
+</tr>
+<tr>
+<td> <font face="courier"><font color="green">"long"</font></font> </td>
+<td> <font face="courier"><font color="00CD00">/* long comment<br/>
+over several lines */</font></font> </td>
+</tr>
+</table>
+<hr/>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Rendered Commands</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;2 <a href="nav1_2.html" target="nav1" class="numbered1">User Manual</a> > 2.3 <a href="nav2_2_3.html" target="nav2" class="numbered1">Execution</a> > 2.3.3 <font color="blue">Rendered Commands</font>
+</b>
+<br/> 
+
+<a href="content_26.html" target="contents">prev</a>
+ 
+<a href="content_28.html" target="contents">next</a>
+<br/>
+
+
+<p>
+By default, commands whose tags have no namespace or a namespace other than <font face="courier" color="green">x:</font> haverender semantics by default.
+</p>
+<p>
+The result of executing a command with render semantics is a <font face="courier"><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font> whose valueis the string representation of the command.
+</p>
+<p>
+For example, consider a <font face="courier"><font face="courier">&lt;<a href="content_100.html" class="nt1" target="contents">script</a>&gt;</font></font> containing only XML (with no tags having a <font face="courier" color="green">x:</font> namespace).The result of executing that script is similar to the effect of calling <font face="courier"><font face="courier"><a href="content_372.html" class="name1" target="contents">Unparse</a></font></font> onthe <font face="courier"><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font></font> of the script.The main difference is that the pretty printing of spaces will be different.While <font face="courier"><font face="courier"><a href="content_372.html" class="name1" target="contents">Unparse</a></font></font> indents nested elements, render semantics does no indentation for nested elements.
+</p>
+<p>
+Render semantics, however, is more than just an unparser. No only can <b>@x:Act</b> (<font face="courier" color="green">x:</font>) commands containrendered commands, but rendered commands can contain name uses and <b>@x:Act</b> commands that parameterize therendered result.
+</p>
+<p>
+The is flexibility in the generation of space characters in the result of rendered commands.If precise control of spacing is needed, an alternative is the use <b>@x:Act</b>  <font face="courier"><font face="courier">@<a href="content_125.html" class="tag1" target="contents">x:tag</a></font></font> commandthat renders an specified <font face="courier"><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font></font> tree.
+</p>
+</body>
+</html>

@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Combined Syntax</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > B <a href="nav2_4_2.html" target="nav2" class="lettered1">Syntax Summary</a> > B.2 <font color="blue">Combined Syntax</font>
+</b>
+<br/> 
+
+<a href="content_107.html" target="contents">prev</a>
+ 
+<a href="content_109.html" target="contents">next</a>
+<br/>
+
+
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_100.html" class="nt1" target="contents">script</a>&gt;</font> ::=
+</td>
+<td>
+{<font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">&lt;<a href="content_77.html" class="nt1" target="contents">cmds</a>&gt;</font>}? <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>?
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_77.html" class="nt1" target="contents">cmds</a>&gt;</font> ::=
+</td>
+<td>
+{{<font face="courier">&lt;<a href="content_102.html" class="nt1" target="contents">simple cmd</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">'<font color="brown">;</font>'</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>?} | {<font face="courier">&lt;<a href="content_78.html" class="nt1" target="contents">compound cmd</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>?}}* 
+<br/> 
+ {{<font face="courier">&lt;<a href="content_102.html" class="nt1" target="contents">simple cmd</a>&gt;</font> {<font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">'<font color="brown">;</font>'</font>}?} | <font face="courier">&lt;<a href="content_78.html" class="nt1" target="contents">compound cmd</a>&gt;</font>}
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_102.html" class="nt1" target="contents">simple cmd</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_101.html" class="nt1" target="contents">short cmd</a>&gt;</font> | <font face="courier">&lt;<a href="content_85.html" class="nt1" target="contents">exp</a>&gt;</font>
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_78.html" class="nt1" target="contents">compound cmd</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_93.html" class="nt1" target="contents">long cmd</a>&gt;</font> | <font face="courier">&lt;<a href="content_80.html" class="nt1" target="contents">element</a>&gt;</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_78.html" class="nt1" target="contents">compound cmd</a>&gt;</font> ::=
+</td>
+<td>
+{<font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font> <font face="courier">'<font color="brown">:</font>'</font>}? <font face="courier">'<font color="brown">/*</font>'</font> {<font face="courier"><a href="content_105.html" class="nt11" target="contents">text</a></font> - {<font face="courier"><a href="content_105.html" class="nt11" target="contents">text</a></font> <font face="courier">'<font color="brown">*/</font>'</font> <font face="courier"><a href="content_105.html" class="nt11" target="contents">text</a></font>}} <font face="courier">'<font color="brown">*/</font>'</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_78.html" class="nt1" target="contents">compound cmd</a>&gt;</font> ::=
+</td>
+<td>
+{<font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font> <font face="courier">'<font color="brown">:</font>'</font>}? <font face="courier">'<font color="brown">//</font>'</font> {<font face="courier"><a href="content_105.html" class="nt11" target="contents">text</a></font> - {<font face="courier"><a href="content_105.html" class="nt11" target="contents">text</a></font> <font face="courier"><a href="content_83.html" class="nt11" target="contents">eol</a></font> <font face="courier"><a href="content_105.html" class="nt11" target="contents">text</a></font>}} <font face="courier"><a href="content_83.html" class="nt11" target="contents">eol</a></font>
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_101.html" class="nt1" target="contents">short cmd</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">@</font>'</font> <font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font> {<font face="courier">&lt;<a href="content_86.html" class="nt1" target="contents">exps</a>&gt;</font>}?
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_93.html" class="nt1" target="contents">long cmd</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_101.html" class="nt1" target="contents">short cmd</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">'<font color="brown">{</font>'</font> {<font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">&lt;<a href="content_77.html" class="nt1" target="contents">cmds</a>&gt;</font>}? <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">'<font color="brown">}</font>'</font>
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_80.html" class="nt1" target="contents">element</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_103.html" class="nt1" target="contents">start tag</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? {<font face="courier">&lt;<a href="content_106.html" class="nt1" target="contents">xml</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>?}* <font face="courier">&lt;<a href="content_82.html" class="nt1" target="contents">end tag</a>&gt;</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_80.html" class="nt1" target="contents">element</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_81.html" class="nt1" target="contents">empty tag</a>&gt;</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_80.html" class="nt1" target="contents">element</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">&lt;?xml</font>'</font> {<font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font> <font face="courier">&lt;<a href="content_74.html" class="nt1" target="contents">attr</a>&gt;</font>}* <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">'<font color="brown">?&gt;</font>'</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_80.html" class="nt1" target="contents">element</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">&lt;</font>'</font> {<font face="courier">&lt;<a href="content_101.html" class="nt1" target="contents">short cmd</a>&gt;</font> | <font face="courier">&lt;<a href="content_93.html" class="nt1" target="contents">long cmd</a>&gt;</font>} <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">'<font color="brown">/&gt;</font>'</font>
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_103.html" class="nt1" target="contents">start tag</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">&lt;</font>'</font> <font face="courier">&lt;<a href="content_87.html" class="nt1" target="contents">extended id</a>&gt;</font> {<font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font> <font face="courier">&lt;<a href="content_74.html" class="nt1" target="contents">attr</a>&gt;</font>}* <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">'<font color="brown">&gt;</font>'</font>
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_82.html" class="nt1" target="contents">end tag</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">&lt;/</font>'</font> <font face="courier">&lt;<a href="content_87.html" class="nt1" target="contents">extended id</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">'<font color="brown">&gt;</font>'</font>
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_81.html" class="nt1" target="contents">empty tag</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">&lt;</font>'</font> <font face="courier">&lt;<a href="content_87.html" class="nt1" target="contents">extended id</a>&gt;</font> {<font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font> <font face="courier">&lt;<a href="content_74.html" class="nt1" target="contents">attr</a>&gt;</font>}* <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">'<font color="brown">/&gt;</font>'</font>
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_74.html" class="nt1" target="contents">attr</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_87.html" class="nt1" target="contents">extended id</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">'<font color="brown">=</font>'</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">&lt;<a href="content_104.html" class="nt1" target="contents">string</a>&gt;</font>
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_106.html" class="nt1" target="contents">xml</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_80.html" class="nt1" target="contents">element</a>&gt;</font> | <font face="courier">&lt;<a href="content_84.html" class="nt1" target="contents">escape</a>&gt;</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_106.html" class="nt1" target="contents">xml</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier"><a href="content_105.html" class="nt11" target="contents">text</a></font> - {<font face="courier"><a href="content_105.html" class="nt11" target="contents">text</a></font> {<font face="courier">'<font color="brown">&lt;</font>'</font> | <font face="courier">'<font color="brown">&</font>'</font>} <font face="courier"><a href="content_105.html" class="nt11" target="contents">text</a></font>}
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_106.html" class="nt1" target="contents">xml</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">&lt;!--</font>'</font> {<font face="courier"><a href="content_105.html" class="nt11" target="contents">text</a></font> - {<font face="courier"><a href="content_105.html" class="nt11" target="contents">text</a></font> <font face="courier">'<font color="brown">--&gt;</font>'</font> <font face="courier"><a href="content_105.html" class="nt11" target="contents">text</a></font>}} <font face="courier">'<font color="brown">--&gt;</font>'</font>
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_84.html" class="nt1" target="contents">escape</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">&</font>'</font> <font face="courier">'<font color="brown">#</font>'</font> {<font face="courier"><a href="content_79.html" class="nt11" target="contents">digit</a></font>}+ <font face="courier">'<font color="brown">;</font>'</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_84.html" class="nt1" target="contents">escape</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">&</font>'</font> <font face="courier">'<font color="brown">#</font>'</font> {<font face="courier">'<font color="brown">x</font>'</font> | <font face="courier">'<font color="brown">X</font>'</font>} {<font face="courier"><a href="content_79.html" class="nt11" target="contents">digit</a></font> | <font face="courier"><a href="content_92.html" class="nt11" target="contents">letter</a></font>}+ <font face="courier">'<font color="brown">;</font>'</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_84.html" class="nt1" target="contents">escape</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">&</font>'</font> <font face="courier">&lt;<a href="content_87.html" class="nt1" target="contents">extended id</a>&gt;</font> <font face="courier">'<font color="brown">;</font>'</font>
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font> ::=
+</td>
+<td>
+{<font face="courier">'<font color="brown"> </font>'</font> | <font face="courier"><font color="brown">tab</font></font> | <font face="courier"><a href="content_83.html" class="nt11" target="contents">eol</a></font>}+
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_86.html" class="nt1" target="contents">exps</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_85.html" class="nt1" target="contents">exp</a>&gt;</font> {<font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">'<font color="brown">,</font>'</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">&lt;<a href="content_85.html" class="nt1" target="contents">exp</a>&gt;</font>}*
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_85.html" class="nt1" target="contents">exp</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_97.html" class="nt1" target="contents">qualified</a>&gt;</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_85.html" class="nt1" target="contents">exp</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_95.html" class="nt1" target="contents">prefix op</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? {<font face="courier">'<font color="brown">#</font>'</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">&lt;<a href="content_96.html" class="nt1" target="contents">primary</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>?}? <font face="courier">&lt;<a href="content_85.html" class="nt1" target="contents">exp</a>&gt;</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_85.html" class="nt1" target="contents">exp</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_85.html" class="nt1" target="contents">exp</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">&lt;<a href="content_90.html" class="nt1" target="contents">infix op</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? {<font face="courier">'<font color="brown">#</font>'</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">&lt;<a href="content_96.html" class="nt1" target="contents">primary</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>?}? <font face="courier">&lt;<a href="content_85.html" class="nt1" target="contents">exp</a>&gt;</font>
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_97.html" class="nt1" target="contents">qualified</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_96.html" class="nt1" target="contents">primary</a>&gt;</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_97.html" class="nt1" target="contents">qualified</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_97.html" class="nt1" target="contents">qualified</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">'<font color="brown">.</font>'</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">&lt;<a href="content_94.html" class="nt1" target="contents">name</a>&gt;</font> {<font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">'<font color="brown">#</font>'</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">&lt;<a href="content_96.html" class="nt1" target="contents">primary</a>&gt;</font>}?
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_97.html" class="nt1" target="contents">qualified</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_97.html" class="nt1" target="contents">qualified</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">'<font color="brown">(</font>'</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? {<font face="courier">&lt;<a href="content_86.html" class="nt1" target="contents">exps</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>?}? <font face="courier">'<font color="brown">)</font>'</font> {<font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">'<font color="brown">#</font>'</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">&lt;<a href="content_96.html" class="nt1" target="contents">primary</a>&gt;</font>}?
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_96.html" class="nt1" target="contents">primary</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_94.html" class="nt1" target="contents">name</a>&gt;</font> | <font face="courier">&lt;<a href="content_91.html" class="nt1" target="contents">int</a>&gt;</font> | <font face="courier">&lt;<a href="content_88.html" class="nt1" target="contents">float</a>&gt;</font> | <font face="courier">&lt;<a href="content_104.html" class="nt1" target="contents">string</a>&gt;</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_96.html" class="nt1" target="contents">primary</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">(</font>'</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">&lt;<a href="content_85.html" class="nt1" target="contents">exp</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">'<font color="brown">)</font>'</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_96.html" class="nt1" target="contents">primary</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">[</font>'</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">&lt;<a href="content_86.html" class="nt1" target="contents">exps</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">'<font color="brown">]</font>'</font>
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_95.html" class="nt1" target="contents">prefix op</a>&gt;</font> ::=
+</td>
+<td>
+'<font face="courier"><a href="content_227.html" class="preop1" target="contents">~</a></font>' | '<font face="courier"><a href="content_228.html" class="preop1" target="contents">-</a></font>' | '<font face="courier"><a href="content_229.html" class="preop1" target="contents">!</a></font>' | '<font face="courier"><a href="content_230.html" class="preop1" target="contents">%</a></font>' | '<font face="courier"><a href="content_231.html" class="preop1" target="contents">**</a></font>'
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_90.html" class="nt1" target="contents">infix op</a>&gt;</font> ::=
+</td>
+<td>
+'<font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font>' '<font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font>' '<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font>' '<font face="courier"><a href="content_243.html" class="inop1" target="contents">++</a></font>' '<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font>' '<font face="courier"><a href="content_250.html" class="inop1" target="contents">?</a></font>'
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_90.html" class="nt1" target="contents">infix op</a>&gt;</font> ::=
+</td>
+<td>
+'<font face="courier"><a href="content_234.html" class="inop1" target="contents">==</a></font>' | '<font face="courier"><a href="content_235.html" class="inop1" target="contents">!=</a></font>' | '<font face="courier"><a href="content_236.html" class="inop1" target="contents">&lt;</a></font>' | '<font face="courier"><a href="content_237.html" class="inop1" target="contents">&gt;</a></font>' | '<font face="courier"><a href="content_238.html" class="inop1" target="contents">&lt;=</a></font>' | '<font face="courier"><a href="content_239.html" class="inop1" target="contents">&gt;=</a></font>'
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_90.html" class="nt1" target="contents">infix op</a>&gt;</font> ::=
+</td>
+<td>
+'<font face="courier"><a href="content_244.html" class="inop1" target="contents">+</a></font>' | '<font face="courier"><a href="content_245.html" class="inop1" target="contents">-</a></font>' | '<font face="courier"><a href="content_246.html" class="inop1" target="contents">*</a></font>' | '<font face="courier"><a href="content_247.html" class="inop1" target="contents">/</a></font>' | '<font face="courier"><a href="content_248.html" class="inop1" target="contents">/+</a></font>'
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_90.html" class="nt1" target="contents">infix op</a>&gt;</font> ::=
+</td>
+<td>
+'<font face="courier"><a href="content_240.html" class="inop1" target="contents">&</a></font>' | '<font face="courier"><a href="content_241.html" class="inop1" target="contents">|</a></font>' | '<font face="courier"><a href="content_242.html" class="inop1" target="contents">^</a></font>'
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_94.html" class="nt1" target="contents">name</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font> {<font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">'<font color="brown">[</font>'</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? {<font face="courier">&lt;<a href="content_86.html" class="nt1" target="contents">exps</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>?}? <font face="courier">'<font color="brown">]</font>'</font>}?
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_75.html" class="nt1" target="contents">basic id</a>&gt;</font> | {<font face="courier">'<font color="brown">$</font>'</font> <font face="courier">&lt;<a href="content_87.html" class="nt1" target="contents">extended id</a>&gt;</font> <font face="courier">'<font color="brown">$</font>'</font>}
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_75.html" class="nt1" target="contents">basic id</a>&gt;</font> ::=
+</td>
+<td>
+{<font face="courier"><a href="content_92.html" class="nt11" target="contents">letter</a></font> | <font face="courier">'<font color="brown">_</font>'</font> | <font face="courier">'<font color="brown">:</font>'</font>} 
+<br/> 
+ {<font face="courier"><a href="content_92.html" class="nt11" target="contents">letter</a></font> | <font face="courier">'<font color="brown">_</font>'</font> | <font face="courier">'<font color="brown">:</font>'</font> | <font face="courier"><a href="content_79.html" class="nt11" target="contents">digit</a></font>}*
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_87.html" class="nt1" target="contents">extended id</a>&gt;</font> ::=
+</td>
+<td>
+{<font face="courier"><a href="content_92.html" class="nt11" target="contents">letter</a></font> | <font face="courier">'<font color="brown">_</font>'</font> | <font face="courier">'<font color="brown">:</font>'</font> | <font face="courier">'<font color="brown">.</font>'</font>} 
+<br/> 
+ {<font face="courier"><a href="content_92.html" class="nt11" target="contents">letter</a></font> | <font face="courier">'<font color="brown">_</font>'</font> | <font face="courier">'<font color="brown">:</font>'</font> | <font face="courier">'<font color="brown">.</font>'</font> | <font face="courier">'<font color="brown">-</font>'</font> | <font face="courier"><a href="content_79.html" class="nt11" target="contents">digit</a></font>}*
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_104.html" class="nt1" target="contents">string</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">"</font>'</font> {{<font face="courier"><a href="content_99.html" class="nt11" target="contents">schar</a></font> - <font face="courier">'<font color="brown">"</font>'</font>} | <font face="courier">&lt;<a href="content_84.html" class="nt1" target="contents">escape</a>&gt;</font>}* <font face="courier">'<font color="brown">"</font>'</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_104.html" class="nt1" target="contents">string</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">'</font>'</font> {{<font face="courier"><a href="content_99.html" class="nt11" target="contents">schar</a></font> - <font face="courier">'<font color="brown">'</font>'</font>} | <font face="courier">&lt;<a href="content_84.html" class="nt1" target="contents">escape</a>&gt;</font>}* <font face="courier">'<font color="brown">'</font>'</font>
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_91.html" class="nt1" target="contents">int</a>&gt;</font> ::=
+</td>
+<td>
+{<font face="courier"><a href="content_79.html" class="nt11" target="contents">digit</a></font>}+
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<a href="content_88.html" class="nt1" target="contents">float</a>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_91.html" class="nt1" target="contents">int</a>&gt;</font> <font face="courier">'<font color="brown">.</font>'</font> {<font face="courier">&lt;<a href="content_91.html" class="nt1" target="contents">int</a>&gt;</font>}? {<font face="courier">'<font color="brown">e</font>'</font> | <font face="courier">'<font color="brown">E</font>'</font> {<font face="courier">'<font color="brown">+</font>'</font> | <font face="courier">'<font color="brown">-</font>'</font>}? <font face="courier">&lt;<a href="content_91.html" class="nt1" target="contents">int</a>&gt;</font>}?
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier"><a href="content_76.html" class="nt11" target="contents">char</a></font> ::=
+</td>
+<td>
+<font face="courier"><a href="content_92.html" class="nt11" target="contents">letter</a></font> | <font face="courier"><a href="content_79.html" class="nt11" target="contents">digit</a></font> | <font face="courier">'<font color="brown">@</font>'</font> | <font face="courier">'<font color="brown">_</font>'</font> | <font face="courier">'<font color="brown">.</font>'</font> | <font face="courier">'<font color="brown">$</font>'</font> | <font face="courier">'<font color="brown">%</font>'</font> | 
+<br/> 
+ | <font face="courier">'<font color="brown">(</font>'</font> | <font face="courier">'<font color="brown">)</font>'</font> | <font face="courier">'<font color="brown">{</font>'</font> | <font face="courier">'<font color="brown">}</font>'</font> | <font face="courier">'<font color="brown">[</font>'</font> | <font face="courier">'<font color="brown">]</font>'</font> | <font face="courier">'<font color="brown">'</font>'</font> | <font face="courier">'<font color="brown">"</font>'</font> | <font face="courier">'<font color="brown">`</font>'</font> | 
+<br/> 
+ | <font face="courier">'<font color="brown">+</font>'</font> | <font face="courier">'<font color="brown">-</font>'</font> | <font face="courier">'<font color="brown">*</font>'</font> | <font face="courier">'<font color="brown">/</font>'</font> | <font face="courier">'<font color="brown">|</font>'</font> | <font face="courier">'<font color="brown">^</font>'</font> | <font face="courier">'<font color="brown">&</font>'</font> | <font face="courier">'<font color="brown">!</font>'</font> | 
+<br/> 
+ | <font face="courier">'<font color="brown">:</font>'</font> | <font face="courier">'<font color="brown">=</font>'</font> | <font face="courier">'<font color="brown">&lt;</font>'</font> | <font face="courier">'<font color="brown">&gt;</font>'</font> | 
+<br/> 
+ | <font face="courier">'<font color="brown">~</font>'</font> | <font face="courier">'<font color="brown">?</font>'</font> | <font face="courier">'<font color="brown">#</font>'</font> | <font face="courier">'<font color="brown">;</font>'</font> | <font face="courier">'<font color="brown">,</font>'</font> | <font face="courier">'<font color="brown">\</font>'</font>
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier"><a href="content_99.html" class="nt11" target="contents">schar</a></font> ::=
+</td>
+<td>
+{<font face="courier"><a href="content_76.html" class="nt11" target="contents">char</a></font> | <font face="courier">'<font color="brown"> </font>'</font>} - <font face="courier">'<font color="brown">&</font>'</font>
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier"><a href="content_105.html" class="nt11" target="contents">text</a></font> ::=
+</td>
+<td>
+{<font face="courier"><a href="content_76.html" class="nt11" target="contents">char</a></font> | <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>}*
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier"><a href="content_83.html" class="nt11" target="contents">eol</a></font> ::=
+</td>
+<td>
+{<font face="courier"><font color="brown">CR</font></font>}? <font face="courier"><font color="brown">LF</font></font>
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier"><a href="content_92.html" class="nt11" target="contents">letter</a></font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">a</font>'</font>..<font face="courier">'<font color="brown">z</font>'</font> | <font face="courier">'<font color="brown">A</font>'</font>..<font face="courier">'<font color="brown">Z</font>'</font>
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier"><a href="content_79.html" class="nt11" target="contents">digit</a></font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">0</font>'</font>..<font face="courier">'<font color="brown">9</font>'</font>
+</td>
+</tr>
+</table>
+
+</font>
+</body>
+</html>

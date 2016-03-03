@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>string</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > L <a href="nav2_4_12.html" target="nav2" class="lettered1">Examples</a> > L.3 <font face="courier"><font color="blue">string</font></font>
+</b>
+<br/> 
+
+<a href="content_304.html" target="contents">prev</a>
+ 
+<a href="content_306.html" target="contents">next</a>
+<br/>
+
+
+<p>
+This example shows some ways to use the <font face="courier"><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font> type.
+</p>
+<br/>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_128.html" class="tag1" target="contents">x:use</a></font> <font face="courier"><font color="#006699">library:iterator</font></font>;<br/>
+<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">fold1</font></font>(<font face="courier"><font color="#006699">s</font></font>)<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">diff</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font color="green">"a"</font>(1) <font face="courier"><a href="content_245.html" class="inop1" target="contents">-</a></font> <font color="green">"A"</font>(1);<br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font> <font face="courier"><font color="#006699">ch</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_171.html" class="name1" target="contents">Chars</a></font>[<font face="courier"><font color="#006699">s</font></font>]<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_120.html" class="tag1" target="contents">x:if</a></font> <font color="green">"A"</font>(1) <font face="courier"><a href="content_238.html" class="inop1" target="contents">&lt;=</a></font> <font face="courier"><font color="#006699">ch</font></font> <font face="courier"><a href="content_240.html" class="inop1" target="contents">&</a></font> <font face="courier"><font color="#006699">ch</font></font> <font face="courier"><a href="content_238.html" class="inop1" target="contents">&lt;=</a></font> <font color="green">"Z"</font>(1)<font color="brown"> {</font>&nbsp;<font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>(<font color="0AAAA">code</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">ch</font></font> <font face="courier"><a href="content_244.html" class="inop1" target="contents">+</a></font> <font face="courier"><font color="#006699">diff</font></font>)&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_114.html" class="tag1" target="contents">x:else</a></font><font color="brown"> {</font>&nbsp;<font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>(<font color="0AAAA">code</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">ch</font></font>)&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+<font color="brown">}</font><br/>
+<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">fname</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font color="green">"c:\java\xact\script\test.xml"</font>;<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <font face="courier"><font color="#006699">s</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font color="green">"aBc"</font> <font face="courier"><a href="content_243.html" class="inop1" target="contents">++</a></font> <font color="green">"DEFGh"</font> <font face="courier"><a href="content_243.html" class="inop1" target="contents">++</a></font> <font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font> <font face="courier"><a href="content_243.html" class="inop1" target="contents">++</a></font> <font color="green">"xyz"</font>;<br/>
+<br/>
+<font face="courier"><font color="#006699">s</font></font>(3);&nbsp;<font color="green">" "</font>;<br/>
+<font face="courier"><font color="#006699">s</font></font>(3<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font>3);&nbsp;<font color="green">" "</font>;<br/>
+<font face="courier"><font color="#006699">s</font></font>(2<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font>6);<br/>
+<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font> <font face="courier"><font color="#006699">line</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_185.html" class="name1" target="contents">Lines</a></font>[<font face="courier"><font color="#006699">s</font></font>]<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="green">"++ "</font>;<font face="courier"><font color="#006699">line</font></font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font><br/>
+<font color="brown">}</font><br/>
+<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font> <font face="courier"><font color="#006699">ch</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_171.html" class="name1" target="contents">Chars</a></font>[<font color="green">"abcDEF"</font>]<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>(<font color="0AAAA">code</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">ch</font></font>);<br/>
+&nbsp;&nbsp;&nbsp;<font color="green">"=&amp;<font color="blue">ch</font>; "</font><br/>
+<font color="brown">}</font><br/>
+<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">s1</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font color="green">"DEF"</font>;<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">s2</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font color="green">"abc"</font>;<br/>
+<font face="courier"><font color="#006699">s2</font></font> <font face="courier"><a href="content_236.html" class="inop1" target="contents">&lt;</a></font> <font face="courier"><font color="#006699">s1</font></font>;<br/>
+<font face="courier"><font color="#006699">s2</font></font> <font face="courier"><a href="content_236.html" class="inop1" target="contents">&lt;</a></font>#<font face="courier"><a href="content_160.html" class="name1" target="contents">fold</a></font> <font face="courier"><font color="#006699">s1</font></font>;<br/>
+<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<br/>
+<font face="courier"><a href="content_160.html" class="name1" target="contents">fold</a></font>(<font face="courier"><font color="#006699">s</font></font>);<br/>
+<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><font color="#006699">fold1</font></font>(<font face="courier"><font color="#006699">s</font></font>);<br/>
+<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<br/>
+<font face="courier"><a href="content_336.html" class="name1" target="contents">Combine</a></font>[<font face="courier"><a href="content_347.html" class="name1" target="contents">Separate</a></font>[<font face="courier"><font color="#006699">fname</font></font>,<font color="green">"\"</font>],<font color="green">"/"</font>];<br/>
+<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<br/>
+<font face="courier"><a href="content_336.html" class="name1" target="contents">Combine</a></font>[<font face="courier"><a href="content_347.html" class="name1" target="contents">Separate</a></font>[<font face="courier"><font color="#006699">fname</font></font>,<font color="green">""</font>],<font color="green">"."</font>];<br/>
+<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font> <font face="courier"><font color="#006699">x</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_347.html" class="name1" target="contents">Separate</a></font>[<font face="courier"><font color="#006699">fname</font></font>,<font color="green">"script"</font>]<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">x</font></font>;&nbsp;<font color="green">" "</font><br/>
+<font color="brown">}</font></font>
+</body>
+</html>

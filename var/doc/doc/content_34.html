@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Keyword and Variable Parameters</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;2 <a href="nav1_2.html" target="nav1" class="numbered1">User Manual</a> > 2.4 <a href="nav2_2_4.html" target="nav2" class="numbered1">Functions</a> > 2.4.2 <font color="blue">Keyword and Variable Parameters</font>
+</b>
+<br/> 
+
+<a href="content_33.html" target="contents">prev</a>
+ 
+<a href="content_35.html" target="contents">next</a>
+<br/>
+
+
+<p>
+In Java, there can be multiple different versions of a singlefunction which differ in the number and/or types of parameters.In <b>@x:Act</b> there can be only a single version of a function,but that single version can be set up to handle awide range of parameters.This mechanism also supports optional keyword parametersand variable length parameter lists.
+</p>
+<p>
+To write a function that has flexible parameter handling       the function will have a single formal parameter prefixed with the <font face="courier"><font face="courier"><a href="content_230.html" class="preop1" target="contents">%</a></font></font>
+prefix operator.
+</p>
+<p>
+When calling a function that has a single <font face="courier"><font face="courier"><a href="content_230.html" class="preop1" target="contents">%</a></font></font> formal parameter,the actual parameters are each evaluated and then combined into a single <font face="courier"><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font></font> object.The attributes of this object then contain the actual parameter values.Within the function body the <font face="courier"><font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font></font> view can be used to get named parametersand the <font face="courier"><font face="courier"><a href="content_153.html" class="name1" target="contents">array</a></font></font> view can be used to get positional parameters.
+</p>
+<p>
+There is also a special <font face="courier"><font face="courier"><a href="content_230.html" class="preop1" target="contents">%</a></font></font> form for actual parameters.If a function call contains a single actual parameter with is the <font face="courier"><font face="courier"><a href="content_230.html" class="preop1" target="contents">%</a></font></font> prefixoperator applied to a <font face="courier"><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font></font> value then the actual parameter listis created by expanding the attributes of that xdom element.
+</p>
+</body>
+</html>

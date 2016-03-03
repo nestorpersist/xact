@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>x:func</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > C <a href="nav2_4_3.html" target="nav2" class="lettered1">Tags</a> >  <font face="courier">@<font color="brown">x:func</font></font>
+</b>
+<br/> 
+
+<a href="content_118.html" target="contents">prev</a>
+ 
+<a href="content_120.html" target="contents">next</a>
+<br/>
+
+
+<p>
+<font size="+1">
+<b>
+Description
+</b>
+</font>
+</p>
+<p>
+This command declares a function.
+</p>
+<p>
+<font size="+1">
+<b>
+Command Syntax
+</b>
+</font>
+</p>
+<p>
+<font face="courier">'<font color="brown">@x:func</font>'</font> <font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font> {<font face="courier">'<font color="brown">[</font>'</font> <font face="courier">&lt;<font color="black">func formals</font>&gt;</font> <font face="courier">'<font color="brown">]</font>'</font>}? {<font face="courier">'<font color="brown">(</font>'</font> <font face="courier">&lt;<font color="black">func formals</font>&gt;</font> <font face="courier">'<font color="brown">)</font>'</font>}? {'<font face="courier"><a href="content_227.html" class="preop1" target="contents">~</a></font>' <font face="courier">&lt;<a href="content_85.html" class="nt1" target="contents">exp</a>&gt;</font>}?
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">func formals</font>&gt;</font> ::=
+</td>
+<td>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">func formals</font>&gt;</font> ::=
+</td>
+<td>
+'<font face="courier"><a href="content_230.html" class="preop1" target="contents">%</a></font>' <font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">func formals</font>&gt;</font> ::=
+</td>
+<td>
+{<font face="courier">&lt;<font color="black">func formal</font>&gt;</font> <font face="courier">'<font color="brown">,</font>'</font>}* <font face="courier">&lt;<font color="black">func formal</font>&gt;</font>
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">func formal</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font> {'<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font>' <font face="courier">&lt;<a href="content_85.html" class="nt1" target="contents">exp</a>&gt;</font>}?
+</td>
+</tr>
+</table>
+
+</font>
+<p>
+The following options are permitted.
+</p>
+<table border="2">
+<tr>
+<td><font face="courier"><font face="courier"><font color="red">lhs</font></font></font></td>
+<td>This function is a left-hand-side function that can be calledfrom the left-hand-side of assignments.There must also be a <font face="courier"><font face="courier"><font color="red">rhs</font></font></font> functionwith the same name declared in the same scope.Only one of <font face="courier"><font face="courier"><font color="red">lhs</font></font></font> and <font face="courier"><font face="courier"><font color="red">rhs</font></font></font> canbe specified on a single function.</td>
+</tr>
+<tr>
+<td><font face="courier"><font face="courier"><font color="red">rhs</font></font></font></td>
+<td>This function is a left-hand-side function that can be calledfrom the left-hand-side of assignments.There must also be a <font face="courier"><font face="courier"><font color="red">rhs</font></font></font> functionwith the same name declared in the same scope.Only one of <font face="courier"><font face="courier"><font color="red">lhs</font></font></font> and <font face="courier"><font face="courier"><font color="red">rhs</font></font></font> canbe specified on a single function.</td>
+</tr>
+<tr>
+<td><font face="courier"><font face="courier"><font color="red">visible</font></font></font></td>
+<td>The function name is declared as visible in the enclosing scope.If <font face="courier"><font face="courier"><font color="red">visible</font></font></font> is specified,then <font face="courier"><font face="courier"><font color="red">local</font></font></font> can not be specified.For lhs-rhs function pairs either both or neither mustbe <font face="courier"><font face="courier"><font color="red">visible</font></font></font>.</td>
+</tr>
+<tr>
+<td><font face="courier"><font face="courier"><font color="red">local</font></font></font></td>
+<td>The function name is declared as local in the enclosing scope.If <font face="courier"><font face="courier"><font color="red">local</font></font></font> is specified,then <font face="courier"><font face="courier"><font color="red">visible</font></font></font> can not be specified.For lhs-rhs function pairs either both or neither mustbe <font face="courier"><font face="courier"><font color="red">local</font></font></font>.The <font face="courier"><font face="courier"><font color="red">local</font></font></font> option is only used for namesdeclared directly within <font face="courier"><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font>, <font face="courier"><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font></font> and <font face="courier"><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font></font> commands.</td>
+</tr>
+</table>
+</p>
+<p>
+<font size="+1">
+<b>
+Name Semantics
+</b>
+</font>
+</p>
+<p>
+The func name is declared the scope that surrounds the <font face="courier"><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font></font> command.The func formal <font face="courier"><font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font></font>s are declared within the <font face="courier"><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font></font> command scope.
+</p>
+<p>
+<font size="+1">
+<b>
+Execution Semantics
+</b>
+</font>
+</p>
+<p>
+<p>
+Execution of the <font face="courier"><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font></font> commandassociates the function value with the instance of the function name.The result of execution of the <font face="courier"><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font></font> command is <font face="courier"><font face="courier"><a href="content_221.html" class="name1" target="contents">null</a></font></font>.The body of the function is executed only when the function is called.A function can no longer be called after the scope containing the function command exits.
+</p>
+</p>
+<p>
+<font size="+1">
+<b>
+Examples
+</b>
+</font>
+</p>
+<p>
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">fact</font></font>(<font face="courier"><font color="#006699">n</font></font>)<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_120.html" class="tag1" target="contents">x:if</a></font> <font face="courier"><font color="#006699">n</font></font> <font face="courier"><a href="content_234.html" class="inop1" target="contents">==</a></font> 0<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="brown">}</font>&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_114.html" class="tag1" target="contents">x:else</a></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">n</font></font> <font face="courier"><a href="content_246.html" class="inop1" target="contents">*</a></font> <font face="courier"><font color="#006699">fact</font></font>(<font face="courier"><font color="#006699">n</font></font> <font face="courier"><a href="content_245.html" class="inop1" target="contents">-</a></font> 1)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font> <font face="courier"><font color="#006699">i</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> 1<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font>10<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">j</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">fact</font></font>(<font face="courier"><font color="#006699">i</font></font>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">"fact(&amp;<font color="blue">i</font>;)=&amp;<font color="blue">j</font>;&amp;<font color="blue">eol</font>;"</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font></font>
+<br/>
+
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">sum</font></font>[<font face="courier"><font color="#006699">t</font></font>](<font face="courier"><font color="#006699">a</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">t</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">t</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">t</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">a</font></font> <font face="courier"><a href="content_244.html" class="inop1" target="contents">+</a></font> <font face="courier"><font color="#006699">b</font></font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">sum</font></font>[<font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>](2,<wbr>3);<br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">sum</font></font>[<font face="courier"><a href="content_132.html" class="name1" target="contents">float</a></font>](2.3,<wbr>7.99)</font>
+<br/>
+
+<p>
+See <font face="courier"><font face="courier"><a href="content_311.html" class="example1" target="contents">curry</a></font></font> example.
+</p>
+</p>
+</body>
+</html>

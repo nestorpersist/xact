@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>even</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;1 <a href="nav1_1.html" target="nav1" class="numbered1">Introduction</a> > 1.2 <a href="nav2_1_2.html" target="nav2" class="numbered1">Examples</a> > 1.2.7 <font face="courier"><font color="blue">even</font></font>
+</b>
+<br/> 
+
+<a href="content_10.html" target="contents">prev</a>
+ 
+<a href="content_12.html" target="contents">next</a>
+<br/>
+
+
+<p>
+ <b>@x:Act</b> does not support type inheritance.Instead, an alterative mechanism called views are provided.Here is a simple example that produces a view of the <font face="courier"><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font></font> typethat restricts the values to only those that are even.
+</p>
+<br/>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font> <font face="courier"><font color="#006699">even</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">sys:Is</font></font>(<font face="courier"><font color="#006699">v</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>),<font face="courier"><font color="#006699">visible</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">v</font></font> <font face="courier"><a href="content_248.html" class="inop1" target="contents">/+</a></font> 2 <font face="courier"><a href="content_234.html" class="inop1" target="contents">==</a></font> 0<br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+<font color="brown">}</font><br/>
+2<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">even</font></font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+5<font face="courier"><a href="content_250.html" class="inop1" target="contents">?</a></font><font face="courier"><font color="#006699">even</font></font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+10<font face="courier"><a href="content_250.html" class="inop1" target="contents">?</a></font><font face="courier"><font color="#006699">even</font></font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font></font>
+<p>
+The special <font face="courier"><font color="green">"sys:Is"</font></font> function states what valuesare "in" the view.The <font face="courier"><font face="courier"><a href="content_248.html" class="inop1" target="contents">/+</a></font></font> is the remainder operation.
+</p>
+<p>
+The infix <font face="courier"><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font></font> operation assertsthat its left operand has the type or view specified by the right operandand returns the value of the left operand.The infix <font face="courier"><font face="courier"><a href="content_250.html" class="inop1" target="contents">?</a></font></font> operator tests if its left operandhas the type or view specified by the right operand.
+</p>
+</body>
+</html>

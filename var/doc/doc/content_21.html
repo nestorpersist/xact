@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Names</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;2 <a href="nav1_2.html" target="nav1" class="numbered1">User Manual</a> > 2.2 <a href="nav2_2_2.html" target="nav2" class="numbered1">Names and Scopes</a> > 2.2.2 <font color="blue">Names</font>
+</b>
+<br/> 
+
+<a href="content_20.html" target="contents">prev</a>
+ 
+<a href="content_22.html" target="contents">next</a>
+<br/>
+
+
+<p>
+A <font face="courier"><font face="courier">&lt;<a href="content_94.html" class="nt1" target="contents">name</a>&gt;</font></font> can be either an <font face="courier"><font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font></font> orcan be an <font face="courier"><font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font></font> followed by a list of expressionsenclosed in <font face="courier" color="green">[]</font> brackets.For name binding purposes a name without brackets is consideredto be a different name than a name with brackets. Twonames with the same id and bracketed expression listsare considered to be the same name for name binding purposeseven if the number of expressions and their values aredifferent.
+</p>
+<p>
+The are two forms of <font face="courier"><font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font></font>.A <font face="courier"><font face="courier">&lt;<a href="content_75.html" class="nt1" target="contents">basic id</a>&gt;</font></font> is a Java-like identifier.An <font face="courier"><font face="courier">&lt;<a href="content_87.html" class="nt1" target="contents">extended id</a>&gt;</font></font> is an XML-like identifierand permits more characters than the <font face="courier"><font face="courier">&lt;<a href="content_75.html" class="nt1" target="contents">basic id</a>&gt;</font></font>
+
+</p>
+<p>
+ <b>@x:Act</b> has no reserved words, so all <font face="courier"><font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font></font>s arepermitted.There are however many predefined names.Predefined names can be redefined.
+</p>
+<p>
+For the <font face="courier" color="green">x:</font> namespace, names are defined in several places.
+<ul>
+<li>
+The <font face="courier"><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font></font> command define a variable name in the enclosing scope.
+</li>
+<li>
+The <font face="courier"><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font></font> command defines a constant name in the enclosing scope.
+</li>
+<li>
+The <font face="courier"><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font></font> command defines a function name in the enclosing scopeand name and regular parameter names within the function scope.
+</li>
+<li>
+The <font face="courier"><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font> command defines a type name in the enclosing scopeand name parameter names within the type scope.
+</li>
+<li>
+The <font face="courier"><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font></font> command defines a view name in the enclosing scopeand name parameter names within the view scope.
+</li>
+<li>
+The <font face="courier"><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font></font> command defines iteration nameswithin the for scope.
+</li>
+<li>
+The <font face="courier"><font face="courier">@<a href="content_126.html" class="tag1" target="contents">x:thread</a></font></font> command define a thread name in the enclosing scope.
+</li>
+<li>
+The name <font face="courier"><font face="courier"><font color="#006699">self</font></font></font> is automatically defined withinthe <font face="courier"><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font> command.
+</li>
+<li>
+The <font face="courier"><font face="courier">@<a href="content_122.html" class="tag1" target="contents">x:module</a></font></font> command defines exported names in the enclosing scope.
+</li>
+<li>
+The <font face="courier"><font face="courier">@<a href="content_128.html" class="tag1" target="contents">x:use</a></font></font> command defines imported names in the enclosing scope.
+</li>
+</ul>
+</p>
+<p>
+A <font face="courier"><font face="courier">&lt;<a href="content_94.html" class="nt1" target="contents">name</a>&gt;</font></font> within an <font face="courier"><font face="courier">&lt;<a href="content_85.html" class="nt1" target="contents">exp</a>&gt;</font></font> that is not a definitionof that name is a use of that name.Each extended id form of <font face="courier"><font face="courier">&lt;<a href="content_84.html" class="nt1" target="contents">escape</a>&gt;</font></font> is also a use of that extended id name.
+</p>
+</body>
+</html>

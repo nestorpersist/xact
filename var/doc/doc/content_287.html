@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>LHS/RHS</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > K <a href="nav2_4_11.html" target="nav2" class="lettered1">Glossary</a> >  <font color="blue">LHS/RHS</font>
+</b>
+<br/> 
+
+<a href="content_286.html" target="contents">prev</a>
+ 
+<a href="content_288.html" target="contents">next</a>
+<br/>
+
+
+<p>
+ <b>@x:Act</b> allows functions to appear on both the left-hand-side (LHS) andright-hand-side (RHS) of assignments.This is handy when defining abstractions such as dot qualificationsand subscripting that are handle to use in both places.IT is also handy for referencing type data components.Unlike Java that requires separate getter and setter functions,in <b>@x:Act</b> they can be combined into a single LHS/RHS function.Consider a couple of examples.
+</p>
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <font face="courier"><font color="#006699">r</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font>(<font color="0AAAA">a</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font>3);<br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <font face="courier"><font color="#006699">a</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_153.html" class="name1" target="contents">array</a></font>(1,<wbr>2,<wbr>3);<br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">r</font></font>.<font color="FF00FF">a</font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">r</font></font>.<font color="FF00FF">a</font> <font face="courier"><a href="content_244.html" class="inop1" target="contents">+</a></font> 1;<br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">a</font></font>(3) <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> 2 <font face="courier"><a href="content_246.html" class="inop1" target="contents">*</a></font> <font face="courier"><font color="#006699">a</font></font>(3)</font>
+<br/>
+
+<p>
+LHS/RHS functions are declared with two <font face="courier"><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font></font> declarationsfor the same name, one with the <font face="courier" color="green">lhs</font> option and the otherwith the <font face="courier" color="green">rhs</font> option.
+</p>
+<p>
+For more information see <a href="content_36.html" class="numbered1" target="contents">LHS and RHS</a>.
+</p>
+</body>
+</html>

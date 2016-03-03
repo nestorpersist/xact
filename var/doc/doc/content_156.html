@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>bodyrec</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > E <a href="nav2_4_5.html" target="nav2" class="lettered1">Views</a> >  <font face="courier"><font color="blue">bodyrec</font></font>
+</b>
+<br/> 
+
+<a href="content_155.html" target="contents">prev</a>
+ 
+<a href="content_157.html" target="contents">next</a>
+<br/>
+
+
+<p>
+<font size="+1">
+<b>
+Description
+</b>
+</font>
+</p>
+<p>
+View of <font face="courier"><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font></font> that treats <font face="courier"><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font></font>s directlywithin the body as a record.The tag of those elements becomes the record element name.
+</p>
+<p>
+<font size="+1">
+<b>
+View bodyrec
+</b>
+</font>
+</p>
+<p>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font> bodyrec</font>
+</p>
+<table border="3">
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Is" class="underline1">sys:Is</a>(<font face="courier"><font color="#006699">v</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Dot" class="underline1">sys:Dot</a>[<font face="courier"><font color="#006699">name</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>]</font>
+</font>
+</td>
+</tr>
+</table>
+<hr/>
+<a name="sys:Is"/>
+<p>
+<font size="+1">
+<b>
+View Function sys:Is
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Is(<font face="courier"><font color="#006699">v</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">v</font></font></font>
+</td>
+<td>
+value to test
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The result is <font face="courier"><font face="courier"><font color="#006699">v</font></font><font face="courier"><a href="content_250.html" class="inop1" target="contents">?</a></font><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font></font>.
+<hr/>
+<a name="sys:Dot"/>
+<p>
+<font size="+1">
+<b>
+LHS/RHS Self Function sys:Dot[ ]
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Dot[<font face="courier"><font color="#006699">name</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>]</font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">name</font></font></font>
+</td>
+<td>
+the tag of an element directly within the body to be selected.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The result is the body component with the specified tag.On the rhs, if the body component does not exist the result is <font face="courier"><font face="courier"><a href="content_221.html" class="name1" target="contents">null</a></font></font>.On the lhs, if value being assigned is <font face="courier"><font face="courier"><a href="content_221.html" class="name1" target="contents">null</a></font></font>, any element withtag <font face="courier"><font face="courier"><font color="#006699">name</font></font></font> is removed from the record.On the lhs, if the named element does not exist, it is added.
+<hr/>
+</body>
+</html>

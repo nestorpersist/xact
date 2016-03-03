@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>element</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > A <a href="nav2_4_1.html" target="nav2" class="lettered1">Syntax</a> >  <font face="courier">&lt;<font color="green">element</font>&gt;</font>
+</b>
+<br/> 
+
+<a href="content_79.html" target="contents">prev</a>
+ 
+<a href="content_81.html" target="contents">next</a>
+<br/>
+
+<font size="+1"><b>Syntax</b></font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">element</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_103.html" class="nt1" target="contents">start tag</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? {<font face="courier">&lt;<a href="content_106.html" class="nt1" target="contents">xml</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>?}* <font face="courier">&lt;<a href="content_82.html" class="nt1" target="contents">end tag</a>&gt;</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">element</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_81.html" class="nt1" target="contents">empty tag</a>&gt;</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">element</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">&lt;?xml</font>'</font> {<font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font> <font face="courier">&lt;<a href="content_74.html" class="nt1" target="contents">attr</a>&gt;</font>}* <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">'<font color="brown">?&gt;</font>'</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">element</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">&lt;</font>'</font> {<font face="courier">&lt;<a href="content_101.html" class="nt1" target="contents">short cmd</a>&gt;</font> | <font face="courier">&lt;<a href="content_93.html" class="nt1" target="contents">long cmd</a>&gt;</font>} <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">'<font color="brown">/&gt;</font>'</font>
+</td>
+</tr>
+</table>
+
+</font>
+<p>
+<font size="+1">
+<b>
+Description
+</b>
+</font>
+</p>
+<p>
+<p>
+An XML element.
+</p>
+<p>
+Note how a tagged short or long command can be embedded inside XML usingthis escape sequence.
+</p>
+</p>
+<p>
+<font size="+1">
+<b>
+Parsing
+</b>
+</font>
+</p>
+<p>
+<p>
+For a simple XML element, result will be an <font face="courier"><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font></font> tree nodewith kind <font face="courier"><font color="green">"xml"</font></font>.
+</p>
+<p>
+For the <font face="courier" color="green">?xml</font> form, the result will be an <font face="courier"><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font></font> tree nodewith tag <font face="courier"><font face="courier">@<font color="red">xml</font></font></font> and kind <font face="courier" color="green">xmldecl</font>.
+</p>
+</p>
+</body>
+</html>

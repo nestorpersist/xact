@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>CGI</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;3 <a href="nav1_3.html" target="nav1" class="numbered1">System Manual</a> > 3.2 <a href="nav2_3_2.html" target="nav2" class="numbered1">Running</a> > 3.2.7 <font color="blue">CGI</font>
+</b>
+<br/> 
+
+<a href="content_69.html" target="contents">prev</a>
+ 
+<a href="content_71.html" target="contents">next</a>
+<br/>
+
+
+<p>
+Since <b>@x:Act</b> scripts can easily generate HTML, it is naturalto run the <b>@x:Act</b> interpreter from a web server.The simplest way to do this is to run as a CGI.The Windows file <font face="courier" color="green">xact/dev/win/runc.bat</font> (orthe Macintosh file <font face="courier" color="green">xact/dev/mac/runc</font>)is a sample commandfor running <b>@x:Act</b> as a CGI.Copy this file to a CGI directory and edit the path to definitions.
+</p>
+<p>
+Due to a bug in Apache 2 on Windows (loss of STDOUT from child programs), we know no way torun <b>@x:Act</b> under Apache on Windows. We recommend instead using the servlet versionof <b>@x:Act</b> on Windows. This problem does not occur with Unixversions of Apache 2 or with other Windows web servers.
+</p>
+</body>
+</html>

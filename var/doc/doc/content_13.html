@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>incr</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;1 <a href="nav1_1.html" target="nav1" class="numbered1">Introduction</a> > 1.2 <a href="nav2_1_2.html" target="nav2" class="numbered1">Examples</a> > 1.2.9 <font face="courier"><font color="blue">incr</font></font>
+</b>
+<br/> 
+
+<a href="content_12.html" target="contents">prev</a>
+ 
+<a href="content_14.html" target="contents">next</a>
+<br/>
+
+
+<p>
+ <b>@x:Act</b> uses a different mechanism for iterators than Java. <b>@x:Act</b> iterators are functions that take the body of the loopas a function parameter.
+</p>
+<br/>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">incr</font></font>[<font face="courier"><font color="#006699">first</font></font>,<font face="courier"><font color="#006699">last</font></font>,<font face="courier"><font color="#006699">step</font></font>](<font face="courier"><font color="#006699">act</font></font>)<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <font face="courier"><font color="#006699">i</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">first</font></font>;<br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_131.html" class="tag1" target="contents">x:while</a></font> <font face="courier"><font color="#006699">i</font></font> <font face="courier"><a href="content_238.html" class="inop1" target="contents">&lt;=</a></font> <font face="courier"><font color="#006699">last</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">act</font></font>(<font face="courier"><font color="#006699">i</font></font>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">i</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">i</font></font> <font face="courier"><a href="content_244.html" class="inop1" target="contents">+</a></font> <font face="courier"><font color="#006699">step</font></font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+<font color="brown">}</font><br/>
+<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font> <font face="courier"><font color="#006699">i</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">incr</font></font>[1,6,2]<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">i</font></font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font><br/>
+<font color="brown">}</font></font>
+</body>
+</html>

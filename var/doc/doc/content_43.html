@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Rendering XML</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;2 <a href="nav1_2.html" target="nav1" class="numbered1">User Manual</a> > 2.6 <a href="nav2_2_6.html" target="nav2" class="numbered1">XML</a> > 2.6.2 <font color="blue">Rendering XML</font>
+</b>
+<br/> 
+
+<a href="content_42.html" target="contents">prev</a>
+ 
+<a href="content_44.html" target="contents">next</a>
+<br/>
+
+
+<p>
+A common use of <b>@x:Act</b> is as an engine to produce web pages forviewing via a web browser.The <b>@x:Act</b> interpreter can be run as a CGI under an HTTP server (such as Apache)or as a servlet under a servlet engine (such as Tomcat).
+</p>
+<p>
+In <b>@x:Act</b> by default, execution of XML (including XHTML) results ina string of that XML (this assumes there are no tags with namespace <font face="courier" color="green">x:</font>).This is because <b>@x:Act</b> syntax is a superset of XML syntax and because thedefault execution semantics for commands (XML elements) (other than those withnamespace <font face="courier" color="green">x:</font>) is to render that command.
+</p>
+<p>
+The XML can be made more dynamic by making parts of it derive from the valuesof <b>@x:Act</b> variables.The XML can also be made conditional or repeated by adding <font face="courier" color="green">x:</font> commands.The <font face="courier"><font face="courier">@<a href="content_125.html" class="tag1" target="contents">x:tag</a></font></font> specifies an <font face="courier"><font face="courier"><a href="content_147.html" class="name1" target="contents">xdom:element</a></font></font> tree nodeand renders that node. This provides a powerful way to dynamically generateelements to be rendered.
+</p>
+<p>
+Named XML entities receive special treatment in <b>@x:Act</b>.In particular each named entity is assumed to be a reference to a stringconstant or variable with that name. Rendering replaces the entity withthe string value of the referenced name.Many common entity names are predefined in <b>@x:Act</b> including <font face="courier"><font face="courier"><a href="content_210.html" class="name1" target="contents">amp</a></font></font> (ampersand), <font face="courier"><font face="courier"><a href="content_218.html" class="name1" target="contents">lt</a></font></font> (lessthan), <font face="courier"><font face="courier"><a href="content_216.html" class="name1" target="contents">gt</a></font></font> (greaterthan), <font face="courier"><font face="courier"><a href="content_220.html" class="name1" target="contents">nbsp</a></font></font> (non-breakingspace), <font face="courier"><font face="courier"><a href="content_211.html" class="name1" target="contents">apos</a></font></font> (singlequote apostrophe), <font face="courier"><font face="courier"><a href="content_224.html" class="name1" target="contents">quot</a></font></font> (doublequote), <font face="courier"><font face="courier"><a href="content_225.html" class="name1" target="contents">tab</a></font></font> (tab),and <font face="courier"><font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font></font> (end of line, the single LF character).It is easy to define new constants or libraries of constants for additionalentity values.
+</p>
+<p>
+When <b>@x:Act</b> is used for generating XHTML pages, there are two interpreter optionsof special interest.The <font face="courier"><font face="courier"><a href="content_269.html" class="option1" target="contents">mime</a></font></font> option when non-null specifies the content of a HTTP mime linethat should be output before the XHTML output of the current script.A common value for the option would be <font face="courier" color="green">mime="text/html"</font>.The <font face="courier"><font face="courier"><a href="content_253.html" class="option1" target="contents">charSet</a></font></font> option specifies the output character set(with default Latin-1 <font face="courier" color="green">ISO-8859-1</font>).
+</p>
+</body>
+</html>

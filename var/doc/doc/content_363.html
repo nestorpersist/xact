@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>TypeOr</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_5.html" target="nav1" class="top1">Libraries</a> >  <font face="courier"><a href="nav2_5_9.html" target="nav2" class="library1">library:typeor</a></font> >  <font face="courier"><font color="blue">TypeOr</font></font>
+</b>
+<br/> 
+
+<a href="content_362.html" target="contents">prev</a>
+ 
+<a href="content_364.html" target="contents">next</a>
+<br/>
+
+View that matches a set of types (or views).
+<p>
+<font size="+1">
+<b>
+View TypeOr[ ]
+</b>
+</font>
+</p>
+<p>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font> TypeOr[<font face="courier"><a href="content_230.html" class="preop1" target="contents">%</a></font><font face="courier"><font color="#006699">types</font></font>]</font>
+</p>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><a href="content_230.html" class="preop1" target="contents">%</a></font><font face="courier"><font color="#006699">types</font></font></font>
+</td>
+<td>
+A list of types (or views).
+</td>
+</tr>
+</table>
+<br/>
+<table border="3">
+<tr>
+<td valign="top">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_130.html" class="tag1" target="contents">x:view</a></font></font>
+</td>
+<td>
+<font face="courier">
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <a href="#sys:Is" class="underline1">sys:Is</a>(<font face="courier"><font color="#006699">v</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</font>
+</td>
+</tr>
+</table>
+<hr/>
+<hr/>
+<a name="sys:Is"/>
+<p>
+<font size="+1">
+<b>
+View Function sys:Is
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> sys:Is(<font face="courier"><font color="#006699">v</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font></font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">v</font></font></font>
+</td>
+<td>
+value to test
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The result is <font face="courier"><font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font></font> if <font face="courier"><font face="courier"><font color="#006699">v</font></font></font> has anyof the types in the list of <font face="courier"><font face="courier"><font color="#006699">types</font></font></font>.
+<hr/>
+<p>
+<font size="+1">
+<b>
+Examples
+</b>
+</font>
+</p>
+<p>
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">BooleanInt</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_363.html" class="name1" target="contents">TypeOr</a></font>[<font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font>,<font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font>];<br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <font face="courier"><font color="#006699">bi</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">BooleanInt</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_221.html" class="name1" target="contents">null</a></font>;<br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">bi</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> 3;<br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">bi</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font></font>
+<br/>
+
+</p>
+</body>
+</html>

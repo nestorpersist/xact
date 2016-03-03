@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>walk:other</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > F <a href="nav2_4_6.html" target="nav2" class="lettered1">Functions</a> >  <font face="courier"><font color="blue">walk:other</font></font>
+</b>
+<br/> 
+
+<a href="content_205.html" target="contents">prev</a>
+ 
+<a href="content_207.html" target="contents">next</a>
+<br/>
+
+
+<p>
+<font size="+1">
+<b>
+Description
+</b>
+</font>
+</p>
+<p>
+This special function should only be calledwithin <a href="content_59.html" class="numbered1" target="contents">Language Definition</a> types.Its assigns processing to some other language type.The <font face="courier"><font face="courier"><a href="content_314.html" class="example1" target="contents">DocLang</a></font></font> example showsa sample use.
+</p>
+<p>
+<font size="+1">
+<b>
+Function walk:other
+</b>
+</font>
+</p>
+<table border="0">
+<tr>
+<td>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> walk:other(<font face="courier"><font color="#006699">lang</font></font>,<wbr><font face="courier"><font color="#006699">space</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>,<wbr><font face="courier"><font color="#006699">base</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font>,<wbr><font face="courier"><font color="#006699">elem</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_164.html" class="name1" target="contents">xdom</a></font>,<wbr><font face="courier"><font color="#006699">lang</font></font>)</font>
+</td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">lang</font></font></font>
+</td>
+<td>
+the language object that should take over processing.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">space</font></font></font>
+</td>
+<td>
+the name space of the command to be processed.This is usually the same as <font face="courier"><font face="courier"><font color="#006699">elem</font></font>.<font color="FF00FF">space</font></font>,but may be different during renaming.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">base</font></font></font>
+</td>
+<td>
+the name base of the command to be processed.This is usually the same as <font face="courier"><font face="courier"><font color="#006699">elem</font></font>.<font color="FF00FF">base</font></font>,but may be different during renaming.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">elem</font></font></font>
+</td>
+<td>
+the tree node command to be processed.Note that the tag of this node is ignored; <font face="courier"><font face="courier"><font color="#006699">space</font></font></font> and <font face="courier"><font face="courier"><font color="#006699">base</font></font></font> parametersare used instead.
+</td>
+</tr>
+<tr>
+<td>
+<font face="courier"><font face="courier"><font color="#006699">lang</font></font></font>
+</td>
+<td>
+The language object to be used for child elements.This permits two or more languages to be freely mixed.For example consider language object <font face="courier"><font face="courier"><font color="#006699">l1</font></font>(<font face="courier"><font color="#006699">l2</font></font>())</font> where <font face="courier"><font face="courier"><font color="#006699">l1</font></font></font> handles <font face="courier" color="green">a:</font> tagsand <font face="courier"><font face="courier"><font color="#006699">l2</font></font></font> handles <font face="courier" color="green">b:</font> tags.When processing a <font face="courier" color="green">b:</font> element <font face="courier"><font face="courier"><font color="#006699">l1</font></font></font> will pass the element on to theunderlying <font face="courier"><font face="courier"><font color="#006699">l2</font></font></font> where the value of <font face="courier"><font face="courier"><font color="#006699">lang</font></font></font> will be <font face="courier"><font face="courier"><font color="#006699">l1</font></font>(<font face="courier"><font color="#006699">l2</font></font>())</font>. This permitsboth <font face="courier" color="green">a:</font> and <font face="courier" color="green">b:</font> elementsto appear as children as a <font face="courier" color="green">b:</font> element.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<font size="+1">
+Semantics
+</font>
+</p>
+The underlying language object is calledand its result returned.
+</body>
+</html>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>qualified</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > A <a href="nav2_4_1.html" target="nav2" class="lettered1">Syntax</a> >  <font face="courier">&lt;<font color="green">qualified</font>&gt;</font>
+</b>
+<br/> 
+
+<a href="content_96.html" target="contents">prev</a>
+ 
+<a href="content_98.html" target="contents">next</a>
+<br/>
+
+<font size="+1"><b>Syntax</b></font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">qualified</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_96.html" class="nt1" target="contents">primary</a>&gt;</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">qualified</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_97.html" class="nt1" target="contents">qualified</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">'<font color="brown">.</font>'</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">&lt;<a href="content_94.html" class="nt1" target="contents">name</a>&gt;</font> {<font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">'<font color="brown">#</font>'</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">&lt;<a href="content_96.html" class="nt1" target="contents">primary</a>&gt;</font>}?
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">qualified</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_97.html" class="nt1" target="contents">qualified</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">'<font color="brown">(</font>'</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? {<font face="courier">&lt;<a href="content_86.html" class="nt1" target="contents">exps</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>?}? <font face="courier">'<font color="brown">)</font>'</font> {<font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">'<font color="brown">#</font>'</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">&lt;<a href="content_96.html" class="nt1" target="contents">primary</a>&gt;</font>}?
+</td>
+</tr>
+</table>
+
+</font>
+<p>
+<font size="+1">
+<b>
+Description
+</b>
+</font>
+</p>
+<p>
+<p>
+There are two kinds of qualified expressions
+<ul>
+<li>
+<b>
+Dot. 
+</b>
+This form is used to select a named componentof the value of the expression before the dot.
+</li>
+<li>
+<b>
+Subscript/construct/call. 
+</b>
+This form is used to select a numbered componentof the value of the expression before the parenthesis,to construct an object,or to call a function.
+</li>
+</ul>
+</p>
+<p>
+The semantics of qualified expression in the simple case is controlled by the typeof initial expression. It is also possible to select an alternate semanticsby specifying a type or view following a sharp.
+</p>
+</p>
+<p>
+<font size="+1">
+<b>
+Semantics
+</b>
+</font>
+</p>
+<p>
+<p>
+The semantics of dot qualified expression is given byby the parsing transforms specified below and the semantics ofthe <font face="courier"><font face="courier"><a href="content_175.html" class="name1" target="contents">Dot</a></font></font> function.
+</p>
+<p>
+The semantics of subscript/construct/call qualified expression depends upon thetype of value from evaluating the initial expression.
+<ul>
+<li>
+<b>
+Function. 
+</b>
+If the value has type <font face="courier"><font face="courier"><a href="content_133.html" class="name1" target="contents">func</a></font></font>, then that function is calledpassing the values of the expressions inside the parenthesis as parameters.
+</li>
+<li>
+<b>
+Type Constructor. 
+</b>
+If the value has type <font face="courier"><font face="courier"><a href="content_143.html" class="name1" target="contents">type</a></font></font>, then a new object of thattype is created. If defined, the <font face="courier"><font face="courier"><font color="#006699">sys:Init</font></font></font> function for that object is then called.For example, if <font face="courier"><font face="courier"><font color="#006699">T</font></font></font> is a type then
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">T</font></font>(<font face="courier"><font color="#006699">a</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font>,<wbr><font face="courier"><font color="#006699">c</font></font>)</font>
+<br/>
+creates a new object, <font face="courier"><font face="courier"><font color="#006699">X</font></font></font> of type <font face="courier"><font face="courier"><font color="#006699">T</font></font></font> and if <font face="courier"><font face="courier"><a href="content_182.html" class="name1" target="contents">HasDot</a></font>(<font face="courier"><font color="#006699">T</font></font>,<wbr><font color="green">"sys:Init"</font>)</font> then calls
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">X</font></font>.<font color="FF00FF">sys:Init</font>(<font face="courier"><font color="#006699">a</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font>,<wbr><font face="courier"><font color="#006699">c</font></font>)</font>
+<br/>
+
+</li>
+<li>
+<b>
+View Constructor. 
+</b>
+The view <font face="courier"><font face="courier"><font color="#006699">sys:Make</font></font></font> function is called. For example if <font face="courier"><font face="courier"><font color="#006699">V</font></font></font> is a view, then
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">V</font></font>(<font face="courier"><font color="#006699">a</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font>,<wbr><font face="courier"><font color="#006699">c</font></font>)</font>
+<br/>
+produces
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">V</font></font>.<font color="FF00FF">sys:Make</font>(<font face="courier"><font color="#006699">a</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font>,<wbr><font face="courier"><font color="#006699">c</font></font>)</font>
+<br/>
+By convention the result should be in view <font face="courier"><font face="courier"><font color="#006699">V</font></font></font>. So here
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">V</font></font>(<font face="courier"><font color="#006699">a</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font>,<wbr><font face="courier"><font color="#006699">c</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">V</font></font></font>
+<br/>
+
+</li>
+<li>
+<b>
+Subscript. 
+</b>
+Otherwise, the <font face="courier"><font face="courier"><font color="#006699">sys:Subscript</font></font></font> function for the value is called.For example,
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">X</font></font>(<font face="courier"><font color="#006699">i</font></font>,<wbr><font face="courier"><font color="#006699">j</font></font>)</font>
+<br/>
+results in
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">X</font></font>.<font color="FF00FF">sys:Subscript</font>(<font face="courier"><font color="#006699">i</font></font>,<wbr><font face="courier"><font color="#006699">j</font></font>)</font>
+<br/>
+
+</li>
+</ul>
+In all except the subscript case, the sharp and expression after the parenthesis are not permitted.For subscript, the following example
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">X</font></font>(<font face="courier"><font color="#006699">i</font></font>,<font face="courier"><font color="#006699">j</font></font>)#<font face="courier"><font color="#006699">V</font></font></font>
+<br/>
+results in
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">X</font></font>.<font color="FF00FF">sys:Subscript</font>#<font face="courier"><font color="#006699">V</font></font>(<font face="courier"><font color="#006699">i</font></font>,<wbr><font face="courier"><font color="#006699">j</font></font>)</font>
+<br/>
+
+</p>
+</p>
+<p>
+<font size="+1">
+<b>
+Parsing
+</b>
+</font>
+</p>
+<p>
+<p>
+When parsed subscript/call qualified expressions are represented by
+<font face="courier"><font face="courier"><font color="#006699">xcom:call</font></font></font> nodes.
+</p>
+<p>
+When parsed, a dot qualified expressions are representedby <font face="courier"><font face="courier"><a href="content_146.html" class="name1" target="contents">xdom:call</a></font></font> nodes whose kind is set to <font face="courier"><font color="green">"dot"</font></font>.For example, each dot expression in the first column and the call expressionin the second column are represented by identical <font face="courier"><font face="courier"><a href="content_146.html" class="name1" target="contents">xdom:call</a></font></font> nodes,except the first has kind <font face="courier"><font color="green">"dot"</font></font> andthe second has kind <font face="courier"><font color="green">"normal"</font></font>.
+<table border="2">
+<tr>
+<td> <font face="courier"><font face="courier"><font color="#006699">a</font></font>.<font color="FF00FF">b</font></font> </td>
+<td> <font face="courier"><font face="courier"><a href="content_175.html" class="name1" target="contents">Dot</a></font>(<font face="courier"><font color="#006699">a</font></font>,<wbr><font color="green">"b"</font>)</font> </td>
+</tr>
+<tr>
+<td> <font face="courier"><font face="courier"><font color="#006699">a</font></font>.<font color="FF00FF">b</font>#<font face="courier"><font color="#006699">c</font></font></font> </td>
+<td> <font face="courier"><font face="courier"><a href="content_175.html" class="name1" target="contents">Dot</a></font>(<font face="courier"><font color="#006699">a</font></font>,<wbr><font color="green">"b"</font>,<wbr><font face="courier"><font color="#006699">c</font></font>)</font> </td>
+</tr>
+<tr>
+<td> <font face="courier"><font face="courier"><font color="#006699">a</font></font>.<font color="FF00FF">b</font>[<font face="courier"><font color="#006699">L</font></font>]</font> </td>
+<td> <font face="courier"><font face="courier"><a href="content_175.html" class="name1" target="contents">Dot</a></font>[<font face="courier"><font color="#006699">L</font></font>](<font face="courier"><font color="#006699">a</font></font>,<wbr><font color="green">"b"</font>)</font> </td>
+</tr>
+<tr>
+<td> <font face="courier"><font face="courier"><font color="#006699">a</font></font>.<font color="FF00FF">b</font>[<font face="courier"><font color="#006699">L</font></font>]#<font face="courier"><font color="#006699">c</font></font></font> </td>
+<td> <font face="courier"><font face="courier"><a href="content_175.html" class="name1" target="contents">Dot</a></font>[<font face="courier"><font color="#006699">L</font></font>](<font face="courier"><font color="#006699">a</font></font>,<wbr><font color="green">"b"</font>,<wbr><font face="courier"><font color="#006699">c</font></font>)</font> </td>
+</tr>
+</table>
+Note that the <font face="courier"><font face="courier"><a href="content_175.html" class="name1" target="contents">Dot</a></font></font> function is more general that the dot qualified expression,because the selected name can be a computed value rather than a constant.
+</p>
+</p>
+</body>
+</html>

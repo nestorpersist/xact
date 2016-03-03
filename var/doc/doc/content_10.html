@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>stack</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;1 <a href="nav1_1.html" target="nav1" class="numbered1">Introduction</a> > 1.2 <a href="nav2_1_2.html" target="nav2" class="numbered1">Examples</a> > 1.2.6 <font face="courier"><font color="blue">stack</font></font>
+</b>
+<br/> 
+
+<a href="content_9.html" target="contents">prev</a>
+ 
+<a href="content_11.html" target="contents">next</a>
+<br/>
+
+
+<p>
+ <b>@x:Act</b> permits new abstract types to be defined.
+</p>
+<br/>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font> <font face="courier"><font color="#006699">stack</font></font>[<font face="courier"><font color="#006699">elem</font></font>];<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">data</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_153.html" class="name1" target="contents">array</a></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_153.html" class="name1" target="contents">array</a></font>();<br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">isEmpty</font></font><font color="brown"> {</font>&nbsp;<font face="courier"><font color="#006699">data</font></font>.<font color="FF00FF">size</font> <font face="courier"><a href="content_234.html" class="inop1" target="contents">==</a></font> 0&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">push</font></font>(<font face="courier"><font color="#006699">b</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">elem</font></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_145.html" class="name1" target="contents">void</a></font>,<font face="courier"><font color="#006699">visible</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">data</font></font>.<font color="FF00FF">insert</font>(<font face="courier"><font color="#006699">b</font></font>)<br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">pop</font></font>()<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">elem</font></font>,<font face="courier"><a href="content_227.html" class="preop1" target="contents">~</a></font><font face="courier"><a href="content_229.html" class="preop1" target="contents">!</a></font> <font face="courier"><font color="#006699">isEmpty</font></font>,<font face="courier"><font color="#006699">visible</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">data</font></font>(<font face="courier"><font color="#006699">data</font></font>.<font color="FF00FF">size</font>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">data</font></font>.<font color="FF00FF">delete</font>(<font face="courier"><font color="#006699">data</font></font>.<font color="FF00FF">size</font>)<br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">size</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>,<font face="courier"><font color="#006699">visible</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">data</font></font>.<font color="FF00FF">size</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">get</font></font>(<font face="courier"><font color="#006699">i</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><a href="content_134.html" class="name1" target="contents">int</a></font>)<font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">elem</font></font>,<font face="courier"><a href="content_227.html" class="preop1" target="contents">~</a></font>1 <font face="courier"><a href="content_238.html" class="inop1" target="contents">&lt;=</a></font> <font face="courier"><font color="#006699">i</font></font> <font face="courier"><a href="content_240.html" class="inop1" target="contents">&</a></font> <font face="courier"><font color="#006699">i</font></font> <font face="courier"><a href="content_238.html" class="inop1" target="contents">&lt;=</a></font> <font face="courier"><font color="#006699">size</font></font>,<font face="courier"><font color="#006699">visible</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">data</font></font>(<font face="courier"><font color="#006699">i</font></font>)<br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+<font color="brown">}</font><br/>
+<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">s</font></font><font face="courier"><a href="content_249.html" class="inop1" target="contents">~</a></font><font face="courier"><font color="#006699">stack</font></font>[<font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font>] <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">stack</font></font>[<font face="courier"><a href="content_157.html" class="name1" target="contents">boolean</a></font>]();<br/>
+<font face="courier"><font color="#006699">s</font></font>.<font color="FF00FF">push</font>(<font face="courier"><a href="content_226.html" class="name1" target="contents">true</a></font>);<br/>
+<font face="courier"><font color="#006699">s</font></font>.<font color="FF00FF">push</font>(<font face="courier"><a href="content_215.html" class="name1" target="contents">false</a></font>);<br/>
+<font color="green">"Start Dump"</font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font> <font face="courier"><font color="#006699">i</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> 1<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font><font face="courier"><font color="#006699">s</font></font>.<font color="FF00FF">size</font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="green">"   "</font>;&nbsp;<font face="courier"><font color="#006699">i</font></font>;&nbsp;<font color="green">"=&gt;"</font>;&nbsp;<font face="courier"><font color="#006699">s</font></font>.<font color="FF00FF">get</font>(<font face="courier"><font color="#006699">i</font></font>);&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font><br/>
+<font color="brown">}</font><br/>
+<font color="green">"End Dump"</font>;&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><font color="#006699">s</font></font>.<font color="FF00FF">pop</font>();&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<font face="courier"><font color="#006699">s</font></font>.<font color="FF00FF">pop</font>();&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font></font>
+<p>
+The <font face="courier"><font face="courier">@<a href="content_127.html" class="tag1" target="contents">x:type</a></font></font> command defines data and operations associatedwith the type (in this case there are none).The immediatelyfollowing <font face="courier"><font face="courier">@<a href="content_124.html" class="tag1" target="contents">x:self</a></font></font> command defines data and operations associatedwith instances of the type.Those that are marked <font face="courier"><font face="courier"><font color="#006699">visible</font></font></font> can be seen by user of the typeand its instances. Those not marked visible(in this case <font face="courier"><font face="courier"><font color="#006699">data</font></font></font> and <font face="courier"><font face="courier"><font color="#006699">IsEmpty</font></font></font>) are not visible outside.
+</p>
+<p>
+Note the assertions on several of the functions.These are checked at the time the function is called.
+</p>
+<p>
+Note that this is a parameterized type.The stack element type is passed in as <font face="courier"><font face="courier"><font color="#006699">elem</font></font></font>.
+</p>
+</body>
+</html>

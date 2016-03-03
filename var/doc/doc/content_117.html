@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>x:for</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > C <a href="nav2_4_3.html" target="nav2" class="lettered1">Tags</a> >  <font face="courier">@<font color="brown">x:for</font></font>
+</b>
+<br/> 
+
+<a href="content_116.html" target="contents">prev</a>
+ 
+<a href="content_118.html" target="contents">next</a>
+<br/>
+
+
+<p>
+<font size="+1">
+<b>
+Description
+</b>
+</font>
+</p>
+<p>
+This command repeatedly execute its body under the control of an iterator.
+</p>
+<p>
+<font size="+1">
+<b>
+Command Syntax
+</b>
+</font>
+</p>
+<p>
+<font face="courier">'<font color="brown">@x:for</font>'</font> <font face="courier">&lt;<font color="black">for ids</font>&gt;</font> '<font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font>' <font face="courier">&lt;<a href="content_85.html" class="nt1" target="contents">exp</a>&gt;</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">for ids</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">for ids</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">[</font>'</font> {<font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font> <font face="courier">'<font color="brown">,</font>'</font>}* <font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font> <font face="courier">'<font color="brown">]</font>'</font>
+</td>
+</tr>
+</table>
+
+</font>
+<p>
+No options are permitted.
+</p>
+</p>
+<p>
+<font size="+1">
+<b>
+Name Semantics
+</b>
+</font>
+</p>
+<p>
+The for <font face="courier"><font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font></font>'s are declared the scope that surrounds the
+<font face="courier"><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font></font> command.
+</p>
+<p>
+<font size="+1">
+<b>
+Execution Semantics
+</b>
+</font>
+</p>
+<p>
+<p>
+A for command of the form
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font> <font face="courier"><font color="#006699">i</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">iter</font></font><font color="brown"> {</font>&nbsp;<font face="courier"><font color="#006699">b</font></font>(<font face="courier"><font color="#006699">i</font></font>)&nbsp;<font color="brown">}</font></font>
+<br/>
+is equivalent to
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_110.html" class="tag1" target="contents">x:block</a></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">sys:Body</font></font>(<font face="courier"><font color="#006699">i</font></font>)<font color="brown"> {</font><font face="courier"><font color="#006699">b</font></font>(<font face="courier"><font color="#006699">i</font></font>)<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">iter</font></font>(<font face="courier"><font color="#006699">sys:Body</font></font>)<br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font></font>
+<br/>
+
+</p>
+<p>
+A for command of the form
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font> [<font face="courier"><font color="#006699">i</font></font>,<font face="courier"><font color="#006699">j</font></font>] <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">iter</font></font><font color="brown"> {</font>&nbsp;<font face="courier"><font color="#006699">c</font></font>(<font face="courier"><font color="#006699">i</font></font>,<wbr><font face="courier"><font color="#006699">j</font></font>)&nbsp;<font color="brown">}</font></font>
+<br/>
+is equivalent to
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_110.html" class="tag1" target="contents">x:block</a></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">sys:Body</font></font>(<font face="courier"><font color="#006699">i</font></font>,<wbr><font face="courier"><font color="#006699">j</font></font>)<font color="brown"> {</font><font face="courier"><font color="#006699">c</font></font>(<font face="courier"><font color="#006699">i</font></font>,<wbr><font face="courier"><font color="#006699">j</font></font>)<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">iter</font></font>(<font face="courier"><font color="#006699">sys:Body</font></font>)<br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font></font>
+<br/>
+
+</p>
+</p>
+<p>
+<font size="+1">
+<b>
+Examples
+</b>
+</font>
+</p>
+<p>
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font> <font face="courier"><font color="#006699">i</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> 1<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font>10<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">i</font></font>;&nbsp;<font color="green">"=&gt;"</font>;&nbsp;<font face="courier"><font color="#006699">f</font></font>(<font face="courier"><font color="#006699">i</font></font>)<br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font></font>
+<br/>
+
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<font color="red">use</font></font> <font face="courier"><font color="#006699">library:iterator</font></font>;<br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font> [<font face="courier"><font color="#006699">i</font></font>,<font face="courier"><font color="#006699">j</font></font>] <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_344.html" class="name1" target="contents">Nest</a></font>[1<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font>3,1<font face="courier"><a href="content_251.html" class="inop1" target="contents">..</a></font>2]<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">"&lt;&amp;<font color="blue">i</font>;,&amp;<font color="blue">j</font>;&gt;&amp;<font color="blue">eol</font>;"</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font></font>
+<br/>
+
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<font color="red">use</font></font> <font face="courier"><font color="#006699">library:iterator</font></font>;<br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_117.html" class="tag1" target="contents">x:for</a></font> <font face="courier"><font color="#006699">i</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><a href="content_342.html" class="name1" target="contents">First</a></font>[<font face="courier"><a href="content_339.html" class="name1" target="contents">Filter</a></font>[<font face="courier"><font color="#006699">iter</font></font>,<font face="courier"><font color="#006699">p</font></font>]]<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">"found:"</font>;&nbsp;<font face="courier"><font color="#006699">i</font></font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font>&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_114.html" class="tag1" target="contents">x:else</a></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">"not found"</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font></font>
+<br/>
+
+</p>
+</body>
+</html>

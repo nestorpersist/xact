@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>curry</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > L <a href="nav2_4_12.html" target="nav2" class="lettered1">Examples</a> > L.9 <font face="courier"><font color="blue">curry</font></font>
+</b>
+<br/> 
+
+<a href="content_310.html" target="contents">prev</a>
+ 
+<a href="content_312.html" target="contents">next</a>
+<br/>
+
+
+<p>
+This example shows how extended <font face="courier"><font face="courier">&lt;<a href="content_94.html" class="nt1" target="contents">name</a>&gt;</font></font>s can be usedto "Curry" a function call.This more commonly seen in languagesthat use a heap-based execution model.Although <b>@x:Act</b> is stack-based, it can offersome of that power.
+</p>
+<br/>
+<font face="courier"><font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">f</font></font>(<font face="courier"><font color="#006699">a</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font>,<wbr><font face="courier"><font color="#006699">c</font></font>)<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">a</font></font> <font face="courier"><a href="content_244.html" class="inop1" target="contents">+</a></font> <font face="courier"><font color="#006699">b</font></font> <font face="courier"><a href="content_244.html" class="inop1" target="contents">+</a></font> <font face="courier"><font color="#006699">c</font></font><br/>
+<font color="brown">}</font><br/>
+<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">f2</font></font>[<font face="courier"><font color="#006699">a</font></font>,<font face="courier"><font color="#006699">b</font></font>](<font face="courier"><font color="#006699">c</font></font>)<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">f</font></font>(<font face="courier"><font color="#006699">a</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font>,<wbr><font face="courier"><font color="#006699">c</font></font>)<br/>
+<font color="brown">}</font><br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">f1</font></font>[<font face="courier"><font color="#006699">a</font></font>](<font face="courier"><font color="#006699">b</font></font>)<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">f2</font></font>[<font face="courier"><font color="#006699">a</font></font>,<font face="courier"><font color="#006699">b</font></font>]<br/>
+<font color="brown">}</font><br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">f0</font></font>(<font face="courier"><font color="#006699">a</font></font>)<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">f1</font></font>[<font face="courier"><font color="#006699">a</font></font>]<br/>
+<font color="brown">}</font><br/>
+<font face="courier"><font color="#006699">f0</font></font>(3)(5)(20);&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font>;<br/>
+<br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">curry</font></font>[<font face="courier"><font color="#006699">L</font></font>](<font face="courier"><font color="#006699">v</font></font>)<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">args</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">L</font></font>.<font color="FF00FF">args</font>#<font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font>;<br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">args</font></font>.<font color="FF00FF">insert</font>(<font face="courier"><font color="#006699">v</font></font>);<br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_120.html" class="tag1" target="contents">x:if</a></font> <font face="courier"><font color="#006699">args</font></font>.<font color="FF00FF">size</font> <font face="courier"><a href="content_234.html" class="inop1" target="contents">==</a></font> <font face="courier"><font color="#006699">L</font></font>.<font color="FF00FF">cnt</font>#<font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_113.html" class="tag1" target="contents">x:const</a></font> <font face="courier"><font color="#006699">ff</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">L</font></font>.<font color="FF00FF">func</font>#<font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">ff</font></font>(<font face="courier"><a href="content_230.html" class="preop1" target="contents">%</a></font><font face="courier"><font color="#006699">args</font></font>)<br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_114.html" class="tag1" target="contents">x:else</a></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">curry</font></font>[<font face="courier"><font color="#006699">L</font></font>]<br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+<font color="brown">}</font><br/>
+<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">curry</font></font>(<font face="courier"><font color="#006699">f</font></font>,<wbr><font face="courier"><font color="#006699">cnt</font></font>)<font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">curry</font></font>[<font face="courier"><a href="content_162.html" class="name1" target="contents">rec</a></font>(<font color="0AAAA">args</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><a href="content_153.html" class="name1" target="contents">array</a></font>(),<wbr><font color="0AAAA">func</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">f</font></font>,<wbr><font color="0AAAA">cnt</font><font face="courier"><a href="content_232.html" class="inop1" target="contents">=</a></font><font face="courier"><font color="#006699">cnt</font></font>)]<br/>
+<font color="brown">}</font><br/>
+<font face="courier"><font color="#006699">curry</font></font>(<font face="courier"><font color="#006699">f</font></font>,<wbr>3)(3)(5)(20);&nbsp;<font face="courier"><a href="content_214.html" class="name1" target="contents">eol</a></font></font>
+</body>
+</html>

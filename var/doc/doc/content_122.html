@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>x:module</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > C <a href="nav2_4_3.html" target="nav2" class="lettered1">Tags</a> >  <font face="courier">@<font color="brown">x:module</font></font>
+</b>
+<br/> 
+
+<a href="content_121.html" target="contents">prev</a>
+ 
+<a href="content_123.html" target="contents">next</a>
+<br/>
+
+
+<p>
+<font size="+1">
+<b>
+Description
+</b>
+</font>
+</p>
+<p>
+This command is used to control name visibility.
+</p>
+<p>
+<font size="+1">
+<b>
+Command Syntax
+</b>
+</font>
+</p>
+<p>
+<font face="courier">'<font color="brown">@x:module</font>'</font> {<font face="courier">&lt;<font color="black">module specs</font>&gt;</font>}?
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">module specs</font>&gt;</font> ::=
+</td>
+<td>
+{<font face="courier">&lt;<font color="black">module spec</font>&gt;</font> <font face="courier">'<font color="brown">,</font>'</font>}* <font face="courier">&lt;<font color="black">module spec</font>&gt;</font>
+</td>
+</tr>
+</table>
+
+</font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">module spec</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">visible</font>'</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">module spec</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">hidden</font>'</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">module spec</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">visible</font>'</font> <font face="courier">'<font color="brown">(</font>'</font> {<font face="courier">&lt;<font color="black">module item</font>&gt;</font> <font face="courier">'<font color="brown">,</font>'</font>}* <font face="courier">&lt;<font color="black">module item</font>&gt;</font> <font face="courier">'<font color="brown">)</font>'</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">module spec</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">'<font color="brown">hidden</font>'</font> <font face="courier">'<font color="brown">(</font>'</font> {<font face="courier">&lt;<font color="black">module item</font>&gt;</font> <font face="courier">'<font color="brown">,</font>'</font>}* <font face="courier">&lt;<font color="black">module item</font>&gt;</font> <font face="courier">'<font color="brown">)</font>'</font>
+</td>
+</tr>
+</table>
+
+
+<p>
+No options are permitted.
+</p></font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">module item</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font> {<font face="courier">'<font color="brown">[</font>'</font> <font face="courier">'<font color="brown">]</font>'</font>}?
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">module item</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font> {<font face="courier">'<font color="brown">[</font>'</font> <font face="courier">'<font color="brown">]</font>'</font>}? '<font face="courier"><a href="content_237.html" class="inop1" target="contents">&gt;</a></font>' <font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font>
+</td>
+</tr>
+</table>
+
+</font>
+<p>
+At most one of <font face="courier"><font face="courier"><font color="#006699">hidden</font></font></font> or <font face="courier"><font face="courier"><font color="#006699">visible</font></font></font> (without anyfollowing list may be specified.No name may appear in both <font face="courier"><font face="courier"><font color="#006699">hidden</font></font></font>  <font face="courier"><font face="courier"><font color="#006699">visible</font></font></font> name lists.Every name that appears within a name list must be definedwithin the <font face="courier"><font face="courier">@<a href="content_122.html" class="tag1" target="contents">x:module</a></font></font> command as visible.
+</p>
+</p>
+<p>
+<font size="+1">
+<b>
+Name Semantics
+</b>
+</font>
+</p>
+<p>
+<p>
+Select visible names declared within the <font face="courier"><font face="courier">@<a href="content_122.html" class="tag1" target="contents">x:module</a></font></font> scope thatare visible are also declared within the scope that immediatelycontains the <font face="courier"><font face="courier">@<a href="content_122.html" class="tag1" target="contents">x:module</a></font></font> command.
+</p>
+<p>
+There are several cases for each name that is visible within the module.
+<ul>
+<li>
+If there are no name lists and <font face="courier"><font face="courier"><font color="#006699">visible</font></font></font> was specified, then the name is declared as <font face="courier"><font face="courier"><font color="#006699">visible</font></font></font> inthe enclosing scope.
+</li>
+<li>
+If there are no name lists and <font face="courier"><font face="courier"><font color="#006699">visible</font></font></font> was not specified, then the name is declared but not as <font face="courier"><font face="courier"><font color="#006699">visible</font></font></font> inthe enclosing scope.
+</li>
+<li>
+If the name was specified in the <font face="courier"><font face="courier"><font color="#006699">visible</font></font></font> name list,then the name is declared as <font face="courier"><font face="courier"><font color="#006699">visible</font></font></font> inthe enclosing scope.
+</li>
+<li>
+If the name was specified in the <font face="courier"><font face="courier"><font color="#006699">hidden</font></font></font> name list,then the name is declared but not as <font face="courier"><font face="courier"><font color="#006699">visible</font></font></font> inthe enclosing scope.
+</li>
+<li>
+Names lists are present and the name does not appear in anyname list and <font face="courier"><font face="courier"><font color="#006699">visible</font></font></font> (with no list) was specified,then the name is declared as <font face="courier"><font face="courier"><font color="#006699">visible</font></font></font> inthe enclosing scope.
+</li>
+<li>
+Names lists are present and the name does not appear in anyname list and <font face="courier"><font face="courier"><font color="#006699">hidden</font></font></font> (with no list) was specified,then the name is declared as but not as <font face="courier"><font face="courier"><font color="#006699">visible</font></font></font> inthe enclosing scope.
+</li>
+<li>
+Names lists are present and the name does not appear in anyname list and <font face="courier"><font face="courier"><font color="#006699">hidden</font></font></font> (with no list) was not specifiedand <font face="courier"><font face="courier"><font color="#006699">visible</font></font></font> (with no list) was not specified,then the name is not declared within the enclosing scope.
+</li>
+</ul>
+</p>
+<p>
+The name list forms also provide renaming.The name with the <font face="courier"><font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font></font> specified before the <font face="courier" color="green">&gt;</font> declared within the moduleis declared with the <font face="courier"><font face="courier">&lt;<a href="content_89.html" class="nt1" target="contents">id</a>&gt;</font></font> specified afterthe <font face="courier" color="green">&gt;</font> in the enclosing scope.
+</p>
+</p>
+<p>
+<font size="+1">
+<b>
+Execution Semantics
+</b>
+</font>
+</p>
+<p>
+Execution of a <font face="courier"><font face="courier">@<a href="content_122.html" class="tag1" target="contents">x:module</a></font></font> commandresults in execution of its body.The result of that execution is discarded.The body scope instance is not discardeduntil the end of the enclosing scope instance.The result of executing a <font face="courier"><font face="courier">@<a href="content_122.html" class="tag1" target="contents">x:module</a></font></font> commandis <font face="courier"><font face="courier"><a href="content_221.html" class="name1" target="contents">null</a></font></font>.
+</p>
+<p>
+<font size="+1">
+<b>
+Examples
+</b>
+</font>
+</p>
+<p>
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<font color="red">module</font></font><font color="brown"> {</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_129.html" class="tag1" target="contents">x:var</a></font> <font face="courier"><font color="#006699">v</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> 0;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">incr</font></font>(),<font face="courier"><font color="#006699">visible</font></font><font color="brown"> {</font>&nbsp;<font face="courier"><font color="#006699">v</font></font> <font face="courier"><a href="content_233.html" class="inop1" target="contents">:=</a></font> <font face="courier"><font color="#006699">v</font></font> <font face="courier"><a href="content_244.html" class="inop1" target="contents">+</a></font> 1&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF9C00"></font><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font> <font face="courier"><font color="#006699">val</font></font>(),<font face="courier"><font color="#006699">visible</font></font><font color="brown"> {</font>&nbsp;<font face="courier"><font color="#006699">v</font></font>&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="brown">}</font><br/>
+&nbsp;&nbsp;&nbsp;<font color="00CD00">// can't see v here</font><br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">incr</font></font>();&nbsp;<font face="courier"><font color="#006699">incr</font></font>();<br/>
+&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">val</font></font>()</font>
+<br/>
+
+</p>
+</body>
+</html>

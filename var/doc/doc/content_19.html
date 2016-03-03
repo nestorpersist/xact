@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Character Set</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;2 <a href="nav1_2.html" target="nav1" class="numbered1">User Manual</a> > 2.1 <a href="nav2_2_1.html" target="nav2" class="numbered1">Syntax</a> > 2.1.4 <font color="blue">Character Set</font>
+</b>
+<br/> 
+
+<a href="content_18.html" target="contents">prev</a>
+ 
+<a href="content_20.html" target="contents">next</a>
+<br/>
+
+
+<p>
+Internally <b>@x:Act</b> is implemented using Java strings that hold 16-bit characters.When external data consisting of a sequence of bytes is read it mustbe converted to 16-bit characters.When 16-bit characters are written they must be converted to bytes.There are two forms of conversion.First, <font face="courier"><font color="green">"byte"</font></font> maps external bytes to/from the lower order byteof 16-bit characters. Second, any Java <font face="courier"><font face="courier"><font color="#006699">CharSet</font></font></font> can be specified to control themapping. Some of the most common character mapping are listed here.
+</p>
+<table border="2">
+<tr>
+<td><b>
+Name
+</b></td>
+<td><b>
+Description
+</b></td>
+</tr>
+<tr>
+<td><font face="courier"><font color="green">"byte"</font></font></td>
+<td>External bytes are mapped to the low order byte of characters.On input the high-order byte is set to 0. On output the high-order byte is ignored.This is the character set mapping to use for binary data.</td>
+</tr>
+<tr>
+<td><font face="courier"><font color="green">"US-ASCII"</font></font></td>
+<td>Seven-bit ASCII, a.k.a. ISO646-US, a.k.a. the Basic Latin block of the Unicode character set</td>
+</tr>
+<tr>
+<td><font face="courier"><font color="green">"ISO-8859-1"</font></font></td>
+<td>ISO Latin Alphabet No. 1, a.k.a. ISO-LATIN-1</td>
+</tr>
+<tr>
+<td><font face="courier"><font color="green">"UTF-8"</font></font></td>
+<td>Eight-bit UCS Transformation Format</td>
+</tr>
+<tr>
+<td><font face="courier"><font color="green">"UTF-16BE"</font></font></td>
+<td>Sixteen-bit UCS Transformation Format, big-endian byte order</td>
+</tr>
+<tr>
+<td><font face="courier"><font color="green">"UTF-16LE"</font></font></td>
+<td>Sixteen-bit UCS Transformation Format, little-endian byte order</td>
+</tr>
+<tr>
+<td><font face="courier"><font color="green">"UTF-16"</font></font></td>
+<td>Sixteen-bit UCS Transformation Format, byte order identified by an optional byte-order mark.</td>
+</tr>
+</table>
+<ul>
+<li>
+ <b>@x:Act</b>  <font face="courier"><font face="courier">&lt;<a href="content_100.html" class="nt1" target="contents">script</a>&gt;</font></font>s use <font face="courier"><font color="green">"UTF-8"</font></font>.
+</li>
+<li>
+The default for program output is <font face="courier"><font color="green">"ISO-8859-1"</font></font> This can be set with the <font face="courier"><font face="courier"><a href="content_253.html" class="option1" target="contents">charSet</a></font></font> option.
+</li>
+<li>
+The default for <font face="courier"><font face="courier"><a href="content_159.html" class="name1" target="contents">file</a></font></font> IO is <font face="courier"><font color="green">"ISO-8859-1"</font></font>.
+</li>
+</ul>
+</body>
+</html>

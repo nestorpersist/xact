@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>exp</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp; <a href="nav1_4.html" target="nav1" class="top1">Reference</a> > A <a href="nav2_4_1.html" target="nav2" class="lettered1">Syntax</a> >  <font face="courier">&lt;<font color="green">exp</font>&gt;</font>
+</b>
+<br/> 
+
+<a href="content_84.html" target="contents">prev</a>
+ 
+<a href="content_86.html" target="contents">next</a>
+<br/>
+
+<font size="+1"><b>Syntax</b></font>
+<font face="courier"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">exp</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_97.html" class="nt1" target="contents">qualified</a>&gt;</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">exp</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_95.html" class="nt1" target="contents">prefix op</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? {<font face="courier">'<font color="brown">#</font>'</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">&lt;<a href="content_96.html" class="nt1" target="contents">primary</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>?}? <font face="courier">&lt;<a href="content_85.html" class="nt1" target="contents">exp</a>&gt;</font>
+</td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" width="1%" nowrap="true">
+<font face="courier">&lt;<font color="green">exp</font>&gt;</font> ::=
+</td>
+<td>
+<font face="courier">&lt;<a href="content_85.html" class="nt1" target="contents">exp</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">&lt;<a href="content_90.html" class="nt1" target="contents">infix op</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? {<font face="courier">'<font color="brown">#</font>'</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>? <font face="courier">&lt;<a href="content_96.html" class="nt1" target="contents">primary</a>&gt;</font> <font face="courier"><a href="content_98.html" class="nt11" target="contents">S</a></font>?}? <font face="courier">&lt;<a href="content_85.html" class="nt1" target="contents">exp</a>&gt;</font>
+</td>
+</tr>
+</table>
+
+</font>
+<p>
+<font size="+1">
+<b>
+Description
+</b>
+</font>
+</p>
+<p>
+<p>
+Expressions can include both <font face="courier"><font face="courier">&lt;<a href="content_95.html" class="nt1" target="contents">prefix op</a>&gt;</font></font>s and <font face="courier"><font face="courier">&lt;<a href="content_90.html" class="nt1" target="contents">infix op</a>&gt;</font></font>s.The relative grouping of operators is controlled by <a href="content_109.html" class="table1" target="contents">Precedence</a> and the rule that all infix operators are left associative.Parenthesis (see <font face="courier"><font face="courier">&lt;<a href="content_96.html" class="nt1" target="contents">primary</a>&gt;</font></font>) can be used to modify that grouping.
+</p>
+<p>
+The semantics of operators in the simple case is controlled by the typeof their operands It is also possible to explicitlyselect an alternative semantics by specifying a type or view following a sharp.
+</p>
+</p>
+<p>
+<font size="+1">
+<b>
+Semantics
+</b>
+</font>
+</p>
+<p>
+See the individual <font face="courier"><font face="courier">&lt;<a href="content_95.html" class="nt1" target="contents">prefix op</a>&gt;</font></font>s and <font face="courier"><font face="courier">&lt;<a href="content_90.html" class="nt1" target="contents">infix op</a>&gt;</font></font>s.
+</p>
+<p>
+<font size="+1">
+<b>
+Parsing
+</b>
+</font>
+</p>
+<p>
+<p>
+Every operator has a corresponding function name (see the <a href="content_109.html" class="table1" target="contents">Precedence</a> table).When parsed, infix and prefix operator expressions are represented by <font face="courier"><font face="courier"><a href="content_146.html" class="name1" target="contents">xdom:call</a></font></font> nodes whose kind is set to <font face="courier"><font color="green">"op"</font></font>.For example, each operator expression in the first column and call expressionin the second column are represented by identical <font face="courier"><font face="courier"><a href="content_146.html" class="name1" target="contents">xdom:call</a></font></font> nodes,except the first has kind <font face="courier"><font color="green">"op"</font></font> andthe second has kind <font face="courier"><font color="green">"normal"</font></font>.
+</p>
+<table border="2">
+<tr>
+<td> <font face="courier"><font face="courier"><a href="content_228.html" class="preop1" target="contents">-</a></font> <font face="courier"><font color="#006699">b</font></font></font> </td>
+<td> <font face="courier"><font face="courier"><a href="content_187.html" class="name1" target="contents">Minus</a></font>(<font face="courier"><font color="#006699">a</font></font>)</font> </td>
+</tr>
+<tr>
+<td> <font face="courier"><font face="courier"><font color="#006699">a</font></font> <font face="courier"><a href="content_244.html" class="inop1" target="contents">+</a></font> <font face="courier"><font color="#006699">b</font></font></font> </td>
+<td> <font face="courier"><font face="courier"><a href="content_165.html" class="name1" target="contents">Add</a></font>(<font face="courier"><font color="#006699">a</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font>)</font> </td>
+</tr>
+<tr>
+<td> <font face="courier"><font face="courier"><a href="content_228.html" class="preop1" target="contents">-</a></font>#<font face="courier"><font color="#006699">t</font></font> <font face="courier"><font color="#006699">b</font></font></font> </td>
+<td> <font face="courier"><font face="courier"><font color="#006699">t</font></font>.<font color="FF00FF">sys:Minus</font>(<font face="courier"><font color="#006699">a</font></font>)</font> </td>
+</tr>
+<tr>
+<td> <font face="courier"><font face="courier"><font color="#006699">a</font></font> <font face="courier"><a href="content_244.html" class="inop1" target="contents">+</a></font>#<font face="courier"><font color="#006699">t</font></font> <font face="courier"><font color="#006699">b</font></font></font> </td>
+<td> <font face="courier"><font face="courier"><font color="#006699">t</font></font>.<font color="FF00FF">sys:Add</font>(<font face="courier"><font color="#006699">a</font></font>,<wbr><font face="courier"><font color="#006699">b</font></font>)</font> </td>
+</tr>
+</table>
+</p>
+<p>
+<font size="+1">
+<b>
+Examples
+</b>
+</font>
+</p>
+<p>
+<p>
+In the expression
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">a</font></font> <font face="courier"><a href="content_246.html" class="inop1" target="contents">*</a></font> <font face="courier"><font color="#006699">b</font></font> <font face="courier"><a href="content_244.html" class="inop1" target="contents">+</a></font> <font face="courier"><font color="#006699">c</font></font> <font face="courier"><a href="content_247.html" class="inop1" target="contents">/</a></font> <font face="courier"><font color="#006699">d</font></font></font>
+<br/>
+the multiply and divide are done before the add.In the expression
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font face="courier"><font color="#006699">a</font></font> <font face="courier"><a href="content_245.html" class="inop1" target="contents">-</a></font> <font face="courier"><font color="#006699">b</font></font> <font face="courier"><a href="content_245.html" class="inop1" target="contents">-</a></font> <font face="courier"><font color="#006699">c</font></font></font>
+<br/>
+the left subtract is done before the right subtract.
+</p>
+<p>
+The expression
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_227.html" class="preop1" target="contents">~</a></font><font color="green">"abc"</font> <font face="courier"><a href="content_235.html" class="inop1" target="contents">!=</a></font> <font color="green">"ABC"</font></font>
+<br/>
+uses the <font face="courier"><font face="courier"><a href="content_141.html" class="name1" target="contents">string</a></font></font>  <font face="courier"><font face="courier"><font color="#006699">sys:Eq</font></font></font> function, but
+<br/>
+<font face="courier">&nbsp;&nbsp;&nbsp;<font face="courier"><a href="content_227.html" class="preop1" target="contents">~</a></font><font color="green">"abc"</font> <font face="courier"><a href="content_234.html" class="inop1" target="contents">==</a></font>#<font face="courier"><a href="content_160.html" class="name1" target="contents">fold</a></font> <font color="green">"ABC"</font></font>
+<br/>
+uses the <font face="courier"><font face="courier"><a href="content_160.html" class="name1" target="contents">fold</a></font></font>  <font face="courier"><font face="courier"><font color="#006699">sys:Eq</font></font></font> function that ignores case of letters.
+</p>
+</p>
+</body>
+</html>

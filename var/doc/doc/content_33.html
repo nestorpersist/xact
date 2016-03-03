@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Basic Functions</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;2 <a href="nav1_2.html" target="nav1" class="numbered1">User Manual</a> > 2.4 <a href="nav2_2_4.html" target="nav2" class="numbered1">Functions</a> > 2.4.1 <font color="blue">Basic Functions</font>
+</b>
+<br/> 
+
+<a href="content_32.html" target="contents">prev</a>
+ 
+<a href="content_34.html" target="contents">next</a>
+<br/>
+
+
+<p>
+Unlike Java, where functions exist only as methods of classes, <b>@x:Act</b> functionsare full first-class abstractions.Functions are declared with the <font face="courier"><font face="courier">@<a href="content_119.html" class="tag1" target="contents">x:func</a></font></font> command.Function values can be assigned to variables and passedas parameters.
+</p>
+<p>
+Function parameters are passed by assigning the actual parameter value to the formalparameter object.Formal parameters are constant, so no assignment can be made to a formalparameter within the body of a function.
+</p>
+<p>
+Since <b>@x:Act</b> is dynamically typed, a function parameter can be passed a valueof any type. This makes <b>@x:Act</b> functions naturally polymorphic.
+</p>
+<p>
+Unlike Java, in <b>@x:Act</b> there is no return command.The result of a function is the value that resultsfrom executing its body.
+</p>
+<p>
+Since <b>@x:Act</b> uses a stack-based execution model,a function value is no longer valid after the scope instance in whichits declaration was executed has exited.Attempting to call a function at this time results in anexecution error.
+</p>
+</body>
+</html>

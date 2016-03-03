@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link rel="StyleSheet" href="style.css" type="text/css"/>
+<html>
+<head>
+<title>Path Setup</title>
+</head>
+<body bgcolor="white">
+<b>
+<a href="index.html" target="_top">Home</a>
+&nbsp;&nbsp;3 <a href="nav1_3.html" target="nav1" class="numbered1">System Manual</a> > 3.1 <a href="nav2_3_1.html" target="nav2" class="numbered1">Installation</a> > 3.1.2 <font color="blue">Path Setup</font>
+</b>
+<br/> 
+
+<a href="content_60.html" target="contents">prev</a>
+ 
+<a href="content_62.html" target="contents">next</a>
+<br/>
+
+
+<p>
+ <b>@x:Act</b> commands need to know where to find various software uponwhich they depend.
+</p>
+<p>
+On Windows copy <font face="courier" color="green">xact/dev/win/jrndef.bat</font> to <font face="courier" color="green">xact/def.bat</font>.You should then edit <font face="courier" color="green">xact/def.bat</font> to have the correct pathsfor your machine.
+</p>
+<p>
+On a Macintosh copy <font face="courier" color="green">xact/dev/mac/macdef</font> to <font face="courier" color="green">xact/def</font>.You should then edit <font face="courier" color="green">xact/def</font> to have the correct pathsfor your machine.
+</p>
+<ul>
+<li>
+ <font face="courier" color="green">XACT</font>.This should be the path for where you installed <b>@x:Act</b>.
+</li>
+<li>
+ <font face="courier" color="green">JAVA_HOME</font>.This should point to the Java JDK. Version should be at least <font face="courier" color="green">1.5</font>.
+</li>
+<li>
+ <font face="courier" color="green">ANT_HOME</font>.Directory where ANT is installed.You can get ANT from.
+<p>
+ <a href="http://ant.apache.org/" target="_top">http://ant.apache.org/</a> 
+</p>
+</li>
+<li>
+ <font face="courier" color="green">BDB_JAR</font>.This should point to the jar file for Berkeley DB.You want the Java API on the standard edition(not the Java edition).You can get this from.
+<p>
+ <a href="http://ant.apache.org/" target="_top">http://ant.apache.org/</a> 
+</p>
+</li>
+<li>
+ <font face="courier" color="green">SERVLET_JAR</font>.This should point to a servlet Jar.We run <b>@x:Act</b> under Tomcat which includesthis jar file.You can get Tomcat from.
+<p>
+ <a href="http://tomcat.apache.org/" target="_top">http://tomcat.apache.org/</a> 
+</p>
+</li>
+</ul>
+</body>
+</html>
